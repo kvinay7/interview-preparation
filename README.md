@@ -42,6 +42,6 @@ A variable is a container for storing data values and Data types define the type
     3. **Manual boxing:** wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper.
     4. **Manual unboxing:** wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper.
 
-- **Number Systems:** 0b-binary, 0-octal, 0x-hexa
-    1. Decimal to Other: Integer.toBinaryString()
-    2. Other to Decimal: Integer.parseInt(String, stringBase)
+- **Number Systems:** 0b-Binary, 0-Octal, 0x-Hex
+    1. Decimal to Hexa: Integer.toHexString()
+    2. Hexa to Decimal: Integer.parseInt(String, 16)
