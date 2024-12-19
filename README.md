@@ -26,7 +26,7 @@ A variable is a container for storing data values and Data types define the type
 
 - **Reference Data Types:** refer to objects and arrays and can be null
 
-- **Primitive Data Types:** Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null. In memory, char are stored as ASCII values, 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. Signed values range: -(2^(n-1)) to (2^(n-1))-1.
+- **Primitives:** Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null. In memory, char are stored as ASCII values, 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. Signed values range: -(2^(n-1)) to (2^(n-1))-1.
     1. **boolean:** default - false
     2. **char:** default - '\u0000' (%c), size - 2 bytes and range is 0-65,535
     3. **byte:** default - 0 and size - 8 bits
@@ -36,7 +36,7 @@ A variable is a container for storing data values and Data types define the type
     7. **float:** default - 0.0f (%f) and size - 4 bytes
     8. **double:** default - 0.0d (%lf) and size - 8 bytes
 
-- ### Type Casting
+- #### Type Casting
     1. **Implicit/Widening:** automatically converts smaller data type to larger.
     2. **Explicit/Narrowing:** converting from a larger data type to a smaller.
     3. **Manual boxing:** wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper
