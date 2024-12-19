@@ -14,7 +14,7 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - ***JDK:*** Java Development Kit is need to compile java source code into bytecode and contains JRE & develop, debug, deploy tools.
 - ***JRE:*** Java Runtime Environment is need to run a java program and contains JVM & libraries.
 - ***JVM:*** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
-- ***IDE:*** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!
+- ***IDE:*** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
 
 ### Identifier
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
@@ -34,6 +34,7 @@ Java isn't considered a pure oop language mainly because it has primitive types 
 7. ***float:*** default - 0.0f (%f) and size - 4 bytes
 8. ***double:*** default - 0.0d (%lf) and size - 8 bytes
 
-In memory, char are stored as ASCII values. 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z' and range for signed types: -(2^(n-1)) to (2^(n-1))-1, n is no.of bits
+In memory, char are stored as ASCII values. 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'.
+Range for signed types: -(2^(n-1)) to (2^(n-1))-1, n is no.of bits.
 
-**Reference Data Types:** refer to objects and arrays
+**Reference Data Types:** refer to objects and arrays.
