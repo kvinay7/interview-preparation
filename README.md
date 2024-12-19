@@ -24,7 +24,7 @@ An identifier is the name used to identify a variable & method (CamelCase), clas
 ### Variables and Data Types
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
 
-- **Reference Data Types:** refer to objects and arrays and can be null
+- **Reference Data Types:** refer to objects and arrays and can be null.
 
 - **Primitives:** Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null. In memory, char are stored as ASCII values, 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. Signed values range: -(2^(n-1)) to (2^(n-1))-1.
     1. **boolean:** default - false
@@ -39,5 +39,9 @@ A variable is a container for storing data values and Data types define the type
 - #### Type Casting
     1. **Implicit/Widening:** automatically converts smaller data type to larger.
     2. **Explicit/Narrowing:** converting from a larger data type to a smaller.
-    3. **Manual boxing:** wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper
-    4. **Manual unboxing:** wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper
+    3. **Manual boxing:** wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper.
+    4. **Manual unboxing:** wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper.
+
+- **Number Systems:** 0b-binary, 0-octal, 0x-hexa
+      1. Other to Decimal: Integer.parseInt(String, stringBase)
+      2. Decimal to Other: Integer.toBinaryString()
