@@ -37,10 +37,10 @@ A variable is a container for storing data values and Data types define the type
     8. **double:** default - 0.0d (%lf) and size - 8 bytes
 
 - #### Type Casting:
-    1. **Implicit/Widening:** automatically converts smaller data type to larger.
-    2. **Explicit/Narrowing:** converting from a larger data type to a smaller.
-    3. **Manual boxing:** wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper.
-    4. **Manual unboxing:** wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper.
+    1. Implicit/Widening: automatically converts smaller data type to larger.
+    2. Explicit/Narrowing: converting from a larger data type to a smaller.
+    3. Manual boxing: wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper.
+    4. Manual unboxing: wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper.
 
 - **Number Systems:** 0b-Binary, 0-Octal, 0x-Hex
     1. Decimal to Hexa: Integer.toHexString()
