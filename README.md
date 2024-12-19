@@ -26,16 +26,15 @@ A variable is a container for storing data values and Data types define the type
 
 - **Reference Data Types:** refer to objects and arrays and can be null
 
-- **Primitive Data Types**
-Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null.
-1. ***boolean:*** default - false
-2. ***char:*** default - '\u0000' (%c), size - 2 bytes and range is 0-65,535
-3. ***byte:*** default - 0 and size - 8 bits
-4. ***short:*** default - 0 and size - 2 bytes
-5. ***int:*** default - 0 (%d) and size - 4 bytes
-6. ***long:*** default - 0L and size - 8 bytes
-7. ***float:*** default - 0.0f (%f) and size - 4 bytes
-8. ***double:*** default - 0.0d (%lf) and size - 8 bytes
+- **Primitive Data Types:** Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null.
+    1. ***boolean:*** default - false
+    2. ***char:*** default - '\u0000' (%c), size - 2 bytes and range is 0-65,535
+    3. ***byte:*** default - 0 and size - 8 bits
+    4. ***short:*** default - 0 and size - 2 bytes
+    5. ***int:*** default - 0 (%d) and size - 4 bytes
+    6. ***long:*** default - 0L and size - 8 bytes
+    7. ***float:*** default - 0.0f (%f) and size - 4 bytes
+    8. ***double:*** default - 0.0d (%lf) and size - 8 bytes
 
 In memory, char are stored as ASCII values, 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. 
 Range for signed types: -(2^(n-1)) to (2^(n-1))-1, n is no.of bits.
