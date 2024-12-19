@@ -24,10 +24,10 @@ An identifier is the name used to identify a variable & method (CamelCase), clas
 ### Variables and Data Types
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
 
-**Reference Data Types:** refer to objects and arrays.
+**Reference Data Types:** refer to objects and arrays and can be null
 
 **Primitive Data Types**
-Java isn't considered a pure oop language mainly because it has primitive types which represent single value.
+Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null.
 1. ***boolean:*** default - false
 2. ***char:*** default - '\u0000' (%c), size - 2 bytes and range is 0-65,535
 3. ***byte:*** default - 0 and size - 8 bits
@@ -39,3 +39,9 @@ Java isn't considered a pure oop language mainly because it has primitive types 
 
 In memory, char are stored as ASCII values, 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. 
 Range for signed types: -(2^(n-1)) to (2^(n-1))-1, n is no.of bits.
+
+**Type Casting**
+- ***Implicit/Widening:*** automatically converts smaller data type to larger.
+- ***Explicit/Narrowing:*** converting from a larger data type to a smaller.
+- ***Manual boxing:*** wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper
+- ***Manual unboxing:*** wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper
