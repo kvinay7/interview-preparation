@@ -17,11 +17,9 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - ***IDE:*** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!
 
 ### Identifier
-
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
 - The first character must be a letter (A-Z or a-z), a dollar sign $, or an underscore _. It cannot be a digit (0-9).
 - Identifiers are case-sensitive and cannot be the keywords or literals.
 
 ### Variables and Data Types
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
-- 
