@@ -24,9 +24,9 @@ An identifier is the name used to identify a variable & method (CamelCase), clas
 ### Variables and Data Types
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
 
-**Reference Data Types:** refer to objects and arrays and can be null
+- **Reference Data Types:** refer to objects and arrays and can be null
 
-**Primitive Data Types**
+- **Primitive Data Types**
 Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null.
 1. ***boolean:*** default - false
 2. ***char:*** default - '\u0000' (%c), size - 2 bytes and range is 0-65,535
