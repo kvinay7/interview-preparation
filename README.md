@@ -43,5 +43,5 @@ A variable is a container for storing data values and Data types define the type
     4. **Manual unboxing:** wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper.
 
 - **Number Systems:** 0b-binary, 0-octal, 0x-hexa
-      1. Other to Decimal: Integer.parseInt(String, stringBase)
-      2. Decimal to Other: Integer.toBinaryString()
+    1. Decimal to Other: Integer.toBinaryString()
+    2. Other to Decimal: Integer.parseInt(String, stringBase)
