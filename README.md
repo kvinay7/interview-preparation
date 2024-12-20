@@ -109,7 +109,5 @@ Higher precedence operators are evaluated first. Operators with the same precede
               out.printf("|%.2f|", 98.724); // |98.72|
               out.printf("%.0f", 98.724);   // prints the rounded integer of the given float value in a field width of 2 right justified
           }
-      } 
-
-
-hhhh
+      }
+h
