@@ -82,3 +82,16 @@ Higher precedence operators are evaluated first. Operators with the same precede
 
 
 ### Standard I/O:
+- **Scanner Class:**
+      import java.util.Scanner;
+      class StandardIO {
+          public static void main(String[] args) {
+              Scanner sc = new Scanner(System.in);
+              String str1 = sc.nextLine(); // reads a line of text
+              String str2 = sc.next(); // reads a word
+              //EOF: sc.hasNext(), nextBoolean(), nextByte(), nextShort(), nextInt(), nextFloat(), nextLong(), nextDouble()
+              System.out.print(str1 +"\n"); // print() - Prints text without a newline.
+              System.out.println(str2);     // println() - Prints text with a newline.
+          }
+      }
+              
