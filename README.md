@@ -84,7 +84,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
 ### Standard I/O:
 - **Scanner Class:**
   ```
-   import java.util.Scanner;
+      import java.util.Scanner;
       class StandardIO {
           public static void main(String[] args) {
               Scanner sc = new Scanner(System.in);
