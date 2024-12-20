@@ -60,7 +60,7 @@ Operators are special symbols that perform operations on variables or values and
 ### Precedence and Associativity
 Higher precedence operators are evaluated first. Operators with the same precedence are evaluated based on associativity.
 
-| **Precedence** |        **Operator(s)**             |          **Description**               | **Associativity**  |
+| **Precedence** | **Operator(s)**                    | **Description**                        | **Associativity**  |
 |----------------|------------------------------------|----------------------------------------|--------------------|
 | 1              | `()`                               | Parentheses (used for grouping)        |   Left-to-right    |
 | 2              | `[]`, `.`, `++`, `--`              | Array indexing, method invocation, post|   Left-to-right    |
