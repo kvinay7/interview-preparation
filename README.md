@@ -110,4 +110,20 @@ Higher precedence operators are evaluated first. Operators with the same precede
               out.printf("%.0f", 98.724);   // prints the rounded integer of the given float value in a field width of 2 right justified
           }
       }
-###  
+
+### Stack vs Heap memory:
+
+| **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
+|----------------------------|----------------------------------------------------------|-----------------------------------------------------------|
+| **Memory Allocation**      | Automatically managed by JVM.                            | Dynamically allocated by the JVM using the `new` keyword. |
+| **Memory Size**            | Limited, typically small in size.                        | Larger in size compared to stack.                         |
+| **Memory Structure**       | Follows Last In, First Out (LIFO) principle.             | Structured as a large pool of memory for objects.         |
+| **Storage**                | Stores primitive data types and object references.       | Stores objects and arrays.                                |
+| **Life Cycle**             | Memory is automatically freed when the method call ends. | Memory is managed by the garbage collector (GC).          |
+| **Access Speed**           | Faster, as it follows a simple memory structure.         | Slower, due to dynamic allocation and garbage collection. |
+| **Thread-Specific**        | Yes, each thread has its own stack.                      | Shared among all threads.                                 |
+| **Size Limit**             | Typically smaller (limited by JVM settings).             | Can grow dynamically (limited by available system memory).|
+| **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
+| **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
+
+
