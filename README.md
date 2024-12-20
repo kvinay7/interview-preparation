@@ -15,7 +15,8 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **JRE:** Java Runtime Environment is need to run a java program and contains JVM & libraries.
 - **JVM:** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
 - **IDE:** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
-- compile: javac Hello.java, run: java Hello
+- **Compile:** C:\> javac Hello.java
+- **Run:** C:\> java Hello
 
 ### Identifier:
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
