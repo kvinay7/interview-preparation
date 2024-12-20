@@ -15,12 +15,12 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **JRE:** Java Runtime Environment is need to run a java program and contains JVM & libraries.
 - **JVM:** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
 - **IDE:** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
-
+- compile: javac Hello.java, run: java Hello
 
 ### Identifier:
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
 - The first character must be a letter (A-Z or a-z), a dollar sign $, or an underscore _. It cannot be a digit (0-9).
-- Identifiers are case-sensitive and cannot be the keywords or literals.
+- Identifiers are case-sensitive and cannot be the keywords(50 - native, strictfp, transient, volatile) or literals.
 
 ### Variables and Data Types:
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
