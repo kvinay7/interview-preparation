@@ -58,12 +58,13 @@ Operators are special symbols that perform operations on variables or values and
 - **Bitwise:** &, |, ^, <<, >>, >>>
 
 ### Precedence and Associativity
+Higher precedence operators are evaluated first. Operators with the same precedence are evaluated based on associativity.
 
-| **Precedence** | **Operator(s)**                    | **Description**                        | **Associativity**  |
+| **Precedence** |        **Operator(s)**             |          **Description**               | **Associativity**  |
 |----------------|------------------------------------|----------------------------------------|--------------------|
 | 1              | `()`                               | Parentheses (used for grouping)        |   Left-to-right    |
-| 2              | `[]`, `.`                          | Array indexing, method invocation      |   Left-to-right    |
-| 3              | `++`, `--`, `+`, `-`, `~`, `!`     | Unary operators                        |   Right-to-left    |
+| 2              | `[]`, `.`, `++`, `--`              | Array indexing, method invocation, post|   Left-to-right    |
+| 3              | `++`, `--`, `+`, `-`, `~`, `!`     | Pre, unary operators                   |   Right-to-left    |
 | 4              | `*`, `/`, `%`                      | Multiplication, division, modulus      |   Left-to-right    |
 | 5              | `+`, `-`                           | Addition, subtraction                  |   Left-to-right    |
 | 6              | `<<`, `>>`, `>>>`                  | Bitwise shifts                         |   Left-to-right    |
