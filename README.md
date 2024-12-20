@@ -92,9 +92,11 @@ Higher precedence operators are evaluated first. Operators with the same precede
               String str1 = sc.nextLine();  // reads a line of text
               String str2 = sc.next();      // reads a word
               //EOF: sc.hasNext(), nextBoolean(), nextByte(), nextShort(), nextInt(), nextFloat(), nextLong(), nextDouble()
+  
               System.out.print(str1 +"\n"); // print() - prints text without a newline.
               System.out.println(str2);     // println() - prints text with a newline.
               System.out.printf("%%")       // prints - %
+  
               PrintStream out = System.out;
               out.printf("%d", 2486);       // prints in a field width of 4, by default equal to no.of digits in integer
               out.printf("|%7d|", 2486);    // prints in a field width of 7 right justified - |   2486|
@@ -108,3 +110,5 @@ Higher precedence operators are evaluated first. Operators with the same precede
               out.printf("%.0f", 98.724);   // prints the rounded integer of the given float value in a field width of 2 right justified
           }
       } 
+
+
