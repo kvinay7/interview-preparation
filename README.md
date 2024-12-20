@@ -16,6 +16,7 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **JVM:** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
 - **IDE:** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
 
+
 ### Identifier:
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
 - The first character must be a letter (A-Z or a-z), a dollar sign $, or an underscore _. It cannot be a digit (0-9).
@@ -45,3 +46,36 @@ A variable is a container for storing data values and Data types define the type
 - **Number Systems:** 0b-Binary, 0-Octal, 0x-Hex
     1. Decimal to Hexa: Integer.toHexString()
     2. Hexa to Decimal: Integer.parseInt(String, 16)
+
+
+### Operators
+Operators are special symbols that perform operations on variables or values and java doesn't support operator overloading.
+- **Arithematic:** +, -, *, /, %
+- **Relational/Comparison:** ==, !=, >, <, >=, <=
+- **Logical:** &&, ||
+- **Assignment:** =, +=, -=, *=, /=, %=
+- **Unary:** ++, --, ~, !
+- **Bitwise:** &, |, ^, <<, >>, >>>
+
+### Precedence and Associativity
+
+| **Precedence** | **Operator(s)**                    | **Description**                        | **Associativity**  |
+|----------------|------------------------------------|----------------------------------------|--------------------|
+| 1              | `()`                               | Parentheses (used for grouping)        |   Left-to-right    |
+| 2              | `[]`, `.`                          | Array indexing, method invocation      |   Left-to-right    |
+| 3              | `++`, `--`, `+`, `-`, `~`, `!`     | Unary operators                        |   Right-to-left    |
+| 4              | `*`, `/`, `%`                      | Multiplication, division, modulus      |   Left-to-right    |
+| 5              | `+`, `-`                           | Addition, subtraction                  |   Left-to-right    |
+| 6              | `<<`, `>>`, `>>>`                  | Bitwise shifts                         |   Left-to-right    |
+| 7              | `<`, `<=`, `>`, `>=`, `instanceof` | Relational and type comparison         |   Left-to-right    |
+| 8              | `==`, `!=`                         | Equality and inequality comparison     |   Left-to-right    |
+| 9              | `&`                                | Bitwise AND                            |   Left-to-right    |
+| 10             | `^`                                | Bitwise XOR                            |   Left-to-right    |
+| 11             | `|`                                | Bitwise OR                             |   Left-to-right    |
+| 12             | `&&`                               | Logical AND                            |   Left-to-right    |
+| 13             | `||`                               | Logical OR                             |   Left-to-right    |    
+| 14             | `? :`                              | Ternary conditional operator           |   Right-to-left    |
+| 15             | `=`                                | Assignment operator                    |   Right-to-left    |
+| 16             | `+=`, `-=`, `*=`, `/=`, `%=`       | Compound assignment operators          |   Right-to-left    |
+| 17             | `,`                                | Comma operator                         |   Left-to-right    |
+
