@@ -29,7 +29,7 @@ A variable is a container for storing data values and Data types define the type
 - **Reference Data Types:** refer to objects and arrays and can be null.
 
 - **Primitives:** Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null. In memory, char are stored as ASCII values, 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. Signed values range: -(2^(n-1)) to (2^(n-1))-1.
-    1. **boolean:** default - false
+    1. **boolean:** default - false 
     2. **char:** default - '\u0000' (%c), size - 2 bytes and range is 0-65,535
     3. **byte:** default - 0 and size - 8 bits
     4. **short:** default - 0 and size - 2 bytes
@@ -44,7 +44,7 @@ A variable is a container for storing data values and Data types define the type
     3. Manual boxing: wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper.
     4. Manual unboxing: wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper.
 
-- **Number Systems:** 0b-Binary, 0-Octal, 0x-Hex
+- **Number Systems:** 0b-Binary (%b), 0-Octal (%o), 0x-Hex (%x, %X)
     1. Decimal to Hexa: Integer.toHexString()
     2. Hexa to Decimal: Integer.parseInt(String, 16)
 
@@ -89,10 +89,22 @@ Higher precedence operators are evaluated first. Operators with the same precede
       class StandardIO {
           public static void main(String[] args) {
               Scanner sc = new Scanner(System.in);
-              String str1 = sc.nextLine(); // reads a line of text
-              String str2 = sc.next(); // reads a word
+              String str1 = sc.nextLine();  // reads a line of text
+              String str2 = sc.next();      // reads a word
               //EOF: sc.hasNext(), nextBoolean(), nextByte(), nextShort(), nextInt(), nextFloat(), nextLong(), nextDouble()
-              System.out.print(str1 +"\n"); // print() - Prints text without a newline.
-              System.out.println(str2);     // println() - Prints text with a newline.
+              System.out.print(str1 +"\n"); // print() - prints text without a newline.
+              System.out.println(str2);     // println() - prints text with a newline.
+              System.out.printf("%%")       // prints - %
+              PrintStream out = System.out;
+              out.printf("%d", 2486);       // prints in a field width of 4, by default equal to no.of digits in integer
+              out.printf("|%7d|", 2486);    // prints in a field width of 7 right justified - |   2486|
+              out.printf("|%-7d|", 2486);   // prints in a field width of 7 left justified - |2486   |
+              out.printf("%07d", 2486);     // prints in a field width of 7 with leading zeroes - 0002486
+              out.printf("%#x", 255);       // converts to alternate form
+              out.printf("%f", 98.724);     // prints the real value in a field width of 9 with 6 digits of precision and tailing zeroes
+              out.printf("%11.2f", 98.724); // prints in a field width of 11 with 2 digits of precision with right justified
+              out.printf("%-11.2f", 98.724);// prints in a field width of 11 with 2 digits of precision with left justified
+              out.printf("|%.2f|", 98.724); // |98.72|
+              out.printf("%.0f", 98.724);   // prints the rounded integer of the given float value in a field width of 2 right justified
           }
       } 
