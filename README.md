@@ -70,13 +70,8 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | 6              | `<<`, `>>`, `>>>`                  | Bitwise shifts                         |   Left-to-right    |
 | 7              | `<`, `<=`, `>`, `>=`, `instanceof` | Relational and type comparison         |   Left-to-right    |
 | 8              | `==`, `!=`                         | Equality and inequality comparison     |   Left-to-right    |
-| 9              | `&`                                | Bitwise AND                            |   Left-to-right    |
-| 10             | `^`                                | Bitwise XOR                            |   Left-to-right    |
-| 11             | `|`                                | Bitwise OR                             |   Left-to-right    |
-| 12             | `&&`                               | Logical AND                            |   Left-to-right    |
-| 13             | `||`                               | Logical OR                             |   Left-to-right    |    
-| 14             | `? :`                              | Ternary conditional operator           |   Right-to-left    |
-| 15             | `=`                                | Assignment operator                    |   Right-to-left    |
-| 16             | `+=`, `-=`, `*=`, `/=`, `%=`       | Compound assignment operators          |   Right-to-left    |
-| 17             | `,`                                | Comma operator                         |   Left-to-right    |
+| 9              | `&`, `^`, `|`, `&&`, `||`          | Bitwise, Logical                       |   Left-to-right    | 
+| 10             | `? :`                              | Ternary conditional operator           |   Right-to-left    |
+| 11             | `=`, `+=`, `-=`, `*=`, `/=`, `%=`  | Assignment operators                   |   Right-to-left    |
+| 12             | `,`                                | Comma operator                         |   Left-to-right    |
 
