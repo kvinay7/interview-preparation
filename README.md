@@ -48,7 +48,7 @@ A variable is a container for storing data values and Data types define the type
     2. Hexa to Decimal: Integer.parseInt(String, 16)
 
 
-### Operators
+### Operators:
 Operators are special symbols that perform operations on variables or values and java doesn't support operator overloading.
 - **Arithematic:** +, -, *, /, %
 - **Relational/Comparison:** ==, !=, >, <, >=, <=
@@ -56,8 +56,9 @@ Operators are special symbols that perform operations on variables or values and
 - **Assignment:** =, +=, -=, *=, /=, %=
 - **Unary:** ++, --, ~, !
 - **Bitwise:** &, |, ^, <<, >>, >>>
+- **instanceof:** checks whether an object is an instance of a specific class or an interface.
 
-### Precedence and Associativity
+### Precedence and Associativity:
 Higher precedence operators are evaluated first. Operators with the same precedence are evaluated based on associativity.
 
 | **Precedence** | **Operator(s)**                    | **Description**                        | **Associativity**  |
@@ -76,5 +77,8 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | 12             | `,`                                | Comma operator                         |   Left-to-right    |
 
 
-### Control Structures
+### Control Structures:
 - if, if-else, else-if, switch -> (byte, short, int, char, string, enum), while, do-while, for, for-each, break, continue, return
+
+
+### Standard I/O:
