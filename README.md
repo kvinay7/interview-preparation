@@ -75,3 +75,6 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | 11             | `=`, `+=`, `-=`, `*=`, `/=`, `%=`  | Assignment operators                   |   Right-to-left    |
 | 12             | `,`                                | Comma operator                         |   Left-to-right    |
 
+
+### Control Structures
+- if, if-else, else-if, switch -> (byte, short, int, char, string, enum), while, do-while, for, for-each, break, continue, return
