@@ -15,7 +15,7 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **JRE:** Java Runtime Environment is need to run a java program and contains JVM & libraries.
 - **JVM:** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
 - **IDE:** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
-#### Console:
+### Console:
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
 
