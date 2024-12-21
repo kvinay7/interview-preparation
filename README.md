@@ -127,3 +127,9 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
 
 
+# Object-Oriented Programming (OOP) 
+It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create modular, reusable, and maintainable code.
+- **Class:** A blueprint or template for creating objects. It defines the properties and behaviors of objects.
+- **Object:** An instance of a class. It is a concrete realization of the class's blueprint.
+- **Methods & Functions:** Methods belong to a class or an object and have access to its data members, while functions are standalone. Java does not have standalone functions like some other languages. Every block of reusable code must be defined inside a class, making them methods.
+- **Constructor:** It is used to initialize the state of an object when it is created. It has the same name as the class and doesn't have any return type.
