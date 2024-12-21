@@ -38,11 +38,13 @@ A variable is a container for storing data values and Data types define the type
     6. **long:** default - 0L and size - 8 bytes
     7. **float:** default - 0.0f (%f) and size - 4 bytes
     8. **double:** default - 0.0d (%lf) and size - 8 bytes
+
 - **Type Casting:**
     1. Implicit/Widening: automatically converts smaller data type to larger.
     2. Explicit/Narrowing: converting from a larger data type to a smaller.
     3. Manual boxing: wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper.
     4. Manual unboxing: wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper.
+
 - **Number Systems:** 0b-Binary (%b), 0-Octal (%o), 0x-Hex (%x, %X)
     1. Decimal to Hexa: Integer.toHexString()
     2. Hexa to Decimal: Integer.parseInt(String, 16)
@@ -143,6 +145,9 @@ Access modifiers in Java are keywords used to define the visibility and accessib
 
 ### Packages:
 A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
-```
-    import package.name.class; // import a single class
-    import package.name.*;     // import the whole package & sub-packages not be imported.
+    ```
+        package mypackage;
+        import package.name.class; // import a single class
+        import package.name.*;     // import the whole package & sub-packages not be imported.
+        ```
+### Encapsulation:
