@@ -133,3 +133,17 @@ It is a programming paradigm that organizes software design around objects, whic
 - **Object:** An instance of a class. It is a concrete realization of the class's blueprint.
 - **Methods & Functions:** Methods belong to a class or an object and have access to its data members, while functions are standalone. Java does not have standalone functions like some other languages. Every block of reusable code must be defined inside a class, making them methods.
 - **Constructor:** It is used to initialize the state of an object when it is created. It has the same name as the class and doesn't have any return type.
+
+### Access Modifiers:
+Access modifiers in Java are keywords used to define the visibility and accessibility of classes, methods, constructors, and variables. They control how and where these members can be accessed within a program, ensuring better control, security, and encapsulation. For classes - public or default
+
+---
+
+| **Modifier**    | **Class**  | **Package** | **Subclass** | **World (Other Packages)** |
+|-----------------|------------|-------------|--------------|----------------------------|
+| **private**     | ✅         | ❌         | ❌           | ❌                        |
+| **default**     | ✅         | ✅         | ❌           | ❌                        |
+| **protected**   | ✅         | ✅         | ✅           | ❌                        |
+| **public**      | ✅         | ✅         | ✅           | ✅                        |
+
+---
