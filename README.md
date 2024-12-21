@@ -149,5 +149,5 @@ A package in Java is a way to group related classes and interfaces together. It 
         package mypackage;
         import package.name.class; // import a single class
         import package.name.*;     // import the whole package & sub-packages not be imported.
-        ```
+
 ### Encapsulation:
