@@ -21,6 +21,22 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
 
+## Stack vs Heap memory:
+
+| **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
+|----------------------------|----------------------------------------------------------|-----------------------------------------------------------|
+| **Memory Allocation**      | Automatically managed by JVM.                            | Dynamically allocated by the JVM using the `new` keyword. |
+| **Memory Size**            | Limited, typically small in size.                        | Larger in size compared to stack.                         |
+| **Memory Structure**       | Follows Last In, First Out (LIFO) principle.             | Structured as a large pool of memory for objects.         |
+| **Storage**                | Stores primitive data types and object references.       | Stores objects and arrays.                                |
+| **Life Cycle**             | Memory is automatically freed when the method call ends. | Memory is managed by the garbage collector (GC).          |
+| **Access Speed**           | Faster, as it follows a simple memory structure.         | Slower, due to dynamic allocation and garbage collection. |
+| **Thread-Specific**        | Yes, each thread has its own stack.                      | Shared among all threads.                                 |
+| **Size Limit**             | Typically smaller (limited by JVM settings).             | Can grow dynamically (limited by available system memory).|
+| **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
+| **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
+---
+
 ### Identifier:
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
 - The first character must be a letter (A-Z or a-z), a dollar sign $, or an underscore _. It cannot be a digit (0-9).
@@ -48,37 +64,6 @@ A variable is a container for storing data values and Data types define the type
 - **Number Systems:** 0b-Binary (%b), 0-Octal (%o), 0x-Hex (%x, %X)
     1. Decimal to Hexa: Integer.toHexString()
     2. Hexa to Decimal: Integer.parseInt(String, 16)
-
-## Operators:
-Operators are special symbols that perform operations on variables or values and java doesn't support operator overloading.
-- **Arithematic:** +, -, *, /, %
-- **Relational/Comparison:** ==, !=, >, <, >=, <=
-- **Logical:** &&, ||
-- **Assignment:** =, +=, -=, *=, /=, %=
-- **Unary:** ++, --, ~, !
-- **Bitwise:** &, |, ^, <<, >>, >>>
-- **instanceof:** checks whether an object is an instance of a specific class or an interface.
-
-### Precedence and Associativity:
-Higher precedence operators are evaluated first. Operators with the same precedence are evaluated based on associativity.
-
-| **Precedence** | **Operator(s)**                    | **Description**                        | **Associativity**  |
-|----------------|------------------------------------|----------------------------------------|--------------------|
-| 1              | `()`                               | Parentheses (used for grouping)        |   Left-to-right    |
-| 2              | `[]`, `.`, `++`, `--`              | Array indexing, method invocation, post|   Left-to-right    |
-| 3              | `++`, `--`, `+`, `-`, `~`, `!`     | Pre, unary operators                   |   Right-to-left    |
-| 4              | `*`, `/`, `%`                      | Multiplication, division, modulus      |   Left-to-right    |
-| 5              | `+`, `-`                           | Addition, subtraction                  |   Left-to-right    |
-| 6              | `<<`, `>>`, `>>>`                  | Bitwise shifts                         |   Left-to-right    |
-| 7              | `<`, `<=`, `>`, `>=`, `instanceof` | Relational and type comparison         |   Left-to-right    |
-| 8              | `==`, `!=`                         | Equality and inequality comparison     |   Left-to-right    |
-| 9              | `&`, `^`, `&&`                     | Bitwise, Logical                       |   Left-to-right    | 
-| 10             | `? :`                              | Ternary conditional operator           |   Right-to-left    |
-| 11             | `=`, `+=`, `-=`, `*=`, `/=`, `%=`  | Assignment operators                   |   Right-to-left    |
-| 12             | `,`                                | Comma operator                         |   Left-to-right    |
-
-### Control Structures:
-- if, if-else, else-if, switch -> (byte, short, int, char, string, enum), while, do-while, for, for-each, break, continue, return
 
 ## Standard I/O:
 - **Scanner Class:**
@@ -110,21 +95,36 @@ Higher precedence operators are evaluated first. Operators with the same precede
       }
 ---
 
-## Stack vs Heap memory:
+## Operators:
+Operators are special symbols that perform operations on variables or values and java doesn't support operator overloading.
+- **Arithematic:** +, -, *, /, %
+- **Relational/Comparison:** ==, !=, >, <, >=, <=
+- **Logical:** &&, ||
+- **Assignment:** =, +=, -=, *=, /=, %=
+- **Unary:** ++, --, ~, !
+- **Bitwise:** &, |, ^, <<, >>, >>>
+- **instanceof:** checks whether an object is an instance of a specific class or an interface.
 
-| **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
-|----------------------------|----------------------------------------------------------|-----------------------------------------------------------|
-| **Memory Allocation**      | Automatically managed by JVM.                            | Dynamically allocated by the JVM using the `new` keyword. |
-| **Memory Size**            | Limited, typically small in size.                        | Larger in size compared to stack.                         |
-| **Memory Structure**       | Follows Last In, First Out (LIFO) principle.             | Structured as a large pool of memory for objects.         |
-| **Storage**                | Stores primitive data types and object references.       | Stores objects and arrays.                                |
-| **Life Cycle**             | Memory is automatically freed when the method call ends. | Memory is managed by the garbage collector (GC).          |
-| **Access Speed**           | Faster, as it follows a simple memory structure.         | Slower, due to dynamic allocation and garbage collection. |
-| **Thread-Specific**        | Yes, each thread has its own stack.                      | Shared among all threads.                                 |
-| **Size Limit**             | Typically smaller (limited by JVM settings).             | Can grow dynamically (limited by available system memory).|
-| **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
-| **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
----
+### Precedence and Associativity:
+Higher precedence operators are evaluated first. Operators with the same precedence are evaluated based on associativity.
+
+| **Precedence** | **Operator(s)**                    | **Description**                        | **Associativity**  |
+|----------------|------------------------------------|----------------------------------------|--------------------|
+| 1              | `()`                               | Parentheses (used for grouping)        |   Left-to-right    |
+| 2              | `[]`, `.`, `++`, `--`              | Array indexing, method invocation, post|   Left-to-right    |
+| 3              | `++`, `--`, `+`, `-`, `~`, `!`     | Pre, unary operators                   |   Right-to-left    |
+| 4              | `*`, `/`, `%`                      | Multiplication, division, modulus      |   Left-to-right    |
+| 5              | `+`, `-`                           | Addition, subtraction                  |   Left-to-right    |
+| 6              | `<<`, `>>`, `>>>`                  | Bitwise shifts                         |   Left-to-right    |
+| 7              | `<`, `<=`, `>`, `>=`, `instanceof` | Relational and type comparison         |   Left-to-right    |
+| 8              | `==`, `!=`                         | Equality and inequality comparison     |   Left-to-right    |
+| 9              | `&`, `^`, `&&`                     | Bitwise, Logical                       |   Left-to-right    | 
+| 10             | `? :`                              | Ternary conditional operator           |   Right-to-left    |
+| 11             | `=`, `+=`, `-=`, `*=`, `/=`, `%=`  | Assignment operators                   |   Right-to-left    |
+| 12             | `,`                                | Comma operator                         |   Left-to-right    |
+
+### Control Structures:
+- if, if-else, else-if, switch -> (byte, short, int, char, string, enum), while, do-while, for, for-each, break, continue, return
 
 # Object-Oriented Programming (OOP) 
 It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create modular, reusable, and maintainable code.
