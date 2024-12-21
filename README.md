@@ -1,6 +1,7 @@
 # Java
 
 Java is a general-purpose, class-based, object-oriented, high-level programming language developed by James Gosling and his team at Sun Microsystems in the mid-1990's. The main goal of creating Java was to achieve platform-independent, simple, and secure features.
+
 ### Features:
 - **Simplicity:** Java's syntax is designed to be easy to learn, write and maintain code.
 - **Platform Independent:** Java code is compiled into bytecode (platform-independent code), which runs on the JVM. This abstraction allows the same bytecode to execute on any platform that has a compatible JVM, achieving true platform independence.
@@ -15,6 +16,7 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **JRE:** Java Runtime Environment is need to run a java program and contains JVM & libraries.
 - **JVM:** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
 - **IDE:** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
+
 ### Console:
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
@@ -26,9 +28,7 @@ An identifier is the name used to identify a variable & method (CamelCase), clas
 
 ## Variables and Data Types:
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
-
 - **Reference Data Types:** refer to objects and arrays and can be null.
-
 - **Primitives:** Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null. In memory, char are stored as ASCII values, 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. Signed values range: -(2^(n-1)) to (2^(n-1))-1.
     1. **boolean:** default - false 
     2. **char:** default - '\u0000' (%c), size - 2 bytes and range is 0-65,535
@@ -38,17 +38,14 @@ A variable is a container for storing data values and Data types define the type
     6. **long:** default - 0L and size - 8 bytes
     7. **float:** default - 0.0f (%f) and size - 4 bytes
     8. **double:** default - 0.0d (%lf) and size - 8 bytes
-
 - **Type Casting:**
     1. Implicit/Widening: automatically converts smaller data type to larger.
     2. Explicit/Narrowing: converting from a larger data type to a smaller.
     3. Manual boxing: wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper.
     4. Manual unboxing: wVar.typeValue() - Wrapper to Primitive, Wrapper to Wrapper.
-
 - **Number Systems:** 0b-Binary (%b), 0-Octal (%o), 0x-Hex (%x, %X)
     1. Decimal to Hexa: Integer.toHexString()
     2. Hexa to Decimal: Integer.parseInt(String, 16)
-
 
 ## Operators:
 Operators are special symbols that perform operations on variables or values and java doesn't support operator overloading.
@@ -78,10 +75,8 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | 11             | `=`, `+=`, `-=`, `*=`, `/=`, `%=`  | Assignment operators                   |   Right-to-left    |
 | 12             | `,`                                | Comma operator                         |   Left-to-right    |
 
-
 ### Control Structures:
 - if, if-else, else-if, switch -> (byte, short, int, char, string, enum), while, do-while, for, for-each, break, continue, return
-
 
 ## Standard I/O:
 - **Scanner Class:**
@@ -127,7 +122,6 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | **Size Limit**             | Typically smaller (limited by JVM settings).             | Can grow dynamically (limited by available system memory).|
 | **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
 | **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
-
 ---
 
 # Object-Oriented Programming (OOP) 
