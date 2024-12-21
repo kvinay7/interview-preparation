@@ -133,6 +133,13 @@ It is a programming paradigm that organizes software design around objects, whic
 - **Methods & Functions:** Methods belong to a class or an object and have access to its data members, while functions are standalone. Java does not have standalone functions like some other languages. Every block of reusable code must be defined inside a class, making them methods.
 - **Constructor:** It is used to initialize the state of an object when it is created. It has the same name as the class and doesn't have any return type.
 
+### Packages:
+A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
+
+        package mypackage;
+        import package.name.class; // import a single class
+        import package.name.*;     // import the whole package & sub-packages not be imported.
+
 ### Access Modifiers:
 Access modifiers in Java are keywords used to define the visibility and accessibility of classes, methods, constructors, and variables. They control how and where these members can be accessed within a program, ensuring better control, security, and encapsulation. For classes - public or default
 
@@ -142,13 +149,6 @@ Access modifiers in Java are keywords used to define the visibility and accessib
 | **default**     | ✅         | ✅         | ❌           | ❌                        |
 | **protected**   | ✅         | ✅         | ✅           | ❌                        |
 | **public**      | ✅         | ✅         | ✅           | ✅                        |
-
-### Packages:
-A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
-
-        package mypackage;
-        import package.name.class; // import a single class
-        import package.name.*;     // import the whole package & sub-packages not be imported.
 
 ## Encapsulation:
 Encapsulation is one of the core principles of object-oriented programming (OOP). It involves bundling the data (variables) and the methods (functions) that operate on that data into a single unit, typically a class, and restricting direct access to some of the object's components to ensure controlled access and protection of data.
