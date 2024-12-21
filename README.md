@@ -167,3 +167,47 @@ One of the core concepts of Object-Oriented Programming (OOP) that allows one cl
 | **Can be used in**          | Methods and constructors.                      | Methods (except static methods) and constructors. |
 | **Example**                 | `this.variableName`, `this.methodName()`        | `super.variableName`, `super.methodName()`      |
 | **Static Context**          | Can be used in both static and instance methods. | Cannot be used in static methods.                |
+
+## Polymorphism:
+One of the core principles of Object-Oriented Programming (OOP) that allows an object to take on many forms and enables to write flexible and reusable code.
+
+| **Feature**                  | **Compile-time Polymorphism**                       | **Runtime Polymorphism**                        |
+|------------------------------|-----------------------------------------------------|-------------------------------------------------|
+| **Also Known As**             | Static Polymorphism                                | Dynamic Polymorphism                            |
+| **Achieved By**               | Method Overloading                                 | Method Overriding                               |
+| **Binding Type**              | Early Binding (Compile-time)                       | Late Binding (Runtime)                          |
+| **Method Resolution**         | Determined at compile time                         | Determined at runtime                           |
+| **Example**                   | Method overloading (same method name, different parameters) | Method overriding (same method signature, different implementation) |
+| **Flexibility**               | Less flexible, as method is selected at compile time | More flexible, as method is selected at runtime |
+| **Performance**               | Slightly better performance due to compile-time resolution | May have slight performance overhead due to runtime resolution |
+
+### Dynamic Method Dispatch:
+Dynamic Method Dispatch (also called Late Binding or Run-time Polymorphism) is a mechanism in Java where a method call to an overridden method is resolved at runtime, rather than compile time. This allows Java to decide which method to invoke based on the actual object type that is being referred to, rather than the reference type.
+
+### Covariant Return Type:
+A covariant return type allows a subclass method to return a more specific (derived) type than the method in the superclass. This feature enhances flexibility and allows more specific objects to be returned from overridden methods while maintaining the contract of the superclass method. In other words, in Java, the return type of an overridden method in a subclass can be a subclass type of the return type in the parent class.
+        
+    class Animal {
+        public Animal getInstance() {
+            return new Animal();
+        }
+    }
+
+    class Dog extends Animal {
+        @Override
+        public Dog getInstance() {
+            return new Dog();  // More specific return type (Dog instead of Animal)
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Animal animal = new Animal();
+            Dog dog = new Dog();
+
+            Animal animalInstance = animal.getInstance();  // Returns an Animal instance
+            Dog dogInstance = dog.getInstance();            // Returns a Dog instance
+            System.out.println(animalInstance.getClass());  // class Animal
+            System.out.println(dogInstance.getClass());     // class Dog
+        }
+    }
