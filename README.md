@@ -150,4 +150,5 @@ A package in Java is a way to group related classes and interfaces together. It 
         import package.name.class; // import a single class
         import package.name.*;     // import the whole package & sub-packages not be imported.
 
-### Encapsulation:
+## Encapsulation:
+Encapsulation is one of the core principles of object-oriented programming (OOP). It involves bundling the data (variables) and the methods (functions) that operate on that data into a single unit, typically a class, and restricting direct access to some of the object's components to ensure controlled access and protection of data.
