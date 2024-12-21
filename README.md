@@ -152,3 +152,18 @@ A package in Java is a way to group related classes and interfaces together. It 
 
 ## Encapsulation:
 Encapsulation is one of the core principles of object-oriented programming (OOP). It involves bundling the data (variables) and the methods (functions) that operate on that data into a single unit, typically a class, and restricting direct access to some of the object's components to ensure controlled access and protection of data.
+
+## Inheritance:
+One of the core concepts of Object-Oriented Programming (OOP) that allows one class to acquire the properties (fields) and behaviors (methods) of another class. It promotes code reuse, modularity, and logical structuring of programs. Java does not support multiple inheritance with classes to avoid ambiguity (but it can be achieved using interfaces) and can't assign an object of parent class to a reference of derived class.
+
+### `this` vs `super`:
+
+| **Feature**                | **`this`**                                      | **`super`**                                     |
+|----------------------------|-------------------------------------------------|-------------------------------------------------|
+| **Refers to**               | Current instance of the class.                 | Parent class of the current instance.           |
+| **Use Case**                | Access fields, methods, or constructors of the current class. | Access fields, methods, or constructors of the parent class. |
+| **Constructor Call**        | Calls another constructor of the same class (`this()`). | Calls a constructor of the parent class (`super()`). |
+| **Access Modifier Rules**   | No restriction on fields/methods of the current class. | Can only access non-private fields/methods of the parent class. |
+| **Can be used in**          | Methods and constructors.                      | Methods (except static methods) and constructors. |
+| **Example**                 | `this.variableName`, `this.methodName()`        | `super.variableName`, `super.methodName()`      |
+| **Static Context**          | Can be used in both static and instance methods. | Cannot be used in static methods.                |
