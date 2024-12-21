@@ -111,8 +111,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
               out.printf("%.0f", 98.724);   // prints the rounded integer of the given float value in a field width of 2 right justified
           }
       }
----
-  
+
 ## Stack vs Heap memory:
 
 | **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
