@@ -146,3 +146,9 @@ Access modifiers in Java are keywords used to define the visibility and accessib
 | **default**     | ✅         | ✅         | ❌           | ❌                        |
 | **protected**   | ✅         | ✅         | ✅           | ❌                        |
 | **public**      | ✅         | ✅         | ✅           | ✅                        |
+
+### Packages:
+A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
+```
+    import package.name.class; // import a single class
+    import package.name.*;     // import the whole package & sub-packages not be imported.
