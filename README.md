@@ -24,7 +24,7 @@ An identifier is the name used to identify a variable & method (CamelCase), clas
 - The first character must be a letter (A-Z or a-z), a dollar sign $, or an underscore _. It cannot be a digit (0-9).
 - Identifiers are case-sensitive and cannot be the keywords(50 - native, strictfp, transient, volatile) or literals.
 
-### Variables and Data Types:
+## Variables and Data Types:
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
 
 - **Reference Data Types:** refer to objects and arrays and can be null.
@@ -39,7 +39,7 @@ A variable is a container for storing data values and Data types define the type
     7. **float:** default - 0.0f (%f) and size - 4 bytes
     8. **double:** default - 0.0d (%lf) and size - 8 bytes
 
-- #### Type Casting:
+- **Type Casting:**
     1. Implicit/Widening: automatically converts smaller data type to larger.
     2. Explicit/Narrowing: converting from a larger data type to a smaller.
     3. Manual boxing: wType.valueOf(primitive) - smallerOrSamePrimitive to largerOrSameWrapper, largerPrimitive to smallerWrapper's primitive to smallerWrapper.
@@ -111,6 +111,8 @@ Higher precedence operators are evaluated first. Operators with the same precede
               out.printf("%.0f", 98.724);   // prints the rounded integer of the given float value in a field width of 2 right justified
           }
       }
+---
+  
 ### Stack vs Heap memory:
 
 | **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
@@ -126,6 +128,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
 | **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
 
+---
 
 # Object-Oriented Programming (OOP) 
 It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create modular, reusable, and maintainable code.
@@ -137,13 +140,9 @@ It is a programming paradigm that organizes software design around objects, whic
 ### Access Modifiers:
 Access modifiers in Java are keywords used to define the visibility and accessibility of classes, methods, constructors, and variables. They control how and where these members can be accessed within a program, ensuring better control, security, and encapsulation. For classes - public or default
 
----
-
 | **Modifier**    | **Class**  | **Package** | **Subclass** | **World (Other Packages)** |
 |-----------------|------------|-------------|--------------|----------------------------|
 | **private**     | ✅         | ❌         | ❌           | ❌                        |
 | **default**     | ✅         | ✅         | ❌           | ❌                        |
 | **protected**   | ✅         | ✅         | ✅           | ❌                        |
 | **public**      | ✅         | ✅         | ✅           | ✅                        |
-
----
