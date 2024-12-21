@@ -50,7 +50,7 @@ A variable is a container for storing data values and Data types define the type
     2. Hexa to Decimal: Integer.parseInt(String, 16)
 
 
-### Operators:
+## Operators:
 Operators are special symbols that perform operations on variables or values and java doesn't support operator overloading.
 - **Arithematic:** +, -, *, /, %
 - **Relational/Comparison:** ==, !=, >, <, >=, <=
@@ -83,7 +83,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
 - if, if-else, else-if, switch -> (byte, short, int, char, string, enum), while, do-while, for, for-each, break, continue, return
 
 
-### Standard I/O:
+## Standard I/O:
 - **Scanner Class:**
   ```
       import java.util.Scanner;
@@ -113,7 +113,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
       }
 ---
   
-### Stack vs Heap memory:
+## Stack vs Heap memory:
 
 | **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
 |----------------------------|----------------------------------------------------------|-----------------------------------------------------------|
