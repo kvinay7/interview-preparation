@@ -311,6 +311,7 @@ Collections Framework provides a unified architecture for storing and manipulati
   - **Queue**: `PriorityQueue`, `ArrayDeque`
 - **Map Interface:**
   - `HashMap` (allow null), `LinkedHashMap` (allow null), `TreeMap` (key can't be null), `Hashtable` (thread-safe, not allow null)
+    
 - **Iterator:**
   ```java
       Iterator<T> itr = list.iterator();
@@ -318,6 +319,7 @@ Collections Framework provides a unified architecture for storing and manipulati
             System.out.println(itr.next());
         }
   ```
+  
 - **StringTokenizer:**
   ```java
       StringTokenizer st = new StringTokenizer("String");
