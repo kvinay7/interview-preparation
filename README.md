@@ -242,3 +242,61 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 | **Abstract Keyword in Methods**| Abstract methods must be explicitly declared.  | Abstract by default (prior to Java 8).       |
 | **Multiple Inheritance**       | Not supported (can extend only one class).     | Supported (via multiple interfaces).         |
 
+## Generics:
+Introduced in Java 5 to provide type safety and reusability. They allow to write code that can work with any data type while ensuring compile-time type checking.
+
+### Bounded Types:
+Generics can be restricted to work only with specific types using **extends** or **super**.
+
+**Upper Bounded Wildcard (`extends`)**:
+- Restricts the type to a class or its subclasses.
+
+```java
+class Utility {
+    public static <T extends Number> void printSum(T num1, T num2) {
+        System.out.println(num1.doubleValue() + num2.doubleValue());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Utility.printSum(5, 10);          // Output: 15.0
+        Utility.printSum(5.5, 3.3);      // Output: 8.8
+    }
+}
+```
+
+**Lower Bounded Wildcard (`super`)**:
+- Restricts the type to a class or its superclasses.
+
+```
+class Utility {
+    public static void addNumber(List<? super Integer> list) {
+        list.add(10);
+        list.add(20);
+    }
+}
+```
+### Wildcards:
+Generics can use wildcards (`?`) to work with unknown types.
+
+- **Unbounded Wildcard (`?`)**: Accepts any type.
+  ```
+  void printList(List<?> list) {
+      for (Object element : list) {
+          System.out.println(element);
+      }
+  }
+
+- **Upper Bounded Wildcard (`? extends Type`)**: Accepts `Type` or its subclasses.
+  ```
+  void processNumbers(List<? extends Number> list) {
+      // Can read from the list but can't modify it
+  }
+
+- **Lower Bounded Wildcard (`? super Type`)**: Accepts `Type` or its superclasses.
+  ```
+  void addNumbers(List<? super Integer> list) {
+      list.add(10);
+  }
+
