@@ -302,3 +302,12 @@ Generics can use wildcards (`?`) to work with unknown types.
       list.add(10);
   }
 
+## Collections Framework: 
+Collections Framework provides a unified architecture for storing and manipulating groups of objects.
+
+- **Collection Interface**
+  - **List**: `ArrayList`, `LinkedList`, `Vector`, `Stack`
+  - **Set**: `HashSet`, `LinkedHashSet`, `TreeSet`
+  - **Queue**: `PriorityQueue`, `ArrayDeque`
+- **Map Interface**
+  - `HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`
