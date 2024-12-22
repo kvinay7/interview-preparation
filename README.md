@@ -21,22 +21,6 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
 
-## Stack vs Heap memory:
-
-| **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
-|----------------------------|----------------------------------------------------------|-----------------------------------------------------------|
-| **Memory Allocation**      | Automatically managed by JVM.                            | Dynamically allocated by the JVM using the `new` keyword. |
-| **Memory Size**            | Limited, typically small in size.                        | Larger in size compared to stack.                         |
-| **Memory Structure**       | Follows Last In, First Out (LIFO) principle.             | Structured as a large pool of memory for objects.         |
-| **Storage**                | Stores primitive data types and object references.       | Stores objects and arrays.                                |
-| **Life Cycle**             | Memory is automatically freed when the method call ends. | Memory is managed by the garbage collector (GC).          |
-| **Access Speed**           | Faster, as it follows a simple memory structure.         | Slower, due to dynamic allocation and garbage collection. |
-| **Thread-Specific**        | Yes, each thread has its own stack.                      | Shared among all threads.                                 |
-| **Size Limit**             | Typically smaller (limited by JVM settings).             | Can grow dynamically (limited by available system memory).|
-| **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
-| **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
----
-
 ## Identifier:
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
 - The first character must be a letter (A-Z or a-z), a dollar sign $, or an underscore _. It cannot be a digit (0-9).
@@ -125,6 +109,22 @@ Higher precedence operators are evaluated first. Operators with the same precede
 
 ## Control Structures:
 - if, if-else, else-if, switch -> (byte, short, int, char, string, enum), while, do-while, for, for-each, break, continue, return
+
+## Stack vs Heap memory:
+
+| **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
+|----------------------------|----------------------------------------------------------|-----------------------------------------------------------|
+| **Memory Allocation**      | Automatically managed by JVM.                            | Dynamically allocated by the JVM using the `new` keyword. |
+| **Memory Size**            | Limited, typically small in size.                        | Larger in size compared to stack.                         |
+| **Memory Structure**       | Follows Last In, First Out (LIFO) principle.             | Structured as a large pool of memory for objects.         |
+| **Storage**                | Stores primitive data types and object references.       | Stores objects and arrays.                                |
+| **Life Cycle**             | Memory is automatically freed when the method call ends. | Memory is managed by the garbage collector (GC).          |
+| **Access Speed**           | Faster, as it follows a simple memory structure.         | Slower, due to dynamic allocation and garbage collection. |
+| **Thread-Specific**        | Yes, each thread has its own stack.                      | Shared among all threads.                                 |
+| **Size Limit**             | Typically smaller (limited by JVM settings).             | Can grow dynamically (limited by available system memory).|
+| **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
+| **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
+---
 
 # Object-Oriented Programming (OOP) 
 It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create modular, reusable, and maintainable code.
