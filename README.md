@@ -242,6 +242,8 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 | **Abstract Keyword in Methods**| Abstract methods must be explicitly declared.  | Abstract by default (prior to Java 8).       |
 | **Multiple Inheritance**       | Not supported (can extend only one class).     | Supported (via multiple interfaces).         |
 
+---
+
 ## Generics:
 Introduced in Java 5 to provide type safety and reusability. They allow to write code that can work with any data type while ensuring compile-time type checking.
 
