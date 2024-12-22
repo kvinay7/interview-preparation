@@ -40,7 +40,7 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 ## Identifier:
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
 - The first character must be a letter (A-Z or a-z), a dollar sign $, or an underscore _. It cannot be a digit (0-9).
-- Identifiers are case-sensitive and cannot be the keywords(50 - native, strictfp, transient, volatile) or literals.
+- Identifiers are case-sensitive and cannot be the keywords(50) or literals.
 
 ## Variables and Data Types:
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
@@ -211,3 +211,18 @@ A covariant return type allows a subclass method to return a more specific (deri
             System.out.println(dogInstance.getClass());     // class Dog
         }
     }
+
+## Non-Access Modifiers:
+Non-access modifiers are don't control access level, but provides other funtionality.
+
+| Modifier      | Applicable To        | Description                                                                 |
+|---------------|----------------------|-----------------------------------------------------------------------------|
+| `final`       | Class, Method, Field | Prevents inheritance, method overriding, and reassignment of fields.        |
+| `abstract`    | Class, Method        | Declares incomplete classes and methods.                                    |
+| `static`      | Field, Method (can't override)        | Belongs to class rather than an instance. Used to refer common property.    |
+| `synchronized`| Method               | Restricts method access to one thread at a time.                            |
+| `native`      | Method               | Indicates implementation in a non-Java language.                            |
+| `strictfp`    | Class, Method        | Ensures consistent floating-point operations across platforms.              |
+| `volatile`    | Field                | Ensures visibility of field updates across threads.                         |
+| `transient`   | Field                | Prevents the field from being serialized.                                   |
+
