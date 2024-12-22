@@ -226,7 +226,9 @@ Non-access modifiers are don't control access level, but provides other funtiona
 | `volatile`    | Field                | Ensures visibility of field updates across threads.                         |
 | `transient`   | Field                | Prevents the field from being serialized.                                   |
 
-## `abstract` vs `interface`:
+---
+
+### `abstract` vs `interface`:
 
 | Feature                        | Abstract Class                                  | Interface                                     |
 |--------------------------------|------------------------------------------------|----------------------------------------------|
