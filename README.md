@@ -330,15 +330,16 @@ Collections Framework provides a unified architecture for storing and manipulati
 
 - **Comparable** and **Comparator:**
 
-| **Feature**               | **Comparable**                               | **Comparator**                                   |
-|---------------------------|----------------------------------------------|------------------------------------------------|
-| **Package**               | `java.lang`                                 | `java.util`                                    |
-| **Method**                | `compareTo(T o)`                            | `compare(T o1, T o2)`                          |
-| **Sorting Logic**         | Defined in the class itself.                | Defined in separate classes or lambdas.        |
-| **Number of Sort Orders** | Only one (natural ordering).                | Multiple (custom orders).                      |
-| **Modifies Original Class** | Yes (requires class implementation).        | No (works externally).                         |
-| **Usage**                 | Best for single, natural ordering.          | Best for multiple or custom sorting.           |
-
+  | **Feature**               | **Comparable**                               | **Comparator**                                   |
+  |---------------------------|----------------------------------------------|------------------------------------------------|
+  | **Package**               | `java.lang`                                 | `java.util`                                    |
+  | **Method**                | `compareTo(T o)`                            | `compare(T o1, T o2)`                          |
+  | **Sorting Logic**         | Defined in the class itself.                | Defined in separate classes or lambdas.        |
+  | **Number of Sort Orders** | Only one (natural ordering).                | Multiple (custom orders).                      |
+  | **Modifies Original Class** | Yes (requires class implementation).        | No (works externally).                         |
+  | **Usage**                 | Best for single, natural ordering.          | Best for multiple or custom sorting.           |
+  
+- Example:
 ```java
 import java.util.*;
 
