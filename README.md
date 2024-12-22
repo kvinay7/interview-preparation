@@ -51,7 +51,7 @@ A variable is a container for storing data values and Data types define the type
 
 ## Standard I/O:
 - **Scanner Class:**
-  ```
+  ```java
       import java.util.Scanner;
       class StandardIO {
           public static void main(String[] args) {
@@ -135,11 +135,11 @@ It is a programming paradigm that organizes software design around objects, whic
 
 ### Packages:
 A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
-
+```java
         package mypackage;
         import package.name.class; // import a single class
         import package.name.*;     // import the whole package & sub-packages not be imported.
-
+```
 ### Access Modifiers:
 Access modifiers in Java are keywords used to define the visibility and accessibility of classes, methods, constructors, and variables. They control how and where these members can be accessed within a program, ensuring better control, security, and encapsulation. For classes - public or default
 
@@ -186,7 +186,7 @@ Dynamic Method Dispatch (also called Late Binding or Run-time Polymorphism) is a
 
 ### Covariant Return Type:
 A covariant return type allows a subclass method to return a more specific (derived) type than the method in the superclass. This feature enhances flexibility and allows more specific objects to be returned from overridden methods while maintaining the contract of the superclass method. In other words, in Java, the return type of an overridden method in a subclass can be a subclass type of the return type in the parent class.
-        
+```java        
     class Animal {
         public Animal getInstance() {
             return new Animal();
@@ -269,7 +269,7 @@ public class Main {
 **Lower Bounded Wildcard (`super`)**:
 - Restricts the type to a class or its superclasses.
 
-```
+```java
 class Utility {
     public static void addNumber(List<? super Integer> list) {
         list.add(10);
@@ -281,7 +281,7 @@ class Utility {
 Generics can use wildcards (`?`) to work with unknown types.
 
 - **Unbounded Wildcard (`?`)**: Accepts any type.
-  ```
+  ```java
   void printList(List<?> list) {
       for (Object element : list) {
           System.out.println(element);
@@ -289,13 +289,13 @@ Generics can use wildcards (`?`) to work with unknown types.
   }
 
 - **Upper Bounded Wildcard (`? extends Type`)**: Accepts `Type` or its subclasses.
-  ```
+  ```java
   void processNumbers(List<? extends Number> list) {
       // Can read from the list but can't modify it
   }
 
 - **Lower Bounded Wildcard (`? super Type`)**: Accepts `Type` or its superclasses.
-  ```
+  ```java
   void addNumbers(List<? super Integer> list) {
       list.add(10);
   }
