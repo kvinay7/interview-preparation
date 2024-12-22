@@ -306,8 +306,15 @@ Generics can use wildcards (`?`) to work with unknown types.
 Collections Framework provides a unified architecture for storing and manipulating groups of objects.
 
 - **Collection Interface**
-  - **List**: `ArrayList`, `LinkedList`, `Vector`, `Stack`
+  - **List**: `ArrayList`, `LinkedList`, `Vector` (thread-safe), `Stack`
   - **Set**: `HashSet`, `LinkedHashSet`, `TreeSet`
   - **Queue**: `PriorityQueue`, `ArrayDeque`
 - **Map Interface**
   - `HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`
+- **Iterator**
+  ```java
+      Iterator<T> itr = list.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+  ```
