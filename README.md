@@ -307,10 +307,10 @@ Collections Framework provides a unified architecture for storing and manipulati
 
 - **Collection Interface**
   - **List**: `ArrayList`, `LinkedList`, `Vector` (thread-safe), `Stack`
-  - **Set**: `HashSet`, `LinkedHashSet`, `TreeSet`
+  - **Set**: `HashSet` (allow null), `LinkedHashSet` (not allow null. Insertion order), `TreeSet` (not allow null. Sorted order)
   - **Queue**: `PriorityQueue`, `ArrayDeque`
 - **Map Interface**
-  - `HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`
+  - `HashMap` (allow null), `LinkedHashMap` (allow null), `TreeMap` (key can't be null), `Hashtable` (thread-safe, not allow null)
 - **Iterator**
   ```java
       Iterator<T> itr = list.iterator();
@@ -318,3 +318,12 @@ Collections Framework provides a unified architecture for storing and manipulati
             System.out.println(itr.next());
         }
   ```
+- **StringTokenizer**
+  ```java
+      StringTokenizer st = new StringTokenizer("String");
+      while(st.hasMoreTokens())
+          System.out.println(st.nextToken());
+      System.out.println(st.countTokens());
+  ```
+
+ 
