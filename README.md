@@ -328,3 +328,62 @@ Collections Framework provides a unified architecture for storing and manipulati
       System.out.println(st.countTokens());
   ```
 
+- **Comparable** and **Comparator:**
+
+| **Feature**               | **Comparable**                               | **Comparator**                                   |
+|---------------------------|----------------------------------------------|------------------------------------------------|
+| **Package**               | `java.lang`                                 | `java.util`                                    |
+| **Method**                | `compareTo(T o)`                            | `compare(T o1, T o2)`                          |
+| **Sorting Logic**         | Defined in the class itself.                | Defined in separate classes or lambdas.        |
+| **Number of Sort Orders** | Only one (natural ordering).                | Multiple (custom orders).                      |
+| **Modifies Original Class** | Yes (requires class implementation).        | No (works externally).                         |
+| **Usage**                 | Best for single, natural ordering.          | Best for multiple or custom sorting.           |
+
+```java
+import java.util.*;
+
+class Student implements Comparable<Student> {
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // Comparable: Sort by ID
+    public int compareTo(Student other) {
+        return this.id - other.id;
+    }
+
+    public String toString() {
+        return name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Student> students = Arrays.asList(
+            new Student(3, "Alice"),
+            new Student(1, "Bob"),
+            new Student(2, "Charlie")
+        );
+
+        // Sorting using Comparable (ID)
+        Collections.sort(students);
+        System.out.println("Sorted by ID (Comparable): " + students);  // Output: [Bob, Charlie, Alice]
+
+        // Sorting using Comparator (Name) - Without Lambda
+        Collections.sort(students, new Comparator<Student>() {
+            public int compare(Student s1, Student s2) {
+                return s1.name.compareTo(s2.name);  // Sort by name
+            }
+        });
+        System.out.println("Sorted by Name (Comparator without Lambda): " + students);  // Output: [Alice, Bob, Charlie]
+
+        // Sorting using Comparator (Name) - With Lambda
+        students.sort((s1, s2) -> s1.name.compareTo(s2.name));  // Sort by name using Lambda
+        System.out.println("Sorted by Name (Comparator with Lambda): " + students);  // Output: [Alice, Bob, Charlie]
+    }
+}
+```
