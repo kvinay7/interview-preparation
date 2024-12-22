@@ -247,38 +247,6 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 ## Generics:
 Introduced in Java 5 to provide type safety and reusability. They allow to write code that can work with any data type while ensuring compile-time type checking.
 
-### Bounded Types:
-Generics can be restricted to work only with specific types using **extends** or **super**.
-
-**Upper Bounded Wildcard (`extends`)**:
-- Restricts the type to a class or its subclasses.
-
-```java
-class Utility {
-    public static <T extends Number> void printSum(T num1, T num2) {
-        System.out.println(num1.doubleValue() + num2.doubleValue());
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Utility.printSum(5, 10);          // Output: 15.0
-        Utility.printSum(5.5, 3.3);      // Output: 8.8
-    }
-}
-```
-
-**Lower Bounded Wildcard (`super`)**:
-- Restricts the type to a class or its superclasses.
-
-```java
-class Utility {
-    public static void addNumber(List<? super Integer> list) {
-        list.add(10);
-        list.add(20);
-    }
-}
-```
 ### Wildcards:
 Generics can use wildcards (`?`) to work with unknown types.
 
