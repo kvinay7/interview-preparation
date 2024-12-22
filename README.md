@@ -374,15 +374,15 @@ public class Main {
         Collections.sort(students);
         System.out.println("Sorted by ID (Comparable): " + students);  // Output: [Bob, Charlie, Alice]
 
-        // Sorting using Comparator (Name) - Without Lambda
-        Collections.sort(students, new Comparator<Student>() {
+        // Sorting using Comparator (Name)
+        Collections.sort(students, new Comparator<Student>() { // Annonymous inner class
             public int compare(Student s1, Student s2) {
                 return s1.name.compareTo(s2.name);  // Sort by name
             }
         });
         System.out.println("Sorted by Name (Comparator without Lambda): " + students);  // Output: [Alice, Bob, Charlie]
 
-        // Sorting using Comparator (Name) - With Lambda
+        // Sorting using Comparator (Name) - With Lambda - Annonymous inner class with Single Abstract Method (SAM - Funtional Interface - 1.8)
         students.sort((s1, s2) -> s1.name.compareTo(s2.name));  // Sort by name using Lambda
         System.out.println("Sorted by Name (Comparator with Lambda): " + students);  // Output: [Alice, Bob, Charlie]
     }
