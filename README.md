@@ -136,9 +136,9 @@ It is a programming paradigm that organizes software design around objects, whic
 ### Packages:
 A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
 ```java
-        package mypackage;
-        import package.name.class; // import a single class
-        import package.name.*;     // import the whole package & sub-packages not be imported.
+    package mypackage;
+    import package.name.class; // import a single class
+    import package.name.*;     // import the whole package & sub-packages not be imported.
 ```
 ### Access Modifiers:
 Access modifiers in Java are keywords used to define the visibility and accessibility of classes, methods, constructors, and variables. They control how and where these members can be accessed within a program, ensuring better control, security, and encapsulation. For classes - public or default
@@ -211,7 +211,7 @@ A covariant return type allows a subclass method to return a more specific (deri
             System.out.println(dogInstance.getClass());     // class Dog
         }
     }
-
+```
 ## Non-Access Modifiers:
 Non-access modifiers are don't control access level, but provides other funtionality.
 
