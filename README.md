@@ -227,6 +227,8 @@ Non-access modifiers are don't control access level, but provides other funtiona
 | `transient`   | Field                | Prevents the field from being serialized.                                   |
 
 ---
+## Abstraction:
+Abstraction in Java is a core concept in object-oriented programming (OOP) that focuses on hiding implementation details and showing only the essential features of an object. It helps simplify complex systems by breaking them into smaller, more manageable parts.
 
 ### `abstract` vs `interface`:
 
