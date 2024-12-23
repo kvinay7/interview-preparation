@@ -373,12 +373,12 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
 
 - Declaring Streams: `stream.of(1,2,3)`, `Arrays.stream(arr)`, `list.stream()`
 - Intermediate Operations (lazy): they not executed until a terminal operation is invoked.
-    - map(), filter(), sorted(), distinct(), limit(), skip(), flatMap(), peek()
+    - `map()`, `filter()`, `sorted()`, `distinct()`, `limit()`, `skip()`, `flatMap()`, `peek()`
 - Terminal Operations: once a terminal operation is invoked, stream can't be reused.
-    - collect(Collectors.toList()), forEach(), reduce(), count(), min(), max(), toArray()
+    - `collect(Collectors.toList())`, `forEach()`, `reduce()`, `count()`, `min()`, `max()`, `toArray()`
 - Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
-    - findFirst(), findAny(), anyMatch(), allMatch(), noneMatch()
-- Examples: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/Main.java)
+    - `findFirst()`, `findAny()`, `anyMatch()`, `allMatch()`, `noneMatch()`
+- Example: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/Main.java)
   
 **Parallel Stream:** to perform operations in parallel on multi-core processors, which can result in performance improvements for large datasets.
   ```java
