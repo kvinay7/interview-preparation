@@ -356,3 +356,36 @@ public class Main {
     }
 }
 ```
+
+## Imperative vs Declarative:
+
+| **Feature**                  | **Imperative/Procedural Programming**                             | **Declarative/Functional Programming**                            |
+|------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
+| **Focus**                     | Focuses on the *how* (step-by-step instructions).                | Focuses on the *what* (desired result).                           |
+| **Control Flow**              | The programmer defines the flow and logic explicitly.            | The framework or system controls the execution flow.              |
+| **Code Structure**            | Code is usually more detailed, involving explicit loops, conditions, and assignments. | Code is more concise, expressing the intention rather than the steps. |
+| **Use Case**                  | Suitable for tasks requiring detailed control, such as system-level programming. | Suitable for tasks where the goal is to describe the outcome, like querying data, UI construction. |
+
+---
+
+## Stream API:
+Introduced in Java 8 as part of the java.util.stream package. It is used to process collections of data in a functional and declarative style (pipeline of functions). It doesn't store data. 
+
+- Declaring Streams: `stream.of(1,2,3)`, `Arrays.stream(arr)`, `list.stream()`
+- Intermediate Operations (lazy): they not executed until a terminal operation is invoked.
+    - map(), filter(), sorted(), distinct(), limit(), skip(), flatMap(), peek()
+- Terminal Operations: once a terminal operation is invoked, stream can't be reused.
+    - collect(Collectors.toList()), forEach(), reduce(), count(), min(), max(), toArray()
+- Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
+    - findFirst(), findAny(), anyMatch(), allMatch(), noneMatch()
+- Examples: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/Main.java)
+  
+**Parallel Stream:** to perform operations in parallel on multi-core processors, which can result in performance improvements for large datasets.
+  ```java
+      List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+      int sum = numbers.parallelStream()
+                 .reduce(0, Integer::sum); // Parallel sum
+      System.out.println(sum); // Output: 21
+  ```
+
+  
