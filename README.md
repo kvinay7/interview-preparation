@@ -357,7 +357,7 @@ public class Main {
 }
 ```
 
-## Imperative vs Declarative:
+### Imperative vs Declarative:
 
 | **Feature**                  | **Imperative/Procedural Programming**                             | **Declarative/Functional Programming**                            |
 |------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
