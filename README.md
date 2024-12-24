@@ -408,6 +408,8 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
       Optional<T> min(Comparator<T>);
       Optional<T> max(Comparator<T>);
       long count();
+
+      // Short Circuit Operations
       boolean anyMatch(Predicate<T>);
       boolean allMatch(Predicate<T>);
       boolean noneMatch(Predicate<T>);
