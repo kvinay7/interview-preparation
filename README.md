@@ -373,11 +373,57 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
 
 - Declaring Streams: `stream.of(1,2,3)`, `Arrays.stream(arr)`, `list.stream()`
 - Intermediate Operations (lazy): they not executed until a terminal operation is invoked.
-    - `map()`, `filter()`, `sorted()`, `distinct()`, `limit()`, `skip()`, `flatMap()`, `peek()`
 - Terminal Operations: once a terminal operation is invoked, stream can't be reused.
-    - `collect(Collectors.toList())`, `forEach()`, `reduce()`, `count()`, `min()`, `max()`, `toArray()`
 - Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
-    - `findFirst()`, `findAny()`, `anyMatch()`, `allMatch()`, `noneMatch()`
+
+```java
+    public interface Stream<T> extends BaseStream<T, Stream<T>> {
+      // Intermediate Operations
+      Stream<T> filter(Predicate<T>);
+      <R> Stream<R> map(Function<T, R>);
+      IntStream mapToInt(ToIntFunction<T>);
+      LongStream mapToLong(ToLongFunction<T>);
+      DoubleStream mapToDouble(ToDoubleFunction<T>);
+      <R> Stream<R> flatMap(Function<T, Stream<R>>);
+      IntStream flatMapToInt(Function<T, IntStream>);
+      LongStream flatMapToLong(Function<T, LongStream>);
+      DoubleStream flatMapToDouble(Function<T, DoubleStream>);
+      Stream<T> distinct();
+      Stream<T> sorted();
+      Stream<T> sorted(Comparator<T>);
+      Stream<T> peek(Consumer<T>);
+      Stream<T> limit(long);
+      Stream<T> skip(long);
+
+      // Terminal Operations
+      void forEach(Consumer<T>); // Ordered only for sequential streams
+      void forEachOrdered(Consumer<T>); // Ordered if encounter order exists
+      Object[] toArray();
+      <A> A[] toArray(IntFunction<A[]> arrayAllocator);
+      T reduce(T, BinaryOperator<T>);
+      Optional<T> reduce(BinaryOperator<T>);
+      <U> U reduce(U, BiFunction<U, T, U>, BinaryOperator<U>);
+      <R, A> R collect(Collector<T, A, R>); // Mutable Reduction Operation
+      <R> R collect(Supplier<R>, BiConsumer<R, T>, BiConsumer<R, R>);
+      Optional<T> min(Comparator<T>);
+      Optional<T> max(Comparator<T>);
+      long count();
+      boolean anyMatch(Predicate<T>);
+      boolean allMatch(Predicate<T>);
+      boolean noneMatch(Predicate<T>);
+      Optional<T> findFirst();
+      Optional<T> findAny();
+
+      // Static methods: stream sources
+      public static <T> Stream.Builder<T> builder();
+      public static <T> Stream<T> empty();
+      public static <T> Stream<T> of(T);
+      public static <T> Stream<T> of(T...);
+      public static <T> Stream<T> iterate(T, UnaryOperator<T>);
+      public static <T> Stream<T> generate(Supplier<T>);
+      public static <T> Stream<T> concat(Stream<T>, Stream<T>);
+    }
+```
 - Example: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/Main.java)
   
 **Parallel Stream:** to perform operations in parallel on multi-core processors, which can result in performance improvements for large datasets.
@@ -388,4 +434,20 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
       System.out.println(sum); // Output: 21
   ```
 
-  
+### Optional:
+The primary purpose of `Optional` is to represent the possibility of absence of a value, without relying on `null` values.
+  ```java
+    public final class Optional<T> {
+        boolean isPresent();
+        T get();
+        void ifPresent(Consumer<T>);
+        Optional<T> filter(Predicate<T>);
+        <U> Optional<U> map(Function<T, U>);
+        <U> Optional<U> flatMap(Function<T, Optional<U>>);
+        T orElse(T);
+        T orElseGet(Supplier<T>);
+        <X extends Throwable> T orElseThrow(Supplier<X>) throws X;
+    }
+  ```
+
+
