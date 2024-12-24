@@ -212,6 +212,8 @@ A covariant return type allows a subclass method to return a more specific (deri
         }
     }
 ```
+---
+
 ## Non-Access Modifiers:
 Non-access modifiers are don't control access level, but provides other funtionality.
 
@@ -269,6 +271,7 @@ Generics can use wildcards (`?`) to work with unknown types.
   void addNumbers(List<? super Integer> list) {
       list.add(10);
   }
+---
 
 ## Collections Framework: 
 Collections Framework provides a unified architecture for storing and manipulating groups of objects.
@@ -356,6 +359,7 @@ public class Main {
     }
 }
 ```
+---
 
 ### Imperative vs Declarative:
 
@@ -403,5 +407,6 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
         <X extends Throwable> T orElseThrow(Supplier<X>) throws X;
     }
   ```
+---
 
-
+## Exception Handling:
