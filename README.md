@@ -418,3 +418,5 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
 ## Multithreading:
 
 ## Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
+
+## Low-Level Design: [See here](https://github.com/ashishps1/awesome-low-level-design)
