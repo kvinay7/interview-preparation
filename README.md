@@ -21,7 +21,11 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
 
-## Identifier:
+## Tokens:
+Tokens are the smallest elements of a program that have meaning and are used to form the syntax of the language. Java programs are parsed and analyzed by the compiler in terms of tokens.
+ - Examples: Keywords, Identifiers, Literals, Operators and Special Characters.
+
+### Identifier:
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
 - The first character must be a letter (A-Z or a-z), a dollar sign $, or an underscore _. It cannot be a digit (0-9).
 - Identifiers are case-sensitive and cannot be the keywords(50) or literals.
@@ -409,7 +413,7 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
   ```
 ---
 
-## Exception Handling:
+## Exception & I/O Handling:
 
 ## Multithreading:
 
