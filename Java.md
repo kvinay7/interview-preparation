@@ -16,7 +16,7 @@
     - [Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#access-modifiers)
     - [Encapsulation](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#encapsulation)
     - [Inheritance](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#inheritance):
-          - [`this` vs `super`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#this-vs-super)
+        - [`this` vs `super`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#this-vs-super)
     - 
 
 ## Introduction:
