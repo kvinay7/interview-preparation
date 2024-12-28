@@ -414,6 +414,61 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
 ---
 
 ## Exception Handling:
+- **Errors:** represents irrecoverable conditions such as JVM running out-of-memory, memory leaks, stack-overflow errors, library incompatability, infinite recursion, etc. Errors are usually beyond the control of the programmer, and we should not try to handle errors.
+ 
+- **Exception:** is an unwanted or unexpected event, which occurs during the execution of program, i.e. at run-time, that disrupts the normal flow of the program's instructions. Ex: Invalid user input, device failure, loss of network connection, physical limitations (out of disk memory), code errors, opening an unavailable file.
+  
+-  **Exception Handling:** It is a mechanism to handle runtime errors such as ClassNotFoundException, IOException, SQLException, etc. If an exception has occured, the method creates an object known as exception object and hand it off to the JVM is called throwing an exception. The uncaught exceptions are automatically caught and handled by the java built-in exception handler.
+ -  Checked Exceptions (compile-time exceptions): IOException, SQLException, ClassNotFoundException, FileNotFoundException, DataAccessException, InstantiationException.
+ -  Unchecked Exceptions (run-time exceptions): NullPointerException, ArrayIndexOutOfBoundException, IllegalArgumentException, IllegalStateException, NumberFormatException, ArithmeticException.
+   ```java
+       // Custom Exception
+       class CustomException extends Exception {
+          public CustomException(String message) {
+            super(message);
+          }
+       }
+
+       class ResourceExample {
+         // finalize() is used for cleanup tasks before an object is destroyed by the garbage collector. However, due to its unpredictable behavior, performance issues, and potential memory leaks, finalize() was deprecated in Java 9 and removed in Java 18.
+         @Override
+         protected void finalize() throws Throwable { 
+            System.out.println("Finalize called for cleanup.");
+         }
+       }
+
+       public class ExceptionDemo {
+         public static void main(String[] args) {
+           // Try-Catch-Finally
+           try {                           // try is used to define a block of code where exceptions may occur.
+              validateNumber(-1);          // Throws CustomException
+           } catch (CustomException e) {   // catch is used to handle the exception thrown by the try block.
+              System.out.println("Caught exception: " + e.getMessage());
+           } finally {                     // A block that always executes, whether or not an exception occurs, even if a return statement is present in the try or catch block. Used for cleanup activities like closing resources.
+              System.out.println("This is the finally block.");
+           }
+
+           // Try-With-Resources - Resources are automatically closed at the end of the try block, ensuring proper resource management without explicitly using finally.
+           try (java.io.FileReader reader = new java.io.FileReader("example.txt")) {
+              System.out.println("File opened successfully.");
+           } catch (java.io.IOException e) {
+              System.out.println("Error: " + e.printStackTrace());
+           }
+
+           // Demonstrate finalize
+           ResourceExample resource = new ResourceExample();
+           resource = null; // Make object eligible for GC
+           System.gc(); // Request Garbage Collection
+           System.out.println("End of program.");
+         }
+
+          public static void validateNumber(int number) throws CustomException { // declares exceptions that a method can throw. (checked exceptions)
+            if (number < 0) {
+              throw new CustomException("Number cannot be negative!");  // throw is used to explicitly throw an exception.
+            }
+          }
+      }
+```
 
 ## File I/O:
 
