@@ -5,7 +5,7 @@
     - [Terminologies](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#terminologies)
     - [Console](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#console)
 - [Basics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
-    - [Identifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
+    - [Identifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#identifier)
     - [Variables and Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
     - [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
     - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
