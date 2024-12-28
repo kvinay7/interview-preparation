@@ -1,6 +1,22 @@
 # Java
 
-- Introduction
+- [Introduction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction):
+    - [Features](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
+    - [Terminologies](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
+    - [Console](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#console)
+- Basics:
+    - [Tokens](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
+    - [Variables and Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
+    - [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
+    - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
+    - [Control Statements](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#control-structures)
+    - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
+- [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop):
+    - [Packages](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#packages)
+    - [Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#access-modifiers)
+    - [Encapsulation](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#encapsulation)
+    - [Inheritance](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#inheritance):
+          - [`this` vs `super`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#this-vs-super)
     - 
 
 ## Introduction:
