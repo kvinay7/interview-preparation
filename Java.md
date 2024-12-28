@@ -419,8 +419,8 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
 - **Exception:** is an unwanted or unexpected event, which occurs during the execution of program, i.e. at run-time, that disrupts the normal flow of the program's instructions. Ex: Invalid user input, device failure, loss of network connection, physical limitations (out of disk memory), code errors, opening an unavailable file.
   
 -  **Exception Handling:** It is a mechanism to handle runtime errors such as ClassNotFoundException, IOException, SQLException, etc. If an exception has occured, the method creates an object known as exception object and hand it off to the JVM is called throwing an exception. The uncaught exceptions are automatically caught and handled by the java built-in exception handler.
- -  Checked Exceptions (compile-time exceptions): IOException, SQLException, ClassNotFoundException, FileNotFoundException, DataAccessException, InstantiationException.
- -  Unchecked Exceptions (run-time exceptions): NullPointerException, ArrayIndexOutOfBoundException, IllegalArgumentException, IllegalStateException, NumberFormatException, ArithmeticException.
+   -  Checked Exceptions (compile-time exceptions): IOException, SQLException, ClassNotFoundException, FileNotFoundException, DataAccessException, InstantiationException.
+   -  Unchecked Exceptions (run-time exceptions): NullPointerException, ArrayIndexOutOfBoundException, IllegalArgumentException, IllegalStateException, NumberFormatException, ArithmeticException.
    ```java
        // Custom Exception
        class CustomException extends Exception {
@@ -430,9 +430,8 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
        }
 
        class ResourceExample {
-         // finalize() is used for cleanup tasks before an object is destroyed by the garbage collector. However, due to its unpredictable behavior, performance issues, and potential memory leaks, finalize() was deprecated in Java 9 and removed in Java 18.
          @Override
-         protected void finalize() throws Throwable { 
+         protected void finalize() throws Throwable { // finalize() is used for cleanup tasks before an object is destroyed by the garbage collector. However, due to its unpredictable behavior, performance issues, and potential memory leaks, finalize() was deprecated in Java 9 and removed in Java 18.
             System.out.println("Finalize called for cleanup.");
          }
        }
@@ -469,6 +468,7 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
           }
       }
 ```
+---
 
 ## File I/O:
 
