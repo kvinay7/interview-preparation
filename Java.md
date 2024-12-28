@@ -24,6 +24,16 @@
     - [Non-Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#non-access-modifiers)
     - [Abstraction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstraction)
         - [`abstract` vs `interface`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstract-vs-interface)
+    - [Generics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#generics)
+- [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework)
+- Java-8
+    - [Imperative vs Declarative](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
+    - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stream-api)
+    - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
+- [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
+- [File I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#file-io)
+- [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#multithreading)
+- [Interview Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#java-interview-questions-see-here) 
 
 ## Introduction:
 Java is a general-purpose, class-based, object-oriented, high-level programming language developed by James Gosling and his team at Sun Microsystems in the mid-1990's. The main goal of creating Java was to achieve platform-independent, simple, and secure features.
@@ -46,8 +56,6 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 ### Console:
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
-
-# Basics:
 
 ## Tokens:
 Tokens are the smallest elements of a program that have meaning and are used to form the syntax of the language. Java programs are parsed and analyzed by the compiler in terms of tokens.
