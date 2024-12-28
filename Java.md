@@ -4,11 +4,12 @@
     - [Features](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
     - [Terminologies](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
     - [Console](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#console)
-- Basics:
-    - [Tokens](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
+- Basics
+    - [Tokens and Identifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
     - [Variables and Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
     - [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
     - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
+        - [Precedence and Associativity](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#precedence-and-associativity)
     - [Control Statements](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#control-structures)
     - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
 - [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop)
@@ -17,7 +18,12 @@
     - [Encapsulation](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#encapsulation)
     - [Inheritance](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#inheritance):
         - [`this` vs `super`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#this-vs-super)
-    - 
+    - [Polymorphism](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#polymorphism)
+        - [Dynamic Method Dispatch](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#dynamic-method-dispatch)
+        - [Covariant Return Type](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#covariant-return-type)
+    - [Non-Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#non-access-modifiers)
+    - [Abstraction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstraction)
+        - [`abstract` vs `interface`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstract-vs-interface)
 
 ## Introduction:
 Java is a general-purpose, class-based, object-oriented, high-level programming language developed by James Gosling and his team at Sun Microsystems in the mid-1990's. The main goal of creating Java was to achieve platform-independent, simple, and secure features.
