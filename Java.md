@@ -4,8 +4,8 @@
     - [Features](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
     - [Terminologies](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#terminologies)
     - [Console](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#console)
-- Basics
-    - [Tokens and Identifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
+- [Basics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
+    - [Identifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
     - [Variables and Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
     - [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
     - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
@@ -26,8 +26,7 @@
         - [`abstract` vs `interface`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstract-vs-interface)
     - [Generics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#generics)
 - [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework)
-- Java-8
-    - [Imperative vs Declarative](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
+- [Java-8](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
     - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stream-api)
     - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
