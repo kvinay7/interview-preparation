@@ -46,10 +46,10 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **Dynamic Linking:** Classes are linked at runtime rather than at compile time. This allows Java programs to load classes dynamically, ensuring better flexibility and scalability.
 - **Robustness:** Java's strong memory management, type checking, and exception handling make it a reliable language for building robust applications.
 
-### Terminologies: [see here](https://www.interviewbit.com/java-cheat-sheet/#java-terminology)
+### Terminologies:
 - **JDK:** Java Development Kit is need to compile java source code into bytecode and contains JRE & develop, debug, deploy tools.
 - **JRE:** Java Runtime Environment is need to run a java program and contains JVM & libraries.
-- **JVM:** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
+- **JVM:** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler. [see here](https://www.interviewbit.com/java-cheat-sheet/#java-terminology)
 - **IDE:** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
 
 ### Console:
