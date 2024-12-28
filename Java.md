@@ -421,7 +421,7 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
 -  **Exception Handling:** It is a mechanism to handle runtime errors such as ClassNotFoundException, IOException, SQLException, etc. If an exception has occured, the method creates an object known as exception object and hand it off to the JVM is called throwing an exception. The uncaught exceptions are automatically caught and handled by the java built-in exception handler.
    -  Checked Exceptions (compile-time exceptions): IOException, SQLException, ClassNotFoundException, FileNotFoundException, DataAccessException, InstantiationException.
    -  Unchecked Exceptions (run-time exceptions): NullPointerException, ArrayIndexOutOfBoundException, IllegalArgumentException, IllegalStateException, NumberFormatException, ArithmeticException.
-   
+- Example:
    ```java
        // Custom Exception
        class CustomException extends Exception {
