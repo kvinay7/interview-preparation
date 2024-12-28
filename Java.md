@@ -1,6 +1,6 @@
 # Java
 
-- [Introduction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction):
+- [Introduction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction)
     - [Features](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
     - [Terminologies](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
     - [Console](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#console)
@@ -11,7 +11,7 @@
     - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
     - [Control Statements](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#control-structures)
     - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
-- [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop):
+- [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop)
     - [Packages](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#packages)
     - [Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#access-modifiers)
     - [Encapsulation](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#encapsulation)
