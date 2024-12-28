@@ -2,7 +2,7 @@
 
 - [Introduction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction)
     - [Features](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
-    - [Terminologies](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
+    - [Terminologies](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#terminologies)
     - [Console](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#console)
 - Basics
     - [Tokens and Identifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#tokens)
