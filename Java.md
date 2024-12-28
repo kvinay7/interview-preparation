@@ -47,6 +47,8 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
 
+# Basics:
+
 ## Tokens:
 Tokens are the smallest elements of a program that have meaning and are used to form the syntax of the language. Java programs are parsed and analyzed by the compiler in terms of tokens.
  - Examples: Keywords, Identifiers, Literals, Operators and Special Characters.
@@ -156,7 +158,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
 ---
 
-# Object-Oriented Programming (OOP) 
+# Object-Oriented Programming (OOP): 
 It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create modular, reusable, and maintainable code.
 - **Class:** A blueprint or template for creating objects. It defines the properties and behaviors of objects.
 - **Object:** An instance of a class. It is a concrete realization of the class's blueprint.
@@ -391,7 +393,7 @@ public class Main {
 ```
 ---
 
-### Imperative vs Declarative:
+## Imperative vs Declarative:
 
 | **Feature**                  | **Imperative/Procedural Programming**                             | **Declarative/Functional Programming**                            |
 |------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
@@ -401,7 +403,6 @@ public class Main {
 | **Use Case**                  | Suitable for tasks requiring detailed control, such as system-level programming. | Suitable for tasks where the goal is to describe the outcome, like querying data, UI construction. |
 
 ---
-
 ## Stream API:
 Introduced in Java 8 as part of the java.util.stream package. It is used to process collections of data in a functional and declarative style (pipeline of functions). It doesn't store data. 
 
