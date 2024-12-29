@@ -523,31 +523,29 @@ Multithreading in Java is a programming technique that allows multiple threads t
 - Thread creation with `Runnable` Interface:
   ```java
       public class RunnableThreadExample {
+        public int count = 0;
+  
         public static void main(String[] args) {
-            final int[] count = {0};  // Use an array to allow updates within lambda (due to final requirement)
-
-            // Lambda expression to define the Runnable
-            Runnable task = () -> {
+            RunnableThreadExample instance = new RunnableThreadExample();
+  
+            // Create and start the thread using lambda directly in Thread constructor
+            Thread thread = new Thread(() -> {
                 System.out.println("RunnableThread starting.");
                 try {
-                    while (count[0] < 5) {
+                    while (instance.count < 5) {
                         Thread.sleep(500);
-                        count[0]++;
+                        instance.count++;
                     }
                 } catch (InterruptedException exc) {
                     System.out.println("RunnableThread interrupted.");
                 }
                 System.out.println("RunnableThread terminating.");
-            };
+            });
   
-            // Create and start the thread using lambda directly in Thread constructor
-            Thread thread = new Thread(task);
-
-            // Start the thread
             thread.start();
 
             // Main thread waits until count reaches 5
-            while (count[0] != 5) {
+            while (instance.count != 5) {
                 try {
                     Thread.sleep(250);
                 } catch (InterruptedException exc) {
@@ -558,5 +556,7 @@ Multithreading in Java is a programming technique that allows multiple threads t
     }
   ```
 ---
+- **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
+- **Thread Priority:** [See here](https://www.geeksforgeeks.org/java-thread-priority-multithreading/)
 
 ## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
