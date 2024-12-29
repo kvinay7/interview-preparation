@@ -30,8 +30,8 @@
     - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stream-api)
     - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
-- [File I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#file-io)
 - [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#multithreading)
+- [File I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#file-io)
 - [Interview Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#java-interview-questions-see-here) 
 
 ## Introduction:
