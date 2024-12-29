@@ -523,19 +523,17 @@ Multithreading in Java is a programming technique that allows multiple threads t
 - Thread creation with `Runnable` Interface:
 
   ```java
-      public class RunnableThreadExample {
-        public int count = 0;
+      public class RunnableThread {
+        public static int count = 0;
   
         public static void main(String[] args) {
-            RunnableThreadExample instance = new RunnableThreadExample();
-  
             // Create and start the thread using lambda directly in Thread constructor
             Thread thread = new Thread(() -> {
                 System.out.println("RunnableThread starting.");
                 try {
-                    while (instance.count < 5) {
+                    while (RunnableThread.count < 5) {
                         Thread.sleep(500);
-                        instance.count++;
+                        RunnableThread.count++;
                     }
                 } catch (InterruptedException exc) {
                     System.out.println("RunnableThread interrupted.");
@@ -544,15 +542,6 @@ Multithreading in Java is a programming technique that allows multiple threads t
             });
   
             thread.start();
-
-            // Main thread waits until count reaches 5
-            while (instance.count != 5) {
-                try {
-                    Thread.sleep(250);
-                } catch (InterruptedException exc) {
-                    exc.printStackTrace();
-                }
-            }
         }
     }
   ```
