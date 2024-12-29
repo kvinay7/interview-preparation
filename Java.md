@@ -518,7 +518,6 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
 Multithreading in Java is a programming technique that allows multiple threads to run concurrently, sharing the same process. This is particularly useful for performing tasks simultaneously, such as executing background tasks, responding to user input, or improving the performance of computationally intensive programs.
 
 - **Process:** A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
-- **Concurrency:** Concurrency in programming refers to the ability of a system to handle multiple tasks or processes at the same time.
 - **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
 - Thread creation with `Runnable` Interface:
 
@@ -548,6 +547,7 @@ Multithreading in Java is a programming technique that allows multiple threads t
   ```
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
 - **Thread Priority:** [See here](https://www.geeksforgeeks.org/java-thread-priority-multithreading/)
+- **Concurrency:** Concurrency in programming refers to the ability of a system to handle multiple tasks or processes at the same time.
 - **Synchronization:** Synchronization in Java is a mechanism used to control access to shared resources by multiple threads. It ensures that only one thread can access a `synchronized` block or method at a time, preventing thread interference and memory consistency issues.
 - **Locks:** Locks in Java provide a more flexible mechanism for thread synchronization than traditional synchronization blocks or methods. Unlike intrinsic locks (synchronized), explicit locks provide better control over thread behavior and offer advanced features like fairness policies and condition variables. The `ReentrantLock` is the most commonly used lock in Java. It behaves similarly to synchronized blocks but offers additional features. `ReadWriteLock` and `StampedLock` are other types of locks.
 
@@ -606,5 +606,7 @@ A deadlock is a situation where a thread is waiting for an object lock that anot
     - **No Preemption:** One process cannot forcibly remove another process' resource.
     - **Circular Wait:** Two or more processes form a circular chain where each process is waiting on another resource in the chain.
 - Deadlock prevention entails removing any of the above conditions, but it gets tricky because many of these conditions are difficult to satisfy. For instance, removing #1 is difficult because many resources can only be used by one process at a time (e.g., printers). Most deadlock prevention algorithms focus on avoiding condition #4: circular wait.
+
+#### Dining Philosophers:
 
 ## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
