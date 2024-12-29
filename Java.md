@@ -607,6 +607,6 @@ A deadlock is a situation where a thread is waiting for an object lock that anot
     - **Circular Wait:** Two or more processes form a circular chain where each process is waiting on another resource in the chain.
 - Deadlock prevention entails removing any of the above conditions, but it gets tricky because many of these conditions are difficult to satisfy. For instance, removing #1 is difficult because many resources can only be used by one process at a time (e.g., printers). Most deadlock prevention algorithms focus on avoiding condition #4: circular wait.
 
-#### Dining Philosophers:
+#### Dining Philosophers Problem:
 
 ## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
