@@ -521,6 +521,7 @@ Multithreading in Java is a programming technique that allows multiple threads t
 - **Concurrency:** Concurrency in programming refers to the ability of a system to handle multiple tasks or processes at the same time.
 - **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
 - Thread creation with `Runnable` Interface:
+
   ```java
       public class RunnableThreadExample {
         public int count = 0;
@@ -555,7 +556,6 @@ Multithreading in Java is a programming technique that allows multiple threads t
         }
     }
   ```
----
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
 - **Thread Priority:** [See here](https://www.geeksforgeeks.org/java-thread-priority-multithreading/)
 
