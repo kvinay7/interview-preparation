@@ -548,5 +548,53 @@ Multithreading in Java is a programming technique that allows multiple threads t
   ```
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
 - **Thread Priority:** [See here](https://www.geeksforgeeks.org/java-thread-priority-multithreading/)
+- **Synchronization:** Synchronization in Java is a mechanism used to control access to shared resources by multiple threads. It ensures that only one thread can access a synchronized block or method at a time, preventing thread interference and memory consistency issues.
+- **Locks:** Locks in Java provide a more flexible mechanism for thread synchronization than traditional synchronization blocks or methods. Unlike intrinsic locks (synchronized), explicit locks provide better control over thread behavior and offer advanced features like fairness policies and condition variables. The `ReentrantLock` is the most commonly used lock in Java. It behaves similarly to synchronized blocks but offers additional features, such as:
+
+#### **Example: Using ReentrantLock**
+
+```java
+import java.util.concurrent.locks.ReentrantLock;
+
+class SharedResource {
+    private ReentrantLock lock = new ReentrantLock();
+
+    void print(String message) {
+        lock.lock(); // Acquire the lock
+        try {
+            System.out.print("[");
+            System.out.print(message);
+            System.out.println("]");
+        } finally {
+            lock.unlock(); // Release the lock
+        }
+    }
+}
+
+class MyThread extends Thread {
+    SharedResource resource;
+    String message;
+
+    MyThread(SharedResource resource, String message) {
+        this.resource = resource;
+        this.message = message;
+    }
+
+    public void run() {
+        resource.print(message);
+    }
+}
+
+public class ReentrantLockExample {
+    public static void main(String[] args) {
+        SharedResource resource = new SharedResource();
+        MyThread t1 = new MyThread(resource, "Hello");
+        MyThread t2 = new MyThread(resource, "World");
+
+        t1.start();
+        t2.start();
+    }
+}
+```
 
 ## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
