@@ -512,8 +512,6 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
    ```
 ---
 
-## File I/O:
-
 ## Multithreading:
 Multithreading in Java is a programming technique that allows multiple threads to run concurrently, sharing the same process. This is particularly useful for performing tasks simultaneously, such as executing background tasks, responding to user input, or improving the performance of computationally intensive programs. Multithreading offers performance benefits but also introduces several challenges:
 
@@ -614,5 +612,7 @@ A deadlock is a situation where a thread is waiting for an object lock that anot
 - Deadlock prevention entails removing any of the above conditions, but it gets tricky because many of these conditions are difficult to satisfy. For instance, removing #1 is difficult because many resources can only be used by one process at a time (e.g., printers). Most deadlock prevention algorithms focus on avoiding condition #4: circular wait.
 
 #### Dining Philosophers Problem:
+
+## File I/O:
 
 ## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
