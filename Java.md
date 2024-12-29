@@ -540,7 +540,8 @@ Multithreading in Java is a programming technique that allows multiple threads t
                 }
                 System.out.println("RunnableThread terminating.");
             });
-  
+
+            System.out.println("Executing start()");
             thread.start();
         }
     }
