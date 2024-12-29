@@ -527,7 +527,6 @@ Multithreading in Java is a programming technique that allows multiple threads t
         public static int count = 0;
   
         public static void main(String[] args) {
-            // Create and start the thread using lambda directly in Thread constructor
             Thread thread = new Thread(() -> {
                 System.out.println("RunnableThread starting.");
                 try {
