@@ -455,6 +455,7 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
 -  **Exception Handling:** It is a mechanism to handle runtime errors such as ClassNotFoundException, IOException, SQLException, etc. If an exception has occured, the method creates an object known as exception object and hand it off to the JVM is called throwing an exception. The uncaught exceptions are automatically caught and handled by the java built-in exception handler.
    -  Checked Exceptions (compile-time exceptions): IOException, SQLException, ClassNotFoundException, FileNotFoundException, DataAccessException, InstantiationException.
    -  Unchecked Exceptions (run-time exceptions): NullPointerException, ArrayIndexOutOfBoundException, IllegalArgumentException, IllegalStateException, NumberFormatException, ArithmeticException.
+   -  Ducking exceptions: means allowing the exception to propagate up the call stack without catching it in the current scope. The calling function or the runtime must handle the exception.
 - Example:
    ```java
        // Custom Exception
@@ -476,7 +477,8 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
            // Try-Catch-Finally
            try {                           // try is used to define a block of code where exceptions may occur.
               validateNumber(-1);          // Throws CustomException
-           } catch (CustomException e) {   // catch is used to handle the exception thrown by the try block.
+              int result = divide(10, 0);  // Handle the exception here - Ducking Exception
+           } catch (CustomException | ArithmeticException e) {   // catch is used to handle the exception thrown by the try block.
               System.out.println("Caught exception: " + e.getMessage());
            } finally {                     // A block that always executes, whether or not an exception occurs, even if a return statement is present in the try or catch block. Used for cleanup activities like closing resources.
               System.out.println("This is the finally block.");
@@ -501,6 +503,11 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
               throw new CustomException("Number cannot be negative!");  // throw is used to explicitly throw an exception.
             }
           }
+   
+          // Ducking the exception (no handling here)
+          public static int divide(int a, int b) throws ArithmeticException {
+            return a / b; // ArithmeticException will propagate
+          }
       }
    ```
 ---
@@ -508,5 +515,46 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
 ## File I/O:
 
 ## Multithreading:
+Multithreading in Java is a programming technique that allows multiple threads to run concurrently, sharing the same process. This is particularly useful for performing tasks simultaneously, such as executing background tasks, responding to user input, or improving the performance of computationally intensive programs.
+
+- **Process:** A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
+- **Concurrency:** Concurrency in programming refers to the ability of a system to handle multiple tasks or processes at the same time.
+- **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
+    - Thread creation with Runnable  
+  ```java
+      public class RunnableThreadExample {
+        public static void main(String[] args) {
+            final int[] count = {0};  // Use an array to allow updates within lambda (due to final requirement)
+            Runnable task = () -> {
+                System.out.println("RunnableThread starting.");
+                try {
+                    while (count[0] < 5) {
+                        Thread.sleep(500);
+                        count[0]++;
+                    }
+                } catch (InterruptedException exc) {
+                    System.out.println("RunnableThread interrupted.");
+                }
+                System.out.println("RunnableThread terminating.");
+            };
+  
+            // Create and start the thread using lambda directly in Thread constructor
+            Thread thread = new Thread(task);
+
+            // Start the thread
+            thread.start();
+
+            // Main thread waits until count reaches 5
+            while (count[0] != 5) {
+                try {
+                    Thread.sleep(250);
+                } catch (InterruptedException exc) {
+                    exc.printStackTrace();
+                }
+            }
+        }
+    }
+  ```
+---
 
 ## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
