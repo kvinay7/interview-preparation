@@ -521,7 +521,7 @@ Multithreading in Java is a programming technique that allows multiple threads t
     2. Deadlocks: Threads get stuck waiting for each other. Avoid by ordering resource acquisition or using timeouts.
     3. Synchronization Overhead: Excessive synchronization can slow performance. Minimize critical sections and use thread pools.
     4. Context Switching: The cost of switching between threads can reduce performance. Limit the number of threads and keep them busy.
-    5. Starvation is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
+    5. Starvation: is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
 
 - **Process:** A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
 - **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
