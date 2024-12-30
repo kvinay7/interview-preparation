@@ -88,6 +88,7 @@ A variable is a container for storing data values and Data types define the type
   - Hexa to Decimal: Integer.parseInt(String, 16)
 
 ## Standard I/O:
+#### File Handling: [See here](https://www.geeksforgeeks.org/file-handling-in-java/?ref=lbp)
 - **Scanner Class:**
   ```java
       import java.util.Scanner;
@@ -116,7 +117,6 @@ A variable is a container for storing data values and Data types define the type
           }
       }
 ---
-#### File Handling: [See here](https://www.geeksforgeeks.org/file-handling-in-java/?ref=lbp)
 
 ## Operators:
 Operators are special symbols that perform operations on variables or values and java doesn't support operator overloading.
