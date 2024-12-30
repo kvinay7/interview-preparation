@@ -613,6 +613,103 @@ A deadlock is a situation where a thread is waiting for an object lock that anot
 - Deadlock prevention entails removing any of the above conditions, but it gets tricky because many of these conditions are difficult to satisfy. For instance, removing #1 is difficult because many resources can only be used by one process at a time (e.g., printers). Most deadlock prevention algorithms focus on avoiding condition #4: circular wait.
 
 #### Dining Philosophers Problem:
+The **Dining Philosophers Problem** is a classic synchronization problem in computer science, where several philosophers are sitting at a round table, thinking and occasionally eating. To eat, a philosopher needs two forks (one on the left and one on the right). However, if two adjacent philosophers pick up the same fork simultaneously, they could end up deadlocked, starving, or conflicting.
+
+Here's a simple Java solution using **threads** and **mutexes** (locks) to avoid deadlock and ensure that philosophers do not interfere with each other.
+
+### Approach
+1. **Shared resources (forks)**: Each fork is a shared resource between two adjacent philosophers.
+2. **Locks**: Use locks (Java's `ReentrantLock`) to ensure mutual exclusion while picking up and putting down the forks.
+3. **Philosophers as threads**: Each philosopher is modeled as a thread that alternates between thinking and eating.
+
+### Java Implementation of the Dining Philosophers Problem:
+
+```java
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class DiningPhilosophers {
+
+    // Number of philosophers
+    private static final int NUM_PHILOSOPHERS = 5;
+
+    // Array of forks represented by Locks
+    private static final Lock[] forks = new Lock[NUM_PHILOSOPHERS];
+
+    // Initialize the forks (locks)
+    static {
+        for (int i = 0; i < NUM_PHILOSOPHERS; i++) {
+            forks[i] = new ReentrantLock();
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create and start philosopher threads
+        for (int i = 0; i < NUM_PHILOSOPHERS; i++) {
+            final int philosopherId = i;
+            new Thread(new Philosopher(philosopherId)).start();
+        }
+    }
+
+    static class Philosopher implements Runnable {
+        private final int id;
+
+        public Philosopher(int id) {
+            this.id = id;
+        }
+
+        @Override
+        public void run() {
+            try {
+                while (true) {
+                    think();
+                    // Pick up forks in order: first left, then right
+                    pickUpForks();
+                    eat();
+                    // Put down forks after eating
+                    putDownForks();
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        private void think() throws InterruptedException {
+            System.out.println("Philosopher " + id + " is thinking.");
+            Thread.sleep((long) (Math.random() * 1000)); // Thinking for a while
+        }
+
+        private void eat() throws InterruptedException {
+            System.out.println("Philosopher " + id + " is eating.");
+            Thread.sleep((long) (Math.random() * 1000)); // Eating for a while
+        }
+
+        private void pickUpForks() {
+            // Pick up the left fork (id) and right fork ((id + 1) % NUM_PHILOSOPHERS)
+            Lock leftFork = forks[id];
+            Lock rightFork = forks[(id + 1) % NUM_PHILOSOPHERS];
+
+            // Try to lock the forks, avoid deadlock by always locking the lower-index fork first
+            if (id % 2 == 0) {
+                leftFork.lock();
+                rightFork.lock();
+            } else {
+                rightFork.lock();
+                leftFork.lock();
+            }
+        }
+
+        private void putDownForks() {
+            // Put down the forks after eating
+            Lock leftFork = forks[id];
+            Lock rightFork = forks[(id + 1) % NUM_PHILOSOPHERS];
+
+            leftFork.unlock();
+            rightFork.unlock();
+        }
+    }
+}
+```
 
 ## File I/O:
 
