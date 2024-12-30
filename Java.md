@@ -615,14 +615,10 @@ A deadlock is a situation where a thread is waiting for an object lock that anot
 #### Dining Philosophers Problem:
 The **Dining Philosophers Problem** is a classic synchronization problem in computer science, where several philosophers are sitting at a round table, thinking and occasionally eating. To eat, a philosopher needs two forks (one on the left and one on the right). However, if two adjacent philosophers pick up the same fork simultaneously, they could end up deadlocked, starving, or conflicting.
 
-Here's a simple Java solution using **threads** and **mutexes** (locks) to avoid deadlock and ensure that philosophers do not interfere with each other.
-
 ### Approach
 1. **Shared resources (forks)**: Each fork is a shared resource between two adjacent philosophers.
 2. **Locks**: Use locks (Java's `ReentrantLock`) to ensure mutual exclusion while picking up and putting down the forks.
 3. **Philosophers as threads**: Each philosopher is modeled as a thread that alternates between thinking and eating.
-
-### Java Implementation of the Dining Philosophers Problem:
 
 ```java
 import java.util.concurrent.locks.Lock;
