@@ -516,11 +516,11 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
 Multithreading in Java is a programming technique that allows multiple threads to run concurrently, sharing the same process. This is particularly useful for performing tasks simultaneously, such as executing background tasks, responding to user input, or improving the performance of computationally intensive programs. 
 
 - Multithreading offers performance benefits but also introduces several challenges:
-    - Race Conditions: Occur when multiple threads access shared data concurrently. Overcome using synchronization mechanisms like locks.
-    - Deadlocks: Threads get stuck waiting for each other. Avoid by ordering resource acquisition or using timeouts.
-    - Synchronization Overhead: Excessive synchronization can slow performance. Minimize critical sections and use thread pools.
-    - Context Switching: The cost of switching between threads can reduce performance. Limit the number of threads and keep them busy.
-    - Starvation: is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
+    - ****Race Conditions:**** Occur when multiple threads access shared data concurrently. Overcome using synchronization mechanisms like locks.
+    - ****Deadlocks:**** Threads get stuck waiting for each other. Avoid by ordering resource acquisition or using timeouts.
+    - ****Synchronization Overhead:**** Excessive synchronization can slow performance. Minimize critical sections and use thread pools.
+    - ****Context Switching:**** The cost of switching between threads can reduce performance. Limit the number of threads and keep them busy.
+    - ****Starvation:**** is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
 
 - **Process:** A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
 - **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
