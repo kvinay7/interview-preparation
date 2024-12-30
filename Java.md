@@ -31,7 +31,6 @@
     - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
 - [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#multithreading)
-- [File I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#file-io)
 - [Interview Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#java-interview-questions-see-here) 
 
 ## Introduction:
@@ -117,6 +116,7 @@ A variable is a container for storing data values and Data types define the type
           }
       }
 ---
+#### [File Handling](https://www.geeksforgeeks.org/file-handling-in-java/?ref=lbp)
 
 ## Operators:
 Operators are special symbols that perform operations on variables or values and java doesn't support operator overloading.
@@ -707,7 +707,5 @@ public class DiningPhilosophers {
 }
 ```
 ---
-
-## File I/O:
 
 ## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
