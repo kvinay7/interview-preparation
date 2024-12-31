@@ -1,16 +1,5 @@
 # Operating Systems
 
-## Multithreading:
-Multithreading in Java is a programming technique that allows multiple threads to run concurrently, sharing the same process. This is particularly useful for performing tasks simultaneously, such as executing background tasks, responding to user input, or improving the performance of computationally intensive programs. 
-
-- Multithreading offers performance benefits but also introduces several challenges:
-    - ****Race Conditions:**** Occur when multiple threads access shared data concurrently. Overcome using synchronization mechanisms like locks.
-    - ****Deadlocks:**** Threads get stuck waiting for each other. Avoid by ordering resource acquisition or using timeouts.
-    - ****Synchronization Overhead:**** Excessive synchronization can slow performance. Minimize critical sections and use thread pools (`ExecutorService`).
-    - ****Context Switching:**** The cost of switching between threads can reduce performance. Limit the number of threads and keep them busy.
-    - ****Starvation:**** is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
-    - ****Livelock:**** In a livelock, two threads are actively trying to avoid deadlock but continually fail to make progress because they keep changing their states without performing useful work.
-
 - **[Process](https://www.geeksforgeeks.org/process-in-operating-system/)**: A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
 - **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
@@ -42,6 +31,17 @@ Multithreading in Java is a programming technique that allows multiple threads t
     }
   ```
   
+## Multithreading:
+Multithreading in Java is a programming technique that allows multiple threads to run concurrently, sharing the same process. This is particularly useful for performing tasks simultaneously, such as executing background tasks, responding to user input, or improving the performance of computationally intensive programs. 
+
+- Multithreading offers performance benefits but also introduces several challenges:
+    - ****Race Conditions:**** Occur when multiple threads access shared data concurrently. Overcome using synchronization mechanisms like locks.
+    - ****Deadlocks:**** Threads get stuck waiting for each other. Avoid by ordering resource acquisition or using timeouts.
+    - ****Synchronization Overhead:**** Excessive synchronization can slow performance. Minimize critical sections and use thread pools (`ExecutorService`).
+    - ****Context Switching:**** The cost of switching between threads can reduce performance. Limit the number of threads and keep them busy.
+    - ****Starvation:**** is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
+    - ****Livelock:**** In a livelock, two threads are actively trying to avoid deadlock but continually fail to make progress because they keep changing their states without performing useful work.
+      
 - **Concurrency:** The ability of a system to handle multiple tasks simultaneously, but not necessarily at the same time.
 - **Parallelism:** The ability to execute multiple tasks at the same time, typically across multiple cores of a processor.
 - **Synchronization:** Synchronization in Java is a mechanism used to control access to shared resources by multiple threads. It ensures that only one thread can access a `synchronized` block or method at a time, preventing thread interference and memory consistency issues.
