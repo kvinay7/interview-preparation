@@ -5,7 +5,26 @@ An operating system is a software which is an interface between user and hardwar
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 - **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
 
-#### **Process Control System Calls**:
+### Types of operating systems:
+
+| **Type**                         | **Description**                                                | **Examples**                    |
+|-----------------------------------|----------------------------------------------------------------|---------------------------------|
+| **Batch OS**                      | Processes jobs in batches without user interaction.           | IBM OS/360, early UNIX versions |
+| **Time-Sharing OS**               | Allows multiple users or processes to share CPU time.         | UNIX, Linux, Windows            |
+| **Real-Time OS (RTOS)**           | Provides immediate processing to meet strict timing constraints. | VxWorks, FreeRTOS, QNX          |
+| **Single-Tasking OS**             | Can only execute one task at a time.                          | MS-DOS, early Mac OS            |
+| **Multi-Tasking OS**              | Supports multiple tasks simultaneously.                       | Windows, macOS, Linux           |
+| **Distributed OS**                | Manages a network of independent computers as a unified system. | Google Cloud, Apache Hadoop     |
+| **Network OS**                    | Facilitates communication and resource sharing over a network. | Windows Server, Novell NetWare  |
+| **Embedded OS**                   | Designed for specific embedded devices with constrained resources. | Embedded Linux, FreeRTOS        |
+| **Mobile OS**                     | Optimized for mobile devices with touch interfaces.           | Android, iOS, HarmonyOS         |
+| **Monolithic OS**                 | All services bundled together in one large kernel.            | Linux, UNIX                     |
+| **Microkernel OS**                | Minimal kernel with services running in user space.           | MINIX, QNX, L4                  |
+| **Hybrid OS**                     | Combines features of both monolithic and microkernels.        | macOS, Windows NT               |
+---
+
+- **[Process](https://www.geeksforgeeks.org/process-in-operating-system/)**: A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
+  #### **Process Control System Calls**:
    - **`fork()`**: Creates a new process by duplicating the calling process.
    - **`exec()`**: Replaces the current process with a new program.
    - **`wait()`**: Makes a process wait for its child process to terminate.
@@ -26,25 +45,6 @@ public class ProcessExample {
 }
 ```
 
-### Types of operating systems:
-
-| **Type**                         | **Description**                                                | **Examples**                    |
-|-----------------------------------|----------------------------------------------------------------|---------------------------------|
-| **Batch OS**                      | Processes jobs in batches without user interaction.           | IBM OS/360, early UNIX versions |
-| **Time-Sharing OS**               | Allows multiple users or processes to share CPU time.         | UNIX, Linux, Windows            |
-| **Real-Time OS (RTOS)**           | Provides immediate processing to meet strict timing constraints. | VxWorks, FreeRTOS, QNX          |
-| **Single-Tasking OS**             | Can only execute one task at a time.                          | MS-DOS, early Mac OS            |
-| **Multi-Tasking OS**              | Supports multiple tasks simultaneously.                       | Windows, macOS, Linux           |
-| **Distributed OS**                | Manages a network of independent computers as a unified system. | Google Cloud, Apache Hadoop     |
-| **Network OS**                    | Facilitates communication and resource sharing over a network. | Windows Server, Novell NetWare  |
-| **Embedded OS**                   | Designed for specific embedded devices with constrained resources. | Embedded Linux, FreeRTOS        |
-| **Mobile OS**                     | Optimized for mobile devices with touch interfaces.           | Android, iOS, HarmonyOS         |
-| **Monolithic OS**                 | All services bundled together in one large kernel.            | Linux, UNIX                     |
-| **Microkernel OS**                | Minimal kernel with services running in user space.           | MINIX, QNX, L4                  |
-| **Hybrid OS**                     | Combines features of both monolithic and microkernels.        | macOS, Windows NT               |
----
-
-- **[Process](https://www.geeksforgeeks.org/process-in-operating-system/)**: A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
 - **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
 - **Thread Priority:** [See here](https://www.geeksforgeeks.org/java-thread-priority-multithreading/)
