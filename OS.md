@@ -1,10 +1,6 @@
 # Operating Systems
-An operating system is a software which is an interface between computer user and hardware and controls the execution of application or program. It acts as a resource allocator or manager. The purpose of an operating system is to provide an environment in which a user can execute programs in a convenient and efficient manner.
-- **Feartures:**
-    - Process Management
-    - Memory Management
-    - I/O Management
-    - Security
+An operating system is a software which is an interface between user and hardware. It is responsible for the execution of all the processes, Resource Allocation, CPU management, File Management and many other tasks. The purpose of an operating system is to provide an environment in which a user can execute programs in a convenient and efficient manner. 
+
 - **Kernel:** is the core part of the operating system. It directly interacts with the hardware and provides low-level services such as process management, memory management, device management, and system calls.
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 - **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
