@@ -1,10 +1,13 @@
 # Operating Systems
-An operating system is a software which is an interface between computer user and hardware and controls the execution of application or program. It acts as a resource allocator or manager.
+An operating system is a software which is an interface between computer user and hardware and controls the execution of application or program. It acts as a resource allocator or manager. The purpose of an operating system is to provide an environment in which a user can execute programs in a convenient and efficient manner.
 - **Feartures:**
     - Process Management
     - Memory Management
     - I/O Management
-    - Security  
+    - Security
+- **Kernel:** is the core part of the operating system. It directly interacts with the hardware and provides low-level services such as process management, memory management, device management, and system calls.
+- **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
+- **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
 - **[Process](https://www.geeksforgeeks.org/process-in-operating-system/)**: A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
 - **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
