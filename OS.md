@@ -30,7 +30,7 @@ A process is a complete execution of a task which has its privite memory space a
    - **`exec()`**: Replaces the current process with a new program.
    - **`wait()`**: Makes a process wait for its child process to terminate.
    - **`exit()`**: Terminates the current process.
-#### **Example: Process Creation**
+**Example:** `ProcessBuilder`
 ```java
 import java.io.IOException;
 public class ProcessExample {
