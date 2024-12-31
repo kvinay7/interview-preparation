@@ -37,6 +37,18 @@ A process is a complete execution of a task which has its privite memory space a
 | **Memory Management Info**     | Memory allocated to the process (e.g., base and limit registers, page tables). |
 | **Scheduling Information**     | Priority, scheduling algorithm details, time quantum, etc. |
 | **I/O Status Information**     | Files, devices, and other resources used by the process. |
+
+#### Process State Transition Diagram:
+                                           
+                      Resource                Preemption
+      +------------+ Allocation +-----------+ <--------- +-----------+   exit    +------------+
+      |   New      | ---------> |   Ready   | ---------> |  Running  |---------> | Terminated |
+      +------------+ (Admitted) +-----------+ scheduler  +-----------+ resource  +------------+
+                                    ^         dispatch          |     deallocation
+                    I/O completion  |                           | 
+                            +-----------------+                 |
+                            | Waiting/Blocked | <---------------- waiting for I/O
+                            +-----------------+              
   
   #### **Process Control System Calls**:
    - **`fork()`**: Creates a new process by duplicating the calling process.
