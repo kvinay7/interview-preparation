@@ -11,7 +11,7 @@ Multithreading in Java is a programming technique that allows multiple threads t
     - ****Starvation:**** is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
     - ****Livelock:**** In a livelock, two threads are actively trying to avoid deadlock but continually fail to make progress because they keep changing their states without performing useful work.
 
-- **Process** (instance of a program): A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
+- **[Process](https://www.geeksforgeeks.org/process-in-operating-system/)**: A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
 - **Thread:** A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
 - **Thread Priority:** [See here](https://www.geeksforgeeks.org/java-thread-priority-multithreading/)
