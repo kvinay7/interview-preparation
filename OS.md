@@ -30,7 +30,8 @@
         }
     }
   ```
-  
+---
+
 ## Multithreading:
 Multithreading in Java is a programming technique that allows multiple threads to run concurrently, sharing the same process. This is particularly useful for performing tasks simultaneously, such as executing background tasks, responding to user input, or improving the performance of computationally intensive programs. 
 
@@ -94,7 +95,7 @@ public class ReentrantLockExample {
 ```
 ---
 
-#### Deadlocks and Deadlock Prevention:
+### Deadlocks and Deadlock Prevention:
 A deadlock is a situation where a thread is waiting for an object lock that another thread holds, and this second thread is waiting for an object lock that the first thread holds (or an equivalent situation with several threads). Since each thread is waiting for the other thread to relinquish a lock, they both remain waiting forever. The threads are said to be deadlocked.
 - In order for a deadlock to occur, you must have all four of the following conditions met:
     - **Mutual Exclusion:** Only one process can access a resource at a given time. (Or, more accurately, there is limited access to a resource. A deadlock could also occur if a resource has limited quantity.)
