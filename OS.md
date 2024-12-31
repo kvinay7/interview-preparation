@@ -23,7 +23,8 @@ An operating system is a software which is an interface between user and hardwar
 | **Hybrid OS**                     | Combines features of both monolithic and microkernels.        | macOS, Windows NT               |
 ---
 
-- **[Process](https://www.geeksforgeeks.org/process-in-operating-system/)**: A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
+## **[Process](https://www.geeksforgeeks.org/process-in-operating-system/)**:
+A process is a complete execution of a task which has its privite memory space and resources. A process can have multiple threads.
   #### **Process Control System Calls**:
    - **`fork()`**: Creates a new process by duplicating the calling process.
    - **`exec()`**: Replaces the current process with a new program.
