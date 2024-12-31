@@ -5,6 +5,27 @@ An operating system is a software which is an interface between user and hardwar
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 - **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
 
+#### **Process Control System Calls**:
+   - **`fork()`**: Creates a new process by duplicating the calling process.
+   - **`exec()`**: Replaces the current process with a new program.
+   - **`wait()`**: Makes a process wait for its child process to terminate.
+   - **`exit()`**: Terminates the current process.
+
+```java
+import java.io.IOException;
+public class ProcessExample {
+    public static void main(String[] args) {
+        ProcessBuilder processBuilder = new ProcessBuilder("ls", "-l");
+        try {
+            Process process = processBuilder.start();  // This triggers a system call
+            process.waitFor();  // This waits for the system call to finish
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
 ### Types of operating systems:
 
 | **Type**                         | **Description**                                                | **Examples**                    |
