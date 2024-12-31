@@ -7,7 +7,8 @@ An operating system is a software which is an interface between user and hardwar
 
 ## Process:
 A process is an instance of a program in execution which has its privite memory space and resources. A process can have multiple threads.
-- **Process Control Block (PCB):** is a data structure in the operating system used to store all the information needed to manage a process. The operating system maintains a PCB for every process in the system.
+
+**Process Control Block (PCB):** is a data structure in the operating system used to store all the information needed to manage a process. The operating system maintains a PCB for every process in the system.
 
 | **Field**                     | **Description**                           |
 |-------------------------------|-------------------------------------------|
