@@ -29,7 +29,7 @@ An operating system is a software which is an interface between user and hardwar
    - **`exec()`**: Replaces the current process with a new program.
    - **`wait()`**: Makes a process wait for its child process to terminate.
    - **`exit()`**: Terminates the current process.
-
+#### **Example: Process Creation**
 ```java
 import java.io.IOException;
 public class ProcessExample {
