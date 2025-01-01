@@ -136,7 +136,7 @@ A thread is a part of the process which has its run-time stack and shares the pr
 Multithreading in Java is a programming technique that allows multiple threads to run concurrently, sharing the same process. This is particularly useful for performing tasks simultaneously, such as executing background tasks, responding to user input, or improving the performance of computationally intensive programs. 
 
 - Multithreading offers performance benefits but also introduces several challenges:
-    - ****Race Conditions:**** Occur when multiple threads access shared data concurrently. Overcome using synchronization mechanisms like locks.
+    - ****Race Conditions:**** Occur when multiple threads access shared data(critical section) concurrently. Overcome using synchronization mechanisms like locks.
     - ****Deadlocks:**** Threads get stuck waiting for each other. Avoid by ordering resource acquisition or using timeouts.
     - ****Synchronization Overhead:**** Excessive synchronization can slow performance. Minimize critical sections and use thread pools (`ExecutorService`).
     - ****Context Switching:**** The cost of switching between threads can reduce performance. Limit the number of threads and keep them busy.
