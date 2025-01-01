@@ -54,8 +54,88 @@ public class ProcessExample {
     }
 }
 ```
+### CPU Scheduling in Operating Systems
 
-#### Types of CPU Scheduling Algorithms
+**CPU scheduling** is the process by which the operating system decides which process (or thread) gets to use the CPU at any given time. Since most modern computers run multiple processes simultaneously, the operating system needs to allocate the CPU to each process in a way that optimizes performance, responsiveness, and fairness. 
+
+### Key Concepts:
+
+- **Process:** A program in execution, consisting of a program counter, registers, and variables.
+- **Context Switching:** The act of saving the state of the currently running process and loading the state of the next process scheduled to run.
+
+### Goals of CPU Scheduling:
+
+1. **Maximize CPU utilization**: Keep the CPU as busy as possible.
+2. **Minimize turnaround time**: Reduce the time between the submission of a process and its completion.
+3. **Minimize waiting time**: Reduce the amount of time processes spend waiting in the ready queue.
+4. **Maximize throughput**: Increase the number of processes completed in a given period.
+5. **Fairness**: Ensure all processes get a fair share of CPU time.
+
+### Scheduling Criteria:
+
+1. **CPU Burst Time**: The time a process needs the CPU to perform its task.
+2. **I/O Burst Time**: The time a process spends performing I/O operations like reading from a disk or waiting for input.
+
+### Types of CPU Scheduling Algorithms:
+
+1. **First-Come, First-Served (FCFS):**
+   - **Description**: The first process to arrive is the first to be executed.
+   - **Advantages**: Simple to implement.
+   - **Disadvantages**: Can result in poor performance if a short process has to wait for a long process (convoy effect).
+   - **Example**: 
+     - Process P1 arrives at time 0, Process P2 arrives at time 2. If P1 takes 5 units and P2 takes 3, P2 has to wait for P1 to finish.
+
+2. **Shortest Job Next (SJN) or Shortest Job First (SJF):**
+   - **Description**: The process with the shortest CPU burst time is executed next.
+   - **Advantages**: Minimizes average waiting time and turnaround time.
+   - **Disadvantages**: Difficult to predict the length of the next CPU burst, prone to starvation of longer processes.
+   - **Example**: 
+     - If Process P1 needs 3 units and P2 needs 7, P1 would run first to minimize total waiting time.
+
+3. **Priority Scheduling:**
+   - **Description**: Each process is assigned a priority. The process with the highest priority is executed first.
+   - **Advantages**: Allows for flexibility in process management based on priority.
+   - **Disadvantages**: Can lead to starvation if low-priority processes never get executed.
+   - **Example**: 
+     - Process P1 has priority 1, and P2 has priority 2. P2 executes first.
+
+4. **Round Robin (RR):**
+   - **Description**: Each process gets a fixed time slice or quantum of CPU time. After that, it is moved to the back of the ready queue.
+   - **Advantages**: Fair allocation of CPU time, good for time-sharing systems.
+   - **Disadvantages**: High overhead due to frequent context switching if time quantum is too small.
+   - **Example**: 
+     - If quantum is 3 units, Process P1 runs for 3 units, then P2 runs for 3 units, and so on.
+
+5. **Multilevel Queue Scheduling:**
+   - **Description**: Processes are divided into different priority queues. Each queue has its own scheduling algorithm, and processes within the same queue follow the same scheduling algorithm.
+   - **Advantages**: Efficiently organizes processes by priority.
+   - **Disadvantages**: Hard to manage and configure the correct thresholds for dividing processes.
+   - **Example**: 
+     - High-priority processes could use Round Robin scheduling, and low-priority processes could use FCFS.
+
+6. **Multilevel Feedback Queue Scheduling:**
+   - **Description**: Similar to multilevel queue scheduling, but processes can move between queues based on their behavior (e.g., CPU-bound or I/O-bound).
+   - **Advantages**: More dynamic and adapts to the needs of the process.
+   - **Disadvantages**: Complexity in tuning the parameters for the algorithm.
+   - **Example**: 
+     - A CPU-bound process might move to a lower-priority queue, while an I/O-bound process might get promoted.
+
+### CPU Scheduling:
+The process by which the operating system decides which process (or thread) gets to use the CPU at any given time. Since most modern computers run multiple processes simultaneously, the operating system needs to allocate the CPU to each process in a way that optimizes performance, responsiveness, and fairness.
+
+#### Scheduling Metrics:
+1. **Waiting Time**: The total time a process spends waiting in the ready queue.
+   - Waiting time = Turnaround time - Burst time
+
+2. **Turnaround Time**: The total time from the arrival of a process to its completion.
+   - Turnaround time = Completion time - Arrival time
+
+3. **Response Time**: The time from the submission of a request until the first response is produced.
+   - Response time is especially important in interactive systems.
+
+4. **Throughput**: The number of processes completed per unit of time.
+
+#### Types of CPU Scheduling Algorithms:
 - **Non-preemptive scheduling:** once a process is allocated the CPU, it runs until it either finishes its execution or voluntarily gives up the CPU (for example, by performing I/O operations). These algorithms tend to be simpler but may result in inefficient CPU utilization in certain situations.
 - **Preemptive scheduling:** the CPU can be taken away from a running process at any time and allocated to another process, often based on specific time intervals or conditions.
 
