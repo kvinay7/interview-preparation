@@ -81,6 +81,7 @@ The process by which the operating system decides which process (or thread) gets
 
 #### Types of CPU Scheduling Algorithms:
 - **Non-preemptive scheduling:** once a process is allocated the CPU, it runs until it either finishes its execution or voluntarily gives up the CPU (for example, by performing I/O operations). These algorithms tend to be simpler but may result in inefficient CPU utilization in certain situations.
+  
 - **Preemptive scheduling:** the CPU can be taken away from a running process at any time and allocated to another process, often based on specific time intervals or conditions.
 
 | **Algorithm**                  | **Preemptive** | **Description**                                             | **Advantage**            | **Disadvantage**           |
