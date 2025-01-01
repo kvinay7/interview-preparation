@@ -21,7 +21,7 @@ A process is an instance of a program in execution which has its privite memory 
     | **Scheduling Information**     | Priority, scheduling algorithm details, time quantum, etc. |
     | **I/O Status Information**     | Files, devices, and other resources used by the process. |
 
-- #### Process State Transition Diagram:
+- **Process State Transition Diagram:**
                                            
                       Resource                Preemption
       +------------+ Allocation +-----------+ <--------- +-----------+   exit    +------------+
@@ -33,7 +33,7 @@ A process is an instance of a program in execution which has its privite memory 
                             | Waiting/Blocked | <---------------- waiting for I/O
                             +-----------------+              
   
- - #### **Process Control System Calls**:
+ - **Process Control System Calls**:
    - **`fork()`**: Creates a new process by duplicating the calling process.
    - **`exec()`**: Replaces the current process with a new program.
    - **`wait()`**: Makes a process wait for its child process to terminate.
