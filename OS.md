@@ -96,7 +96,11 @@ The process by which the operating system decides which process (or thread) gets
 ---
 
 ## **Thread:** 
-A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
+A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method and this thread is called the main thread.
+- A new thread, or a child process of a given process, can be introduced by using the fork() system call. A process with n fork() system call generates 2^n – 1 child processes.
+- There are two types of threads:
+  - User threads (User threads are implemented by users)
+  - Kernel threads (Kernel threads are implemented by OS)
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
 - **Thread Priority:** [See here](https://www.geeksforgeeks.org/java-thread-priority-multithreading/)
 - Thread creation with `Runnable` Interface:
