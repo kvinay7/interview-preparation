@@ -10,16 +10,16 @@ A process is an instance of a program in execution which has its privite memory 
 
 - **Process Control Block (PCB):** is a data structure in the operating system used to store all the information needed to manage a process. The operating system maintains a PCB for every process in the system.
 
-| **Field**                     | **Description**                           |
-|-------------------------------|-------------------------------------------|
-| **Process ID (PID)**           | Unique identifier for the process.       |
-| **Parent Process ID (PPID)**   | PID of the parent process.               |
-| **Process State**              | Current state of the process (e.g., Running, Waiting, Ready, Terminated). |
-| **Program Counter (PC)**       | Address of the next instruction to execute. |
-| **CPU Registers**              | The values of CPU registers during execution (e.g., general-purpose registers). |
-| **Memory Management Info**     | Memory allocated to the process (e.g., base and limit registers, page tables). |
-| **Scheduling Information**     | Priority, scheduling algorithm details, time quantum, etc. |
-| **I/O Status Information**     | Files, devices, and other resources used by the process. |
+    | **Field**                     | **Description**                           |
+    |-------------------------------|-------------------------------------------|
+    | **Process ID (PID)**           | Unique identifier for the process.       |
+    | **Parent Process ID (PPID)**   | PID of the parent process.               |
+    | **Process State**              | Current state of the process (e.g., Running, Waiting, Ready, Terminated). |
+    | **Program Counter (PC)**       | Address of the next instruction to execute. |
+    | **CPU Registers**              | The values of CPU registers during execution (e.g., general-purpose registers). |
+    | **Memory Management Info**     | Memory allocated to the process (e.g., base and limit registers, page tables). |
+    | **Scheduling Information**     | Priority, scheduling algorithm details, time quantum, etc. |
+    | **I/O Status Information**     | Files, devices, and other resources used by the process. |
 
 - #### Process State Transition Diagram:
                                            
@@ -41,18 +41,18 @@ A process is an instance of a program in execution which has its privite memory 
 
 - **Example:** `ProcessBuilder` class is used to create and manage operating system processes in Java.
 ```java
-import java.io.IOException;
-public class ProcessExample {
-    public static void main(String[] args) {
-        ProcessBuilder processBuilder = new ProcessBuilder("ls", "-l");
-        try {
-            Process process = processBuilder.start();  // This triggers a system call
-            process.waitFor();  // This waits for the system call to finish
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+    import java.io.IOException;
+    public class ProcessExample {
+        public static void main(String[] args) {
+            ProcessBuilder processBuilder = new ProcessBuilder("ls", "-l");
+            try {
+                Process process = processBuilder.start();  // This triggers a system call
+                process.waitFor();  // This waits for the system call to finish
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
-}
 ```
 
 ### CPU Scheduling:
@@ -150,47 +150,47 @@ Multithreading in Java is a programming technique that allows multiple threads t
 #### **Example: Using ReentrantLock**
 
 ```java
-import java.util.concurrent.locks.ReentrantLock;
+    import java.util.concurrent.locks.ReentrantLock;
 
-class SharedResource {
-    private ReentrantLock lock = new ReentrantLock();
+    class SharedResource {
+        private ReentrantLock lock = new ReentrantLock();
 
-    void print(String message) {
-        lock.lock(); // Acquire the lock
-        try {
-            System.out.print("[");
-            System.out.print(message);
-            System.out.println("]");
-        } finally {
-            lock.unlock(); // Release the lock
+        void print(String message) {
+            lock.lock(); // Acquire the lock
+            try {
+                System.out.print("[");
+                System.out.print(message);
+                System.out.println("]");
+            } finally {
+                lock.unlock(); // Release the lock
+            }
         }
     }
-}
 
-class MyThread extends Thread {
-    SharedResource resource;
-    String message;
+    class MyThread extends Thread {
+        SharedResource resource;
+        String message;
 
-    MyThread(SharedResource resource, String message) {
-        this.resource = resource;
-        this.message = message;
+        MyThread(SharedResource resource, String message) {
+            this.resource = resource;
+            this.message = message;
+        }
+
+        public void run() {
+            resource.print(message);
+        }
     }
 
-    public void run() {
-        resource.print(message);
-    }
-}
+    public class ReentrantLockExample {
+        public static void main(String[] args) {
+            SharedResource resource = new SharedResource();
+            MyThread t1 = new MyThread(resource, "Hello");
+            MyThread t2 = new MyThread(resource, "World");
 
-public class ReentrantLockExample {
-    public static void main(String[] args) {
-        SharedResource resource = new SharedResource();
-        MyThread t1 = new MyThread(resource, "Hello");
-        MyThread t2 = new MyThread(resource, "World");
-
-        t1.start();
-        t2.start();
+            t1.start();
+            t2.start();
+        }
     }
-}
 ```
 ---
 
