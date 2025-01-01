@@ -59,13 +59,13 @@ public class ProcessExample {
 The process by which the operating system decides which process (or thread) gets to use the CPU at any given time. Since most modern computers run multiple processes simultaneously, the operating system needs to allocate the CPU to each process in a way that optimizes performance, responsiveness, and fairness.
 
 - **Scheduling Criteria**: Process Time = CPU BT + I/O BT
-  - CPU Burst Time: The time a process needs the CPU to perform its task.
-  - I/O Burst Time: The time a process spends performing I/O operations like reading from a disk or waiting for input.
+  - `CPU BT`: The time a process needs the CPU to perform its task.
+  - `I/O BT`: The time a process spends performing I/O operations like reading from a disk or waiting for input.
 
 - **Scheduling Metrics**:
   - `Arriaval Time`: The time at which the process arrives in the system.
 
-  - `Burst TIme`: The amount of time for which process runs on CPU/IO.
+  - `Burst Time`: The amount of time for which process runs on CPU/IO.
 
   - `Completion/Exit Time`: The time at which process completes.
 
