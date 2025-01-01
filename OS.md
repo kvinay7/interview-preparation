@@ -39,7 +39,7 @@ A process is an instance of a program in execution which has its privite memory 
    - **`wait()`**: Makes a process wait for its child process to terminate.
    - **`exit()`**: Terminates the current process.
 
-**Example:** `ProcessBuilder`
+**Example:** `ProcessBuilder` class is used to create and manage operating system processes in Java.
 ```java
 import java.io.IOException;
 public class ProcessExample {
