@@ -69,9 +69,9 @@ The process by which the operating system decides which process (or thread) gets
 
   - `Completion/Exit Time`: The time at which process completes.
 
-  - `Waiting Time`: The total time a process spends waiting in the ready queue. Need to have less WT for better CPU utilization. WT = TAT - BT
+  - `Waiting Time`: The total time a process spends waiting in the ready queue. Less WT for better CPU utilization. WT = TAT - BT
 
-  - `Turnaround Time`: The total time from the arrival to completion. Need to have less TAT for better CPU utilization. Turnaround time = Completion time - Arrival time and Normalized-TAT = TAT of process / BT
+  - `Turnaround Time`: The total time from the arrival to completion. Less TAT for better CPU utilization. Turnaround time = Completion time - Arrival time and Normalized-TAT = TAT of process / BT
 
   - `Response Time`: The time from the submission of a request until the first response is produced.
 
