@@ -8,7 +8,7 @@ An operating system is a software which is an interface between user and hardwar
 ## Process:
 A process is an instance of a program in execution which has its privite memory space and resources. A process can have multiple threads.
 
-**Process Control Block (PCB):** is a data structure in the operating system used to store all the information needed to manage a process. The operating system maintains a PCB for every process in the system.
+- **Process Control Block (PCB):** is a data structure in the operating system used to store all the information needed to manage a process. The operating system maintains a PCB for every process in the system.
 
 | **Field**                     | **Description**                           |
 |-------------------------------|-------------------------------------------|
@@ -21,7 +21,7 @@ A process is an instance of a program in execution which has its privite memory 
 | **Scheduling Information**     | Priority, scheduling algorithm details, time quantum, etc. |
 | **I/O Status Information**     | Files, devices, and other resources used by the process. |
 
-#### Process State Transition Diagram:
+- #### Process State Transition Diagram:
                                            
                       Resource                Preemption
       +------------+ Allocation +-----------+ <--------- +-----------+   exit    +------------+
@@ -33,13 +33,13 @@ A process is an instance of a program in execution which has its privite memory 
                             | Waiting/Blocked | <---------------- waiting for I/O
                             +-----------------+              
   
-  #### **Process Control System Calls**:
+ - #### **Process Control System Calls**:
    - **`fork()`**: Creates a new process by duplicating the calling process.
    - **`exec()`**: Replaces the current process with a new program.
    - **`wait()`**: Makes a process wait for its child process to terminate.
    - **`exit()`**: Terminates the current process.
 
-**Example:** `ProcessBuilder` class is used to create and manage operating system processes in Java.
+- **Example:** `ProcessBuilder` class is used to create and manage operating system processes in Java.
 ```java
 import java.io.IOException;
 public class ProcessExample {
