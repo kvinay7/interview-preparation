@@ -57,7 +57,8 @@ A process is an instance of a program in execution which has its privite memory 
 
 ### CPU Scheduling:
 The process by which the operating system decides which process (or thread) gets to use the CPU at any given time. Since most modern computers run multiple processes simultaneously, the operating system needs to allocate the CPU to each process in a way that optimizes performance, responsiveness, and fairness.
-
+- **Concurrency:** The ability of a system to handle multiple tasks simultaneously, but not necessarily at the same time.
+- **Parallelism:** The ability to execute multiple tasks at the same time, typically across multiple cores of a processor.
 - **Scheduling Criteria**: Process Time = CPU BT + I/O BT
   - `CPU BT`: The time a process needs the CPU to perform its task.
   - `I/O BT`: The time a process spends performing I/O operations like reading from a disk or waiting for input.
@@ -141,8 +142,6 @@ Multithreading in Java is a programming technique that allows multiple threads t
     - ****Starvation:**** is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
     - ****Livelock:**** In a livelock, two threads are actively trying to avoid deadlock but continually fail to make progress because they keep changing their states without performing useful work.
       
-- **Concurrency:** The ability of a system to handle multiple tasks simultaneously, but not necessarily at the same time.
-- **Parallelism:** The ability to execute multiple tasks at the same time, typically across multiple cores of a processor.
 - **Synchronization:** Synchronization in Java is a mechanism used to control access to shared resources by multiple threads. It ensures that only one thread can access a `synchronized` block or method at a time, preventing thread interference and memory consistency issues.
 - **Locks:** Locks in Java provide a more flexible mechanism for thread synchronization than traditional synchronization blocks or methods. Unlike intrinsic locks (synchronized), explicit locks provide better control over thread behavior and offer advanced features like fairness policies and condition variables. The `ReentrantLock` is the most commonly used lock in Java. It behaves similarly to synchronized blocks but offers additional features. `ReadWriteLock` and `StampedLock` are other types of locks.
 
