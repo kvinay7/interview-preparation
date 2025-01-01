@@ -64,12 +64,19 @@ The process by which the operating system decides which process (or thread) gets
 
 - **Scheduling Metrics**:
   - `Arriaval Time`: The time at which the process arrives in the system.
+
   - `Burst TIme`: The amount of time for which process runs on CPU/IO.
-  - `Completion Time` (Exit Time): The time at which process completes.
+
+  - `Completion/Exit Time`: The time at which process completes.
+
   - `Waiting Time`: The total time a process spends waiting in the ready queue. Need to have less WT for better CPU utilization. Waiting time = Turnaround time - Burst time
+
   - `Turnaround Time`: The total time from the arrival to completion. Need to have less TAT for better CPU utilization. Turnaround time = Completion time - Arrival time and Normalized-TAT = TAT of process / BT
+
   - `Response Time`: The time from the submission of a request until the first response is produced.
+
   - `Throughput`: The number of processes completed per unit of time. Increase the number of processes completed in a given period for better CPU utilization.
+
   - `Scheduling Length`: max(CT) - min(AT)
 
 #### Types of CPU Scheduling Algorithms:
