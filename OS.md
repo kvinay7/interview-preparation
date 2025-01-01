@@ -59,21 +59,18 @@ public class ProcessExample {
 The process by which the operating system decides which process (or thread) gets to use the CPU at any given time. Since most modern computers run multiple processes simultaneously, the operating system needs to allocate the CPU to each process in a way that optimizes performance, responsiveness, and fairness.
 
 - **Scheduling Criteria**: Process Time = CPU BT + I/O BT
-  - **CPU Burst Time**: The time a process needs the CPU to perform its task.
-  - **I/O Burst Time**: The time a process spends performing I/O operations like reading from a disk or waiting for input.
+  - CPU Burst Time: The time a process needs the CPU to perform its task.
+  - I/O Burst Time: The time a process spends performing I/O operations like reading from a disk or waiting for input.
 
 - **Scheduling Metrics**:
-  - **Arriaval Time**: The time at which the process arrives in the system.
-  - **Burst TIme**: The amount of time for which process runs on CPU/IO.
-  - **Completion Time** (Exit Time): The time at which process completes.
-  - **Waiting Time**: The total time a process spends waiting in the ready queue. Need to have less WT for better CPU utilization.
-    - Waiting time = Turnaround time - Burst time
-  - **Turnaround Time**: The total time from the arrival to completion. Need to have less TAT for better CPU utilization.
-    - Turnaround time = Completion time - Arrival time
-    - Normalized TAT = TAT of process / BT
-  - **Response Time**: The time from the submission of a request until the first response is produced.
-  - **Throughput**: The number of processes completed per unit of time. Increase the number of processes completed in a given period for better CPU utilization.
-  - **Scheduling Length**: max(CT) - min(AT)
+  - Arriaval Time: The time at which the process arrives in the system.
+  - Burst TIme: The amount of time for which process runs on CPU/IO.
+  - Completion Time (Exit Time): The time at which process completes.
+  - Waiting Time: The total time a process spends waiting in the ready queue. Need to have less WT for better CPU utilization. Waiting time = Turnaround time - Burst time
+  - Turnaround Time: The total time from the arrival to completion. Need to have less TAT for better CPU utilization. Turnaround time = Completion time - Arrival time and Normalized-TAT = TAT of process / BT
+  - Response Time: The time from the submission of a request until the first response is produced.
+  - Throughput: The number of processes completed per unit of time. Increase the number of processes completed in a given period for better CPU utilization.
+  - Scheduling Length: max(CT) - min(AT)
 
 #### Types of CPU Scheduling Algorithms:
 - **Non-preemptive scheduling:** once a process is allocated the CPU, it runs until it either finishes its execution or voluntarily gives up the CPU (for example, by performing I/O operations). These algorithms tend to be simpler but may result in inefficient CPU utilization in certain situations.
