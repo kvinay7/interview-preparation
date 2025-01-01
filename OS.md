@@ -55,6 +55,23 @@ public class ProcessExample {
 }
 ```
 
+#### Types of CPU Scheduling Algorithms
+- **Non-preemptive scheduling:** once a process is allocated the CPU, it runs until it either finishes its execution or voluntarily gives up the CPU (for example, by performing I/O operations). These algorithms tend to be simpler but may result in inefficient CPU utilization in certain situations.
+- **Preemptive scheduling:** the CPU can be taken away from a running process at any time and allocated to another process, often based on specific time intervals or conditions.
+
+| **Algorithm**                  | **Preemptive** | **Description**                                             | **Advantage**            | **Disadvantage**           |
+|---------------------------------|----------------|-------------------------------------------------------------|-------------------------------|---------------------------------|
+| **First-Come, First-Served (FCFS)** | No             | Processes execute in arrival order.                         | Simple to implement.          | Poor performance (convoy effect). |
+| **Shortest Job First (SJF)**     | No             | Shortest burst time first.                                  | Minimizes average waiting time.| Starvation of long processes.   |
+| **Priority Scheduling (Non-preemptive)** | No             | Processes with higher priority execute first.               | Flexible process management.   | Starvation of low-priority processes. |
+| **Round Robin (RR)**             | Yes            | Fixed time quantum per process.                             | Fair allocation of CPU time.   | High context switching overhead.|
+| **Shortest Remaining Time First (SRTF)** | Yes            | Preemptive version of SJF.                                  | Minimizes waiting time.        | Starvation of longer processes. |
+| **Priority Scheduling (Preemptive)** | Yes            | Higher priority processes preempt lower priority ones.      | Can prioritize critical tasks. | Starvation and priority inversion. |
+| **Multilevel Queue Scheduling** | Yes/No         | Different queues with different algorithms.                 | Organizes processes by behavior. | Complex to configure and manage.|
+| **Multilevel Feedback Queue**   | Yes            | Processes can move between different priority queues.       | Highly adaptive.               | Complex to implement and tune.  |
+
+---
+
 ## **Thread:** 
 A thread is a part of the process which has its run-time stack and shares the process resources. Every thread in Java is created and controlled by a unique object of the java.lang.Thread class. When a standalone application is run, a user thread is automatically created to execute the main() method. This thread is called the main thread.
 - **Thread Lifecycle:** [See here](https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/)
