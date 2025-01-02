@@ -15,7 +15,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   
 - **Bean:** A bean in Spring is an object that is managed by the Spring IoC container. Beans are created, configured, and assembled by the container. Beans are defined in configuration files (XML, annotations, or Java configuration).
   
-- **Spring IoC container:** is responsible for managing the lifecycle of beans and handling their dependencies. `ApplicationContext` is the central interface to the Spring IoC container. It is an extended version of the `BeanFactory` interface, which is a basic container for managing beans.
+- **Spring IoC container:** is responsible for managing the lifecycle of beans and handling their dependencies. `ApplicationContext` (eager) is the central interface to the Spring IoC container. It is an extended version of the `BeanFactory` (lazy) interface, which is a basic container for managing beans.
 
 - **Bean Lifecycle:**
 
@@ -151,7 +151,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   public class Main {
     public static void main(String[] args) {
         // Load Spring context from XML configuration
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         // Retrieve the Car bean with constructor-based injection
         Car car = context.getBean("car", Car.class);
@@ -297,7 +297,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
         // Create Spring context
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         // Retrieve the Car bean
         Car car = context.getBean(Car.class);
