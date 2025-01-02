@@ -38,3 +38,61 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   - `Session`: A bean is created once per HTTP session.
   - `Global Session`: A bean is created once per global HTTP session (used in portlet-based applications).
 
+- **Example:**
+  ```xml
+  <!-- applicationContext.xml (Spring configuration) -->
+  <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define Engine bean -->
+    <bean id="engine" class="com.example.Engine" />
+    
+    <!-- Define Car bean with dependency injection -->
+    <bean id="car" class="com.example.Car">
+        <property name="engine" ref="engine" />
+    </bean>
+
+  </beans>
+  ```
+  
+  ```java
+  // Engine class
+  public class Engine {
+      public void start() {
+          System.out.println("Engine is starting...");
+      }
+  }
+
+  // Car class (With IoC)
+  public class Car {
+      private Engine engine;  // Dependency
+
+      // Setter-based dependency injection
+      public void setEngine(Engine engine) {
+          this.engine = engine;
+      }
+
+      public void drive() {
+          engine.start();
+          System.out.println("Driving the car...");
+      }
+  }
+
+  // Main application (using Spring)
+  import org.springframework.context.ApplicationContext;
+  import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+  public class MainApp {
+      public static void main(String[] args) {
+          // Spring container loads configuration and manages object creation
+          ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        
+          // Spring container injects the Engine bean into the Car bean
+          Car car = (Car) context.getBean("car"); // Loose coupling via IoC
+          car.drive();
+      }
+  }
+  ```
+
