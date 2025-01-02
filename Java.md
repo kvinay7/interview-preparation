@@ -284,6 +284,76 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 
 ---
 
+## Enums:
+Enums in Java offer a powerful way to define a set of constants, allowing for more readable, type-safe, and organized code. They can include fields, constructors, and methods, making them much more flexible than simple constant values.
+
+### Defining an Enum:
+```java
+// Enum to represent days of the week
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+}
+```
+
+- **Using Enums**:
+    ```java
+        public class EnumExample {
+            public static void main(String[] args) {
+                Day today = Day.MONDAY;
+        
+                switch (today) {
+                    case MONDAY:
+                        System.out.println("Start of the work week!");
+                        break;
+                    case FRIDAY:
+                        System.out.println("End of the work week!");
+                        break;
+                    case SATURDAY:
+                    case SUNDAY:
+                        System.out.println("Weekend!");
+                        break;
+                    default:
+                        System.out.println("Midweek!");
+                }
+            }
+        }
+    ```
+
+- **Enum with Fields and Methods**:
+    ```java
+        enum Day {
+            MONDAY("Start of the work week"), 
+            FRIDAY("End of the work week"),
+            SATURDAY("Weekend fun"),
+            SUNDAY("Relax and prepare for next week");
+
+            private String description;
+
+            // Constructor to initialize the field
+            Day(String description) {
+                this.description = description;
+            }
+
+            // Method to get the description
+            public String getDescription() {
+                return description;
+            }
+        }
+
+        public class EnumWithFields {
+            public static void main(String[] args) {
+                for (Day day : Day.values()) {
+                    System.out.println(day + ": " + day.getDescription());
+                }
+            }
+        }
+    ```
+
+- **Enum Methods**:
+    - `values()` – Returns an array of all enum constants.
+    - `valueOf(String name)` – Returns the enum constant with the specified name.
+    - `ordinal()` – Returns the position of the enum constant in its enum declaration (zero-based index).
+
 ## Generics:
 Introduced in Java 5 to provide type safety and reusability. They allow to write code that can work with any data type while ensuring compile-time type checking.
 
