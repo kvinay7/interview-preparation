@@ -79,7 +79,8 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
           System.out.println("Driving the car...");
       }
   }
-
+  ```
+  ```java
   // Main application (using Spring)
   import org.springframework.context.ApplicationContext;
   import org.springframework.context.support.ClassPathXmlApplicationContext;
