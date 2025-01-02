@@ -1,4 +1,4 @@
-# Java-Based Web Application Development
+# Java-Based Application Development
 
 ## Spring Framework
 The Spring Framework is a comprehensive and modular framework for building Java-based enterprise applications. It's designed to simplify development by providing a wide range of features, making it one of the most popular frameworks in the Java ecosystem.
@@ -94,12 +94,13 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 
   </beans>
   ```
-
-  ```properties
-  # application.properties
-  car.model=BMW
-  car.year=2023
-  car.engineType=V8
+  
+  ```java
+  public class Engine {
+    public void start() {
+        System.out.println("Engine is starting...");
+    }
+  }
   ```
   
   ```java
@@ -142,15 +143,6 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   ```
 
   ```java
-  public class Engine {
-
-    public void start() {
-        System.out.println("Engine is starting...");
-    }
-  }
-  ```
-
-  ```java
   import org.springframework.context.support.ClassPathXmlApplicationContext;
 
   public class Main {
@@ -175,8 +167,15 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     }
   }
   ```
-
-  - **Output:**
+  
+  ```properties
+  # application.properties
+  car.model=BMW
+  car.year=2023
+  car.engineType=V8
+  ```
+  
+- **Output:**
 
   ```plaintext
   Model: BMW
