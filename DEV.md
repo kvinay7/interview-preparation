@@ -115,6 +115,9 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     private List<String> features; // Collection injection
     private Map<String, String> specifications; // Map injection
 
+    // Field-based Injection
+    private String engineType;
+  
     // Constructor-based Injection
     public Car(Engine engine, String model, int year) {
         this.engine = engine;
@@ -126,9 +129,6 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     public void setFeatures(List<String> features) {
         this.features = features;
     }
-
-    // Field-based Injection (Automatic injection via @Value)
-    private String engineType;
 
     // Setter for Map-based injection
     public void setSpecifications(Map<String, String> specifications) {
