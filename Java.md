@@ -24,6 +24,7 @@
     - [Non-Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#non-access-modifiers)
     - [Abstraction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstraction)
         - [`abstract` vs `interface`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstract-vs-interface)
+    - [Enums](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#enums)
     - [Generics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#generics)
 - [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework)
 - [Java-8](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
@@ -287,13 +288,13 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 ## Enums:
 Enums in Java offer a powerful way to define a set of constants, allowing for more readable, type-safe, and organized code. They can include fields, constructors, and methods, making them much more flexible than simple constant values.
 
-### Defining an Enum:
-```java
-// Enum to represent days of the week
-enum Day {
-    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
-}
-```
+- **Defining an Enum**:
+    ```java
+        // Enum to represent days of the week
+        enum Day {
+            MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+        }
+    ```
 
 - **Using Enums**:
     ```java
