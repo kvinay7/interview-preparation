@@ -31,7 +31,8 @@
     - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stream-api)
     - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
-- [Interview Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#java-interview-questions-see-here) 
+- [Interview Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#java-interview-questions-see-here)
+- [Coding Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#coding-practice-see-here)
 
 ## Introduction:
 Java is a general-purpose, class-based, object-oriented, high-level programming language developed by James Gosling and his team at Sun Microsystems in the mid-1990's. The main goal of creating Java was to achieve platform-independent, simple, and secure features.
