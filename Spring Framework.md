@@ -15,9 +15,10 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 - **Spring IoC container:** is responsible for managing the lifecycle of beans and handling their dependencies. `ApplicationContext` is the central interface to the Spring IoC container. It is an extended version of the `BeanFactory` interface, which is a basic container for managing beans.
 
 - **Bean Lifecycle:**
-  +-------------------+       +-------------------+       +---------------------------+       +----------------------------+
-  | Container Started | ----> | Bean Instantiated | ----> | Dependency Injection (DI) | ----> | Internal Spring Processing |
-  +-------------------+       +-------------------+       +---------------------------+       +----------------------------+
+
+      +-------------------+       +-------------------+       +---------------------------+       +----------------------------+
+      | Container Started | ----> | Bean Instantiated | ----> | Dependency Injection (DI) | ----> | Internal Spring Processing |
+      +-------------------+       +-------------------+       +---------------------------+       +----------------------------+
                                                                                                             |
                                                                  +--------------------+                     |
                                Bean is Ready for Use      <----- | Custom Init method | <-------------------- 
