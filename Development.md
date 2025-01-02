@@ -9,6 +9,9 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 - **Inversion of Control (IoC):** is a design principle where the control of object creation and their dependencies is transferred to an external container or framework, such as the Spring IoC container.
   
 - **Dependency Injection (DI):** is a form of IoC where the dependencies of a class are provided (injected) by the Spring container rather than the class creating them itself. DI helps in achieving loose coupling and improves testability.
+  - Constructor-based DI
+  - Setter-based DI
+  - Field-based DI 
   
 - **Bean:** A bean in Spring is an object that is managed by the Spring IoC container. Beans are created, configured, and assembled by the container. Beans are defined in configuration files (XML, annotations, or Java configuration).
   
@@ -198,9 +201,49 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   ```
 
 
-### **Example: Car Bean with Various Types of Dependency Injection and Values Passing**
+### **Example in Java**
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ComponentScan;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-#### 1. **Car Class (with constructor-based, setter-based, and field-based injection)**
+@Configuration
+@ComponentScan(basePackages = "com.example")
+public class AppConfig {
+
+    @Bean
+    public Engine engine() {
+        return new Engine(); // Engine bean creation
+    }
+
+    @Bean
+    public List<String> features() {
+        return Arrays.asList("Leather seats", "Sunroof", "Bluetooth");
+    }
+
+    @Bean
+    public Map<String, String> specifications() {
+        Map<String, String> specs = new HashMap<>();
+        specs.put("Color", "Red");
+        specs.put("Transmission", "Automatic");
+        return specs;
+    }
+}
+```
+
+```java
+import org.springframework.stereotype.Component;
+
+@Component
+public class Engine {
+    public void start() {
+        System.out.println("Engine is starting...");
+    }
+}
+```
 
 ```java
 import org.springframework.beans.factory.annotation.Value;
@@ -248,67 +291,6 @@ public class Car {
 }
 ```
 
-#### 2. **Engine Class (dependency for injection)**
-
-```java
-import org.springframework.stereotype.Component;
-
-@Component
-public class Engine {
-
-    public void start() {
-        System.out.println("Engine is starting...");
-    }
-}
-```
-
-#### 3. **Spring Configuration (Java-based)**
-
-```java
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ComponentScan;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-@Configuration
-@ComponentScan(basePackages = "com.example")
-public class AppConfig {
-
-    @Bean
-    public Engine engine() {
-        return new Engine(); // Engine bean creation
-    }
-
-    @Bean
-    public List<String> features() {
-        return Arrays.asList("Leather seats", "Sunroof", "Bluetooth");
-    }
-
-    @Bean
-    public Map<String, String> specifications() {
-        Map<String, String> specs = new HashMap<>();
-        specs.put("Color", "Red");
-        specs.put("Transmission", "Automatic");
-        return specs;
-    }
-}
-```
-
-#### 4. **Property File (Externalized Configuration)**
-
-`application.properties` or `application.yml` would contain externalized values.
-
-```properties
-# application.properties
-car.model=BMW
-car.year=2023
-car.engineType=V8
-```
-
-#### 5. **Main Class to Initialize Spring Context and Test Bean**
-
 ```java
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -328,55 +310,3 @@ public class Main {
     }
 }
 ```
-
----
-
-### **Explanation of the Example**
-
-1. **Constructor-based Injection**:  
-   The `Car` class constructor takes an `Engine` object and other literal values (like model and year) that are injected through constructor arguments. This is done through `@Value` for the model and year, which pulls from the `application.properties`.
-
-   ```java
-   public Car(Engine engine, @Value("${car.model}") String model, @Value("${car.year}") int year)
-   ```
-
-2. **Setter-based Injection**:  
-   The `features` field is injected using a setter method (`setFeatures`) where a list of features is passed from a configuration class. 
-
-   ```java
-   public void setFeatures(List<String> features) {
-       this.features = features;
-   }
-   ```
-
-3. **Field-based Injection**:  
-   The `engineType` is injected directly into the field using the `@Value` annotation to fetch the value from an external properties file.
-
-   ```java
-   @Value("${car.engineType}")
-   private String engineType;
-   ```
-
-4. **Collection-based Injection**:  
-   The list of features is injected into the `Car` bean via the `setFeatures` method, using `@Bean` in the configuration to pass a collection of feature strings.
-
-   ```java
-   @Bean
-   public List<String> features() {
-       return Arrays.asList("Leather seats", "Sunroof", "Bluetooth");
-   }
-   ```
-
-5. **Map-based Injection**:  
-   The `specifications` field is injected with a map of key-value pairs using the `setSpecifications` method. This is configured in the `AppConfig` class via a `@Bean` method that returns a `Map<String, String>`.
-
-   ```java
-   @Bean
-   public Map<String, String> specifications() {
-       Map<String, String> specs = new HashMap<>();
-       specs.put("Color", "Red");
-       specs.put("Transmission", "Automatic");
-       return specs;
-   }
-   ```
-
