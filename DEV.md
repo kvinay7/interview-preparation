@@ -98,7 +98,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   </beans>
   ```
 
-  - **Configuration in Java:**
+- **Configuration in Java:**
   ```java
   import org.springframework.context.annotation.Bean;
   import org.springframework.context.annotation.Configuration;
@@ -159,6 +159,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     }
   }
 
+- **Java Classes:**
   ```java
   public class Engine {
     public void start() {
