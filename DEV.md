@@ -91,7 +91,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     <bean id="carWithExternalProps" class="com.example.Car">
         <constructor-arg ref="engine" />
         <constructor-arg value="${car.model}" />
-        <constructor-arg value="${car.year}" />
+        <constructor-arg value="#{T(java.lang.Integer).parseInt('${car.year}') + 1}" />
         <property name="engineType" value="${car.engineType}" />
     </bean>
 
@@ -146,7 +146,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     // Define Car bean with external properties (using @Value annotation)
     @Bean
     public Car carWithExternalProps(@Value("${car.model}") String model,
-                                    @Value("${car.year}") int year,
+                                    @Value("#{T(java.lang.Integer).parseInt('${car.year}') + 1}") int year,
                                     @Value("${car.engineType}") String engineType) {
         Car car = new Car(engine(), model, year);
         car.setEngineType(engineType);
@@ -158,7 +158,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   ```properties
   # application.properties
   car.model=BMW
-  car.year=2023
+  car.year=2024
   car.engineType=V8
   ```
 
