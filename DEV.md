@@ -157,6 +157,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 - **Java Classes:**
   ```java
   import org.springframework.stereotype.Component;
+  
   @Component
   public class Engine {
     public void start() {
