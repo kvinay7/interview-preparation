@@ -279,7 +279,7 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
 - **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
      ```java
        @Autowired
-       @Qualifier("v8Engine")
+       @Qualifier("electricEngine")
        private Engine engine;
    ```
 
