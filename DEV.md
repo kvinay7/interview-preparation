@@ -212,29 +212,31 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   ```java
   import org.springframework.context.ApplicationContext;
   import org.springframework.context.support.ClassPathXmlApplicationContext;
+  import org.springframework.context.support.AnnotationConfigApplicationContext;
 
   public class Main {
     public static void main(String[] args) {
         // Load Spring context from XML configuration
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext contextXml = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         // Load Spring context from Java configuration
-        //ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext contextJava = new AnnotationConfigApplicationContext(AppConfig.class);
 
         // Retrieve the Car bean with constructor-based injection
-        Car car = context.getBean("car", Car.class);
+        Car car = contextJava.getBean("car", Car.class);
         car.printCarDetails();  // Print details for constructor-based Car bean
 
         // Retrieve the Car bean with setter-based injection
-        Car carWithSetterInjection = context.getBean("carWithSetterInjection", Car.class);
+        Car carWithSetterInjection = contextXml.getBean("carWithSetterInjection", Car.class);
         carWithSetterInjection.printCarDetails();  // Print details for setter-based Car bean
 
         // Retrieve the Car bean with external properties
-        Car carWithExternalProps = context.getBean("carWithExternalProps", Car.class);
+        Car carWithExternalProps = contextJava.getBean("carWithExternalProps", Car.class);
         carWithExternalProps.printCarDetails();  // Print details for the Car bean with external properties
 
         // Close context
-        context.close();
+        contextXml.close();
+        contextJava.close();
     }
   }
   ```
@@ -249,7 +251,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 ### **Autowiring:** 
 Authowiring is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
 
-  - **Autowire by Type** (`autowire="byType"` in XML): If a matching bean of the correct type exists, Spring will inject that bean. If there are multiple beans of the same type, Spring will throw an exception unless qualified with `Qualifier` or by providing more precise configuration.
+  - **Autowire by Type**: If a matching bean of the correct type exists, Spring will inject that bean. If there are multiple beans of the same type, Spring will throw an exception unless qualified with `Qualifier` or by providing more precise configuration.
      ```xml
      <bean id="car" class="com.example.Car" autowire="byType">
        <constructor-arg value="BMW" />
@@ -257,7 +259,7 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
      </bean>
      ```
 
-  - **Autowire by Name** (`autowire="byName"` in XML): If a bean with the same name as the property name exists in the application context, it will be injected. If no matching bean name is found, it will result in an exception.
+  - **Autowire by Name**: If a bean with the same name as the property name exists in the application context, it will be injected. If no matching bean name is found, it will result in an exception.
      ```xml
      <bean id="car" class="com.example.Car" autowire="byName">
        <constructor-arg value="BMW" />
@@ -265,7 +267,7 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
      </bean>
      ```
 
-- **Autowire by Constructor** (`autowire="byConstructor"` in XML): This type of autowiring is less commonly used in XML configuration.
+- **Autowire by Constructor**: Spring will inject the bean through the constructor based on the type.
      ```xml
      <bean id="car" class="com.example.Car" autowire="byConstructor" />
        <constructor-arg value="BMW" />
@@ -283,8 +285,6 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
    ```
 
 - **Autowire with `@Primary` (When multiple candidates are available)**: The `@Primary` annotation is used to mark one of the beans as the primary candidate for injection when multiple beans of the same type are available.
-
-   #### Example with `@Primary`:
    ```java
    @Bean
    @Primary
