@@ -13,9 +13,9 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   - Setter-based DI
   - Field-based DI 
   
+- **Spring IoC container:** is responsible for managing the lifecycle of objects and handling their dependencies. `ApplicationContext` (eager) is the central interface to the Spring IoC container. It is an extended version of the `BeanFactory` (lazy) interface, which is a basic container for managing objects.
+
 - **Bean:** A bean in Spring is an object that is managed by the Spring IoC container. Beans are created, configured, and assembled by the container. Beans are defined in configuration files (XML, annotations, or Java configuration).
-  
-- **Spring IoC container:** is responsible for managing the lifecycle of beans and handling their dependencies. `ApplicationContext` (eager) is the central interface to the Spring IoC container. It is an extended version of the `BeanFactory` (lazy) interface, which is a basic container for managing beans.
 
 - **Bean Lifecycle:**
 
