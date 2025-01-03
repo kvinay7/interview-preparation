@@ -176,7 +176,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     private Engine engine; // Dependency
     private List<String> features; // Collection injection
     private Map<String, String> specifications; // Map injection
-    private String engineType; // Field-based Injection
+    private String engineType;
   
     // Constructor-based Injection
     public Car(Engine engine, String model, int year) {
