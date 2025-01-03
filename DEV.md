@@ -154,6 +154,13 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     }
   }
 
+  ```properties
+  # application.properties
+  car.model=BMW
+  car.year=2023
+  car.engineType=V8
+  ```
+
 - **Java Classes:**
   ```java
   import org.springframework.stereotype.Component;
@@ -237,13 +244,6 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
         contextJava.close();
     }
   }
-  ```
-  
-  ```properties
-  # application.properties
-  car.model=BMW
-  car.year=2023
-  car.engineType=V8
   ```
 
 ### **Autowiring:** 
