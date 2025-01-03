@@ -259,7 +259,6 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
 
   - **Autowire by Name** (`autowire="byName"` in XML): If a bean with the same name as the property name exists in the application context, it will be injected. If no matching bean name is found, it will result in an exception.
      ```xml
-     <bean id="engine" class="com.example.Engine" />
      <bean id="car" class="com.example.Car" autowire="byName">
        <constructor-arg value="BMW" />
        <constructor-arg value="2023" />
@@ -268,7 +267,10 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
 
 - **Autowire by Constructor** (`autowire="byConstructor"` in XML): This type of autowiring is less commonly used in XML configuration.
      ```xml
-       <bean id="car" class="com.example.Car" autowire="byConstructor" />
+     <bean id="car" class="com.example.Car" autowire="byConstructor" />
+       <constructor-arg value="BMW" />
+       <constructor-arg value="2023" />
+     </bean>
      ```
 
 - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency.
