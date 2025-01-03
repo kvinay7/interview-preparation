@@ -49,8 +49,8 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- Define the Engine bean -->
-    <bean id="engine" class="com.example.Engine" />
+    <!-- Enable component scanning for beans annotated with @Component -->
+    <context:component-scan base-package="com.example"/>
 
     <!-- Define the Car bean with constructor-based DI -->
     <bean id="car" class="com.example.Car">
@@ -105,14 +105,9 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   import org.springframework.context.annotation.PropertySource;
 
   @Configuration
+  @ComponentScan(basePackages = "com.example")  // Automatically scans for @Component beans
   @PropertySource("classpath:application.properties")
   public class AppConfig {
-
-    // Define the Engine bean
-    @Bean
-    public Engine engine() {
-        return new Engine();
-    }
 
     // Define the Car bean with constructor-based DI
     @Bean
@@ -161,6 +156,8 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 
 - **Java Classes:**
   ```java
+  import org.springframework.stereotype.Component;
+  @Component
   public class Engine {
     public void start() {
         System.out.println("Engine is starting...");
