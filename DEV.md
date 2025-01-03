@@ -53,10 +53,9 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     <bean id="engine" class="com.example.Engine" />
 
     <!-- Define the Car bean with constructor-based DI -->
-    <bean id="car" class="com.example.Car">
-        <constructor-arg ref="engine" />
-        <constructor-arg value="BMW" />
-        <constructor-arg value="2023" />
+    <bean id="car" class="com.example.Car" autowire="byType">
+      <constructor-arg value="BMW" />
+      <constructor-arg value="2023" />
     </bean>
 
     <!-- Define the Features bean (List of Strings for setter-based injection) -->
@@ -116,6 +115,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     private Map<String, String> specifications; // Map injection
 
     // Field-based Injection
+    @Autowired
     private String engineType;
   
     // Constructor-based Injection
@@ -146,6 +146,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   ```
 
   ```java
+  import org.springframework.context.ApplicationContext;
   import org.springframework.context.support.ClassPathXmlApplicationContext;
 
   public class Main {
