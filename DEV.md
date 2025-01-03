@@ -274,7 +274,7 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
      </bean>
      ```
 
-- **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency.
+- **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods.
 
 - **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
      ```java
