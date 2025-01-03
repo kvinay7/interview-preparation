@@ -248,7 +248,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   }
   ```
 
-- **Autowiring:** 
+### **Autowiring:** 
 Authowiring is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
 
   - **Autowire by Type**: If a matching bean of the correct type exists, Spring will inject that bean. If there are multiple beans of the same type, Spring will throw an exception unless qualified with `Qualifier` or by providing more precise configuration.
@@ -296,5 +296,4 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
      public Engine electricEngine() {
        return new Engine("Electric");
      }
-   ```
-
+     ```
