@@ -245,4 +245,54 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   car.year=2023
   car.engineType=V8
   ```
-  
+
+### **Autowiring:** 
+Authowiring is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
+
+  - **Autowire by Type** (`autowire="byType"` in XML): If a matching bean of the correct type exists, Spring will inject that bean. If there are multiple beans of the same type, Spring will throw an exception unless qualified with `Qualifier` or by providing more precise configuration.
+     ```xml
+     <bean id="car" class="com.example.Car" autowire="byType">
+       <constructor-arg value="BMW" />
+       <constructor-arg value="2023" />
+     </bean>
+     ```
+
+  - **Autowire by Name** (`autowire="byName"` in XML): If a bean with the same name as the property name exists in the application context, it will be injected. If no matching bean name is found, it will result in an exception.
+     ```xml
+     <bean id="engine" class="com.example.Engine" />
+     <bean id="car" class="com.example.Car" autowire="byName">
+       <constructor-arg value="BMW" />
+       <constructor-arg value="2023" />
+     </bean>
+     ```
+
+- **Autowire by Constructor** (`autowire="byConstructor"` in XML): This type of autowiring is less commonly used in XML configuration.
+     ```xml
+       <bean id="car" class="com.example.Car" autowire="byConstructor" />
+     ```
+
+- **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency.
+
+- **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
+     ```java
+       @Autowired
+       @Qualifier("v8Engine")
+       private Engine engine;
+   ```
+
+- **Autowire with `@Primary` (When multiple candidates are available)**: The `@Primary` annotation is used to mark one of the beans as the primary candidate for injection when multiple beans of the same type are available.
+
+   #### Example with `@Primary`:
+   ```java
+   @Bean
+   @Primary
+   public Engine v8Engine() {
+       return new Engine("V8");
+   }
+
+   @Bean
+   public Engine electricEngine() {
+       return new Engine("Electric");
+   }
+   ```
+
