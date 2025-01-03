@@ -1,4 +1,4 @@
-# [Java](https://www.youtube.com/playlist?list=PLsyeobzWxl7pe_IiTfNyr55kwJPWbgxB5)
+# [Object-Oriented Programming in Java](https://www.youtube.com/playlist?list=PLsyeobzWxl7pe_IiTfNyr55kwJPWbgxB5)
 
 - [Introduction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction)
     - [Features](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#features)
