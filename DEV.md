@@ -1,4 +1,5 @@
-# Java Application Development
+# Application Development
+Application development is the process of designing, building, and maintaining software applications for various platforms such as web, mobile, desktop, and embedded systems. It encompasses a wide range of tasks including requirement gathering, architecture design, coding, testing, deployment, and maintenance.
 
 ## Spring Framework
 The Spring Framework is a comprehensive and modular framework for building Java-based enterprise applications. It's designed to simplify development by providing a wide range of features, making it one of the most popular frameworks in the Java ecosystem.
@@ -247,7 +248,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   }
   ```
 
-### **Autowiring:** 
+- **Autowiring:** 
 Authowiring is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
 
   - **Autowire by Type**: If a matching bean of the correct type exists, Spring will inject that bean. If there are multiple beans of the same type, Spring will throw an exception unless qualified with `Qualifier` or by providing more precise configuration.
@@ -266,7 +267,7 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
      </bean>
      ```
 
-- **Autowire by Constructor**: Spring will inject the bean through the constructor based on the type.
+  - **Autowire by Constructor**: Spring will inject the bean through the constructor based on the type.
      ```xml
      <bean id="car" class="com.example.Car" autowire="byConstructor" />
        <constructor-arg value="BMW" />
@@ -274,26 +275,26 @@ Authowiring is a feature that allows Spring to automatically inject dependencies
      </bean>
      ```
 
-- **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods.
+  - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods.
 
-- **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
+  - **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
      ```java
-       @Autowired
-       @Qualifier("electricEngine")
-       private Engine engine;
-   ```
+     @Autowired
+     @Qualifier("electricEngine")
+     private Engine engine;
+     ```
 
-- **Autowire with `@Primary` (When multiple candidates are available)**: The `@Primary` annotation is used to mark one of the beans as the primary candidate for injection when multiple beans of the same type are available.
-   ```java
-   @Bean
-   @Primary
-   public Engine v8Engine() {
+  - **Autowire with `@Primary` (When multiple candidates are available)**: The `@Primary` annotation is used to mark one of the beans as the primary candidate for injection when multiple beans of the same type are available.
+     ```java
+     @Bean
+     @Primary
+     public Engine v8Engine() {
        return new Engine("V8");
-   }
+     }
 
-   @Bean
-   public Engine electricEngine() {
+     @Bean
+     public Engine electricEngine() {
        return new Engine("Electric");
-   }
+     }
    ```
 
