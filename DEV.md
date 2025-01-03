@@ -41,7 +41,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   - `Session`: A bean is created once per HTTP session.
   - `Global Session`: A bean is created once per global HTTP session (used in portlet-based applications).
 
-- **Example in XML:**
+- **Configuration in XML:**
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
   <beans xmlns="http://www.springframework.org/schema/beans"
@@ -53,7 +53,8 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     <bean id="engine" class="com.example.Engine" />
 
     <!-- Define the Car bean with constructor-based DI -->
-    <bean id="car" class="com.example.Car" autowire="byType">
+    <bean id="car" class="com.example.Car">
+      <constructor-arg ref="engine" />
       <constructor-arg value="BMW" />
       <constructor-arg value="2023" />
     </bean>
@@ -96,7 +97,68 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 
   </beans>
   ```
-  
+
+  - **Configuration in Java:**
+  ```java
+  import org.springframework.context.annotation.Bean;
+  import org.springframework.context.annotation.Configuration;
+  import org.springframework.context.annotation.PropertySource;
+
+  @Configuration
+  @PropertySource("classpath:application.properties")
+  public class AppConfig {
+
+    // Define the Engine bean
+    @Bean
+    public Engine engine() {
+        return new Engine();
+    }
+
+    // Define the Car bean with constructor-based DI
+    @Bean
+    public Car car() {
+        return new Car(engine(), "BMW", 2023);
+    }
+
+    // Define the Features bean (List of Strings for setter-based injection)
+    @Bean
+    public List<String> features() {
+        List<String> features = new ArrayList<>();
+        features.add("Leather seats");
+        features.add("Sunroof");
+        features.add("Bluetooth");
+        return features;
+    }
+
+    // Define the Specifications bean (Map for setter-based injection)
+    @Bean
+    public Map<String, String> specifications() {
+        Map<String, String> specifications = new HashMap<>();
+        specifications.put("Color", "Red");
+        specifications.put("Transmission", "Automatic");
+        return specifications;
+    }
+
+    // Define Car bean with setter-based injection
+    @Bean
+    public Car carWithSetterInjection() {
+        Car car = new Car(engine(), "BMW", 2023);
+        car.setFeatures(features());
+        car.setSpecifications(specifications());
+        return car;
+    }
+
+    // Define Car bean with external properties (using @Value annotation)
+    @Bean
+    public Car carWithExternalProps(@Value("${car.model}") String model,
+                                    @Value("${car.year}") int year,
+                                    @Value("${car.engineType}") String engineType) {
+        Car car = new Car(engine(), model, year);
+        car.setEngineType(engineType);
+        return car;
+    }
+  }
+
   ```java
   public class Engine {
     public void start() {
@@ -113,10 +175,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     private Engine engine; // Dependency
     private List<String> features; // Collection injection
     private Map<String, String> specifications; // Map injection
-
-    // Field-based Injection
-    @Autowired
-    private String engineType;
+    private String engineType; // Field-based Injection
   
     // Constructor-based Injection
     public Car(Engine engine, String model, int year) {
@@ -133,6 +192,10 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     // Setter for Map-based injection
     public void setSpecifications(Map<String, String> specifications) {
         this.specifications = specifications;
+    }
+  
+    public void setEngineType(String engineType) {
+        this.engineType = engineType;
     }
 
     public void printCarDetails() {
@@ -153,6 +216,9 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     public static void main(String[] args) {
         // Load Spring context from XML configuration
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        // Load Spring context from Java configuration
+        //ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         // Retrieve the Car bean with constructor-based injection
         Car car = context.getBean("car", Car.class);
@@ -179,24 +245,3 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   car.engineType=V8
   ```
   
-- **Output:**
-
-  ```plaintext
-  Model: BMW
-  Year: 2023
-  Engine Type: null
-  Features: null
-  Specifications: null
-
-  Model: BMW
-  Year: 2023
-  Engine Type: null
-  Features: [Leather seats, Sunroof, Bluetooth]
-  Specifications: {Color=Red, Transmission=Automatic}
-
-  Model: BMW
-  Year: 2023
-  Engine Type: V8
-  Features: null
-  Specifications: null
-  ```
