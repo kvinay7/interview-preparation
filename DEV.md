@@ -117,6 +117,8 @@ Application development is the process of designing, building, and maintaining s
    - Deploy your app to a cloud platform.
    - Test live endpoints using Postman.
 
+---
+
 ## Spring Framework
 The Spring Framework is a comprehensive and modular framework for building Java-based enterprise applications. It's designed to simplify development by providing a wide range of features, making it one of the most popular frameworks in the Java ecosystem.
 
