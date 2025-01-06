@@ -31,7 +31,7 @@
     - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stream-api)
     - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
-- [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)
+- [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#multithreading-see-here)
 - [Interview Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#java-interview-questions-see-here)
 - [Coding Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#coding-practice-see-here)
 
