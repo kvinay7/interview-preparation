@@ -6,7 +6,7 @@ An array is a data structure that can store fixed-size collections of elements o
 
   - Declaring and Initializing Arrays:
     ```java
-    int[] nums = new [5]; // Creates an array of 5 integers, default values are 0
+    int[] nums = new int[5]; // Creates an array of 5 integers, default values are 0
     int[] numbers = {1, 2, 3, 4, 5}; // Initializes with values
     ```
     -  [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/description/)
