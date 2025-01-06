@@ -67,4 +67,4 @@ A String is an object that represents a sequence of 16-bit unicode characters.
     - [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/description/)
     - [Search Pattern (KMP-Algorithm)](https://www.geeksforgeeks.org/problems/search-pattern0205/1)
     - [Min Chars to Add for Palindrome](https://www.geeksforgeeks.org/problems/minimum-characters-to-be-added-at-front-to-make-string-palindrome/0)
-    - [Minimum Insertion Steps to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/description/)
+    - [Min Insertions to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/description/)
