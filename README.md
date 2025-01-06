@@ -1,6 +1,6 @@
 ## Interview Preparation
-- **[Java](https://github.com/kvinay7/interview-preparation/blob/main/Java.md)**
-- **[OS](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)**
-- **[DSA](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md)**
-- **[DEV](https://github.com/kvinay7/interview-preparation/blob/main/DEV.md)**
-- **[LLD](https://github.com/ashishps1/awesome-low-level-design)**
+- **[Object-Oriented Programming in Java](https://github.com/kvinay7/interview-preparation/blob/main/Java.md)**
+- **[Operating Systems](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)**
+- **[Data Structures and Algorithms](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md)**
+- **[Application Development](https://github.com/kvinay7/interview-preparation/blob/main/DEV.md)**
+- **[Low-Level Design](https://github.com/ashishps1/awesome-low-level-design)**
