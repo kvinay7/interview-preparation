@@ -38,7 +38,25 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence/description/)
     - [Last Moment Before All Ants Fall Out of a Plank](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/description/)
     - [Stock Problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solutions/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems/)
-      
+
+  - Multidimensional Arrays: If the innner arrays of lengths are not equal then they're known as a jagged array or a non-rectangular array.
+  ```java
+    int[][] jaggedArray = new int[3][];  // Declares an array with 3 rows, but columns will be different
+    jaggedArray[0] = new int[2];  // Row 0 has 2 elements
+    jaggedArray[1] = new int[3];  // Row 1 has 3 elements
+    jaggedArray[2] = new int[4];  // Row 2 has 4 elements
+   ```
+  - Problems:
+    - [Multiply Matrices](https://www.geeksforgeeks.org/problems/multiply-matrices/1)
+    - [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/description/)
+    - [Transpose Matrix (m*n)](https://leetcode.com/problems/transpose-matrix/description/)
+    - [Transpose Matrix (n*n)](https://www.geeksforgeeks.org/problems/transpose-of-matrix-1587115621/1)
+    - [Sort row-wise and column-wise](https://www.geeksforgeeks.org/sort-matrix-row-wise-column-wise/)
+    - [Clowise Rotate](https://leetcode.com/problems/rotate-image/description/):
+    - [Anti-Clockwise Rotate](https://www.geeksforgeeks.org/inplace-rotate-square-matrix-by-90-degrees/):
+    - [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/description/)
+    - [Spiral Matrix - I, II, III, IV](https://leetcode.com/problems/spiral-matrix/description/)
+
   - Moore Voting Algo:
     - [Majority Element](https://leetcode.com/problems/majority-element/description/)
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
@@ -80,24 +98,3 @@ A String is an object that represents a sequence of 16-bit unicode characters.
     - [Search Pattern (KMP-Algorithm)](https://www.geeksforgeeks.org/problems/search-pattern0205/1)
     - [Min Chars to Add for Palindrome](https://www.geeksforgeeks.org/problems/minimum-characters-to-be-added-at-front-to-make-string-palindrome/0)
     - [Min Insertions to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/description/)
-
----
-
-## Multidimensional Arrays:
-A multidimensional array in Java is an array of arrays. If the innner arrays of lengths are not equal then they're known as a jagged array or a non-rectangular array.
-    ```java
-    int[][] jaggedArray = new int[3][];  // Declares an array with 3 rows, but columns will be different
-    jaggedArray[0] = new int[2];  // Row 0 has 2 elements
-    jaggedArray[1] = new int[3];  // Row 1 has 3 elements
-    jaggedArray[2] = new int[4];  // Row 2 has 4 elements
-    ```
-  - Problems:
-    - [Multiply Matrices](https://www.geeksforgeeks.org/problems/multiply-matrices/1)
-    - [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/description/)
-    - [Transpose Matrix (m*n)](https://leetcode.com/problems/transpose-matrix/description/)
-    - [Transpose Matrix (n*n)](https://www.geeksforgeeks.org/problems/transpose-of-matrix-1587115621/1)
-    - [Sort row-wise and column-wise](https://www.geeksforgeeks.org/sort-matrix-row-wise-column-wise/)
-    - [Clowise Rotate](https://leetcode.com/problems/rotate-image/description/):
-    - [Anti-Clockwise Rotate](https://www.geeksforgeeks.org/inplace-rotate-square-matrix-by-90-degrees/):
-    - [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/description/)
-    - [Spiral Matrix - I, II, III, IV](https://leetcode.com/problems/spiral-matrix/description/)
