@@ -8,7 +8,7 @@ An array is a data structure that can store fixed-size collections of elements o
     ```
     -  [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/description/)
 
-  - Anonymous Array:
+  - Anonymous Array: is a one-time-use array that is not stored in a variable but used directly in method calls or expressions.
     ```java
     int[] anonymousArray(){
         return new int[]{};
