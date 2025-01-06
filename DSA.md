@@ -9,7 +9,6 @@ An array is a data structure that can store fixed-size collections of elements o
     int[] nums = new int[5]; // Creates an array of 5 integers, default values are 0
     int[] numbers = {1, 2, 3, 4, 5}; // Initializes with values
     ```
-    -  [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/description/)
 
   - Anonymous Array: is a one-time-use array that is not stored in a variable but used directly in method calls or expressions.
     ```java
@@ -27,10 +26,18 @@ An array is a data structure that can store fixed-size collections of elements o
       }
     }
     ```
+  - Problems:
+    - [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/description/)
     - [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/description/)
     - [Plus One](https://leetcode.com/problems/plus-one/description/)
     - [Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer/description/)
-  
+    - [Target Array](https://leetcode.com/problems/create-target-array-in-the-given-order/description/)
+    - [Build Array from Permutation](https://leetcode.com/problems/build-array-from-permutation/description/)
+    - [Can Place Flowers](https://leetcode.com/problems/can-place-flowers/description/)
+    - [Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence/description/)
+    - [Last Moment Before All Ants Fall Out of a Plank](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/description/)
+    - [Stock Problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solutions/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems/)
+      
   - Moore Voting Algo:
     - [Majority Element](https://leetcode.com/problems/majority-element/description/)
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
@@ -40,14 +47,18 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Insert Interval](https://leetcode.com/problems/insert-interval/description/)
     - [Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
     - [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
-
-  - Problems:
-    - [Target Array](https://leetcode.com/problems/create-target-array-in-the-given-order/description/)
-    - [Build Array from Permutation](https://leetcode.com/problems/build-array-from-permutation/description/)
-    - [Can Place Flowers](https://leetcode.com/problems/can-place-flowers/description/)
-    - [Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence/description/)
-    - [Last Moment Before All Ants Fall Out of a Plank](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/description/)
-    - [Stock Problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solutions/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems/)
+   
+  - Sliding Window:
+    - [Max Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
+    - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
+    - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
+    - [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/)
+    - [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)
+    - [Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray/description/)
+    - [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/description/)
+    - [Longest Subarray of 1's After Deleting One Element](https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description/)
+    - [Best Sightseeing Pair](https://leetcode.com/problems/best-sightseeing-pair/description/)
+    - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
 ## Strings:
 A String is an object that represents a sequence of 16-bit unicode characters.
@@ -68,3 +79,22 @@ A String is an object that represents a sequence of 16-bit unicode characters.
     - [Search Pattern (KMP-Algorithm)](https://www.geeksforgeeks.org/problems/search-pattern0205/1)
     - [Min Chars to Add for Palindrome](https://www.geeksforgeeks.org/problems/minimum-characters-to-be-added-at-front-to-make-string-palindrome/0)
     - [Min Insertions to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/description/)
+
+## Multidimensional Arrays:
+A multidimensional array in Java is an array of arrays. If the innner arrays of lengths are not equal then they're known as a jagged array or a non-rectangular array.
+  ```java
+  int[][] jaggedArray = new int[3][];  // Declares an array with 3 rows, but columns will be different
+  jaggedArray[0] = new int[2];  // Row 0 has 2 elements
+  jaggedArray[1] = new int[3];  // Row 1 has 3 elements
+  jaggedArray[2] = new int[4];  // Row 2 has 4 elements
+  ```
+  - Problems:
+    - [Multiply Matrices](https://www.geeksforgeeks.org/problems/multiply-matrices/1)
+    - [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/description/)
+    - [Transpose Matrix (m*n)](https://leetcode.com/problems/transpose-matrix/description/)
+    - [Transpose Matrix (n*n)](https://www.geeksforgeeks.org/problems/transpose-of-matrix-1587115621/1)
+    - [Sort the matrix row-wise and column-wise](https://www.geeksforgeeks.org/sort-matrix-row-wise-column-wise/)
+    - [Clowise Rotate](https://leetcode.com/problems/rotate-image/description/): Transpose + Swap Columns (left to right)
+    - [Anti-Clockwise Rotate](https://www.geeksforgeeks.org/inplace-rotate-square-matrix-by-90-degrees/): Transpose + Swap Rows (top to bottom)
+    - [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/description/)
+    - [Spiral Matrix - I, II, III, IV](https://leetcode.com/problems/spiral-matrix/description/)
