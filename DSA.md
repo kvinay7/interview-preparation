@@ -1,4 +1,13 @@
 ## Arrays:
+An array is a data structure that can store fixed-size collections of elements of the same type in a single variable. By default array elements are initialized to 0 if they are a numeric type ( int or double ), false if they are of type boolean , or null if they are an object type like String.
+
+  - Declaring and Initializing Arrays:
+    ```java
+    int[] nums = new [5]; // Creates an array of 5 integers, default values are 0
+    int[] numbers = {1, 2, 3, 4, 5}; // Initializes with values
+    ```
+    -  [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/description/)
+  
   - Array Resizing:
     ```java
     ensureCapacity(){
@@ -11,9 +20,6 @@
     - [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/description/)
     - [Plus One](https://leetcode.com/problems/plus-one/description/)
     - [Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer/description/)
-      
-  - By default array elements are initialized to 0 if they are a numeric type ( int or double ), false if they are of type boolean , or null if they are an object type like String .
-    -  [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/description/)
   
   - Moore Voting Algo:
     - [Majority Element](https://leetcode.com/problems/majority-element/description/)
