@@ -410,6 +410,10 @@ Collections Framework provides a unified architecture for storing and manipulati
   ```
 
 - **Comparable** and **Comparator:**
+  ```java
+  Arrays.sort(arr, Collections.reverseOrder());
+  Collections.sort(list, Collections.reverseOrder());
+  ```
 
   | **Feature**               | **Comparable**                               | **Comparator**                                   |
   |---------------------------|----------------------------------------------|------------------------------------------------|
