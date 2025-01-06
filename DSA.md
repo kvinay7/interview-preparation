@@ -8,6 +8,7 @@ An array is a data structure that can store fixed-size collections of elements o
     ```java
     int[] nums = new int[5]; // Creates an array of 5 integers, default values are 0
     int[] numbers = {1, 2, 3, 4, 5}; // Initializes with values
+    System.out.print(numbers[2]); // Accesing array values
     ```
 
   - Anonymous Array: is a one-time-use array that is not stored in a variable but used directly in method calls or expressions.
