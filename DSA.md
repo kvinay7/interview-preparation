@@ -7,10 +7,17 @@ An array is a data structure that can store fixed-size collections of elements o
     int[] numbers = {1, 2, 3, 4, 5}; // Initializes with values
     ```
     -  [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/description/)
-  
+
+  - Anonymous Array:
+    ```java
+    int[] anonymousArray(){
+        return new int[]{};
+    }
+    ```
+    
   - Array Resizing:
     ```java
-    ensureCapacity(){
+    void ensureCapacity(){
       if(size == arr.length){
           int newCapacity = arr.length * 2;
           arr = Arrays.copyOf(arr, newCapacity);
