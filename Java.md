@@ -588,5 +588,6 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
    ```
 ---
 
+## Multithreading: [See here](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)
 ## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
 ## Coding Practice: [See here](https://www.hackerrank.com/domains/java)
