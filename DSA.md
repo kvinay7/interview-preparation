@@ -81,21 +81,23 @@ A String is an object that represents a sequence of 16-bit unicode characters.
     - [Min Chars to Add for Palindrome](https://www.geeksforgeeks.org/problems/minimum-characters-to-be-added-at-front-to-make-string-palindrome/0)
     - [Min Insertions to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/description/)
 
+---
+
 ## Multidimensional Arrays:
 A multidimensional array in Java is an array of arrays. If the innner arrays of lengths are not equal then they're known as a jagged array or a non-rectangular array.
-  ```java
-  int[][] jaggedArray = new int[3][];  // Declares an array with 3 rows, but columns will be different
-  jaggedArray[0] = new int[2];  // Row 0 has 2 elements
-  jaggedArray[1] = new int[3];  // Row 1 has 3 elements
-  jaggedArray[2] = new int[4];  // Row 2 has 4 elements
-  ```
+    ```java
+    int[][] jaggedArray = new int[3][];  // Declares an array with 3 rows, but columns will be different
+    jaggedArray[0] = new int[2];  // Row 0 has 2 elements
+    jaggedArray[1] = new int[3];  // Row 1 has 3 elements
+    jaggedArray[2] = new int[4];  // Row 2 has 4 elements
+    ```
   - Problems:
     - [Multiply Matrices](https://www.geeksforgeeks.org/problems/multiply-matrices/1)
     - [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/description/)
     - [Transpose Matrix (m*n)](https://leetcode.com/problems/transpose-matrix/description/)
     - [Transpose Matrix (n*n)](https://www.geeksforgeeks.org/problems/transpose-of-matrix-1587115621/1)
-    - [Sort the matrix row-wise and column-wise](https://www.geeksforgeeks.org/sort-matrix-row-wise-column-wise/)
-    - [Clowise Rotate](https://leetcode.com/problems/rotate-image/description/): Transpose + Swap Columns (left to right)
-    - [Anti-Clockwise Rotate](https://www.geeksforgeeks.org/inplace-rotate-square-matrix-by-90-degrees/): Transpose + Swap Rows (top to bottom)
+    - [Sort row-wise and column-wise](https://www.geeksforgeeks.org/sort-matrix-row-wise-column-wise/)
+    - [Clowise Rotate](https://leetcode.com/problems/rotate-image/description/):
+    - [Anti-Clockwise Rotate](https://www.geeksforgeeks.org/inplace-rotate-square-matrix-by-90-degrees/):
     - [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/description/)
     - [Spiral Matrix - I, II, III, IV](https://leetcode.com/problems/spiral-matrix/description/)
