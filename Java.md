@@ -10,7 +10,7 @@
     - [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
     - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
         - [Precedence and Associativity](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#precedence-and-associativity)
-    - [Control Statements](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#control-structures)
+    - [Control Statements](https://www.javatpoint.com/control-flow-in-java)
     - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
 - [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop)
     - [Packages](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#packages)
@@ -31,9 +31,9 @@
     - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stream-api)
     - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
-- [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#multithreading-see-here)
-- [Interview Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#java-interview-questions-see-here)
-- [Coding Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#coding-practice-see-here)
+- [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)
+- [Interview Questions](https://www.interviewbit.com/java-interview-questions/)
+- [Coding Practice](https://www.hackerrank.com/domains/java)
 
 ## Introduction:
 Java is a general-purpose, class-based, object-oriented, high-level programming language developed by James Gosling and his team at Sun Microsystems in the mid-1990's. The main goal of creating Java was to achieve platform-independent, simple, and secure features.
@@ -148,8 +148,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | 11             | `=`, `+=`, `-=`, `*=`, `/=`, `%=`  | Assignment operators                   |   Right-to-left    |
 | 12             | `,`                                | Comma operator                         |   Left-to-right    |
 
-## Control Structures:
-- if, if-else, else-if, switch -> (byte, short, int, char, string, enum), while, do-while, for, for-each, break, continue, return
+---
 
 ## Stack vs Heap memory:
 
@@ -586,8 +585,3 @@ The primary purpose of `Optional` is to represent the possibility of absence of 
           }
       }
    ```
----
-
-## Multithreading: [See here](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)
-## Java Interview Questions: [See here](https://www.interviewbit.com/java-interview-questions/)
-## Coding Practice: [See here](https://www.hackerrank.com/domains/java)
