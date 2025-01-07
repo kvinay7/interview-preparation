@@ -42,9 +42,13 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
   
   - [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
-     - [Remove Element](https://leetcode.com/problems/remove-element/description/)
-     - [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/)
-    - 
+    - [Remove Element](https://leetcode.com/problems/remove-element/description/)
+    - [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/)
+    - [Sum Pair closest to target](https://www.geeksforgeeks.org/problems/pair-in-array-whose-sum-is-closest-to-x1124/0)
+    - [Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/description/)
+    - [2Sum Count](https://www.geeksforgeeks.org/problems/pair-with-given-sum-in-a-sorted-array4940/1)
+    - [3Sum Count](https://www.geeksforgeeks.org/problems/count-all-triplets-with-given-sum-in-sorted-array/1)
+  
   - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c):
     - [Max Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
     - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
@@ -117,6 +121,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
 
   - Problems:
+    - [2Sum](https://leetcode.com/problems/two-sum/description/)
     - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
     - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
