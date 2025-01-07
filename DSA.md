@@ -101,3 +101,16 @@ A String is an object that represents a sequence of 16-bit unicode characters.
     - [Search Pattern (KMP-Algorithm)](https://www.geeksforgeeks.org/problems/search-pattern0205/1)
     - [Min Chars to Add for Palindrome](https://www.geeksforgeeks.org/problems/minimum-characters-to-be-added-at-front-to-make-string-palindrome/0)
     - [Min Insertions to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/description/)
+
+## Hash Table:
+A `hash table` is a data structure that stores `key-value` pairs and uses a `hashing` technique to efficiently map each key to an index in an array (called a bucket) using a `hash function`. The hash function takes an input (the key) and computes a `hash code`, which determines the index where the associated value will be stored. This allows for fast O(1) average-time complexity for inserting, deleting, and looking up key-value pairs. However, hash `collisions` can occur when different keys produce the same hash code.
+
+### Collision Resolution Techniques:
+Load Factor is the ratio of the number of elements in the hash table to the size of the table. A high load factor increases the likelihood of collisions. When the load factor exceeds a certain threshold (e.g., 0.7), the hash table is typically rehashed—the table size is increased, and the existing entries are redistributed according to the new size. This process helps maintain efficient access times and reduces collisions.
+
+  - **Seperate Chaining** (Open Hashing): Chaining involves storing multiple elements at the same index using a `linked list` or another list-like structure. Each array index (bucket) holds a reference to a list of key-value pairs, allowing the bucket to store multiple entries that hash to the same index.
+    
+  - **Open Addressing** (Closed Hashing): Open addressing resolves collisions by finding another open slot within the hash table array itself. The key idea is that all elements remain in the table (in the array itself), rather than being stored in linked lists.
+      - Linear Probing: Search for the next available slot linearly. Formula: (hash + i) % tableSize, where i is the number of probes (0, 1, 2,...).
+      - Quadratic Probing: Search for the next slot using a quadratic sequence. Formula: (hash + i^2) % tableSize, where i is the number of probes.
+      - Double Hashing: Use a second hash function for probing. Formula: (hash1 + i * hash2(key)) % tableSize, where hash1 is the primary hash function and hash2 is the secondary hash function.
