@@ -42,7 +42,8 @@ An array is a data structure that can store fixed-size collections of elements o
   - Moore Voting Algo:
     - [Majority Element](https://leetcode.com/problems/majority-element/description/)
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
-   
+ 
+  - [Two Pointers](https://leetcode.com/discuss/study-guide/1688903/Solved-all-two-pointers-problems-in-100-days)
   - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c):
     - [Max Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
     - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
@@ -67,10 +68,12 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/description/)
     - [Transpose Matrix (m*n)](https://leetcode.com/problems/transpose-matrix/description/)
     - [Transpose Matrix (n*n)](https://www.geeksforgeeks.org/problems/transpose-of-matrix-1587115621/1)
-    - [Clowise Rotate](https://leetcode.com/problems/rotate-image/description/)
+    - [Clockwise Rotate](https://leetcode.com/problems/rotate-image/description/)
     - [Anti-Clockwise Rotate](https://www.geeksforgeeks.org/problems/rotate-by-90-degree-1587115621/1)
     - [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/description/)
-    - [Spiral Matrix - I, II, III, IV](https://leetcode.com/problems/spiral-matrix/description/)
+    - [Spiral Matrix - I](https://leetcode.com/problems/spiral-matrix/description/)
+    - [Spiral Matrix - III](https://leetcode.com/problems/spiral-matrix-iii/description/)
+    - [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
 
   - Intervals:
     - [Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
