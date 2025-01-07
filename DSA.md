@@ -121,7 +121,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
 
   - Problems:
-    - [2Sum](https://leetcode.com/problems/two-sum/description/)
+    - [Count pairs with given sum](https://www.geeksforgeeks.org/problems/count-pairs-with-given-sum--150253/1)
     - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
     - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
