@@ -38,12 +38,9 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence/description/)
     - [Last Moment Before All Ants Fall Out of a Plank](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/description/)
     - [Stock Problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solutions/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems/)
- 
-  - Moore Voting Algo:
     - [Majority Element](https://leetcode.com/problems/majority-element/description/)
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
- 
-  - [Two Pointers](https://leetcode.com/discuss/study-guide/1688903/Solved-all-two-pointers-problems-in-100-days)
+  
   - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c):
     - [Max Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
     - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
@@ -114,3 +111,6 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - Linear Probing: Search for the next available slot linearly. Formula: (hash + i) % tableSize, where i is the number of probes (0, 1, 2,...).
       - Quadratic Probing: Search for the next slot using a quadratic sequence. Formula: (hash + i^2) % tableSize, where i is the number of probes.
       - Double Hashing: Use a second hash function for probing. Formula: (hash1 + i * hash2(key)) % tableSize, where hash1 is the primary hash function and hash2 is the secondary hash function.
+
+
+## [Two Pointers](https://leetcode.com/discuss/study-guide/1688903/Solved-all-two-pointers-problems-in-100-days)
