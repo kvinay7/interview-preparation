@@ -43,7 +43,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Majority Element](https://leetcode.com/problems/majority-element/description/)
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
    
-  - Sliding Window:
+  - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c):
     - [Max Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
     - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
     - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
