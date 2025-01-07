@@ -116,5 +116,4 @@ Load Factor is the ratio of the number of elements in the hash table to the size
     - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
     - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
-
-## [Two Pointers](https://leetcode.com/discuss/study-guide/1688903/Solved-all-two-pointers-problems-in-100-days)
+    - [Two Pointers](https://leetcode.com/discuss/study-guide/1688903/Solved-all-two-pointers-problems-in-100-days)
