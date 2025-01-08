@@ -420,7 +420,7 @@ Autowiring is a feature that allows Spring to automatically inject dependencies 
 ## Spring Boot
 Spring Boot is designed to make it easy to get started with Spring development by minimizing manual configuration and automatically resolving dependency conflicts. It provides auto-configuration, an embedded HTTP server, and many features out of the box, making it very developer-friendly.
 
-### Maven:
+### Maven
 Maven is a build automation tool for Java projects. It simplifies dependency management, project building, and deployment by using a Project Object Model (POM) defined in an XML file. Maven handles tasks like downloading libraries, compiling code, running tests, and packaging applications into artifacts (e.g., JARs).
    
 #### Spring Application Project Structure:
