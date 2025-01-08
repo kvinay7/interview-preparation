@@ -369,30 +369,6 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 ### Autowiring
 Autowiring is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
 
-  - **Autowire by Type**: If a matching bean of the correct type exists, Spring will inject that bean. If there are multiple beans of the same type, Spring will throw an exception unless qualified with `Qualifier` or by providing more precise configuration.
-     ```xml
-     <bean id="car" class="com.example.Car" autowire="byType">
-       <constructor-arg value="BMW" />
-       <constructor-arg value="2023" />
-     </bean>
-     ```
-
-  - **Autowire by Name**: If a bean with the same name as the property name exists in the application context, it will be injected. If no matching bean name is found, it will result in an exception.
-     ```xml
-     <bean id="car" class="com.example.Car" autowire="byName">
-       <constructor-arg value="BMW" />
-       <constructor-arg value="2023" />
-     </bean>
-     ```
-
-  - **Autowire by Constructor**: Spring will inject the bean through the constructor based on the type.
-     ```xml
-     <bean id="car" class="com.example.Car" autowire="byConstructor" />
-       <constructor-arg value="BMW" />
-       <constructor-arg value="2023" />
-     </bean>
-     ```
-
   - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods.
 
   - **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
