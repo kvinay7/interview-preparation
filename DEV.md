@@ -462,15 +462,9 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
        <version>1.0-SNAPSHOT</version>
        <dependencies>
            <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-web</artifactId> <!-- Build web including RESTful, MVC, Tomcat -->
+   		<groupId>org.springframework.boot</groupId>
+   		<artifactId>spring-boot-starter-web</artifactId> <!-- Build web including RESTful, MVC, Tomcat -->
            </dependency>
-           <dependency>
-	       <groupId>org.springframework.boot</groupId>
-	       <artifactId>spring-boot-devtools</artifactId>
-	       <scope>runtime</scope>
-	       <optional>true</optional>
-	   </dependency>
        </dependencies>
    </project>
    ```
