@@ -415,3 +415,96 @@ Autowiring is a feature that allows Spring to automatically inject dependencies 
        return new Engine("Electric");
      }
      ```
+
+## Spring Boot
+Spring Boot is designed to make it easy to get started with Spring development by minimizing manual configuration and automatically resolving dependency conflicts. It provides auto-configuration, an embedded HTTP server, and many features out of the box, making it very developer-friendly.
+
+### Maven
+Maven is a build automation tool for Java projects. It simplifies dependency management, project building, and deployment by using a Project Object Model (POM) defined in an XML file. Maven handles tasks like downloading libraries, compiling code, running tests, and packaging applications into artifacts (e.g., JARs).
+   
+### Spring Boot Project Structure
+   ```
+   my-spring-boot-app/
+   ├── .mvn/                        # Maven wrapper (if using Maven)
+   ├── mvnw                         # Maven wrapper script (if using Maven)
+   ├── mvnw.cmd                     # Maven wrapper for Windows (if using Maven)
+   ├── pom.xml                      # Maven Project Object Model (POM) file
+   ├── src/                         # Source code directory
+   │   ├── main/
+   │   │   ├── java/                # Java source code
+   │   │   │   └── com/example/demo/   # Main application package
+   │   │   │       ├── DemoApplication.java  # Main Spring Boot application class
+   |   |   |       ├── controller/                     # Controller layer (for handling HTTP requests)
+   |   │   |       │   └── HelloController.java        # Example REST controller
+   │   |   |       ├── service/                        # Service layer (business logic)
+   │   |   |       ├── repository/                     # Data access layer (usually interacting with DB)
+   │   |   |       ├── model/                          # Model classes (entities, DTOs)
+   │   |   |       └── config/                         # Configuration classes (optional for custom beans)
+   │   │   ├── resources/           # Resources like application.properties, static files, templates
+   │   │   │   ├── application.properties  # Configuration properties for the application
+   │   │   │   ├── static/          # Static resources (CSS, JS, images)
+   │   │   │   └── templates/       # Template files (for Thymeleaf, etc.)
+   │   ├── test/                    # Unit and integration tests
+   │   │   ├── java/                # Test code
+   │   │   │   └── com/example/demo/   # Test classes
+   │   │   │       └── DemoApplicationTests.java  # Test class for the Spring Boot application
+   ├── target/                      # Compiled classes and packaged artifacts (JAR/WAR)
+   ├── .gitignore                   # Git ignore file (to ignore compiled files, etc.)
+   └── README.md                    # Project documentation (optional)
+   ```
+
+- `pom.xml`:
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <project xmlns="http://maven.apache.org/POM/4.0.0">
+       <groupId>com.example</groupId>
+       <artifactId>demo</artifactId>
+       <version>1.0-SNAPSHOT</version>
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-web</artifactId> <!-- Build web including RESTful, MVC, Tomcat
+           </dependency>
+           <dependency>
+			      <groupId>org.springframework.boot</groupId>
+			      <artifactId>spring-boot-devtools</artifactId>
+			      <scope>runtime</scope>
+			      <optional>true</optional>
+		     </dependency>
+       </dependencies>
+   </project>
+   ```
+   
+- `DemoApplication.java`
+   ```java
+   package com.example.demo;
+
+   import org.springframework.boot.SpringApplication;
+   import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+   @SpringBootApplication // This annotation does everything: enables auto-configuration, component scanning, etc.
+   public class DemoApplication {
+
+       public static void main(String[] args) {
+           SpringApplication.run(DemoApplication.class, args); // Starts the embedded HTTP server
+       }
+   }
+   ```
+   
+- `HelloController.java`
+   ```java
+   package com.example.demo.controller;
+
+   import org.springframework.web.bind.annotation.GetMapping;
+   import org.springframework.web.bind.annotation.RestController;
+
+   @RestController // Tells Spring Boot that this is a REST controller
+   public class HelloController {
+
+       @GetMapping("/hello") // This endpoint will handle GET requests at /hello
+       public String sayHello() {
+           return "Hello, Spring Boot!";
+       }
+   }
+   ```
+
