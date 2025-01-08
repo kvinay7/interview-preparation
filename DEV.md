@@ -422,7 +422,7 @@ Spring Boot is designed to make it easy to get started with Spring development b
 ### Maven
 Maven is a build automation tool for Java projects. It simplifies dependency management, project building, and deployment by using a Project Object Model (POM) defined in an XML file. Maven handles tasks like downloading libraries, compiling code, running tests, and packaging applications into artifacts (e.g., JARs).
    
-#### Spring Boot Project Structure
+#### Spring Application Project Structure
    ```
    my-spring-boot-app/
    ├── .mvn/                        		     	# Maven wrapper (if using Maven)
@@ -435,7 +435,6 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
    │   │   │   └── com/example/demo/  		       	# Main application package
    │   │   │       ├── DemoApplication.java  	       	# Main Spring Boot application class
    |   |   |       ├── controller/                     	# Controller layer (for handling HTTP requests)
-   |   │   |       │   └── HelloController.java        	# Example REST controller
    │   |   |       ├── service/                        	# Service layer (business logic)
    │   |   |       ├── repository/                     	# Data access layer (usually interacting with DB)
    │   |   |       ├── model/                          	# Model classes (entities, DTOs)
@@ -483,24 +482,8 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
 
        public static void main(String[] args) {
            SpringApplication.run(DemoApplication.class, args); // Starts the embedded HTTP server
+           System.out.println("Hello, Spring Boot!");
        }
    }
    ```
    
-- `HelloController.java`
-   ```java
-   package com.example.demo.controller;
-
-   import org.springframework.web.bind.annotation.GetMapping;
-   import org.springframework.web.bind.annotation.RestController;
-
-   @RestController // Tells Spring Boot that this is a REST controller
-   public class HelloController {
-
-       @GetMapping("/hello") // This endpoint will handle GET requests at /hello
-       public String sayHello() {
-           return "Hello, Spring Boot!";
-       }
-   }
-   ```
-
