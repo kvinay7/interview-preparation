@@ -2,14 +2,14 @@
 Application development is the process of designing, building, and maintaining software applications for various platforms such as web, mobile, desktop, and embedded systems. It encompasses a wide range of tasks including requirement gathering, architecture design, coding, testing, deployment, and maintenance.
 
 ### Project Plan Summary
-- Week 1: Spring Core + Spring Boot
-- Week 2: Spring JPA
-- Week 3: Spring MVC
-- Week 4: Spring REST
-- Week 5: Integration + Advanced Features
-- Week 6: Deployment
+- Phase 1: Spring Core + Spring Boot
+- Phase 2: Spring JPA
+- Phase 3: Spring MVC
+- Phase 4: Spring REST
+- Phase 5: Integration + Advanced Features
+- Phase 6: Deployment
 
-### **Phase 1: Foundations (1 Week)**  
+### **Phase 1: Foundations**  
 **Goal:** Understand the basics of Spring and Spring Boot.
 
 1. **What to Learn:**
@@ -17,21 +17,18 @@ Application development is the process of designing, building, and maintaining s
      - Dependency Injection (DI) and Inversion of Control (IoC).  
      - Bean lifecycle and configuration (`@Component`, `@Bean`, `@Configuration`).
    - **Spring Boot Basics**:
-     - Spring Boot starters, auto-configuration, and the Spring Boot CLI.
-     - Understanding `application.properties` and `application.yml`.
-     - Embedded servers (Tomcat, Jetty).
-     - Spring Boot DevTools for faster development.
+     - Spring Boot starters, auto-configuration.
+     - Understanding `application.properties`.
 
 2. **Tasks:**
    - Create a simple Spring Boot application using [Spring Initializr](https://start.spring.io/).
-   - Write a basic `@RestController` that returns a "Hello, World!" JSON response.
    - Explore how to configure and run the application.
 
-### **Phase 2: Building the Data Layer (2 Weeks)**  
+### **Phase 2: Building the Data Layer**  
 **Goal:** Learn how to use **Spring Data JPA** for database interactions.
 
 1. **What to Learn:**
-   - Setting up Spring Boot with a database (H2 for learning, MySQL/PostgreSQL for production).  
+   - Setting up Spring Boot with a database.  
    - Writing JPA entities with annotations like `@Entity`, `@Id`, and `@GeneratedValue`.  
    - Using Spring Data JPA repositories (`JpaRepository`, `CrudRepository`).  
    - Query methods (`findByName`, `findByIdAndStatus`), JPQL, and native queries.  
@@ -43,7 +40,7 @@ Application development is the process of designing, building, and maintaining s
    - Write repository methods to perform CRUD operations.
    - Use CommandLineRunner to test database operations.
 
-### **Phase 3: Building the Web Layer (2 Weeks)**  
+### **Phase 3: Building the Web Layer**  
 **Goal:** Learn **Spring MVC** and basic **Spring REST** for handling HTTP requests.
 
 1. **Week 1: Spring MVC**
@@ -67,7 +64,7 @@ Application development is the process of designing, building, and maintaining s
      - Expose REST endpoints for CRUD operations on books.
      - Write endpoints like `/books/{id}`, `/books/category/{id}`, etc.
 
-### **Phase 4: Integrating Spring MVC and REST with JPA (1 Week)**  
+### **Phase 4: Integrating Spring MVC and REST with JPA**  
 **Goal:** Combine the data layer, MVC, and REST in one application.
 
 1. **What to Learn:**
@@ -82,7 +79,7 @@ Application development is the process of designing, building, and maintaining s
      - **Repository layer**: Handles database operations.  
    - Add global exception handling for invalid inputs or resource not found errors.
 
-### **Phase 5: Advanced Features (2 Weeks)**  
+### **Phase 5: Advanced Features**  
 **Goal:** Add advanced functionality to make your app production-ready.
 
 1. **Week 1: Pagination, Sorting, and Validation**
@@ -103,7 +100,7 @@ Application development is the process of designing, building, and maintaining s
      - Add basic authentication to secure your REST endpoints.
      - Write unit and integration tests for your application.
 
-### **Phase 6: Deployment and Optimization (1 Week)**  
+### **Phase 6: Deployment and Optimization**  
 **Goal:** Learn how to deploy and optimize your application.
 
 1. **What to Learn:**
