@@ -422,7 +422,7 @@ Spring Boot is designed to make it easy to get started with Spring development b
 ### Maven
 Maven is a build automation tool for Java projects. It simplifies dependency management, project building, and deployment by using a Project Object Model (POM) defined in an XML file. Maven handles tasks like downloading libraries, compiling code, running tests, and packaging applications into artifacts (e.g., JARs).
    
-### Spring Boot Project Structure
+#### Spring Boot Project Structure
    ```
    my-spring-boot-app/
    ├── .mvn/                        		     	# Maven wrapper (if using Maven)
@@ -463,7 +463,7 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
        <dependencies>
            <dependency>
                <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-web</artifactId> <!-- Build web including RESTful, MVC, Tomcat
+               <artifactId>spring-boot-starter-web</artifactId> <!-- Build web including RESTful, MVC, Tomcat -->
            </dependency>
            <dependency>
 			      <groupId>org.springframework.boot</groupId>
