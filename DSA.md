@@ -28,8 +28,6 @@ An array is a data structure that can store fixed-size collections of elements o
     }
     ```
   - Problems:
-    - [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/description/)
-    - [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/description/)
     - [Plus One](https://leetcode.com/problems/plus-one/description/)
     - [Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer/description/)
     - [Target Array](https://leetcode.com/problems/create-target-array-in-the-given-order/description/)
