@@ -425,32 +425,32 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
 ### Spring Boot Project Structure
    ```
    my-spring-boot-app/
-   ├── .mvn/                        # Maven wrapper (if using Maven)
-   ├── mvnw                         # Maven wrapper script (if using Maven)
-   ├── mvnw.cmd                     # Maven wrapper for Windows (if using Maven)
-   ├── pom.xml                      # Maven Project Object Model (POM) file
-   ├── src/                         # Source code directory
+   ├── .mvn/                        		     	# Maven wrapper (if using Maven)
+   ├── mvnw                         		     	# Maven wrapper script (if using Maven)
+   ├── mvnw.cmd                     			# Maven wrapper for Windows (if using Maven)
+   ├── pom.xml                     			# Maven Project Object Model (POM) file
+   ├── src/                         			# Source code directory
    │   ├── main/
-   │   │   ├── java/                # Java source code
-   │   │   │   └── com/example/demo/   # Main application package
-   │   │   │       ├── DemoApplication.java  # Main Spring Boot application class
-   |   |   |       ├── controller/                     # Controller layer (for handling HTTP requests)
-   |   │   |       │   └── HelloController.java        # Example REST controller
-   │   |   |       ├── service/                        # Service layer (business logic)
-   │   |   |       ├── repository/                     # Data access layer (usually interacting with DB)
-   │   |   |       ├── model/                          # Model classes (entities, DTOs)
-   │   |   |       └── config/                         # Configuration classes (optional for custom beans)
-   │   │   ├── resources/           # Resources like application.properties, static files, templates
-   │   │   │   ├── application.properties  # Configuration properties for the application
-   │   │   │   ├── static/          # Static resources (CSS, JS, images)
-   │   │   │   └── templates/       # Template files (for Thymeleaf, etc.)
-   │   ├── test/                    # Unit and integration tests
-   │   │   ├── java/                # Test code
-   │   │   │   └── com/example/demo/   # Test classes
-   │   │   │       └── DemoApplicationTests.java  # Test class for the Spring Boot application
-   ├── target/                      # Compiled classes and packaged artifacts (JAR/WAR)
-   ├── .gitignore                   # Git ignore file (to ignore compiled files, etc.)
-   └── README.md                    # Project documentation (optional)
+   │   │   ├── java/                			# Java source code
+   │   │   │   └── com/example/demo/  		       	# Main application package
+   │   │   │       ├── DemoApplication.java  	       	# Main Spring Boot application class
+   |   |   |       ├── controller/                     	# Controller layer (for handling HTTP requests)
+   |   │   |       │   └── HelloController.java        	# Example REST controller
+   │   |   |       ├── service/                        	# Service layer (business logic)
+   │   |   |       ├── repository/                     	# Data access layer (usually interacting with DB)
+   │   |   |       ├── model/                          	# Model classes (entities, DTOs)
+   │   |   |       └── config/                         	# Configuration classes (optional for custom beans)
+   │   │   ├── resources/           			# Resources like application.properties, static files, templates
+   │   │   │   ├── application.properties  		# Configuration properties for the application
+   │   │   │   ├── static/          			# Static resources (CSS, JS, images)
+   │   │   │   └── templates/       			# Template files (for Thymeleaf, etc.)
+   │   ├── test/                    			# Unit and integration tests
+   │   │   ├── java/                			# Test code
+   │   │   │   └── com/example/demo/   			# Test classes
+   │   │   │       └── DemoApplicationTests.java  	# Test class for the Spring Boot application
+   ├── target/                      			# Compiled classes and packaged artifacts (JAR/WAR)
+   ├── .gitignore                   			# Git ignore file (to ignore compiled files, etc.)
+   └── README.md                    			# Project documentation (optional)
    ```
 
 - `pom.xml`:
