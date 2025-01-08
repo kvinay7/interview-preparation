@@ -429,7 +429,7 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
    └── README.md                    			# Project documentation (optional)
    ```
 
-#### Sample Spring Boot application: [Spring Initializr](https://start.spring.io/)
+#### Spring Boot application: [Spring Initializr](https://start.spring.io/)
 
 - `pom.xml`: 
    ```xml
