@@ -47,6 +47,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [2Sum Count](https://www.geeksforgeeks.org/problems/pair-with-given-sum-in-a-sorted-array4940/1)
     - [3Sum Count](https://www.geeksforgeeks.org/problems/count-all-triplets-with-given-sum-in-sorted-array/1)
     - [Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/description/)
+    - [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
   
   - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c):
     - [Max Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
