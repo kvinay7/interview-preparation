@@ -69,7 +69,6 @@ An array is a data structure that can store fixed-size collections of elements o
     jaggedArray[2] = new int[4];  // Row 2 has 4 elements
    ```
   - Matrix:
-    - [Multiply Matrices](https://www.geeksforgeeks.org/problems/multiply-matrices/1)
     - [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/description/)
     - [Transpose Matrix (m*n)](https://leetcode.com/problems/transpose-matrix/description/)
     - [Transpose Matrix (n*n)](https://www.geeksforgeeks.org/problems/transpose-of-matrix-1587115621/1)
@@ -79,6 +78,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Spiral Matrix - I](https://leetcode.com/problems/spiral-matrix/description/)
     - [Spiral Matrix - III](https://leetcode.com/problems/spiral-matrix-iii/description/)
     - [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
+    - [Find Valid Matrix](https://leetcode.com/problems/find-valid-matrix-given-row-and-column-sums/description/)
 
   - Intervals:
     - [Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
