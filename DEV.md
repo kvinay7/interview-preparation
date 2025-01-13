@@ -21,7 +21,7 @@ Application development is the process of designing, building, and maintaining s
      - Understanding `application.properties`.
 
 2. **Tasks:**
-   - Create a simple Spring Boot application using [Spring Initializr](https://start.spring.io/).
+   - Create a simple Spring Boot application.
    - Explore how to configure and run the application.
 
 ### **Phase 2: Building the Data Layer** - [JDBC](https://github.com/RameshMF/JDBC-Tutorial)
