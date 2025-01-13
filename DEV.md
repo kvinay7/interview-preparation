@@ -24,8 +24,8 @@ Application development is the process of designing, building, and maintaining s
    - Create a simple Spring Boot application using [Spring Initializr](https://start.spring.io/).
    - Explore how to configure and run the application.
 
-### **Phase 2: Building the Data Layer**  
-**Goal:** Learn how to use **Spring Data JPA** for database interactions.
+### **Phase 2: Building the Data Layer** - [JDBC](https://github.com/RameshMF/JDBC-Tutorial)
+**Goal:** Learn how to use **Spring Data JPA** for database interactions. 
 
 1. **What to Learn:**
    - Setting up Spring Boot with a database.  
