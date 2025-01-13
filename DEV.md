@@ -25,7 +25,7 @@ Application development is the process of designing, building, and maintaining s
    - Explore how to configure and run the application.
 
 ### **Phase 2: Building the Data Layer** - [JDBC](https://github.com/RameshMF/JDBC-Tutorial)
-**Goal:** Learn how to use **Spring Data JPA** for database interactions. 
+**Goal:** Learn how to use **[Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically)** for database interactions. 
 
 1. **What to Learn:**
    - Setting up Spring Boot with a database.  
