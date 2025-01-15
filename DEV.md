@@ -1,121 +1,6 @@
 # Application Development
 Application development is the process of designing, building, and maintaining software applications for various platforms such as web, mobile, desktop, and embedded systems. It encompasses a wide range of tasks including requirement gathering, architecture design, coding, testing, deployment, and maintenance.
 
-### Project Plan Summary
-- Phase 1: Spring Core + Spring Boot
-- Phase 2: Spring JPA
-- Phase 3: Spring MVC
-- Phase 4: Spring REST
-- Phase 5: Integration + Advanced Features
-- Phase 6: Deployment
-
-### **Phase 1: Foundations**  
-**Goal:** Understand the basics of Spring and Spring Boot.
-
-1. **What to Learn:**
-   - **Spring Core Concepts**:
-     - Dependency Injection (DI) and Inversion of Control (IoC).  
-     - Bean lifecycle and configuration (`@Component`, `@Bean`, `@Configuration`).
-   - **Spring Boot Basics**:
-     - Spring Boot starters, auto-configuration.
-     - Understanding `application.properties`.
-
-2. **Tasks:**
-   - Create a simple Spring Boot application.
-   - Explore how to configure and run the application.
-
-### **Phase 2: Building the Data Layer** -
-**Goal:** Learn how to use **Spring Data JPA** for database interactions. 
-
-1. **What to Learn:**
-   - Setting up Spring Boot with a database.  
-   - Writing JPA entities with annotations like `@Entity`, `@Id`, and `@GeneratedValue`.  
-   - Using Spring Data JPA repositories (`JpaRepository`, `CrudRepository`).  
-   - Query methods (`findByName`, `findByIdAndStatus`), JPQL, and native queries.  
-
-2. **Tasks:**
-   - Create an application for managing **Books**:
-     - Define entities like `Book`, `Author`, and `Category`.
-     - Set up relationships (One-to-Many and Many-to-One).
-   - Write repository methods to perform CRUD operations.
-   - Use CommandLineRunner to test database operations.
-
-### **Phase 3: Building the Web Layer**  
-**Goal:** Learn **Spring MVC** and basic **Spring REST** for handling HTTP requests.
-
-1. **Week 1: Spring MVC**
-   - **What to Learn:**
-     - Controllers (`@Controller`, `@RequestMapping`, `@GetMapping`, etc.).
-     - Model and View (`Model`, `ModelAndView`).
-     - View templates with **Thymeleaf**.
-     - Form handling and validation (`@Valid`, `BindingResult`).
-   - **Tasks:**
-     - Build a web page to display all books (connect to the database via JPA).
-     - Add a form to create a new book and validate user input.
-
-2. **Week 2: Spring REST**
-   - **What to Learn:**
-     - REST controllers (`@RestController`).
-     - Serving JSON/XML responses.
-     - Handling request parameters and path variables (`@RequestParam`, `@PathVariable`).
-     - HTTP methods (`GET`, `POST`, `PUT`, `DELETE`).
-     - Testing REST APIs with Postman or cURL.
-   - **Tasks:**
-     - Expose REST endpoints for CRUD operations on books.
-     - Write endpoints like `/books/{id}`, `/books/category/{id}`, etc.
-
-### **Phase 4: Integrating Spring MVC and REST with JPA**  
-**Goal:** Combine the data layer, MVC, and REST in one application.
-
-1. **What to Learn:**
-   - Service layer: Writing business logic in a service class (`@Service`).  
-   - Controller-Service-Repository pattern.  
-   - Error handling using `@ControllerAdvice` and `@ExceptionHandler`.  
-
-2. **Tasks:**
-   - Refactor the project to use a **three-layer architecture**:
-     - **Controller layer**: Handles requests (REST and MVC).  
-     - **Service layer**: Contains business logic.  
-     - **Repository layer**: Handles database operations.  
-   - Add global exception handling for invalid inputs or resource not found errors.
-
-### **Phase 5: Advanced Features**  
-**Goal:** Add advanced functionality to make your app production-ready.
-
-1. **Week 1: Pagination, Sorting, and Validation**
-   - **What to Learn:**
-     - Pagination and sorting with `Pageable` and `Sort`.
-     - Validating input data (`@NotNull`, `@Size`, etc.).
-     - Custom validation annotations.
-   - **Tasks:**
-     - Add pagination and sorting to your REST API (e.g., `/books?page=0&size=10&sort=title`).
-     - Implement input validation for adding/editing books.
-
-2. **Week 2: Security and Testing**
-   - **What to Learn:**
-     - Securing your app with **Spring Security** (basic authentication).
-     - Writing unit tests for services and controllers using JUnit and Mockito.
-     - Testing REST APIs with Spring Boot Test (`MockMvc`).
-   - **Tasks:**
-     - Add basic authentication to secure your REST endpoints.
-     - Write unit and integration tests for your application.
-
-### **Phase 6: Deployment and Optimization**  
-**Goal:** Learn how to deploy and optimize your application.
-
-1. **What to Learn:**
-   - Using Spring Profiles to manage different environments (e.g., `dev`, `prod`).
-   - Externalizing configuration (e.g., database credentials).
-   - Deploying the app to AWS, Heroku, or Azure.
-   - Monitoring with Spring Actuator.
-
-2. **Tasks:**
-   - Configure your app for production (e.g., PostgreSQL database, caching).
-   - Deploy your app to a cloud platform.
-   - Test live endpoints using Postman.
-
----
-
 ## Spring Framework
 The Spring Framework is a comprehensive and modular framework for building Java-based enterprise applications. It's designed to simplify development by providing a wide range of features, making it one of the most popular frameworks in the Java ecosystem.
 
@@ -428,3 +313,77 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
 ---
 
 ## Spring ORM: [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
+
+### **Phase 1: Building the Web Layer**  
+**Goal:** Learn **Spring MVC** and basic **Spring REST** for handling HTTP requests.
+
+1. **Week 1: Spring MVC**
+   - **What to Learn:**
+     - Controllers (`@Controller`, `@RequestMapping`, `@GetMapping`, etc.).
+     - Model and View (`Model`, `ModelAndView`).
+     - View templates with **Thymeleaf**.
+     - Form handling and validation (`@Valid`, `BindingResult`).
+   - **Tasks:**
+     - Build a web page to display all books (connect to the database via JPA).
+     - Add a form to create a new book and validate user input.
+
+2. **Week 2: Spring REST**
+   - **What to Learn:**
+     - REST controllers (`@RestController`).
+     - Serving JSON/XML responses.
+     - Handling request parameters and path variables (`@RequestParam`, `@PathVariable`).
+     - HTTP methods (`GET`, `POST`, `PUT`, `DELETE`).
+     - Testing REST APIs with Postman or cURL.
+   - **Tasks:**
+     - Expose REST endpoints for CRUD operations on books.
+     - Write endpoints like `/books/{id}`, `/books/category/{id}`, etc.
+
+### **Phase 2: Integrating Spring MVC and REST with JPA**  
+**Goal:** Combine the data layer, MVC, and REST in one application.
+
+1. **What to Learn:**
+   - Service layer: Writing business logic in a service class (`@Service`).  
+   - Controller-Service-Repository pattern.  
+   - Error handling using `@ControllerAdvice` and `@ExceptionHandler`.  
+
+2. **Tasks:**
+   - Refactor the project to use a **three-layer architecture**:
+     - **Controller layer**: Handles requests (REST and MVC).  
+     - **Service layer**: Contains business logic.  
+     - **Repository layer**: Handles database operations.  
+   - Add global exception handling for invalid inputs or resource not found errors.
+
+### **Phase 3: Advanced Features**  
+**Goal:** Add advanced functionality to make your app production-ready.
+
+1. **Week 1: Pagination, Sorting, and Validation**
+   - **What to Learn:**
+     - Pagination and sorting with `Pageable` and `Sort`.
+     - Validating input data (`@NotNull`, `@Size`, etc.).
+     - Custom validation annotations.
+   - **Tasks:**
+     - Add pagination and sorting to your REST API (e.g., `/books?page=0&size=10&sort=title`).
+     - Implement input validation for adding/editing books.
+
+2. **Week 2: Security and Testing**
+   - **What to Learn:**
+     - Securing your app with **Spring Security** (basic authentication).
+     - Writing unit tests for services and controllers using JUnit and Mockito.
+     - Testing REST APIs with Spring Boot Test (`MockMvc`).
+   - **Tasks:**
+     - Add basic authentication to secure your REST endpoints.
+     - Write unit and integration tests for your application.
+
+### **Phase 4: Deployment and Optimization**  
+**Goal:** Learn how to deploy and optimize your application.
+
+1. **What to Learn:**
+   - Using Spring Profiles to manage different environments (e.g., `dev`, `prod`).
+   - Externalizing configuration (e.g., database credentials).
+   - Deploying the app to AWS, Heroku, or Azure.
+   - Monitoring with Spring Actuator.
+
+2. **Tasks:**
+   - Configure your app for production (e.g., PostgreSQL database, caching).
+   - Deploy your app to a cloud platform.
+   - Test live endpoints using Postman.
