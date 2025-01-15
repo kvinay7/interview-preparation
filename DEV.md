@@ -427,4 +427,4 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
    ```
 ---
 
-## Spring ORM: [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [JPA Mappings](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/09-spring-boot-jpa-advanced-mappings)
+## Spring ORM: [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [JPA Mappings](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/09-spring-boot-jpa-advanced-mappings), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
