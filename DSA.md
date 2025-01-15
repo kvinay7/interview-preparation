@@ -49,7 +49,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/description/)
     - [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
   
-  - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c):
+  - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
     - [Max Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
     - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
     - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
@@ -61,7 +61,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Best Sightseeing Pair](https://leetcode.com/problems/best-sightseeing-pair/description/)
     - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 
-  - [Prefix Sum](https://leetcode.com/problems/running-sum-of-1d-array/description/):
+  - [Prefix Sum](https://leetcode.com/problems/running-sum-of-1d-array/description/)
     - [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)
     - [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/description/)
     - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
