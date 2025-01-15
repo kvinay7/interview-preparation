@@ -396,7 +396,7 @@ Spring Boot is designed to make it easy to get started with Spring development b
 ### Maven
 Maven is a build automation tool for Java projects. It simplifies dependency management, project building, and deployment by using a Project Object Model (POM) defined in an XML file. Maven handles tasks like downloading libraries, compiling code, running tests, and packaging applications into artifacts (e.g., JARs).
    
-#### Spring Application Project Structure:
+#### Spring Application Project Structure: [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/01-spring-boot-overview/01-spring-boot-demo)
    ```
    my-spring-boot-app/
    ├── .mvn/                        		     	# Maven wrapper (if using Maven)
@@ -425,37 +425,6 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
    ├── .gitignore                   			# Git ignore file (to ignore compiled files, etc.)
    └── README.md                    			# Project documentation (optional)
    ```
+---
 
-#### Spring Boot application: [Spring Initializr](https://start.spring.io/), [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically)
-
-- `pom.xml` : 
-   ```xml
-   <?xml version="1.0" encoding="UTF-8"?>
-   <project xmlns="http://maven.apache.org/POM/4.0.0">
-       <groupId>com.example</groupId>
-       <artifactId>demo</artifactId>
-       <version>1.0-SNAPSHOT</version>
-       <dependencies>
-           <dependency>
-   		<groupId>org.springframework.boot</groupId>
-   		<artifactId>spring-boot-starter-web</artifactId> <!-- Build web including RESTful, MVC, Tomcat -->
-           </dependency>
-       </dependencies>
-   </project>
-   ```
-   
-- `DemoApplication.java` :
-   ```java
-   package com.example.demo;
-
-   import org.springframework.boot.SpringApplication;
-   import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-   @SpringBootApplication // This annotation does everything: enables auto-configuration, component scanning, etc.
-   public class DemoApplication {
-       public static void main(String[] args) {
-           SpringApplication.run(DemoApplication.class, args); // Starts the embedded HTTP server
-           System.out.println("Hello, Spring Boot!");
-       }
-   }
-   ```
+## Spring ORM: [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically)
