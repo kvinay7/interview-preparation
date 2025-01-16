@@ -49,19 +49,20 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/description/)
     - [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
   
-  - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
-    - [Max Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/)
+  - Sliding Window:
+    - [Maximum Average Subarray](https://leetcode.com/problems/maximum-average-subarray-i/description/)
+    - [Max No of Vowels in a Substring](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/description/?envType=study-plan-v2&envId=leetcode-75)
     - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
     - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
     - [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/)
-    - [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)
     - [Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray/description/)
+    - [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)
+    - [Best Sightseeing Pair](https://leetcode.com/problems/best-sightseeing-pair/description/)
     - [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/description/)
     - [Longest Subarray of 1's After Deleting One Element](https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description/)
-    - [Best Sightseeing Pair](https://leetcode.com/problems/best-sightseeing-pair/description/)
-    - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
-
-  - [Prefix Sum](https://leetcode.com/problems/running-sum-of-1d-array/description/)
+    
+  - Prefix Sum:
+    - [Running Sum](https://leetcode.com/problems/running-sum-of-1d-array/description/)
     - [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)
     - [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/description/)
     - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
@@ -140,3 +141,4 @@ Load Factor is the ratio of the number of elements in the hash table to the size
     - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
     - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
+    - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
