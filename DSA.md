@@ -141,3 +141,4 @@ Load Factor is the ratio of the number of elements in the hash table to the size
     - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Subarray Sums Divisible by K](https://leetcode.com/problems/subarray-sums-divisible-by-k/description/)
     - [Longest Subarray with Sum K](https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1)
+    - [Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
