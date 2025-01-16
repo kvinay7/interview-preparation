@@ -66,10 +66,6 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)
     - [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/description/)
     - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
-    - [Longest Subarray with Sum K](https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1)
-    - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
-    - [Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum/description/)
-    - [Subarray Sums Divisible by K](https://leetcode.com/problems/subarray-sums-divisible-by-k/description/)
 
   - Multidimensional Arrays: If the innner arrays of lengths are not equal then they're known as a jagged array or a non-rectangular array.
   ```java
@@ -138,7 +134,10 @@ Load Factor is the ratio of the number of elements in the hash table to the size
 
   - Problems:
     - [Count pairs with given sum](https://www.geeksforgeeks.org/problems/count-pairs-with-given-sum--150253/1)
-    - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
-    - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
+    - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
     - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+    - [Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum/description/)
+    - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
+    - [Subarray Sums Divisible by K](https://leetcode.com/problems/subarray-sums-divisible-by-k/description/)
+    - [Longest Subarray with Sum K](https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1)
