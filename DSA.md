@@ -133,13 +133,11 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
 
   - Problems:
-    - [Count pairs with given sum](https://www.geeksforgeeks.org/problems/count-pairs-with-given-sum--150253/1)
     - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
-    - [4 Sum – Count quadruplets](https://www.geeksforgeeks.org/problems/count-quadruplets-with-given-sum/1)
-    - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
-    - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
-    - [Group Shifted String](https://www.geeksforgeeks.org/problems/group-shifted-string/1)
+    - [4 Sum - Distinct quadruples](https://www.geeksforgeeks.org/problems/find-all-four-sum-numbers1732/1)
+    - [4 Sum – Count quadruples](https://www.geeksforgeeks.org/problems/count-quadruplets-with-given-sum/1)
     - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Subarray Sums Divisible by K](https://leetcode.com/problems/subarray-sums-divisible-by-k/description/)
     - [Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum/description/)
     - [Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
+    - [Group Shifted String](https://www.geeksforgeeks.org/problems/group-shifted-string/1)
