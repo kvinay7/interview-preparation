@@ -40,6 +40,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
   
   - [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
+    - [Merge Without Extra Space](https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1)
     - [Remove Element](https://leetcode.com/problems/remove-element/description/)
     - [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/)
     - [2Sum in RSA](https://www.geeksforgeeks.org/problems/pair-sum-in-a-sorted-and-rotated-array/1)
@@ -134,12 +135,13 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
 
   - Problems:
-    - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
     - [4 Sum - Distinct quadruples](https://www.geeksforgeeks.org/problems/find-all-four-sum-numbers1732/1)
     - [4 Sum – All quadruples](https://www.geeksforgeeks.org/problems/count-quadruplets-with-given-sum/1)
+    - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
     - [Subarrays with K Different Integers](https://leetcode.com/problems/subarrays-with-k-different-integers/description/)
     - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Subarray Sums Divisible by K](https://leetcode.com/problems/subarray-sums-divisible-by-k/description/)
     - [Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum/description/)
     - [Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
+    - [Split Array into Consecutive Subsequences](https://leetcode.com/problems/split-array-into-consecutive-subsequences/description/)
     - [Group Shifted String](https://www.geeksforgeeks.org/problems/group-shifted-string/1)
