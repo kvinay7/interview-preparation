@@ -42,7 +42,7 @@ An array is a data structure that can store fixed-size collections of elements o
   - [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
     - [Remove Element](https://leetcode.com/problems/remove-element/description/)
     - [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/)
-    - [Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/description/)
+    - [2Sum in RSA](https://www.geeksforgeeks.org/problems/pair-sum-in-a-sorted-and-rotated-array/1)
     - [2Sum closest](https://www.geeksforgeeks.org/problems/pair-in-array-whose-sum-is-closest-to-x1124/0)
     - [2Sum Count](https://www.geeksforgeeks.org/problems/pair-with-given-sum-in-a-sorted-array4940/1)
     - [3Sum Count](https://www.geeksforgeeks.org/problems/count-all-triplets-with-given-sum-in-sorted-array/1)
