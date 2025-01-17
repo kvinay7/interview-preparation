@@ -38,7 +38,9 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Stock Problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solutions/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems/)
     - [Majority Element](https://leetcode.com/problems/majority-element/description/)
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
-  
+
+  - [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
+    
   - Two Pointers:
     - [Merge Without Extra Space](https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1)
     - [Remove Element](https://leetcode.com/problems/remove-element/description/)
