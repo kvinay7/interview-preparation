@@ -147,6 +147,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
     - [Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
     - [Split Array into Consecutive Subsequences](https://leetcode.com/problems/split-array-into-consecutive-subsequences/description/)
     - [Group Shifted String](https://www.geeksforgeeks.org/problems/group-shifted-string/1)
+---
 
-## [Topic-Wise Problems](https://algomaster.io/practice/dsa-patterns)
-## [Random DSA Problems](https://drive.google.com/file/d/1Rs9Ku9ptyyo2WjRJl8eXJ9YXnJPIpCr3/view?pli=1)
+## [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
+## [Random-wise Problems](https://drive.google.com/file/d/1Rs9Ku9ptyyo2WjRJl8eXJ9YXnJPIpCr3/view?pli=1)
