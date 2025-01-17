@@ -137,6 +137,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
     - [Count Subarrays with given XOR](https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1)
     - [4 Sum - Distinct quadruples](https://www.geeksforgeeks.org/problems/find-all-four-sum-numbers1732/1)
     - [4 Sum – All quadruples](https://www.geeksforgeeks.org/problems/count-quadruplets-with-given-sum/1)
+    - [Subarrays with K Different Integers](https://leetcode.com/problems/subarrays-with-k-different-integers/description/)
     - [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
     - [Subarray Sums Divisible by K](https://leetcode.com/problems/subarray-sums-divisible-by-k/description/)
     - [Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum/description/)
