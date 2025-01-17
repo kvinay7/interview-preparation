@@ -84,7 +84,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Clockwise Rotate](https://leetcode.com/problems/rotate-image/description/)
     - [Anti-Clockwise Rotate](https://www.geeksforgeeks.org/problems/rotate-by-90-degree-1587115621/1)
     - [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/description/)
-    - [Spiral Matrix - I](https://leetcode.com/problems/spiral-matrix/description/)
+    - [Game of Life](https://leetcode.com/problems/game-of-life/description/)
     - [Spiral Matrix - III](https://leetcode.com/problems/spiral-matrix-iii/description/)
     - [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
     - [Find Valid Matrix](https://leetcode.com/problems/find-valid-matrix-given-row-and-column-sums/description/)
