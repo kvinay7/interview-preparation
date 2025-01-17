@@ -51,7 +51,6 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
   
   - Sliding Window:
-    - [Maximum Average Subarray](https://leetcode.com/problems/maximum-average-subarray-i/description/)
     - [Max No of Vowels in a Substring](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/description/?envType=study-plan-v2&envId=leetcode-75)
     - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
     - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
@@ -61,6 +60,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Best Sightseeing Pair](https://leetcode.com/problems/best-sightseeing-pair/description/)
     - [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/description/)
     - [Longest Subarray of 1's After Deleting One Element](https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description/)
+    - [Minimum Removals for Target Sum](https://www.geeksforgeeks.org/problems/minimum-removals-for-target-sum/1)
     
   - Prefix Sum:
     - [Running Sum](https://leetcode.com/problems/running-sum-of-1d-array/description/)
