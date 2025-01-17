@@ -150,4 +150,4 @@ Load Factor is the ratio of the number of elements in the hash table to the size
 ---
 
 ## [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
-## [Random-wise Problems](https://drive.google.com/file/d/1Rs9Ku9ptyyo2WjRJl8eXJ9YXnJPIpCr3/view?pli=1)
+## [Random-wise Problems](https://drive.google.com/file/d/1H6gnAtlRZPuOiNq-s-0F9BSkFTsnPJHO/view)
