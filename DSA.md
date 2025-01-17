@@ -67,6 +67,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Running Sum](https://leetcode.com/problems/running-sum-of-1d-array/description/)
     - [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)
     - [Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/description/)
+    - [Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/description/)
     - [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)
 
   - Multidimensional Arrays: If the innner arrays of lengths are not equal then they're known as a jagged array or a non-rectangular array.
@@ -93,7 +94,8 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Insert Interval](https://leetcode.com/problems/insert-interval/description/)
     - [Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
     - [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
-
+    - [Max No of Events to Attend](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/description/)
+      
 ## Strings:
 A String is an object that represents a sequence of 16-bit unicode characters.
 
