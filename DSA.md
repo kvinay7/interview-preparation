@@ -39,7 +39,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
     - [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
     
-  - Two Pointers:
+  - [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
     - [Merge Without Extra Space](https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1)
     - [Remove Element](https://leetcode.com/problems/remove-element/description/)
     - [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/)
@@ -51,7 +51,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/description/)
     - [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
   
-  - Sliding Window:
+  - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
     - [Max No of Vowels in a Substring](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/description/?envType=study-plan-v2&envId=leetcode-75)
     - [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
     - [Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
