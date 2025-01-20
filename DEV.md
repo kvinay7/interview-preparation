@@ -314,44 +314,139 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
 
 ### Spring ORM: [Hibernate](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
 
-### **Phase 1: Building the Web Layer**  
-**Goal:** Learn **Spring MVC** and basic **Spring REST** for handling HTTP requests.
+---
+## [Spring MVC](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
+Spring MVC (Model-View-Controller) is a powerful framework within the Spring ecosystem designed to build robust and scalable web applications.
 
-1. **Week 1: Spring MVC**
-   - **What to Learn:**
-     - Controllers (`@Controller`, `@RequestMapping`, `@GetMapping`, etc.).
-     - Model and View (`Model`, `ModelAndView`).
-     - View templates with **Thymeleaf**.
-     - Form handling and validation (`@Valid`, `BindingResult`).
-   - **Tasks:**
-     - Build a web page to display all books (connect to the database via JPA).
-     - Add a form to create a new book and validate user input.
+### 1. **Model-View-Controller (MVC) Pattern**
+- **Model**: Represents the application's data and business logic. It is often backed by service and persistence layers.
+- **View**: The presentation layer that displays data from the model to the user. It can use technologies like JSP, Thymeleaf, or other templating engines.
+- **Controller**: Handles user input, processes requests, interacts with the model, and determines which view to render.
 
-2. **Week 2: Spring REST**
-   - **What to Learn:**
-     - REST controllers (`@RestController`).
-     - Serving JSON/XML responses.
-     - Handling request parameters and path variables (`@RequestParam`, `@PathVariable`).
-     - HTTP methods (`GET`, `POST`, `PUT`, `DELETE`).
-     - Testing REST APIs with Postman or cURL.
-   - **Tasks:**
-     - Expose REST endpoints for CRUD operations on books.
-     - Write endpoints like `/books/{id}`, `/books/category/{id}`, etc.
+### 2. **[DispatcherServlet](https://www.javaguides.net/2020/07/how-spring-mvc-works-internally.html)**
+- **Central Controller**: Acts as the front controller in the Spring MVC architecture.
+- **Request Handling**: Delegates requests to appropriate handlers (controllers).
+- **Key Tasks**:
+  - Receives HTTP requests.
+  - Maps requests to the corresponding controller based on configurations.
+  - Selects the appropriate view for the response.
 
-### **Phase 2: Integrating Spring MVC and REST with JPA**  
-**Goal:** Combine the data layer, MVC, and REST in one application.
+### 3. **Handler Mapping**
+- Responsible for mapping incoming HTTP requests to the appropriate handler methods in controllers.
+- Examples of handler mappings: `@RequestMapping` or `@GetMapping`.
+    
+### 4. **Controller**
+- Annotated with `@Controller` or `@RestController` to define web request handlers.
+- Defines handler methods to process incoming HTTP requests.
+- Example:
+  ```java
+  @Controller
+  public class MyController {
+      @GetMapping("/welcome")
+      public String showWelcomePage() {
+          return "welcome"; // View name
+      }
+  }
+  ```
 
-1. **What to Learn:**
-   - Service layer: Writing business logic in a service class (`@Service`).  
-   - Controller-Service-Repository pattern.  
-   - Error handling using `@ControllerAdvice` and `@ExceptionHandler`.  
+### 5. **View Resolver**
+- Responsible for resolving the logical view name returned by a controller into an actual view.
+- Example:
+  - **InternalResourceViewResolver** maps logical view names to JSP files in a specific directory.
+  ```java
+  @Bean
+  public InternalResourceViewResolver viewResolver() {
+      InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+      resolver.setPrefix("/WEB-INF/views/");
+      resolver.setSuffix(".jsp");
+      return resolver;
+  }
+  ```
 
-2. **Tasks:**
-   - Refactor the project to use a **three-layer architecture**:
-     - **Controller layer**: Handles requests (REST and MVC).  
-     - **Service layer**: Contains business logic.  
-     - **Repository layer**: Handles database operations.  
-   - Add global exception handling for invalid inputs or resource not found errors.
+### 6. **Model and ModelMap**
+- Used to pass data from controllers to the view.
+- `Model` or `ModelMap` objects allow adding attributes:
+  ```java
+  @GetMapping("/greet")
+  public String greet(Model model) {
+      model.addAttribute("message", "Hello, Spring MVC!");
+      return "greet"; // Logical view name
+  }
+  ```
+  
+### 7. **Interceptors/Filters**
+- Allow pre- and post-processing of requests.
+- Configure interceptors by implementing `HandlerInterceptor` or extending `HandlerInterceptorAdapter`.
+
+### 8. **Spring MVC Configuration**
+- Configured using:
+  - **XML-based**: Configuration in `web.xml` and Spring beans in XML files.
+  - **Java-based**: Using `@Configuration` and `@EnableWebMvc`.
+
+### 9. **Annotations in Spring MVC**
+- **@Controller**: Marks a class as a web controller.
+- **@RequestMapping**: Maps web requests to handler methods or classes.
+- **@GetMapping, @PostMapping, @PutMapping, @DeleteMapping**: Shortcut annotations for HTTP methods.
+- **@RestController**: Combines `@Controller` and `@ResponseBody`.
+- **@ResponseBody**: Directly returns data (e.g., JSON or XML) instead of a view.
+
+### 10. **Request and Response Handling**
+- **@RequestParam**: Extract query parameters from the request.
+  ```java
+  @GetMapping("/search")
+  public String search(@RequestParam("query") String query, Model model) {
+      model.addAttribute("result", "You searched for: " + query);
+      return "result";
+  }
+  ```
+- **@PathVariable**: Extract values from URI templates.
+  ```java
+  @GetMapping("/user/{id}")
+  public String getUser(@PathVariable("id") int userId, Model model) {
+      model.addAttribute("user", userService.getUserById(userId));
+      return "userDetails";
+  }
+  ```
+
+### 11. **Form Handling**
+- Spring MVC provides features to handle forms.
+- Use `@ModelAttribute` to bind form data to an object.
+  ```java
+  @PostMapping("/submit")
+  public String submitForm(@ModelAttribute("user") User user, Model model) {
+      // Process form data
+      model.addAttribute("message", "Form submitted successfully!");
+      return "result";
+  }
+  ```
+
+### 12. **Exception Handling**
+- Global exception handling using `@ControllerAdvice`.
+  ```java
+  @ControllerAdvice
+  public class GlobalExceptionHandler {
+      @ExceptionHandler(Exception.class)
+      public String handleException(Exception ex, Model model) {
+          model.addAttribute("error", ex.getMessage());
+          return "error";
+      }
+  }
+  ```
+
+### 13. **[RESTful Web Services](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/04-spring-boot-rest-crud/14-spring-boot-rest-crud-employee-with-spring-data-jpa)**
+- With `@RestController` and Jackson library, Spring MVC makes it easy to build REST APIs.
+- Example:
+  ```java
+  @RestController
+  @RequestMapping("/api")
+  public class ApiController {
+      @GetMapping("/data")
+      public List<String> getData() {
+          return Arrays.asList("Item1", "Item2", "Item3");
+      }
+  }
+  ```
+---
 
 ### **Phase 3: Advanced Features**  
 **Goal:** Add advanced functionality to make your app production-ready.
