@@ -320,13 +320,7 @@ Spring ORM integrates with popular ORM frameworks, including:
 - **Java Persistence API (JPA)**: A standard API for ORM.
 - **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager,...
 
-### 2. **Key Features**
-- Simplifies the configuration of ORM frameworks using Spring's Dependency Injection (DI).
-- Provides utility classes for simplifying ORM-specific tasks like exception handling and resource management.
-- Manages transactions programmatically or declaratively.
-- Supports declarative transaction management via `@Transactional` annotation or XML configurations.
-
-### 3. **Spring ORM with Hibernate Example**
+### 2. **Spring ORM with Hibernate Example**
 ```java
 @Configuration
 @EnableTransactionManagement
@@ -369,7 +363,7 @@ public class AppConfig {
 }
 ```
 
-### 4. **[Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)**
+### 3. **[Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)**
 ---
 
 ## [Spring MVC](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
