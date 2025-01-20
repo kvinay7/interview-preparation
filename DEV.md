@@ -371,8 +371,8 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
 - **View**: The presentation layer that displays data from the model to the user. It can use technologies like JSP, Thymeleaf, or other templating engines.
 - **Controller**: Handles user input, processes requests, interacts with the model, and determines which view to render.
 
-### 2. **[DispatcherServlet](https://www.javaguides.net/2020/07/how-spring-mvc-works-internally.html)**
-- **Central Controller**: Acts as the front controller in the Spring MVC architecture.
+### 2. **DispatcherServlet**
+- **[Central Controller](https://www.javaguides.net/2020/07/how-spring-mvc-works-internally.html)**: Acts as the front controller in the Spring MVC architecture.
 - **Request Handling**: Delegates requests to appropriate handlers (controllers).
 - **Key Tasks**:
   - Receives HTTP requests.
@@ -481,19 +481,9 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   }
   ```
 
-### 13. **[RESTful Web Services](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/04-spring-boot-rest-crud/14-spring-boot-rest-crud-employee-with-spring-data-jpa)**
+### 13. **RESTful Web Services**
 - With `@RestController` and Jackson library, Spring MVC makes it easy to build REST APIs.
-- Example:
-  ```java
-  @RestController
-  @RequestMapping("/api")
-  public class ApiController {
-      @GetMapping("/data")
-      public List<String> getData() {
-          return Arrays.asList("Item1", "Item2", "Item3");
-      }
-  }
-  ```
+- [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/04-spring-boot-rest-crud/14-spring-boot-rest-crud-employee-with-spring-data-jpa)
 ---
 
 ### **Phase 3: Advanced Features**  
