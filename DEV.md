@@ -316,7 +316,6 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
 Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as Hibernate and JPA with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
 
 ### 1. **Integration with ORM Frameworks**
-Spring ORM integrates with popular ORM frameworks, including:
 - **Java Persistence API (JPA)**: A standard API for ORM.
 - **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager,...
 
