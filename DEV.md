@@ -374,7 +374,7 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   }
   ```
   
-### 7. **Interceptors/Filters**
+### 7. **Interceptors**
 - Allow pre- and post-processing of requests.
 - Configure interceptors by implementing `HandlerInterceptor` or extending `HandlerInterceptorAdapter`.
 
