@@ -312,7 +312,7 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
    ```
 ---
 
-### Spring ORM:
+## Spring ORM:
 Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as Hibernate, JPA, and JDO with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
 
 ### 1. **Integration with ORM Frameworks**
