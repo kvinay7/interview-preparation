@@ -313,121 +313,20 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
 ---
 
 ## Spring ORM:
-Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as Hibernate, JPA, and JDO with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
+Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as Hibernate and JPA with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
 
 ### 1. **Integration with ORM Frameworks**
 Spring ORM integrates with popular ORM frameworks, including:
-- **Hibernate**: A widely used ORM framework.
 - **Java Persistence API (JPA)**: A standard API for ORM.
-- **Java Data Objects (JDO)**: Another ORM standard (less commonly used).
+- **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager,...
 
 ### 2. **Key Features**
 - Simplifies the configuration of ORM frameworks using Spring's Dependency Injection (DI).
-- Manages transactions programmatically or declaratively.
 - Provides utility classes for simplifying ORM-specific tasks like exception handling and resource management.
+- Manages transactions programmatically or declaratively.
 - Supports declarative transaction management via `@Transactional` annotation or XML configurations.
 
-### 3. **Core Concepts**
-
-#### a) **SessionFactory (Hibernate)**
-- In Hibernate, `SessionFactory` is the central interface for interacting with the database.
-- Spring provides `LocalSessionFactoryBean` to configure and create a Hibernate `SessionFactory` bean.
-- Example:
-  ```java
-  @Bean
-  public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
-      LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-      sessionFactory.setDataSource(dataSource);
-      sessionFactory.setPackagesToScan("com.example.models");
-      sessionFactory.setHibernateProperties(hibernateProperties());
-      return sessionFactory;
-  }
-  ```
-
-#### b) **EntityManagerFactory (JPA)**
-- Spring provides `LocalContainerEntityManagerFactoryBean` to configure JPA's `EntityManagerFactory`.
-- Example:
-  ```java
-  @Bean
-  public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-      LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-      emf.setDataSource(dataSource);
-      emf.setPackagesToScan("com.example.models");
-      emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-      return emf;
-  }
-  ```
-
-#### c) **HibernateTemplate and JpaTemplate**
-- Simplifies common tasks such as querying, persisting, and updating data.
-- `HibernateTemplate` for Hibernate.
-- `JpaTemplate` for JPA (less commonly used today due to the rise of Spring Data JPA).
-
-#### d) **Transaction Management**
-- Spring ORM integrates seamlessly with Spring's transaction management system.
-- Transactions can be managed programmatically or declaratively using `@Transactional`.
-- Example:
-  ```java
-  @Transactional
-  public void saveEntity(MyEntity entity) {
-      sessionFactory.getCurrentSession().save(entity);
-  }
-  ```
-
-### 4. **Declarative Transaction Management**
-- **Annotations**: Use `@Transactional` on classes or methods.
-  ```java
-  @Transactional
-  public void updateEntity(MyEntity entity) {
-      entityManager.merge(entity);
-  }
-  ```
-- **XML-based Configuration**: Configure transactions in Spring's XML configuration.
-  ```xml
-  <tx:annotation-driven transaction-manager="transactionManager"/>
-  ```
-
----
-
-### 5. **Exception Translation**
-- Spring ORM translates ORM-specific exceptions (like Hibernate exceptions) into Spring's generic `DataAccessException`.
-- Example: A `ConstraintViolationException` is translated to `DataIntegrityViolationException`.
-
-### 6. **DAO Layer**
-- Spring ORM encourages creating a Data Access Object (DAO) layer for interacting with the database.
-- Example DAO using Hibernate:
-  ```java
-  @Repository
-  public class MyEntityDao {
-      @Autowired
-      private SessionFactory sessionFactory;
-
-      public MyEntity getById(Long id) {
-          return sessionFactory.getCurrentSession().get(MyEntity.class, id);
-      }
-  }
-  ```
-
-### 7. **[Hibernate and JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)**
-- **HQL (Hibernate Query Language)** and **JPQL (Java Persistence Query Language)** are supported for writing queries.
-- Named queries and native SQL queries are also supported.
-- Example (JPA Query):
-  ```java
-  @Repository
-  public class MyEntityDao {
-      @PersistenceContext
-      private EntityManager entityManager;
-
-      public List<MyEntity> findByName(String name) {
-          String jpql = "SELECT e FROM MyEntity e WHERE e.name = :name";
-          return entityManager.createQuery(jpql, MyEntity.class)
-                              .setParameter("name", name)
-                              .getResultList();
-      }
-  }
-  ```
-
-### 8. **Spring ORM with Hibernate Example**
+### 3. **Spring ORM with Hibernate Example**
 ```java
 @Configuration
 @EnableTransactionManagement
@@ -469,6 +368,8 @@ public class AppConfig {
     }
 }
 ```
+
+### 4. **[Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)**
 ---
 
 ## [Spring MVC](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
