@@ -363,7 +363,7 @@ public class AppConfig {
 ```
 ---
 
-## [Spring MVC](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
+## Spring MVC
 Spring MVC (Model-View-Controller) is a powerful framework within the Spring ecosystem designed to build robust and scalable web applications.
 
 ### 1. **Model-View-Controller (MVC) Pattern**
@@ -431,7 +431,7 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   - **XML-based**: Configuration in `web.xml` and Spring beans in XML files.
   - **Java-based**: Using `@Configuration` and `@EnableWebMvc`.
 
-### 9. **Annotations in Spring MVC**
+### 9. **Annotations in Spring MVC**: [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
 - **@Controller**: Marks a class as a web controller.
 - **@RequestMapping**: Maps web requests to handler methods or classes.
 - **@GetMapping, @PostMapping, @PutMapping, @DeleteMapping**: Shortcut annotations for HTTP methods.
