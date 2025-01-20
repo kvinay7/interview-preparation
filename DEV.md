@@ -431,14 +431,14 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   - **XML-based**: Configuration in `web.xml` and Spring beans in XML files.
   - **Java-based**: Using `@Configuration` and `@EnableWebMvc`.
 
-### 9. **Annotations in Spring MVC**: [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
+### 9. **Annotations in Spring MVC**
 - **@Controller**: Marks a class as a web controller.
 - **@RequestMapping**: Maps web requests to handler methods or classes.
 - **@GetMapping, @PostMapping, @PutMapping, @DeleteMapping**: Shortcut annotations for HTTP methods.
 - **@RestController**: Combines `@Controller` and `@ResponseBody`.
 - **@ResponseBody**: Directly returns data (e.g., JSON or XML) instead of a view.
 
-### 10. **Request and Response Handling**
+### 10. **Request and Response Handling** - [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
 - **@RequestParam**: Extract query parameters from the request.
   ```java
   @GetMapping("/search")
