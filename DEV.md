@@ -408,7 +408,7 @@ Spring ORM integrates with popular ORM frameworks, including:
   }
   ```
 
-### 7. **[Hibernate and JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically)**
+### 7. **[Hibernate and JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)**
 - **HQL (Hibernate Query Language)** and **JPQL (Java Persistence Query Language)** are supported for writing queries.
 - Named queries and native SQL queries are also supported.
 - Example (JPA Query):
@@ -469,8 +469,6 @@ public class AppConfig {
     }
 }
 ```
-
-### [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
 ---
 
 ## [Spring MVC](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
