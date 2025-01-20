@@ -319,7 +319,7 @@ Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that 
 - **Java Persistence API (JPA)**: A standard API for ORM.
 - **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager,...
 
-### 2. **Spring ORM with Hibernate Example**
+### 2. **Spring ORM with Hibernate: ** [Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
 ```java
 @Configuration
 @EnableTransactionManagement
@@ -361,8 +361,6 @@ public class AppConfig {
     }
 }
 ```
-
-### 3. **[Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)**
 ---
 
 ## [Spring MVC](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
