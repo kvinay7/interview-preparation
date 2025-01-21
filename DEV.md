@@ -251,7 +251,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 ### Autowiring
 Autowiring is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
 
-  - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods.
+  - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods. `@Inject` is part of Java’s standard dependency injection mechanism (JSR-330).
 
   - **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
      ```java
@@ -313,7 +313,7 @@ Maven is a build automation tool for Java projects. It simplifies dependency man
 ---
 
 ## Spring ORM:
-Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as Hibernate and JPA with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
+Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as JPA and Hibernate with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
 
 ### 1. **Integration with ORM Frameworks**
 - **Java Persistence API (JPA)**: A standard API for ORM.
@@ -469,7 +469,7 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   ```
 
 ### 12. **Exception Handling**
-- Global exception handling using `@ControllerAdvice`.
+- `@ControllerAdvice` to handle exceptions globally and `@ExceptionHandler` to handle specific exceptions in controller classes.
   ```java
   @ControllerAdvice
   public class GlobalExceptionHandler {
