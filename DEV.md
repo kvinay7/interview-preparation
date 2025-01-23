@@ -1,7 +1,4 @@
-# Application Development
-Application development is the process of designing, building, and maintaining software applications for various platforms such as web, mobile, desktop, and embedded systems. It encompasses a wide range of tasks including requirement gathering, architecture design, coding, testing, deployment, and maintenance.
-
-## Spring Framework
+# Spring Framework
 The Spring Framework is a comprehensive and modular framework for building Java-based enterprise applications. It's designed to simplify development by providing a wide range of features, making it one of the most popular frameworks in the Java ecosystem.
 
 ## Spring Core
