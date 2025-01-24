@@ -36,8 +36,9 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Can Place Flowers](https://leetcode.com/problems/can-place-flowers/description/)
     - [Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence/description/)
     - [Stock Problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solutions/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems/)
+    - [Number of Zero-Filled Subarrays](https://leetcode.com/problems/number-of-zero-filled-subarrays/description/)
     - [Majority Element II](https://leetcode.com/problems/majority-element-ii/description/)
-    - [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
+    
     
   - [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
     - [Merge Without Extra Space](https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1)
@@ -149,6 +150,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
     - [Group Shifted String](https://www.geeksforgeeks.org/problems/group-shifted-string/1)
 
 ## [Linked Lists](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
+## [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
 ---
 
 ## [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
