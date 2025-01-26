@@ -5,6 +5,11 @@ An operating system is a software which is an interface between user and hardwar
   <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230510120545/OS1.webp" alt="OS">
 </div>
 
+
+- **Kernel:** is the core part of the operating system. It directly interacts with the hardware and provides low-level services such as process management, memory management, device management, and system calls.
+- **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
+- **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
+
 ### Types of Operating Systems
 
 | **Type of OS**           | **Description**                                                                                                    | **Advantages**                                                                                  | **Disadvantages**                                                                              | **Real-World Examples**                                      |
@@ -17,10 +22,6 @@ An operating system is a software which is an interface between user and hardwar
 | **Batch OS**              | Processes jobs in batches without user interaction, widely used in early computing.                                | - Efficient for repetitive tasks. <br>- No user intervention required.                         | - Poor resource utilization. <br>- No real-time interaction.                                  | IBM OS/360, early payroll or billing systems                |
 | **Multiprogramming OS**   | Allows multiple programs to reside in memory and execute concurrently, improving CPU utilization.                   | - Better CPU utilization. <br>- Handles multiple tasks simultaneously.                         | - Requires sophisticated memory management. <br>- Potential for system crashes or deadlocks. | IBM OS/390, UNIX                                            |
 | **Multitasking OS**       | Allows multiple tasks or processes to run at the same time by efficiently managing CPU time-sharing.                | - Improves user experience. <br>- Allows concurrent execution of tasks.                        | - Can cause system slowdowns if overloaded. <br>- Requires higher memory and CPU power.       | Windows 10, macOS, Linux                                    |
-
-- **Kernel:** is the core part of the operating system. It directly interacts with the hardware and provides low-level services such as process management, memory management, device management, and system calls.
-- **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
-- **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 
 ## Process:
 A process is an instance of a program in execution which has its privite memory space and resources. A process can have multiple threads.
