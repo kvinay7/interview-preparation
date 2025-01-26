@@ -12,13 +12,13 @@ An operating system is a software which is an interface between user and hardwar
                                          
     |        **User Mode**           |  ----------------------------->    |        **Kernel Mode**         |
     |-------------------------------|       System Call / Interrupt       |-------------------------------|
-    |  - Application running         |  <-----------------------------    |  - OS kernel takes over       |
-    |  - Limited access to hardware  |                                    |  - OS performs privileged tasks|
-    |  - Cannot access hardware      |                                    |  - Full access to resources   |
-    |    or system-critical functions|                                    |  - System calls handled       |
-    |  - Requests services via       |                                    |  - Privileged operations      |
+    |  **Application running**        |  <-----------------------------    |  - OS kernel takes over       |
+    |  **Limited access to hardware**  |                                    |  - OS performs privileged tasks|
+    |  **Cannot access hardware or system-critical functions**     |                                    |  - Full access to resources   |
+    |   |                                    |  - System calls handled       |
+    |  **Requests services via       |                                    |  - Privileged operations      |
     |    system calls (e.g., read    |                                    |    performed (e.g., I/O, memory)|
-    |    file, open connection)      |                                    |                               |
+    |    file, open connection)**      |                                    |                               |
   
 ### What happens when we turn on computer?
 1. Power is supplied → Motherboard and components wake up.
