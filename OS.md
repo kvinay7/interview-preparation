@@ -177,7 +177,7 @@ Multithreading in Java is a programming technique that allows multiple threads t
 Synchronization in Java is a mechanism used to control access to shared resources by multiple threads from the `java.util.concurrent` package. It ensures that only one thread can access a `synchronized` block or method at a time, preventing thread interference and memory consistency issues.
 
 ### 1. **Mutex with `synchronized` Block**
-A simple way to ensure mutual exclusion in Java is by using the `synchronized` keyword, which locks a method or block of code so that only one thread can execute it at a time.
+A simple way to ensure mutual exclusion in Java is by using the `synchronized` keyword, which locks a method or block of code so that only one thread can execute it at a time. If one thread is using `critical section` (shared resources) than other threads can't use that c.s.
 
 #### Example: Thread-Safe Counter
 ```java
