@@ -172,6 +172,7 @@ Multithreading in Java is a programming technique that allows multiple threads t
     - ****Context Switching:**** The cost of switching between threads can reduce performance. Limit the number of threads and keep them busy.
     - ****Starvation:**** is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
     - ****Livelock:**** In a livelock, two threads are actively trying to avoid deadlock but continually fail to make progress because they keep changing their states without performing useful work.
+    - ****Priority inversion:**** occurs when a lower-priority thread holds a resource that a higher-priority thread is waiting for, effectively inverting the intended priority order.
       
 ## **Synchronization:** 
 Synchronization in Java is a mechanism used to control access to shared resources by multiple threads from the `java.util.concurrent` package. It ensures that only one thread can access a `synchronized` block or method at a time, preventing thread interference and memory consistency issues.
