@@ -1,5 +1,6 @@
 # Operating Systems
 An operating system is a software which is an interface between user and hardware. It is responsible for the execution of all the processes, Resource Allocation, CPU management, File Management and many other tasks. The purpose of an operating system is to provide an environment in which a user can execute programs in a convenient and efficient manner. 
+
 ![OS](https://media.geeksforgeeks.org/wp-content/uploads/20230510120545/OS1.webp)
 
 - **Kernel:** is the core part of the operating system. It directly interacts with the hardware and provides low-level services such as process management, memory management, device management, and system calls.
