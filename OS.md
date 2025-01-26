@@ -301,10 +301,10 @@ public class Main {
 }
 ```
 
-### 3. **Condition Variable with `wait()` and `notify()`**
-Java provides `Object`'s `wait()`, `notify()`, and `notifyAll()` methods to facilitate inter-thread communication. These methods are often used in conjunction with `synchronized` blocks.
+### 3. **Condition Variable**
+Java provides `wait()`, `notify()`, and `notifyAll()` methods to facilitate inter-thread communication. These methods are often used in conjunction with `synchronized` blocks.
 
-#### Example: Producer-Consumer with `wait()` and `notify()`
+#### Example: Producer-Consumer
 ```java
 class SharedResource {
     private int item;
