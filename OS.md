@@ -8,9 +8,7 @@ An operating system is a software which is an interface between user and hardwar
 - **Kernel:** is the core part of the operating system. It directly interacts with the hardware and provides low-level services such as process management, memory management, device management, and system calls.
 - **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
-
-### User Mode and Kernal Mode
-
+- **User Mode and Kernal Mode**:
                                          
   |        **User Mode**           |  ----------------------------->    |        **Kernel Mode**         |
   |-------------------------------|       System Call / Interrupt       |-------------------------------|
