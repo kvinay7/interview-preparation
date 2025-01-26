@@ -10,10 +10,11 @@ An operating system is a software which is an interface between user and hardwar
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 
 ### User Mode and Kernal Mode
-                                         System Call / Interrupt      
+
+                                         
   |        **User Mode**           |  ----------------------------->    |        **Kernel Mode**         |
-  |-------------------------------|   <-----------------------------    |-------------------------------|
-  |  - Application running         |                                    |  - OS kernel takes over       |
+  |-------------------------------|       System Call / Interrupt       |-------------------------------|
+  |  - Application running         |  <-----------------------------    |  - OS kernel takes over       |
   |  - Limited access to hardware  |                                    |  - OS performs privileged tasks|
   |  - Cannot access hardware      |                                    |  - Full access to resources   |
   |    or system-critical functions|                                    |  - System calls handled       |
