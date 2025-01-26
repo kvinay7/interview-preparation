@@ -9,7 +9,7 @@ An operating system is a software which is an interface between user and hardwar
 - **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 
-`
+### User Mode and Kernal Mode
                                          System Call / Interrupt      
   |        **User Mode**           |  ----------------------------->    |        **Kernel Mode**         |
   |-------------------------------|   <-----------------------------    |-------------------------------|
@@ -20,7 +20,7 @@ An operating system is a software which is an interface between user and hardwar
   |  - Requests services via       |                                    |  - Privileged operations      |
   |    system calls (e.g., read    |                                    |    performed (e.g., I/O, memory)|
   |    file, open connection)      |                                    |                               |
-  `
+  
 ### What happens when we turn on computer?
 1. Power is supplied → Motherboard and components wake up.
 2. BIOS (Basic Input/Output System) runs POST (power-on-self-test) to ensure hardware is working.
