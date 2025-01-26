@@ -9,6 +9,14 @@ An operating system is a software which is an interface between user and hardwar
 - **System calls:** provide an interface for user-level applications to interact with the kernel. When a program needs to access hardware or perform a privileged operation, it invokes a system call.
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 
+### What happens when we turn on computer?
+1. Power is supplied → Motherboard and components wake up.
+2. BIOS (Basic Input/Output System) runs POST (power-on-self-test) to ensure hardware is working.
+3. Bootloader is loaded from the storage device.
+4. Operating System `kernel` is loaded into memory.
+5. Drivers and system services are initialized.
+6. Login screen or desktop is displayed.
+
 ### Types of Operating Systems
 
 | **Type of OS**           | **Description**                                                                                                    | **Advantages**                                                                                  | **Disadvantages**                                                                              | **Real-World Examples**                                      |
