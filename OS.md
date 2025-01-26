@@ -173,53 +173,272 @@ Multithreading in Java is a programming technique that allows multiple threads t
     - ****Starvation:**** is a situation in multithreading where a thread is perpetually denied access to the resources it needs to execute, often because other threads are continuously given priority.
     - ****Livelock:**** In a livelock, two threads are actively trying to avoid deadlock but continually fail to make progress because they keep changing their states without performing useful work.
       
-- **Synchronization:** Synchronization in Java is a mechanism used to control access to shared resources by multiple threads. It ensures that only one thread can access a `synchronized` block or method at a time, preventing thread interference and memory consistency issues.
-- **Locks:** Locks in Java provide a more flexible mechanism for thread synchronization than traditional synchronization blocks or methods. Unlike intrinsic locks (synchronized), explicit locks provide better control over thread behavior and offer advanced features like fairness policies and condition variables. The `ReentrantLock` is the most commonly used lock in Java. It behaves similarly to synchronized blocks but offers additional features. `ReadWriteLock` and `StampedLock` are other types of locks.
+## **Synchronization:** 
+Synchronization in Java is a mechanism used to control access to shared resources by multiple threads from the `java.util.concurrent` package. It ensures that only one thread can access a `synchronized` block or method at a time, preventing thread interference and memory consistency issues.
 
-- **Example: Using ReentrantLock**
+### 1. **Mutex with `synchronized` Block**
+A simple way to ensure mutual exclusion in Java is by using the `synchronized` keyword, which locks a method or block of code so that only one thread can execute it at a time.
 
+#### Example: Thread-Safe Counter
 ```java
-    import java.util.concurrent.locks.ReentrantLock;
+class Counter {
+    private int count = 0;
 
-    class SharedResource {
-        private ReentrantLock lock = new ReentrantLock();
+    // Synchronized method to ensure mutual exclusion
+    public synchronized void increment() {
+        count++;
+    }
 
-        void print(String message) {
-            lock.lock(); // Acquire the lock
-            try {
-                System.out.print("[");
-                System.out.print(message);
-                System.out.println("]");
-            } finally {
-                lock.unlock(); // Release the lock
+    public synchronized int getCount() {
+        return count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
             }
+        });
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+        
+        t1.start();
+        t2.start();
+        
+        t1.join();
+        t2.join();
+        
+        System.out.println("Final count: " + counter.getCount()); // Should be 2000
+    }
+}
+```
+
+### 2. **Semaphore (Counting Semaphore)**
+Java provides the `Semaphore` class to manage access to a set number of resources.
+
+#### Example: Bounded Buffer (Producer-Consumer Problem)
+```java
+import java.util.concurrent.Semaphore;
+
+class BoundedBuffer {
+    private int[] buffer;
+    private int count = 0;
+    private Semaphore mutex = new Semaphore(1);
+    private Semaphore empty;
+    private Semaphore full;
+
+    public BoundedBuffer(int size) {
+        buffer = new int[size];
+        empty = new Semaphore(size);
+        full = new Semaphore(0);
+    }
+
+    public void produce(int value) throws InterruptedException {
+        empty.acquire();  // Wait for space
+        mutex.acquire();  // Enter critical section
+        
+        buffer[count] = value;
+        count++;
+        
+        mutex.release();  // Exit critical section
+        full.release();   // Signal that there's an item to consume
+    }
+
+    public int consume() throws InterruptedException {
+        full.acquire();  // Wait for an item to consume
+        mutex.acquire(); // Enter critical section
+        
+        count--;
+        int value = buffer[count];
+        
+        mutex.release(); // Exit critical section
+        empty.release();  // Signal that there's space
+        
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        BoundedBuffer buffer = new BoundedBuffer(10);
+        
+        // Producer thread
+        Thread producer = new Thread(() -> {
+            try {
+                for (int i = 0; i < 20; i++) {
+                    buffer.produce(i);
+                    System.out.println("Produced: " + i);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        
+        // Consumer thread
+        Thread consumer = new Thread(() -> {
+            try {
+                for (int i = 0; i < 20; i++) {
+                    int value = buffer.consume();
+                    System.out.println("Consumed: " + value);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        
+        producer.start();
+        consumer.start();
+        
+        producer.join();
+        consumer.join();
+    }
+}
+```
+
+### 3. **Condition Variable with `wait()` and `notify()`**
+Java provides `Object`'s `wait()`, `notify()`, and `notifyAll()` methods to facilitate inter-thread communication. These methods are often used in conjunction with `synchronized` blocks.
+
+#### Example: Producer-Consumer with `wait()` and `notify()`
+```java
+class SharedResource {
+    private int item;
+    private boolean available = false;
+
+    // Consumer thread waits until the item is available
+    public synchronized int consume() throws InterruptedException {
+        while (!available) {
+            wait();  // Wait for item to become available
+        }
+        available = false;  // Consume the item
+        notify();  // Notify producer that space is available
+        return item;
+    }
+
+    // Producer thread waits until space is available
+    public synchronized void produce(int item) throws InterruptedException {
+        while (available) {
+            wait();  // Wait for space to become available
+        }
+        this.item = item;  // Produce the item
+        available = true;
+        notify();  // Notify consumer that item is available
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        SharedResource resource = new SharedResource();
+
+        // Producer thread
+        Thread producer = new Thread(() -> {
+            try {
+                for (int i = 0; i < 10; i++) {
+                    resource.produce(i);
+                    System.out.println("Produced: " + i);
+                    Thread.sleep(100);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        // Consumer thread
+        Thread consumer = new Thread(() -> {
+            try {
+                for (int i = 0; i < 10; i++) {
+                    int value = resource.consume();
+                    System.out.println("Consumed: " + value);
+                    Thread.sleep(150);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        producer.start();
+        consumer.start();
+        
+        producer.join();
+        consumer.join();
+    }
+}
+```
+
+### 4. **Read-Write Locks**
+Locks in Java provide a more flexible mechanism for thread synchronization than traditional synchronization blocks or methods. Unlike intrinsic locks (synchronized), explicit locks provide better control over thread behavior and offer advanced features like fairness policies and condition variables. The `ReentrantLock` is the most commonly used lock in Java. It behaves similarly to synchronized blocks but offers additional features. `ReadWriteLock` and `StampedLock` are other types of locks.
+
+#### Example: Read-Write Lock
+```java
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+class ReadWriteLockExample {
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private int sharedData = 0;
+
+    // Read operation: Multiple threads can read simultaneously
+    public int read() {
+        lock.readLock().lock();
+        try {
+            return sharedData;
+        } finally {
+            lock.readLock().unlock();
         }
     }
 
-    class MyThread extends Thread {
-        SharedResource resource;
-        String message;
-
-        MyThread(SharedResource resource, String message) {
-            this.resource = resource;
-            this.message = message;
-        }
-
-        public void run() {
-            resource.print(message);
+    // Write operation: Only one thread can write at a time
+    public void write(int value) {
+        lock.writeLock().lock();
+        try {
+            sharedData = value;
+        } finally {
+            lock.writeLock().unlock();
         }
     }
+}
 
-    public class ReentrantLockExample {
-        public static void main(String[] args) {
-            SharedResource resource = new SharedResource();
-            MyThread t1 = new MyThread(resource, "Hello");
-            MyThread t2 = new MyThread(resource, "World");
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        ReadWriteLockExample example = new ReadWriteLockExample();
+        
+        // Reader threads
+        Thread reader1 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                System.out.println("Reader 1: " + example.read());
+                try { Thread.sleep(100); } catch (InterruptedException e) {}
+            }
+        });
+        
+        Thread reader2 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                System.out.println("Reader 2: " + example.read());
+                try { Thread.sleep(100); } catch (InterruptedException e) {}
+            }
+        });
+        
+        // Writer thread
+        Thread writer = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                example.write(i);
+                System.out.println("Writer: " + i);
+                try { Thread.sleep(300); } catch (InterruptedException e) {}
+            }
+        });
 
-            t1.start();
-            t2.start();
-        }
+        reader1.start();
+        reader2.start();
+        writer.start();
+
+        reader1.join();
+        reader2.join();
+        writer.join();
     }
+}
 ```
 ---
 
@@ -325,5 +544,4 @@ public class DiningPhilosophers {
         }
     }
 }
-```
 ---
