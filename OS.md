@@ -10,28 +10,15 @@ An operating system is a software which is an interface between user and hardwar
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 - **User Mode and Kernal Mode**:
                                          
-  |        **User Mode**           |  ----------------------------->    |        **Kernel Mode**         |
-  |-------------------------------|       System Call / Interrupt       |-------------------------------|
-  |  - Application running         |  <-----------------------------    |  - OS kernel takes over       |
-  |  - Limited access to hardware  |                                    |  - OS performs privileged tasks|
-  |  - Cannot access hardware      |                                    |  - Full access to resources   |
-  |    or system-critical functions|                                    |  - System calls handled       |
-  |  - Requests services via       |                                    |  - Privileged operations      |
-  |    system calls (e.g., read    |                                    |    performed (e.g., I/O, memory)|
-  |    file, open connection)      |                                    |                               |
-
-- **Process Control Block (PCB):** is a data structure in the operating system used to store all the information needed to manage a process. The operating system maintains a PCB for every process in the system.
-
-    | **Field**                     | **Description**                           |
-    |-------------------------------|-------------------------------------------|
-    | **Process ID (PID)**           | Unique identifier for the process.       |
-    | **Parent Process ID (PPID)**   | PID of the parent process.               |
-    | **Process State**              | Current state of the process (e.g., Running, Waiting, Ready, Terminated). |
-    | **Program Counter (PC)**       | Address of the next instruction to execute. |
-    | **CPU Registers**              | The values of CPU registers during execution (e.g., general-purpose registers). |
-    | **Memory Management Info**     | Memory allocated to the process (e.g., base and limit registers, page tables). |
-    | **Scheduling Information**     | Priority, scheduling algorithm details, time quantum, etc. |
-    | **I/O Status Information**     | Files, devices, and other resources used by the process. |
+    |        **User Mode**           |  ----------------------------->    |        **Kernel Mode**         |
+    |-------------------------------|       System Call / Interrupt       |-------------------------------|
+    |  - Application running         |  <-----------------------------    |  - OS kernel takes over       |
+    |  - Limited access to hardware  |                                    |  - OS performs privileged tasks|
+    |  - Cannot access hardware      |                                    |  - Full access to resources   |
+    |    or system-critical functions|                                    |  - System calls handled       |
+    |  - Requests services via       |                                    |  - Privileged operations      |
+    |    system calls (e.g., read    |                                    |    performed (e.g., I/O, memory)|
+    |    file, open connection)      |                                    |                               |
   
 ### What happens when we turn on computer?
 1. Power is supplied → Motherboard and components wake up.
