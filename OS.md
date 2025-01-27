@@ -1,4 +1,4 @@
-# Operating Systems
+# [Operating Systems](https://takeuforward.org/operating-system/most-asked-operating-system-interview-questions)
 An operating system is a software which is an interface between user and hardware. It is responsible for the execution of all the processes, Resource Allocation, CPU management, File Management and many other tasks. The purpose of an operating system is to provide an environment in which a user can execute programs in a convenient and efficient manner. 
 
 <div align="center">
