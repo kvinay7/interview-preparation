@@ -178,6 +178,17 @@ Multithreading in Java is a programming technique that allows multiple threads t
 ## **Synchronization:** 
 Synchronization in Java is a mechanism used to control access to shared resources by multiple threads from the `java.util.concurrent` package. It ensures that only one thread can access a `synchronized` block or method at a time, preventing thread interference and memory consistency issues.
 
+### The Critical Section Problem:
+- **Critical Section:** The portion of the code in the program where shared variables are accessed and/or updated.
+- **Remainder Section:** The remaining portion of the program excluding the Critical Section.
+- **Race around Condition:** The final output of the code depends on the order in which the variables are accessed. This is termed as the race around condition.
+
+### A solution for the critical section problem must satisfy the following three conditions:
+- **Mutual Exclusion:** If a process Pi is executing in its critical section, then no other process is allowed to enter into the critical section.
+- **Progress:** If no process is executing in the critical section, then the decision of a process to enter a critical section cannot be made by any other process that is executing in its remainder section. The selection of the process cannot be postponed indefinitely.
+- **Bounded Waiting:** There exists a bound on the number of times other processes can enter into the critical section after a process has made a request to access the critical section and before the request is granted.
+- **Architectural Neutrality:** Platform independent
+
 ### 1. **Mutex with `synchronized` Block**
 A simple way to ensure mutual exclusion in Java is by using the `synchronized` keyword, which locks a method or block of code so that only one thread can execute it at a time. If one thread is using `critical section` (shared resources) than other threads can't use that c.s.
 
@@ -221,8 +232,12 @@ public class Main {
 }
 ```
 
-### 2. **Semaphore (Counting Semaphore)**
-Java provides the `Semaphore` class to manage access to a set number of resources.
+### 2. **Semaphore**
+Semaphore is a protected variable or abstract data type that is used to lock the resource being used. The value of the semaphore indicates the status of a common resource.
+
+#### There are two types of semaphores:
+- **Binary semaphores:** take only 0 and 1 as value and are used to implement mutual exclusion and synchronize concurrent processes.)
+- **Counting semaphores:** is an integer variable whose value can range over an unrestricted domain.)
 
 #### Example: Bounded Buffer (Producer-Consumer Problem)
 ```java
