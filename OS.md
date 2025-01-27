@@ -11,7 +11,7 @@ An operating system is a software which is an interface between user and hardwar
 
 - **Shell:** is a command-line interface or program that allows users to interact with the OS by entering commands. The shell interprets user commands and passes them to the OS for execution.
 
-- **User Mode:** Programs in user mode are limited. They can only use safe, predefined operations and cannot directly access hardware (like CPU, memory, or disk). If they need something that requires special permissions (e.g., reading a file, printing something), they ask the Operating System (OS) for help.
+- **User Mode:** Programs in user mode are limited. They can only use safe, predefined operations and cannot directly access hardware (like CPU, memory, or disk). If they need something that requires special permissions (e.g., reading a file, printing something), they ask the Operating System (OS) for help with system calls.
 
 - **Kernal Mode:** In kernel mode, the OS can do anything—it can access hardware, manage memory, and handle sensitive operations like saving files or controlling devices like your printer.
     
