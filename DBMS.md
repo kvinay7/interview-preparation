@@ -9,6 +9,7 @@ DBMS is collection of tools that allows the users to manipulate, organize and vi
 
 ### [SQL vs NoSQL](https://blog.algomaster.io/p/sql-vs-nosql-7-key-differences)
 
-### [Indexes](https://blog.algomaster.io/p/a-detailed-guide-on-database-indexes)
+### [Query Optimization (Indexing)](https://blog.algomaster.io/p/a-detailed-guide-on-database-indexes)
 
+### [Transactions and ACID Properties](https://blog.algomaster.io/p/ecae03ba-1930-42ef-8796-83e2fa818989)
 
