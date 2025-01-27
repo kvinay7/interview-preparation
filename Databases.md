@@ -1,4 +1,4 @@
-# Databases
+# [Databases](https://takeuforward.org/dbms/most-asked-dbms-interview-questions)
 - **Data:** refers to a collection of facts, observations, or measurements that are typically represented in a structured or unstructured form. Ex: numerical, textual, audio, image and video data.
 - **Database:** is collection of organized data that is stored and managed in a computer system.
 - **Database Management System:** is collection of tools that allows the users to manipulate, organize and visualize the contents of a database while following some standard rules that facilitate fast response between the database and the user side.
