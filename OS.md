@@ -53,6 +53,7 @@ A process is an instance of a program in execution which has its privite memory 
     | **I/O Status Information**     | Files, devices, and other resources used by the process. |
 
 - **Process State Transition Diagram:**
+  Scheduler chooses processes that must be run, the dispatcher is in charge of passing these processes to the CPU.
                                            
                       Resource                Preemption
       +------------+ Allocation +-----------+ <--------- +-----------+   exit    +------------+
