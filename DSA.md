@@ -38,7 +38,6 @@ An array is a data structure that can store fixed-size collections of elements o
 ---
 
 ## Strings:
-A String is an object that represents a sequence of 16-bit unicode characters.
 
 | Feature                | **String**                          | **StringBuilder**                    | **StringBuffer**                    |
 |------------------------|-------------------------------------|--------------------------------------|-------------------------------------|
