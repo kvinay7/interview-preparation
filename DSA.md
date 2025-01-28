@@ -27,15 +27,14 @@ An array is a data structure that can store fixed-size collections of elements o
       }
     }
     ```
-    
-## Multidimensional Arrays
-If the innner arrays of lengths are not equal then they're known as a jagged array or a non-rectangular array.
-  ```java
-    int[][] jaggedArray = new int[3][];  // Declares an array with 3 rows, but columns will be different
-    jaggedArray[0] = new int[2];  // Row 0 has 2 elements
-    jaggedArray[1] = new int[3];  // Row 1 has 3 elements
-    jaggedArray[2] = new int[4];  // Row 2 has 4 elements
-   ```
+
+  - Multidimensional Array: If the innner arrays of lengths are not equal then they're known as a jagged array or a non-rectangular array.
+    ```java
+      int[][] jaggedArray = new int[3][];  // Declares an array with 3 rows, but columns will be different
+      jaggedArray[0] = new int[2];  // Row 0 has 2 elements
+      jaggedArray[1] = new int[3];  // Row 1 has 3 elements
+      jaggedArray[2] = new int[4];  // Row 2 has 4 elements
+    ```
       
 ## Strings:
 A String is an object that represents a sequence of 16-bit unicode characters.
