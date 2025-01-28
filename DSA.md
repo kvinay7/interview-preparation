@@ -94,8 +94,8 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
     - [Insert Interval](https://leetcode.com/problems/insert-interval/description/)
     - [Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
+    - [Min No of Arrows to Burst Balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/)
     - [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/description/)
-    - [Max No of Events to Attend](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/description/)
       
 ## Strings:
 A String is an object that represents a sequence of 16-bit unicode characters.
