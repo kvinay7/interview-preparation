@@ -35,7 +35,8 @@ An array is a data structure that can store fixed-size collections of elements o
       jaggedArray[1] = new int[3];  // Row 1 has 3 elements
       jaggedArray[2] = new int[4];  // Row 2 has 4 elements
     ```
-      
+---
+
 ## Strings:
 A String is an object that represents a sequence of 16-bit unicode characters.
 
@@ -47,6 +48,8 @@ A String is an object that represents a sequence of 16-bit unicode characters.
 | **Memory Efficiency**   | Less efficient for frequent modifications | More memory-efficient for frequent modifications | More memory-efficient than `String`, but less efficient than `StringBuilder` |
 | **Use Case**            | When immutability is needed, or when string literals are being used | For frequent string concatenation or modification in a single thread | When thread safety is required in multi-threaded environments |
 | **Example Usage**       | `String str = "Hello";`             | `StringBuilder sb = new StringBuilder("Hello");` | `StringBuffer sbf = new StringBuffer("Hello");` |
+
+---
 
 ## Hash Table:
 A [`hash table`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework) is a data structure that stores `key-value` pairs and uses a `hashing` technique to efficiently map each key to an index in an array (called a bucket) using a `hash function` `(hash(k) = k % size)`. The hash function takes an input (the key) and computes a `hash code`, which determines the index where the associated value will be stored. This allows for fast O(1) average-time complexity for inserting, deleting, and looking up key-value pairs. However, hash `collisions` can occur when different keys produce the same hash code.
