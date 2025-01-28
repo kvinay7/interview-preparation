@@ -1,8 +1,9 @@
 # Data Structures and Algorithms
 Data structures are ways of organizing and storing data efficiently to perform operations such as retrieval, insertion, deletion, and searching. Algorithms are step-by-step instructions to solve a problem or perform a computation. Efficient algorithms often need to be designed with the appropriate data structures.
 
-### [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
-### [Overall Problems](https://drive.google.com/file/d/1H6gnAtlRZPuOiNq-s-0F9BSkFTsnPJHO/view)
+### Practice
+  - [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
+  - [Overall Problems](https://drive.google.com/file/d/1H6gnAtlRZPuOiNq-s-0F9BSkFTsnPJHO/view)
 
 ## Arrays:
 An array is a data structure that can store fixed-size collections of elements of the same type in a single variable. By default array elements are initialized to 0 if they are a numeric type ( int or double ), false if they are of type boolean , or null if they are an object type like String.
@@ -68,6 +69,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Quadratic Probing`: Search for the next slot using a quadratic sequence (clustering). Formula: `(hash(k) + i^2) % tableSize`, where i is the number of probes.
      
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
+---
 
 ### [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
 ### [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
