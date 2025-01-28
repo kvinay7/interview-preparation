@@ -1,7 +1,7 @@
 # Data Structures and Algorithms
 Data structures are ways of organizing and storing data efficiently to perform operations such as retrieval, insertion, deletion, and searching. Algorithms are step-by-step instructions to solve a problem or perform a computation. Efficient algorithms often need to be designed with the appropriate data structures.
 
-### Practice
+### Practice:
   - [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
   - [Overall Problems](https://drive.google.com/file/d/1H6gnAtlRZPuOiNq-s-0F9BSkFTsnPJHO/view)
 
