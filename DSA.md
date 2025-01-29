@@ -67,9 +67,10 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Quadratic Probing`: Search for the next slot using a quadratic sequence (clustering). Formula: `(hash(k) + i^2) % tableSize`, where i is the number of probes.
      
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
----
 
 ### [Prefix Sum](https://leetcode.com/discuss/study-guide/5119937/Prefix-Sum-Problems)
+---
+
 ### [Recursion](https://leetcode.com/discuss/study-guide/1733447/Become-Master-In-Recursion)
 ### [Backtracking](https://leetcode.com/discuss/study-guide/1405817/backtracking-algorithm-problems-to-practice)
 ### [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
