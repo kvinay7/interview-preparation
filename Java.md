@@ -393,7 +393,7 @@ Collections Framework provides a unified architecture for storing and manipulati
   - **Set**: `HashSet` (allow null), `LinkedHashSet` (not allow null. Insertion order), `TreeSet` (not allow null. Sorted order)
   - **Queue**: `PriorityQueue`, `ArrayDeque`
 - **Map Interface:**
-  - `HashMap` (allow null), `LinkedHashMap` (allow null), `TreeMap` (key can't be null), `Hashtable` (thread-safe, not allow null)
+  - `HashMap` (allow null), `LinkedHashMap` (allow null), `TreeMap` (key can't be null), [`Hashtable`](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md#hash-table) (thread-safe, not allow null)
     
 - **Iterator:**
   ```java
