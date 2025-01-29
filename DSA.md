@@ -37,7 +37,7 @@ An array is a data structure that can store fixed-size collections of elements o
     ```
   - [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
   - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
-  - [Sorting](https://leetcode.com/discuss/study-guide/1357889/all-about-sorting)
+  - [Sorting Algorithms](https://leetcode.com/discuss/study-guide/1357889/all-about-sorting)
 ---
 
 ## Strings:
