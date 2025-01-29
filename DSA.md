@@ -69,10 +69,10 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
 ---
 
-## [Prefix Sum](https://leetcode.com/discuss/study-guide/5119937/Prefix-Sum-Problems)
-## [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
-## [Linked Lists](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
-## [Recursion](https://leetcode.com/discuss/study-guide/1733447/Become-Master-In-Recursion)
-## [Backtracking](https://leetcode.com/discuss/study-guide/1405817/backtracking-algorithm-problems-to-practice)
+### [Prefix Sum](https://leetcode.com/discuss/study-guide/5119937/Prefix-Sum-Problems)
+### [Recursion](https://leetcode.com/discuss/study-guide/1733447/Become-Master-In-Recursion)
+### [Backtracking](https://leetcode.com/discuss/study-guide/1405817/backtracking-algorithm-problems-to-practice)
+### [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
+### [Linked Lists](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
 ## [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
 ## [Overall Problems](https://instabyte.io/p/interview-master-100)
