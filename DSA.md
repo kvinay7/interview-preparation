@@ -1,4 +1,4 @@
-# [Data Structures and Algorithms](https://instabyte.io/p/dsa-master) - [LeetCode Problems](https://www.techinterviewhandbook.org/grind75/)
+# [Data Structures and Algorithms](https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/) - [LeetCode Problems](https://www.techinterviewhandbook.org/grind75/)
 Data structures are ways of organizing and storing data efficiently to perform operations such as retrieval, insertion, deletion, and searching. Algorithms are step-by-step instructions to solve a problem or perform a computation. Efficient algorithms often need to be designed with the appropriate data structures.
 
 ## Arrays:
