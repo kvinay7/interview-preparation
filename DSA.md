@@ -35,6 +35,8 @@ An array is a data structure that can store fixed-size collections of elements o
       jaggedArray[1] = new int[3];  // Row 1 has 3 elements
       jaggedArray[2] = new int[4];  // Row 2 has 4 elements
     ```
+  - [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
+  - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
 ---
 
 ## Strings:
@@ -66,6 +68,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
 ---
 
+## [Prefix Sum](https://leetcode.com/discuss/study-guide/5119937/Prefix-Sum-Problems)
 ## [Linked Lists](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
 ## [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
 ## [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
