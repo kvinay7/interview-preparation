@@ -37,6 +37,7 @@ An array is a data structure that can store fixed-size collections of elements o
     ```
   - [Two Pointers](https://blog.algomaster.io/p/69025a2e-b0d5-4705-8507-bba16c2691f1)
   - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
+  - [Sorting](https://leetcode.com/discuss/study-guide/1357889/all-about-sorting)
 ---
 
 ## Strings:
@@ -71,5 +72,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
 ## [Prefix Sum](https://leetcode.com/discuss/study-guide/5119937/Prefix-Sum-Problems)
 ## [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
 ## [Linked Lists](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
+## [Recursion](https://leetcode.com/discuss/study-guide/1733447/Become-Master-In-Recursion)
+## [Backtracking](https://leetcode.com/discuss/study-guide/1405817/backtracking-algorithm-problems-to-practice)
 ## [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
 ## [Overall Problems](https://instabyte.io/p/interview-master-100)
