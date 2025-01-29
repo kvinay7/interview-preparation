@@ -1,6 +1,6 @@
 # [Data Structures and Algorithms](https://instabyte.io/p/dsa-master)
 Data structures are ways of organizing and storing data efficiently to perform operations such as retrieval, insertion, deletion, and searching. Algorithms are step-by-step instructions to solve a problem or perform a computation. Efficient algorithms often need to be designed with the appropriate data structures.
-
+- [Coding Problems](https://www.techinterviewhandbook.org/grind75/)
 ## Arrays:
 An array is a data structure that can store fixed-size collections of elements of the same type in a single variable. By default array elements are initialized to 0 if they are a numeric type ( int or double ), false if they are of type boolean , or null if they are an object type like String.
 
@@ -75,5 +75,3 @@ Load Factor is the ratio of the number of elements in the hash table to the size
 ### [Backtracking](https://leetcode.com/discuss/study-guide/1405817/backtracking-algorithm-problems-to-practice)
 ### [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
 ### [Linked Lists](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
-## [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
-## [Overall Problems](https://instabyte.io/p/interview-master-100)
