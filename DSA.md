@@ -1,4 +1,4 @@
-# Data Structures and Algorithms
+# [Data Structures and Algorithms](https://instabyte.io/p/dsa-master)
 Data structures are ways of organizing and storing data efficiently to perform operations such as retrieval, insertion, deletion, and searching. Algorithms are step-by-step instructions to solve a problem or perform a computation. Efficient algorithms often need to be designed with the appropriate data structures.
 
 ## Arrays:
@@ -72,4 +72,4 @@ Load Factor is the ratio of the number of elements in the hash table to the size
 ## [Binary Search](https://leetcode.com/discuss/study-guide/3726061/Binary-Search%3A-A-Comprehensive-Guide)
 ## [Linked Lists](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
 ## [Topic-wise Problems](https://algomaster.io/practice/dsa-patterns)
-## [Overall Problems](https://drive.google.com/file/d/1H6gnAtlRZPuOiNq-s-0F9BSkFTsnPJHO/view)
+## [Overall Problems](https://instabyte.io/p/interview-master-100)
