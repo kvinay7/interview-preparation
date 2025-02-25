@@ -32,7 +32,7 @@
     - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
 - [Multithreading (OS)](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)
-- [CS Concepts](https://thecomputersciencebook.com/book/)
+- [CS Fundamentals](https://thecomputersciencebook.com/book/)
 - [Interview Questions](https://www.interviewbit.com/java-interview-questions/)
 - [Coding Practice](https://www.hackerrank.com/domains/java)
 
