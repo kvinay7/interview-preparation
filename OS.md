@@ -14,14 +14,16 @@ An operating system is a software which is an interface between user and hardwar
 - **User Mode:** Programs in user mode are limited. They can only use safe, predefined operations and cannot directly access hardware (like CPU, memory, or disk). If they need something that requires special permissions (e.g., reading a file, printing something), they ask the Operating System (OS) for help with system calls.
 
 - **Kernal Mode:** In kernel mode, the OS can do anything—it can access hardware, manage memory, and handle sensitive operations like saving files or controlling devices like your printer.
+
+- **Booting:** is the process of loading an operating system. It’s the process that starts when we turn on the computer (using the power button or by a software command) and ends when the operating system is loaded into the memory.
     
-### What happens when we turn on computer?
+### What happens when we turn on computer? (computer boot process)
 1. Power is supplied → Motherboard and components wake up.
-2. BIOS (Basic Input/Output System) runs POST (power-on-self-test) to ensure hardware is working.
-3. Bootloader is loaded from the storage device.
-4. Operating System `kernel` is loaded into memory.
-5. Drivers and system services are initialized.
-6. Login screen or desktop is displayed.
+2. CPU locates BIOS/UEFI firmware in ROM and starts execute it.
+3. BIOS/UEFI runs POST (power-on-self-test) to ensure hardware is working.
+4. BIOS/UEFI loads bootloader from storage and hands over control to it.
+5. Operating System `kernel` is loaded into main memory from storage device by Bootloader.
+6. Drivers and system services are initialized. Login screen or desktop is displayed.
 
 ### Types of Operating Systems
 
