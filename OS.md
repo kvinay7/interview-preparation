@@ -25,6 +25,13 @@ An operating system is a software which is an interface between user and hardwar
 5. Operating System `kernel` is loaded into main memory from storage device by Bootloader.
 6. Drivers and system services are initialized. Login screen or desktop is displayed.
 
+### How Interrupts Work:
+1. Interrupt Occurs: A hardware device or software process triggers an interrupt.
+2. Interrupt Request (IRQ): The interrupt request is sent to the interrupt controller, which informs the OS.
+3. Interrupt Acknowledgment: The CPU acknowledges the interrupt, saves the current execution context (e.g., registers, program counter), and begins executing the ISR.
+4. Interrupt Handling: The Interrupt Service Routine (ISR) performs necessary tasks, such as reading data from I/O devices, handling system calls, or responding to errors.
+5. Context Restoration: After the ISR finishes, the CPU restores the previous execution context (using a context switch) and continues where it left off.
+
 ### Types of Operating Systems
 
 | **Type of OS**           | **Description**                                                                                                    | **Advantages**                                                                                  | **Disadvantages**                                                                              | **Real-World Examples**                                      |
