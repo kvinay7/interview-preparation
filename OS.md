@@ -1,4 +1,4 @@
-# [Operating Systems](https://takeuforward.org/operating-system/most-asked-operating-system-interview-questions)
+# Operating Systems
 An operating system is a software which is an interface between user and hardware. It is responsible for the execution of all the processes, Resource Allocation, CPU management, File Management and many other tasks. The purpose of an operating system is to provide an environment in which a user can execute programs in a convenient and efficient manner. 
 
 <div align="center">
@@ -46,7 +46,7 @@ An operating system is a software which is an interface between user and hardwar
 | **Multitasking OS**       | Allows multiple tasks or processes to run at the same time by efficiently managing CPU time-sharing.                | - Improves user experience. <br>- Allows concurrent execution of tasks.                        | - Can cause system slowdowns if overloaded. <br>- Requires higher memory and CPU power.       | Windows 10, macOS, Linux                                    |
 
 ## Process:
-A [process](https://www.geeksforgeeks.org/process-in-operating-system/) is an instance of a program in execution which has its privite memory space and resources. A process can have multiple threads.
+A process is an instance of a program in execution which has its privite memory space and resources. A process can have multiple threads.
 
 - **Process Control Block (PCB):** is a data structure in the operating system used to store all the information needed to manage a process. The operating system maintains a PCB for every process in the system.
 
@@ -578,3 +578,53 @@ public class DiningPhilosophers {
 }
 ```
 ---
+
+## Memory Management
+Memory management is a critical function of an operating system (OS) that ensures efficient allocation, tracking, and deallocation of a computer’s memory resources for executing processes. It’s all about managing the main memory (RAM) so that each process has enough space to run while maximizing system performance and stability.
+
+### Key Concepts in Memory Management
+#### Physical vs. Virtual Memory
+- **Physical Memory:** The actual RAM hardware where data and instructions reside.
+- **Virtual Memory:** An abstraction that gives each process its own address space, making it seem like it has exclusive access to memory. Virtual memory is mapped to physical memory by the OS, often using paging or segmentation. Virtual memory allows systems to use disk space (swap space) as an extension of RAM when physical memory runs out.
+
+#### Memory Allocation  
+- When a process is created, the OS allocates memory for its components:
+  - Code (Text): The executable instructions.
+  - Data: Variables and constants.
+  - Stack: Temporary storage for function calls and local variables.
+  - Heap: Dynamic memory allocation during runtime.
+- Allocation can be contiguous (one continuous block) or non-contiguous (scattered blocks).
+
+### Memory Management Techniques
+#### Contiguous Memory Allocation  
+- **Fixed Partitioning:** Memory is divided into fixed-size partitions; each partition holds one process.
+  - Pros: Simple to implement.
+  - Cons: Leads to internal fragmentation (unused space within a partition).
+- **Dynamic Partitioning:** Partitions are created dynamically based on process size.
+  - Pros: Flexible.
+  - Cons: Causes external fragmentation (small, unusable gaps between allocated blocks).
+
+#### Non-Contiguous Memory Allocation
+- **Paging:** Memory is divided into fixed-size units called pages (virtual memory) and frames (physical memory), typically 4KB each. A process’s virtual address space is split into pages, mapped to physical frames via a page table.
+  - Page Table: Maintained by the OS, it translates virtual page numbers to physical frame numbers.
+  - Pros: No external fragmentation; easy to swap pages to disk.
+  - Cons: Small internal fragmentation within pages; page table overhead.
+
+- **Segmentation:** Memory is divided into variable-sized segments based on logical divisions (e.g., code, data, stack). Each segment has a base address and limit, tracked in a segment table.
+  - Pros: Matches the program’s logical structure; no internal fragmentation.
+  - Cons: Can lead to external fragmentation.
+
+- **Demand Paging (Part of Virtual Memory):** Pages are loaded into memory only when needed (on demand), rather than all at once. If a process accesses a page not in memory, a page fault occurs, and the OS retrieves it from disk (swap space).
+  - Pros: Saves memory by loading only whats necessary.
+  - Cons: Page faults can slow execution if frequent (thrashing).
+
+- **Page Replacement:** When memory is full and a new page needs to be loaded, the OS decides which existing page to swap out using algorithms like:
+  - FIFO (First-In-First-Out): Replace the oldest page.
+  - LRU (Least Recently Used): Replace the page not used for the longest time.
+  - Optimal: Replace the page that won’t be needed for the longest time (theoretical ideal).
+
+### Memory Management in Action
+- Process Loading: The OS allocates memory (e.g., via paging), maps virtual addresses, and loads the process.
+- Execution: The process accesses virtual addresses, translated by the MMU to physical locations.
+- Swapping: If memory is scarce, inactive processes or pages are moved to disk (swap space).
+- Deallocation: When a process terminates, its memory is freed and marked available.
