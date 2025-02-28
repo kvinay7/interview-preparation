@@ -74,7 +74,7 @@ A process is an instance of a program in execution which has its privite memory 
                             | Waiting/Blocked | <---------------- waiting for I/O
                             +-----------------+              
 
- - **Process Execution Flow**:
+ - **[Process Execution Flow](https://thecomputersciencebook.com/book/computer-architecture/#leanpub-auto-the-processor)**:
    - Program loaded → Process created (PCB initialized).
    - Process enters "Ready" state → Scheduled → Dispatched to "Running."
    - Executes until completion, interruption, or waiting for I/O.
@@ -579,7 +579,7 @@ public class DiningPhilosophers {
 ```
 ---
 
-## Memory Management
+## [Memory Management](https://thecomputersciencebook.com/book/computer-architecture/#leanpub-auto-memory)
 Memory management is a critical function of an operating system (OS) that ensures efficient allocation, tracking, and deallocation of a computer’s memory resources for executing processes. It’s all about managing the main memory (RAM) so that each process has enough space to run while maximizing system performance and stability.
 
 ### 1. Key Concepts in Memory Management
