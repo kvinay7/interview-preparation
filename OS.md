@@ -582,12 +582,12 @@ public class DiningPhilosophers {
 ## Memory Management
 Memory management is a critical function of an operating system (OS) that ensures efficient allocation, tracking, and deallocation of a computer’s memory resources for executing processes. It’s all about managing the main memory (RAM) so that each process has enough space to run while maximizing system performance and stability.
 
-### Key Concepts in Memory Management
-#### Physical vs. Virtual Memory
+### 1. Key Concepts in Memory Management
+#### i. Physical vs. Virtual Memory
 - **Physical Memory:** The actual RAM hardware where data and instructions reside.
 - **Virtual Memory:** An abstraction that gives each process its own address space, making it seem like it has exclusive access to memory. Virtual memory is mapped to physical memory by the OS, often using paging or segmentation. Virtual memory allows systems to use disk space (swap space) as an extension of RAM when physical memory runs out.
 
-#### Memory Allocation  
+#### ii. Memory Allocation  
 - When a process is created, the OS allocates memory for its components:
   - Code (Text): The executable instructions.
   - Data: Variables and constants.
@@ -595,8 +595,8 @@ Memory management is a critical function of an operating system (OS) that ensure
   - Heap: Dynamic memory allocation during runtime.
 - Allocation can be contiguous (one continuous block) or non-contiguous (scattered blocks).
 
-### Memory Management Techniques
-#### Contiguous Memory Allocation  
+### 2. Memory Management Techniques
+#### i. Contiguous Memory Allocation  
 - **Fixed Partitioning:** Memory is divided into fixed-size partitions; each partition holds one process.
   - Pros: Simple to implement.
   - Cons: Leads to internal fragmentation (unused space within a partition).
@@ -604,7 +604,7 @@ Memory management is a critical function of an operating system (OS) that ensure
   - Pros: Flexible.
   - Cons: Causes external fragmentation (small, unusable gaps between allocated blocks).
 
-#### Non-Contiguous Memory Allocation
+#### ii. Non-Contiguous Memory Allocation
 - **Paging:** Memory is divided into fixed-size units called pages (virtual memory) and frames (physical memory), typically 4KB each. A process’s virtual address space is split into pages, mapped to physical frames via a page table.
   - Page Table: Maintained by the OS, it translates virtual page numbers to physical frame numbers.
   - Pros: No external fragmentation; easy to swap pages to disk.
@@ -623,7 +623,7 @@ Memory management is a critical function of an operating system (OS) that ensure
   - LRU (Least Recently Used): Replace the page not used for the longest time.
   - Optimal: Replace the page that won’t be needed for the longest time (theoretical ideal).
 
-### Memory Management in Action
+### 3. Memory Management in Action
 - Process Loading: The OS allocates memory (e.g., via paging), maps virtual addresses, and loads the process.
 - Execution: The process accesses virtual addresses, translated by the MMU to physical locations.
 - Swapping: If memory is scarce, inactive processes or pages are moved to disk (swap space).
