@@ -73,7 +73,13 @@ A [process](https://www.geeksforgeeks.org/process-in-operating-system/) is an in
                             +-----------------+                 |
                             | Waiting/Blocked | <---------------- waiting for I/O
                             +-----------------+              
-  
+
+ - **Process Execution Flow**:
+   - Program loaded → Process created (PCB initialized).
+   - Process enters "Ready" state → Scheduled → Dispatched to "Running."
+   - Executes until completion, interruption, or waiting for I/O.
+   - Terminates → Resources freed. 
+ 
  - **Process Control System Calls**:
    - **`fork()`**: Creates a new process by duplicating the calling process.
    - **`exec()`**: Replaces the current process with a new program.
