@@ -595,6 +595,7 @@ Memory management is a critical function of an operating system (OS) that ensure
   - Heap: Dynamic memory allocation during runtime.
 - Allocation can be contiguous (one continuous block) or non-contiguous (scattered blocks).
 
+
 ### 2. Memory Management Techniques
 #### i. Contiguous Memory Allocation  
 - **Fixed Partitioning:** Memory is divided into fixed-size partitions; each partition holds one process.
