@@ -577,6 +577,8 @@ public class DiningPhilosophers {
     }
 }
 ```
+
+- [Concurrency Practice](https://leetcode.com/problem-list/concurrency/)
 ---
 
 ## [Memory Management](https://thecomputersciencebook.com/book/computer-architecture/#leanpub-auto-memory)
