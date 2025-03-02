@@ -35,6 +35,10 @@ An array is a data structure that can store fixed-size collections of elements o
       jaggedArray[1] = new int[3];  // Row 1 has 3 elements
       jaggedArray[2] = new int[4];  // Row 2 has 4 elements
     ```
+
+  - [Two Pointers](https://leetcode.com/discuss/study-guide/1905453/master-in-two-pointer)
+  - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
+  - [Intervals](https://blog.algomaster.io/p/812e72f7-eced-4256-a4c1-00606ae50679)
 ---
 
 ## Strings:
