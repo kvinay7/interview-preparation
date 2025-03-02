@@ -65,3 +65,7 @@ Load Factor is the ratio of the number of elements in the hash table to the size
      
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
 ---
+
+## [Linked List](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
+## [Trees](https://leetcode.com/discuss/study-guide/1820334/Become-Master-in-Tree)
+## [Heaps](https://leetcode.com/discuss/study-guide/6149018/Heap-and-Priority-Queue-in-Java-Cheat-Sheet/)
