@@ -35,6 +35,7 @@
 - [CS Fundamentals](https://thecomputersciencebook.com/book/)
 - [Interview Questions](https://www.interviewbit.com/java-interview-questions/)
 - [Coding Practice](https://www.hackerrank.com/domains/java)
+- [Spring Framework](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md)
 
 ## Introduction:
 Java is a general-purpose, class-based, object-oriented, high-level programming language developed by James Gosling and his team at Sun Microsystems in the mid-1990's. The main goal of creating Java was to achieve platform-independent, simple, and secure features.
@@ -168,7 +169,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
 ---
 
 # Object-Oriented Programming (OOP): 
-It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create modular, reusable, and maintainable code.
+It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create efficient, modular, reusable, and maintainable code.
 - **Class:** A blueprint or template for creating objects. It defines the properties and behaviors of objects.
 - **Object:** An instance of a class. It is a concrete realization of the class's blueprint.
 - **Methods & Functions:** Methods belong to a class or an object and have access to its data members, while functions are standalone. Java does not have standalone functions like some other languages. Every block of reusable code must be defined inside a class, making them methods.
