@@ -286,7 +286,6 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 | **Abstract Keyword in Methods**| Abstract methods must be explicitly declared.  | Abstract by default (prior to Java 8).       |
 | **Multiple Inheritance**       | Not supported (can extend only one class).     | Supported (via multiple interfaces).         |
 
-## Relationships: [Aggregation](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/aggregation), [Composition](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/composition), [Association](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/association)
 ---
 
 ## Enums:
