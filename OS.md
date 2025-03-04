@@ -21,9 +21,11 @@ An operating system is a software which is an interface between user and hardwar
 1. Power is supplied → Motherboard and components wake up.
 2. CPU locates BIOS/UEFI firmware in ROM on motherboard which is hardcoded and starts executing it.
 3. BIOS/UEFI runs POST (power-on-self-test) to ensure hardware is working.
-4. BIOS/UEFI loads bootloader from storage (HDD/SSD) through Master Boot Record (MBR) partition/EFI System Partition (ESP) and hands over control to it.
-5. Operating System `kernel` is loaded into main memory (RAM) from storage device by Bootloader.
-6. Drivers and system services are initialized. Login screen or desktop is displayed.
+4. BIOS/UEFI loads bootloader from storage (HDD/SSD) through Master Boot Record (MBR) partition/EFI System Partition (ESP) and hands over control to it. 
+5. Operating System `kernel` is loaded into main memory (RAM) from storage device by Bootloader. In Windows, Kernel (ntoskrnl.exe) is stored in C:\Windows\System32.
+6. Drivers and system services are initialized. Logon Process: winlogon.exe runs to authenticate the user and prepare for login.
+7. User Environment: userinit.exe starts the user session and loads the desktop (explorer.exe).
+8. Clicking the refresh button on setup to ensure that the system is displaying the most up-to-date information.
 
 ### How Interrupts Work:
 1. Interrupt Occurs: A hardware device or software process triggers an interrupt.
