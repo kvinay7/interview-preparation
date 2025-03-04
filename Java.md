@@ -25,6 +25,7 @@
     - [Abstraction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstraction)
         - [`abstract` vs `interface`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstract-vs-interface)
     - [Class Diagram](https://blog.algomaster.io/p/uml-class-diagram-explained-with-examples)
+    - [SOLID Principles](https://blog.algomaster.io/p/solid-principles-explained-with-code)
     - [Enums](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#enums)
     - [Generics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#generics)
 - [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework)
