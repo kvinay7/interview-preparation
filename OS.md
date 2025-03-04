@@ -19,10 +19,10 @@ An operating system is a software which is an interface between user and hardwar
     
 ### What happens when we turn on computer? (computer boot process)
 1. Power is supplied → Motherboard and components wake up.
-2. CPU locates BIOS/UEFI firmware in ROM and starts execute it.
+2. CPU locates BIOS/UEFI firmware in ROM on motherboard which is hardcoded and starts executing it.
 3. BIOS/UEFI runs POST (power-on-self-test) to ensure hardware is working.
-4. BIOS/UEFI loads bootloader from storage and hands over control to it.
-5. Operating System `kernel` is loaded into main memory from storage device by Bootloader.
+4. BIOS/UEFI loads bootloader from storage (HDD/SSD) and hands over control to it.
+5. Operating System `kernel` is loaded into main memory (RAM) from storage device by Bootloader.
 6. Drivers and system services are initialized. Login screen or desktop is displayed.
 
 ### How Interrupts Work:
