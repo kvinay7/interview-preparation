@@ -24,6 +24,7 @@
     - [Non-Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#non-access-modifiers)
     - [Abstraction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstraction)
         - [`abstract` vs `interface`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstract-vs-interface)
+    - [Class Diagram](https://blog.algomaster.io/p/uml-class-diagram-explained-with-examples)
     - [Enums](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#enums)
     - [Generics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#generics)
 - [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework)
