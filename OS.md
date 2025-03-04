@@ -583,7 +583,7 @@ public class DiningPhilosophers {
 - **[Concurrency Practice](https://leetcode.com/problem-list/concurrency/)**
 ---
 
-## [Memory Management](https://thecomputersciencebook.com/book/computer-architecture/#leanpub-auto-memory)
+## Memory Management
 Memory management is a critical function of an operating system (OS) that ensures efficient allocation, tracking, and deallocation of a computer’s memory resources for executing processes. It’s all about managing the main memory (RAM) so that each process has enough space to run while maximizing system performance and stability.
 
 ### 1. Key Concepts in Memory Management
