@@ -36,9 +36,7 @@ An array is a data structure that can store fixed-size collections of elements o
       jaggedArray[2] = new int[4];  // Row 2 has 4 elements
     ```
 
-  - [Two Pointers](https://leetcode.com/discuss/study-guide/1905453/master-in-two-pointer)
-  - [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c)
-  - [Intervals](https://blog.algomaster.io/p/812e72f7-eced-4256-a4c1-00606ae50679)
+  - [Two Pointers](https://leetcode.com/discuss/study-guide/1905453/master-in-two-pointer), [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c), [Intervals](https://blog.algomaster.io/p/812e72f7-eced-4256-a4c1-00606ae50679)
 ---
 
 ## Strings:
@@ -70,6 +68,4 @@ Load Factor is the ratio of the number of elements in the hash table to the size
       - `Double Hashing`: Use a second hash function for probing. Formula: `(hash(k) + i * hash'(k)) % tableSize`, where hash'(k) = p - (k % p) and p is randomFixedPrime.
 ---
 
-## [Linked List](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list)
-## [Trees](https://leetcode.com/discuss/study-guide/1820334/Become-Master-in-Tree)
-## [Heaps](https://leetcode.com/discuss/study-guide/6149018/Heap-and-Priority-Queue-in-Java-Cheat-Sheet/)
+## [Linked List](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list), [Trees](https://leetcode.com/discuss/study-guide/1820334/Become-Master-in-Tree), [Heaps](https://leetcode.com/discuss/study-guide/6149018/Heap-and-Priority-Queue-in-Java-Cheat-Sheet/)
