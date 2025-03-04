@@ -169,7 +169,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
 
 # Object-Oriented Programming (OOP): 
 It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create efficient, modular, reusable, and maintainable code.
-- **Class:** A blueprint or template for creating objects. It defines the properties and behaviors of objects.
+- **[Class](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/classesandobjects):** A blueprint or template for creating objects. It defines the properties and behaviors of objects.
 - **Object:** An instance of a class. It is a concrete realization of the class's blueprint.
 - **Methods & Functions:** Methods belong to a class or an object and have access to its data members, while functions are standalone. Java does not have standalone functions like some other languages. Every block of reusable code must be defined inside a class, making them methods.
 - **Constructor:** It is used to initialize the state of an object when it is created. It has the same name as the class and doesn't have any return type.
@@ -191,10 +191,10 @@ Access modifiers in Java are keywords used to define the visibility and accessib
 | **protected**   | ✅         | ✅         | ✅           | ❌                        |
 | **public**      | ✅         | ✅         | ✅           | ✅                        |
 
-## Encapsulation:
+## [Encapsulation](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/encapsulation):
 Encapsulation is one of the core principles of object-oriented programming (OOP). It involves bundling the data (variables) and the methods (functions) that operate on that data into a single unit, typically a class, and restricting direct access to some of the object's components to ensure controlled access and protection of data.
 
-## Inheritance:
+## [Inheritance](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/inheritance):
 One of the core concepts of Object-Oriented Programming (OOP) that allows one class to acquire the properties (fields) and behaviors (methods) of another class. It promotes code reuse, modularity, and logical structuring of programs. Java does not support multiple inheritance with classes to avoid ambiguity (but it can be achieved using interfaces) and can't assign an object of parent class to a reference of derived class.
 
 ### `this` vs `super`:
@@ -209,7 +209,7 @@ One of the core concepts of Object-Oriented Programming (OOP) that allows one cl
 | **Example**                 | `this.variableName`, `this.methodName()`        | `super.variableName`, `super.methodName()`      |
 | **Static Context**          | Can be used in both static and instance methods. | Cannot be used in static methods.                |
 
-## Polymorphism:
+## [Polymorphism](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/polymorphism):
 One of the core principles of Object-Oriented Programming (OOP) that allows an object to take on many forms and enables to write flexible and reusable code.
 
 | **Feature**                  | **Compile-time Polymorphism**                       | **Runtime Polymorphism**                        |
@@ -275,7 +275,7 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 
 ### `abstract` vs `interface`:
 
-| Feature                        | Abstract Class                                  | Interface                                     |
+| Feature                        | Abstract Class                                  | [Interface](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/interfaces)                                     |
 |--------------------------------|------------------------------------------------|----------------------------------------------|
 | **Inheritance**                | A class can extend only one abstract class.    | A class can implement multiple interfaces.   |
 | **Methods**                    | Can have both abstract and concrete methods. Supports static methods.  | Only abstract methods (Java 7 and earlier). Supports default and static methods (Java 8+). |
@@ -285,6 +285,9 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 | **Abstract Keyword in Methods**| Abstract methods must be explicitly declared.  | Abstract by default (prior to Java 8).       |
 | **Multiple Inheritance**       | Not supported (can extend only one class).     | Supported (via multiple interfaces).         |
 
+### [Aggregation](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/aggregation)
+### [Composition](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/composition)
+### [Association](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/association)
 ---
 
 ## Enums:
