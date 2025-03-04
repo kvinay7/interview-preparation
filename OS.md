@@ -27,6 +27,8 @@ An operating system is a software which is an interface between user and hardwar
 7. User Environment: userinit.exe starts the user session and loads the desktop (explorer.exe).
 8. Clicking the refresh button on setup to ensure that the system is displaying the most up-to-date information.
 
+### [Processor](https://thecomputersciencebook.com/book/computer-architecture/#leanpub-auto-the-processor)
+
 ### How Interrupts Work:
 1. Interrupt Occurs: A hardware device or software process triggers an interrupt.
 2. Interrupt Request (IRQ): The interrupt request is sent to the interrupt controller, which informs the OS.
@@ -76,7 +78,7 @@ A process is an instance of a program in execution which has its privite memory 
                             | Waiting/Blocked | <---------------- waiting for I/O
                             +-----------------+              
 
- - **[Process Execution Flow](https://thecomputersciencebook.com/book/computer-architecture/#leanpub-auto-the-processor)**:
+ - **Process Execution Flow**:
    - Program loaded → Process created (PCB initialized).
    - Process enters "Ready" state → Scheduled → Dispatched to "Running."
    - Executes until completion, interruption, or waiting for I/O.
