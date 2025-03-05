@@ -27,13 +27,6 @@ An operating system is a software which is an interface between user and hardwar
 7. User Environment: userinit.exe starts the user session and loads the desktop (explorer.exe).
 8. Clicking the refresh button on setup to ensure that the system is displaying the most up-to-date information.
 
-### How Interrupts Work:
-1. Interrupt Occurs: A hardware device or software process triggers an interrupt.
-2. Interrupt Request (IRQ): The interrupt request is sent to the interrupt controller, which informs the OS.
-3. Interrupt Acknowledgment: The CPU acknowledges the interrupt, saves the current execution context (e.g., registers, program counter), and begins executing the ISR.
-4. Interrupt Handling: The Interrupt Service Routine (ISR) performs necessary tasks, such as reading data from I/O devices, handling system calls, or responding to errors.
-5. Context Restoration: After the ISR finishes, the CPU restores the previous execution context (using a context switch) and continues where it left off.
-
 ### Types of Operating Systems
 
 | **Type of OS**           | **Description**                                                                                                    | **Advantages**                                                                                  | **Disadvantages**                                                                              | **Real-World Examples**                                      |
@@ -81,7 +74,14 @@ A process is an instance of a program in execution which has its privite memory 
    - Process enters "Ready" state → Scheduled → Dispatched to "Running."
    - Executes until completion, interruption, or waiting for I/O.
    - Terminates → Resources freed. 
- 
+
+ - **How Interrupts Work:**
+   - Interrupt Occurs: A hardware device or software process triggers an interrupt.
+   - Interrupt Request (IRQ): The interrupt request is sent to the interrupt controller, which informs the OS.
+   - Interrupt Acknowledgment: The CPU acknowledges the interrupt, saves the current execution context (e.g., registers, program counter), and begins executing the ISR.
+   - Interrupt Handling: The Interrupt Service Routine (ISR) performs necessary tasks, such as reading data from I/O devices, handling system calls, or responding to errors.
+   - Context Restoration: After the ISR finishes, the CPU restores the previous execution context (using a context switch) and continues where it left off.
+
  - **Process Control System Calls**:
    - **`fork()`**: Creates a new process by duplicating the calling process.
    - **`exec()`**: Replaces the current process with a new program.
