@@ -210,7 +210,7 @@ One of the core concepts of Object-Oriented Programming (OOP) that allows one cl
 | **Access Modifier Rules**   | No restriction on fields/methods of the current class. | Can only access non-private fields/methods of the parent class. |
 | **Can be used in**          | Methods and constructors.                      | Methods (except static methods) and constructors. |
 | **Example**                 | `this.variableName`, `this.methodName()`        | `super.variableName`, `super.methodName()`      |
-| **Static Context**          | Can be used in both static and instance methods. | Cannot be used in static methods.                |
+| **Static Context**          | Cannot be used in static methods. | Cannot be used in static methods.                |
 
 ## [Polymorphism](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/polymorphism):
 One of the core principles of Object-Oriented Programming (OOP) that allows an object to take on many forms and enables to write flexible and reusable code.
