@@ -291,7 +291,7 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 
 ---
 
-## Enums:
+## [Enums](https://jenkov.com/tutorials/java/enums.html):
 Enums in Java offer a powerful way to define a set of constants, allowing for more readable, type-safe, and organized code. They can include fields, constructors, and methods, making them much more flexible than simple constant values.
 
 - **Defining an Enum**:
@@ -363,7 +363,7 @@ Enums in Java offer a powerful way to define a set of constants, allowing for mo
 
 - **[Record](https://jenkov.com/tutorials/java/record.html)
 
-## Generics:
+## [Generics](https://jenkov.com/tutorials/java-generics/index.html):
 Introduced in Java 5 to provide type safety and reusability. They allow to write code that can work with any data type while ensuring compile-time type checking.
 
 ### Wildcards:
