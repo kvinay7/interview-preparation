@@ -54,11 +54,10 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 ### Terminologies:
 - **JDK:** Java Development Kit is need to compile java source code into bytecode and contains JRE & develop, debug, deploy tools.
 - **JRE:** Java Runtime Environment is need to run a java program and contains JVM & libraries.
-- **[JVM](https://www.interviewbit.com/java-cheat-sheet/#java-terminology):** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
+- **JVM:** Java Virtual Machine interprets the java bytecode to machine code and contains class loader (dynamic linking), bytecode verifier, JIT compiler.
 - **IDE:** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
 
 ### Console:
-- **[Main Method](https://jenkov.com/tutorials/java/main-method.html)**
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
 
