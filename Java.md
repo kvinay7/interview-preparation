@@ -58,6 +58,7 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **IDE:** Integrated Development Environment makes writing code, compiling, executing, debbuging and test Easy!.
 
 ### Console:
+- **[Main Method](https://jenkov.com/tutorials/java/main-method.html)**
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
 
