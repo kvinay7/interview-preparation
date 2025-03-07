@@ -361,6 +361,8 @@ Enums in Java offer a powerful way to define a set of constants, allowing for mo
     - `valueOf(String name)` – Returns the enum constant with the specified name.
     - `ordinal()` – Returns the position of the enum constant in its enum declaration (zero-based index).
 
+- **[Record](https://jenkov.com/tutorials/java/record.html)
+
 ## Generics:
 Introduced in Java 5 to provide type safety and reusability. They allow to write code that can work with any data type while ensuring compile-time type checking.
 
