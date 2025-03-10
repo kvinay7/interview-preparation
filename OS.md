@@ -597,6 +597,7 @@ Memory management is a critical function of an operating system (OS) that ensure
   - Data: Variables and constants.
   - Stack: Temporary storage for function calls and local variables.
   - Heap: Dynamic memory allocation during runtime.
+  - [Stack vs Heap Memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
 - Allocation can be contiguous (one continuous block) or non-contiguous (scattered blocks).
 
 
