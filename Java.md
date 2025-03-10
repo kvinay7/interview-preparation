@@ -284,7 +284,7 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 | **Methods**                    | Can have both abstract and concrete methods. Supports static methods.  | Only abstract methods (Java 7 and earlier). Supports default and static methods (Java 8+). |
 | **Fields**                     | Can include instance variables with any access modifier. | Only `public static final` constants.        |
 | **Access Modifiers for Methods**| Can have `public`, `protected`, or `private`.  | All methods are implicitly `public`.         |
-| **Constructor**                | Can have constructors to initialize fields.    | Cannot have constructors.                    |
+| **Constructor**                | Can have constructors to initialize fields but it cannot be instantiated directly. The subclass can call the abstract class constructor using super().    | Cannot have constructors.                    |
 | **Abstract Keyword in Methods**| Abstract methods must be explicitly declared.  | Abstract by default (prior to Java 8).       |
 | **Multiple Inheritance**       | Not supported (can extend only one class).     | Supported (via multiple interfaces).         |
 
