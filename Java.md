@@ -175,7 +175,7 @@ It is a programming paradigm that organizes software design around objects, whic
 - **[Class](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/classesandobjects):** A blueprint or template for creating objects. It defines the properties and behaviors of objects.
 - **Object:** An instance of a class. It is a concrete realization of the class's blueprint.
 - **Methods & Functions:** Methods belong to a class or an object and have access to its data members, while functions are standalone. Java does not have standalone functions like some other languages. Every block of reusable code must be defined inside a class, making them methods.
-- **Constructor:** It is used to initialize the state of an object when it is created. It has the same name as the class and doesn't have any return type.
+- **Constructor:** It is used to initialize the state of an object when it is created. It has the same name as the class and doesn't have any return type but can use 'return' for exiting from the constructor.
 
 ### Packages:
 A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
