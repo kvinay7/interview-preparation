@@ -61,9 +61,9 @@ Java is a general-purpose, class-based, object-oriented, high-level programming 
 - **Compile:** C:\\> javac Hello.java
 - **Run:** C:\\> java Hello
 
-## Tokens:
-Tokens are the smallest elements of a program that have meaning and are used to form the syntax of the language. Java programs are parsed and analyzed by the compiler in terms of tokens.
- - Examples: Keywords, Identifiers, Literals, Operators and Special Characters.
+## Basics:
+- A set of instructions is known as a program and the act of creating a program is known as programming.
+- **Tokens** are the smallest elements of a program that have meaning and are used to form the syntax of the language. Java programs are parsed and analyzed by the compiler in terms of tokens. Examples: Keywords, Identifiers, Literals, Operators and Special Characters.
 
 ### Identifier:
 An identifier is the name used to identify a variable & method (CamelCase), class & interface (PascalCase), constants (UPPER_CASE, UC) or any other user-defined item in the program.
