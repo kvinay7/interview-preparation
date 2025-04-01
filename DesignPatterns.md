@@ -1,8 +1,8 @@
 # Design Patterns
 
-## Creational Design Patterns
+## 1. Creational Design Patterns
 
-### Singleton Design Pattern
+### 1. Singleton Design Pattern
 It ensures a class has only one instance and provides a global point of access to that instance.
 
 1. **Eager Initialization Singleton:** The instance is created when the class is loaded. It is thread-safe by default because the instance is created before any threads can access it.
