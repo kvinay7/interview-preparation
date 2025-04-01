@@ -39,7 +39,7 @@ It ensures a class has only one instance and provides a global point of access t
     }
 ```
 
-### Builder Design Pattern 
+### 2. Builder Design Pattern 
 It is used to construct an object by specifying its type and content, allows to create a complex object with many optional components in a readable and flexible way.
 
 ```java
