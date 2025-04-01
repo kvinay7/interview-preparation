@@ -21,3 +21,21 @@ It ensures a class has only one instance and provides a global point of access t
         }
     }
 ```
+
+2. **Bill Pugh Singleton Design:** The instance is created only when the getInstance() method is called, and it takes advantage of Java's class-loading mechanism to ensure thread safety.
+
+```java
+    public class Singleton {
+        // Static inner class - the Singleton instance is created only when the class is referenced
+        private static class SingletonHelper {
+            private static final Singleton INSTANCE = new Singleton();
+        }
+
+        private Singleton() {}
+
+        public static Singleton getInstance() {
+            return SingletonHelper.INSTANCE;
+        }
+    }
+```
+
