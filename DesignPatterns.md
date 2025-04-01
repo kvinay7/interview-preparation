@@ -23,7 +23,7 @@ It ensures a class has only one instance and provides a global point of access t
 ```
 
 2. **Bill Pugh Singleton Design:** The instance is created only when the getInstance() method is called, and it takes advantage of Java's class-loading mechanism to ensure thread safety.
-
+   
 ```java
     public class Singleton {
         // Static inner class - the Singleton instance is created only when the class is referenced
@@ -42,6 +42,7 @@ It ensures a class has only one instance and provides a global point of access t
 ### 2. Builder Design Pattern 
 It is used to construct an object by specifying its type and content, allows to create a complex object with many optional components in a readable and flexible way.
 
+- Example: 
 ```java
     public class Computer {
         private String CPU;
@@ -97,6 +98,7 @@ It is used to construct an object by specifying its type and content, allows to 
         }
     }
 ```
+- Use the Builder:
 ```java
     public class Main {
         public static void main(String[] args) {
