@@ -98,7 +98,7 @@ It is used to construct an object by specifying its type and content, allows to 
         }
     }
 ```
-- Use the Builder:
+- Using the Builder:
 ```java
     public class Main {
         public static void main(String[] args) {
