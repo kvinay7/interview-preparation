@@ -170,7 +170,12 @@ It allows cloning of existing objects to create new instances instead of constru
         // Shallow clone method (clones only the reference of Address)
         @Override
         public ShallowCopyPerson clone() {
-            return (ShallowCopyPerson) super.clone();
+            try {
+                return (ShallowCopyPerson) super.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
         public String getName() {
@@ -200,9 +205,16 @@ It allows cloning of existing objects to create new instances instead of constru
         // Deep clone method (clones a new Address object)
         @Override
         public DeepCopyPerson clone() {
-            DeepCopyPerson cloned = (DeepCopyPerson) super.clone();
-            cloned.address = new Address(this.address);
-            return cloned;
+            try {
+                // Perform shallow clone first (to clone the fields)
+                DeepCopyPerson cloned = (DeepCopyPerson) super.clone();
+                // Deep clone the Address object to ensure the cloned object has its own address
+                cloned.address = new Address(this.address);
+                return cloned;
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
         public String getName() {
