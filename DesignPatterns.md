@@ -271,3 +271,98 @@ It allows cloning of existing objects to create new instances instead of constru
     }
 ```
 
+## 2. Behavioral Design Pattern
+
+### 1. Strategy Design Pattern (with Factory)
+Strategy Design Pattern enables selecting an algorithm or behavior at runtime. In the Factory Design Pattern, instead of calling a constructor directly to create an object, we use a factory method to handle object creation. 
+
+#### Step 1: Define the Strategy Interface
+
+```java
+    public interface SortStrategy {
+        void sort(int[] numbers);
+    }
+```
+
+#### Step 2: Create Concrete Strategy Classes
+
+```java
+    public class BubbleSort implements SortStrategy {
+        @Override
+        public void sort(int[] numbers) {
+            System.out.println("Sorting using Bubble Sort");
+        }
+    }
+
+    public class QuickSort implements SortStrategy {
+        @Override
+        public void sort(int[] numbers) {
+            System.out.println("Sorting using Quick Sort");
+        }
+    }
+```
+
+#### Step 3: Factory for Strategy Instantiation
+
+```java
+    public class SortingStrategyFactory {
+
+        // Map to hold the strategy names and their corresponding strategy objects
+        private static final Map<String, SortStrategy> strategies = new HashMap<>();
+
+        static {
+            strategies.put("BubbleSort", new BubbleSort());
+            strategies.put("QuickSort", new QuickSort());
+            // New strategies can be added here, without modifying existing code.
+        }
+
+        public static SortStrategy getSortStrategy(String strategyType) {
+            SortStrategy strategy = strategies.get(strategyType);
+            if (strategy == null) {
+                throw new IllegalArgumentException("Unknown sorting strategy");
+            }
+            return strategy;
+        }
+    }
+```
+
+#### Step 4: Context Class (NumberSorter)
+
+```java
+    public class NumberSorter {
+        private SortStrategy sortStrategy;
+
+        public NumberSorter(SortStrategy sortStrategy) {
+            this.sortStrategy = sortStrategy;
+        }
+
+        public void sortNumbers(int[] numbers) {
+            sortStrategy.sort(numbers);
+        }
+
+        public void setSortStrategy(SortStrategy sortStrategy) {
+            this.sortStrategy = sortStrategy;
+        }
+    }
+```
+
+### Step 5: Client Code
+
+```java
+    public class StrategyPatternWithFactoryExample {
+        public static void main(String[] args) {
+            int[] numbers = {5, 2, 9, 1, 5, 6};
+
+            // Get a sorting strategy from the Factory
+            SortStrategy bubbleSort = SortingStrategyFactory.getSortStrategy("BubbleSort");
+            NumberSorter sorter = new NumberSorter(bubbleSort);
+            sorter.sortNumbers(numbers);  // Output: Sorting using Bubble Sort
+
+            // Switch strategy at runtime
+            SortStrategy quickSort = SortingStrategyFactory.getSortStrategy("QuickSort");
+            sorter.setSortStrategy(quickSort);
+            sorter.sortNumbers(numbers);  // Output: Sorting using Quick Sort
+        }
+    }
+```
+
