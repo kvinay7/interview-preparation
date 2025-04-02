@@ -143,6 +143,14 @@ It allows cloning of existing objects to create new instances instead of constru
             return city;
         }
 
+        public void setStreet(String street) {
+            this.street = street;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
         @Override
         public String toString() {
             return street + ", " + city;
@@ -150,7 +158,7 @@ It allows cloning of existing objects to create new instances instead of constru
     }
 
     // Shallow Copy Person class (references shared)
-    class ShallowCopyPerson implements Clonable {
+    class ShallowCopyPerson implements Cloneable {
         private String name;
         private Address address;
 
@@ -180,7 +188,7 @@ It allows cloning of existing objects to create new instances instead of constru
     }
 
     // Deep Copy Person class (independent Address objects)
-    class DeepCopyPerson implements Clonable {
+    class DeepCopyPerson implements Cloneable {
         private String name;
         private Address address;
 
@@ -224,7 +232,7 @@ It allows cloning of existing objects to create new instances instead of constru
             ShallowCopyPerson person2 = (ShallowCopyPerson) person1.clone();
         
             // Modify the address in person2
-            person2.getAddress().getStreet("456 Another St");
+            person2.getAddress().setStreet("456 Another St");
         
             // Shallow copy: Changing address of person2 will affect person1 because they share the same address object
             System.out.println("Shallow Copy:");
@@ -241,7 +249,7 @@ It allows cloning of existing objects to create new instances instead of constru
             DeepCopyPerson person4 = (DeepCopyPerson) person3.clone();
         
             // Modify the address in person4
-            person4.getAddress().getStreet("101 Oak Ave");
+            person4.getAddress().setStreet("101 Oak Ave");
         
             // Deep copy: Changing address of person4 will NOT affect person3 because they have different Address objects
             System.out.println("\nDeep Copy:");
