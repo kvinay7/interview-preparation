@@ -270,6 +270,7 @@ It allows cloning of existing objects to create new instances instead of constru
         }
     }
 ```
+---
 
 ## 2. Behavioral Design Pattern
 
