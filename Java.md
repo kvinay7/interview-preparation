@@ -31,7 +31,6 @@
     - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stream-api)
     - [Optional](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#optional)
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
-- [Coding Practice](https://www.hackerrank.com/domains/java)
 - [Multithreading (OS)](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)
 - [Design Practice](https://algomaster.io/learn/lld) ([e.g.](https://github.com/kvinay7/Insurance/blob/main/README.md))
 - [Interview Questions](https://www.interviewbit.com/java-interview-questions/)
@@ -151,6 +150,17 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | 12             | `,`                                | Comma operator                         |   Left-to-right    |
 
 ---
+
+## Coding Practice:
+- Swap two numbers with and without using third variable.
+- Find min and max of three numbers. (Math Class usage)
+- Calculator program with all operators.
+- Find factorial of a number and check given number is factorial or not.
+- Find sum of digits of a number. (Reverse number)
+- Fibonacci series upto N terms.
+- Given number is prime or not
+- Find LCM and GCD (HCF) of two numbers.
+    
 
 ## Stack vs Heap memory:
 
@@ -497,7 +507,7 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
     - `collect(Collectors.toList())`, `forEach()`, `reduce()`, `count()`, `min()`, `max()`, `toArray()`
 - Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
     - `findFirst()`, `findAny()`, `anyMatch()`, `allMatch()`, `noneMatch()`
-- Example: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/Main.java)
+- Example: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/streams.md)
   
 **Parallel Stream:** to perform operations in parallel on multi-core processors, which can result in performance improvements for large datasets.
   ```java
