@@ -408,7 +408,7 @@ Collections Framework provides a unified architecture for storing and manipulati
     
 - **Iterator:**
     - Different collections have different internal structures, Iterator gives a common interface to loop through them.
-    - Removing items while looping with a for or foreach loop can cause errors. Iterator.remove() is designed to safely remove elements during iteration.
+    - Removing items while looping with a for or foreach loop can cause errors. `Iterator.remove()` is designed to safely remove elements during iteration.
 
   ```java
       Iterator<T> itr = list.iterator();
