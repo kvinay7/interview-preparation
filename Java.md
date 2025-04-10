@@ -406,7 +406,10 @@ Collections Framework provides a unified architecture for storing and manipulati
 - **Map Interface:**
   - `HashMap` (allow null), `LinkedHashMap` (allow null), `TreeMap` (key can't be null), [`Hashtable`](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md#hash-table) (thread-safe, not allow null)
     
-- **Iterator:** Different collections have different internal structures, Iterator gives a common interface to loop through them. Removing items while looping with a for or foreach loop can cause errors. Iterator.remove() is designed to safely remove elements during iteration.
+- **Iterator:**
+    - Different collections have different internal structures, Iterator gives a common interface to loop through them.
+    - Removing items while looping with a for or foreach loop can cause errors. Iterator.remove() is designed to safely remove elements during iteration.
+
   ```java
       Iterator<T> itr = list.iterator();
         while (itr.hasNext()) {
