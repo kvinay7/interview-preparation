@@ -367,3 +367,103 @@ Strategy Design Pattern enables selecting an algorithm or behavior at runtime. I
     }
 ```
 
+### 2. Observer Design Pattern:
+It's commonly used in scenarios where an object (the "subject") needs to notify other objects (observers) of changes without knowing who or what those objects are.
+
+#### 1. Define the Observer Interface
+
+```java
+    public interface Observer {
+        void update(float temperature, float humidity);
+    }
+```
+
+#### 2. Define the Subject Interface
+
+```java
+    public interface Subject {
+        void registerObserver(Observer observer);
+        void removeObserver(Observer observer);
+        void notifyObservers();
+    }
+```
+
+#### 3. Concrete Subject (WeatherStation)
+
+```java
+    public class WeatherStation implements Subject {
+        private List<Observer> observers;
+        private float temperature;
+        private float humidity;
+
+        public WeatherStation() {
+            observers = new ArrayList<>();
+        }
+
+        @Override
+        public void registerObserver(Observer observer) {
+            observers.add(observer);
+        }
+
+        @Override
+        public void removeObserver(Observer observer) {
+            observers.remove(observer);
+        }
+
+        @Override
+        public void notifyObservers() {
+            for (Observer observer : observers) {
+                observer.update(temperature, humidity);
+            }
+        }
+
+        // Method to set new weather data
+        public void setWeatherData(float temperature, float humidity) {
+            this.temperature = temperature;
+            this.humidity = humidity;
+            notifyObservers(); // Notify all observers about the change
+        }
+    }
+```
+
+#### 4. Concrete Observers (TemperatureDisplay and HumidityDisplay)
+
+```java
+    public class TemperatureDisplay implements Observer {
+        @Override
+        public void update(float temperature, float humidity) {
+            System.out.println("Temperature updated: " + temperature + "°C");
+        }
+    }
+
+    public class HumidityDisplay implements Observer {
+        @Override
+        public void update(float temperature, float humidity) {
+            System.out.println("Humidity updated: " + humidity + "%");
+        }
+    }
+```
+
+#### 5. Main Class (Client Code)
+
+```java
+    public class Main {
+        public static void main(String[] args) {
+            // Create the weather station (subject)
+            WeatherStation weatherStation = new WeatherStation();
+
+            // Create observers
+            Observer temperatureDisplay = new TemperatureDisplay();
+            Observer humidityDisplay = new HumidityDisplay();
+
+            // Register observers with the weather station
+            weatherStation.registerObserver(temperatureDisplay);
+            weatherStation.registerObserver(humidityDisplay);
+
+            // Update weather data and notify observers
+            weatherStation.setWeatherData(25.5f, 60.0f); // Notify all observers
+            weatherStation.setWeatherData(30.0f, 70.0f); // Notify all observers
+        }
+    }
+```
+
