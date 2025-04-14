@@ -38,6 +38,7 @@ It ensures a class has only one instance and provides a global point of access t
         }
     }
 ```
+---
 
 ### 2. Builder Design Pattern 
 It is used to construct an object by specifying its type and content, allows to create a complex object with many optional components in a readable and flexible way.
@@ -114,6 +115,7 @@ It is used to construct an object by specifying its type and content, allows to 
         }
     }
 ```
+---
 
 ### 3. Prototype Design Pattern
 It allows cloning of existing objects to create new instances instead of constructing new ones from scratch.
@@ -366,6 +368,7 @@ Strategy Design Pattern enables selecting an algorithm or behavior at runtime. I
         }
     }
 ```
+---
 
 ### 2. Observer Design Pattern:
 It's commonly used in scenarios where an object (the "subject") needs to notify other objects (observers) of changes without knowing who or what those objects are.
@@ -466,4 +469,99 @@ It's commonly used in scenarios where an object (the "subject") needs to notify 
         }
     }
 ```
+---
+
+### 3. Command Design Pattern
+It is used to encapsulate a request as an object, thereby allowing us to parameterize clients with queues, requests, and operations. It decouples the sender of a request from its receiver (actual object that knows how to perform the operation).
+
+#### 🔧 Use Case
+The Command pattern is useful when:
+- We want to queue operations.
+- We need to support undo/redo functionality.
+- We want to log changes or operations.
+- We want to decouple the class that invokes the operation from the one that knows how to perform it.
+
+---
+
+#### 1. Command Interface
+```java
+    public interface Command {
+        void execute();
+    }
+```
+
+#### 2. Receiver
+```java
+    public class Light {
+        public void turnOn() {
+            System.out.println("Light is ON");
+        }
+
+        public void turnOff() {
+            System.out.println("Light is OFF");
+        }
+    }
+```
+
+#### 3. Concrete Commands
+```java
+    public class LightOnCommand implements Command {
+        private Light light;
+
+        public LightOnCommand(Light light) {
+            this.light = light;
+        }
+
+        public void execute() {
+            light.turnOn();
+        }
+    }
+
+    public class LightOffCommand implements Command {
+        private Light light;
+
+        public LightOffCommand(Light light) {
+            this.light = light;
+        }
+
+        public void execute() {
+            light.turnOff();
+        }
+    }
+```
+
+#### 4. Invoker
+```java
+    public class RemoteControl {
+        private Command command;
+
+        public void setCommand(Command command) {
+            this.command = command;
+        }
+
+        public void pressButton() {
+            command.execute();
+        }
+    }
+```
+
+#### 5. Client
+```java
+    public class CommandPatternDemo {
+        public static void main(String[] args) {
+            Light light = new Light();
+            Command lightOn = new LightOnCommand(light);
+            Command lightOff = new LightOffCommand(light);
+
+            RemoteControl remote = new RemoteControl();
+
+            remote.setCommand(lightOn);
+            remote.pressButton(); // Output: Light is ON
+
+            remote.setCommand(lightOff);
+            remote.pressButton(); // Output: Light is OFF
+        }
+    }
+```
+---
 
