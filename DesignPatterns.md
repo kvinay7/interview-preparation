@@ -2,7 +2,8 @@
 
 ## 1. Creational Design Patterns
 
-### 1. Singleton Design Pattern
+<details>
+  <summary><h3>1. Singleton Design Pattern</h3></summary>
 It ensures a class has only one instance and provides a global point of access to that instance.
 
 1. **Eager Initialization Singleton:** The instance is created when the class is loaded. It is thread-safe by default because the instance is created before any threads can access it.
@@ -38,9 +39,10 @@ It ensures a class has only one instance and provides a global point of access t
         }
     }
 ```
----
+</details>
 
-### 2. Builder Design Pattern 
+<details>
+  <summary><h3>2. Builder Design Pattern</h3></summary>
 It is used to construct an object by specifying its type and content, allows to create a complex object with many optional components in a readable and flexible way.
 
 - Example: 
@@ -115,9 +117,10 @@ It is used to construct an object by specifying its type and content, allows to 
         }
     }
 ```
----
+</details>
 
-### 3. Prototype Design Pattern
+<details>
+  <summary><h3>3. Prototype Design Pattern</h3></summary>
 It allows cloning of existing objects to create new instances instead of constructing new ones from scratch.
 
 - Example:
@@ -272,11 +275,13 @@ It allows cloning of existing objects to create new instances instead of constru
         }
     }
 ```
+</details>
 ---
 
 ## 2. Behavioral Design Pattern
 
-### 1. Strategy Design Pattern (with Factory)
+<details>
+  <summary><h3>1. Strategy Design Pattern (with Factory)</h3></summary>
 Strategy Design Pattern enables selecting an algorithm or behavior at runtime. In the Factory Design Pattern, instead of calling a constructor directly to create an object, we use a factory method to handle object creation. 
 
 #### Step 1: Define the Strategy Interface
@@ -368,9 +373,10 @@ Strategy Design Pattern enables selecting an algorithm or behavior at runtime. I
         }
     }
 ```
----
+</details>
 
-### 2. Observer Design Pattern:
+<details>
+  <summary><h3>2. Observer Design Pattern</h3></summary>
 It's commonly used in scenarios where an object (the "subject") needs to notify other objects (observers) of changes without knowing who or what those objects are.
 
 #### 1. Define the Observer Interface
@@ -469,9 +475,10 @@ It's commonly used in scenarios where an object (the "subject") needs to notify 
         }
     }
 ```
----
+</details>
 
-### 3. Command Design Pattern
+<details>
+  <summary><h3>3. Command Design Pattern</h3></summary>
 It is used to encapsulate a request as an object, thereby allowing us to parameterize clients with queues, requests, and operations. It decouples the sender of a request from its receiver (actual object that knows how to perform the operation).
 
 #### 🔧 Use Case
@@ -563,9 +570,10 @@ The Command pattern is useful when:
         }
     }
 ```
----
+</details>
 
-### Mediator Design Pattern
+<details>
+  <summary><h3>4. Mediator Design Pattern</h3></summary>
 It promotes **loose coupling** by preventing objects from referring to each other explicitly. Instead, they communicate through a **mediator** object.
 
 #### ✅ When to Use
@@ -645,5 +653,5 @@ It promotes **loose coupling** by preventing objects from referring to each othe
         }
     }
 ```
----
+</details>
 
