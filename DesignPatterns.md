@@ -565,3 +565,85 @@ The Command pattern is useful when:
 ```
 ---
 
+### Mediator Design Pattern
+It promotes **loose coupling** by preventing objects from referring to each other explicitly. Instead, they communicate through a **mediator** object.
+
+#### ✅ When to Use
+- Have a set of objects that communicate in complex ways.
+- Want to centralize communication logic.
+- Reducing dependencies between communicating components is important.
+
+#### 1. Mediator Interface
+```java
+    public interface ChatMediator {
+        void showMessage(User user, String message);
+    }
+```
+
+#### 2. Concrete Mediator
+```java
+    public class ChatRoom implements ChatMediator {
+        private List<User> users = new ArrayList<>();
+
+        public void addUser(User user) {
+            users.add(user);
+        }
+
+        public void showMessage(User sender, String message) {
+            for (User user : users) {
+                // message should not be received by the user sending it
+                if (user != sender) {
+                    user.receive(message, sender.getName());
+                }
+            }
+        }
+    }
+```
+
+#### 3. Colleague
+```java
+    public class User {
+        private String name;
+        private ChatMediator mediator;
+
+        public User(String name, ChatMediator mediator) {
+            this.name = name;
+            this.mediator = mediator;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void send(String message) {
+            System.out.println(this.name + " sends: " + message);
+            mediator.showMessage(this, message);
+        }
+
+        public void receive(String message, String senderName) {
+            System.out.println(this.name + " receives from " + senderName + ": " + message);
+        }
+    }
+```
+
+#### 4. Client
+```java
+    public class MediatorPatternDemo {
+        public static void main(String[] args) {
+            ChatRoom chatRoom = new ChatRoom();
+
+            User john = new User("John", chatRoom);
+            User jane = new User("Jane", chatRoom);
+            User alex = new User("Alex", chatRoom);
+
+            chatRoom.addUser(john);
+            chatRoom.addUser(jane);
+            chatRoom.addUser(alex);
+
+            john.send("Hi everyone!");
+            jane.send("Hello John!");
+        }
+    }
+```
+---
+
