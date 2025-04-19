@@ -12,8 +12,8 @@
         - [Precedence and Associativity](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#precedence-and-associativity)
     - [Control Statements](https://www.javatpoint.com/control-flow-in-java)
     - [Coding Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#coding-practice)
-    - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
 - [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop)
+    - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
     - [Packages](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#packages)
     - [Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#access-modifiers)
     - [Encapsulation](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#encapsulation)
@@ -161,9 +161,16 @@ Higher precedence operators are evaluated first. Operators with the same precede
 - Fibonacci series upto N terms.
 - Given number is prime or not
 - Find LCM and GCD (HCF) of two numbers.
-    
+---
 
-## Stack vs Heap memory:
+# Object-Oriented Programming (OOP): 
+It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create efficient, modular, reusable, and maintainable code.
+- **[Class](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/classesandobjects):** A blueprint or template for creating objects. It defines the properties and behaviors of objects.
+- **Object:** An instance of a class. It is a concrete realization of the class's blueprint.
+- **Methods & Functions:** Methods belong to a class or an object and have access to its data members, while functions are standalone. Java does not have standalone functions like some other languages. Every block of reusable code must be defined inside a class, making them methods.
+- **Constructor:** It is used to initialize the state of an object when it is created. It has the same name as the class and doesn't have any return type but can use 'return' for exiting from the constructor.
+
+### Stack vs Heap memory:
 
 | **Aspect**                 | **Stack Memory**                                         | **Heap Memory**                                           |
 |----------------------------|----------------------------------------------------------|-----------------------------------------------------------|
@@ -177,14 +184,6 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | **Size Limit**             | Typically smaller (limited by JVM settings).             | Can grow dynamically (limited by available system memory).|
 | **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
 | **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
----
-
-# Object-Oriented Programming (OOP): 
-It is a programming paradigm that organizes software design around objects, which represent real-world entities or concepts. These objects encapsulate data (attributes or properties) and behavior (methods or functions) to create efficient, modular, reusable, and maintainable code.
-- **[Class](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/classesandobjects):** A blueprint or template for creating objects. It defines the properties and behaviors of objects.
-- **Object:** An instance of a class. It is a concrete realization of the class's blueprint.
-- **Methods & Functions:** Methods belong to a class or an object and have access to its data members, while functions are standalone. Java does not have standalone functions like some other languages. Every block of reusable code must be defined inside a class, making them methods.
-- **Constructor:** It is used to initialize the state of an object when it is created. It has the same name as the class and doesn't have any return type but can use 'return' for exiting from the constructor.
 
 ### Packages:
 A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
