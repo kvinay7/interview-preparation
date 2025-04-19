@@ -8,6 +8,7 @@
     - [Identifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#identifier)
     - [Variables and Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
     - [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
+        - [File Handling](https://www.geeksforgeeks.org/file-handling-in-java/?ref=lbp)
         - [Logging](https://www.digitalocean.com/community/tutorials/logger-in-java-logging-example) 
     - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
         - [Precedence and Associativity](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#precedence-and-associativity)
@@ -93,7 +94,7 @@ A variable is a container for storing data values and Data types define the type
   - Hexa to Decimal: Integer.parseInt(String, 16)
 
 ## Standard I/O:
-#### File Handling: [See here](https://www.geeksforgeeks.org/file-handling-in-java/?ref=lbp)
+
 - **Scanner Class:**
   ```java
       import java.util.Scanner;
