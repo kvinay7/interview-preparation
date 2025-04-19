@@ -8,6 +8,7 @@
     - [Identifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#identifier)
     - [Variables and Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
     - [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
+        - [Logging](https://www.digitalocean.com/community/tutorials/logger-in-java-logging-example) 
     - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
         - [Precedence and Associativity](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#precedence-and-associativity)
     - [Control Statements](https://www.javatpoint.com/control-flow-in-java)
