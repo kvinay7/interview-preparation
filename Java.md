@@ -512,7 +512,8 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
     - `collect(Collectors.toList())`, `forEach()`, `reduce()`, `count()`, `min()`, `max()`, `toArray()`
 - Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
     - `findFirst()`, `findAny()`, `anyMatch()`, `allMatch()`, `noneMatch()`
-- Example: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/streams.md)
+- Practice: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/streams.md)
+- Example: [See here](https://docs.google.com/document/d/e/2PACX-1vQDAFhUiB2iRfZppq4tFrJKnX8yVGsHBAPrSMmXLlj4CxcU2yi47QqBtAo4n-C4awhj2MNwt14XjOLP/pub)
   
 **Parallel Stream:** to perform operations in parallel on multi-core processors, which can result in performance improvements for large datasets.
   ```java
