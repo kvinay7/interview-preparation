@@ -13,7 +13,7 @@
         - [Precedence and Associativity](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#precedence-and-associativity)
     - [Control Statements](https://www.javatpoint.com/control-flow-in-java)
     - [Coding Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#coding-practice)
-    - [DSA](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md)
+    - [Data Structures and Algorithms](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md)
 - [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop)
     - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
     - [Packages](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#packages)
