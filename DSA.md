@@ -43,6 +43,7 @@ An array is a data structure that can store fixed-size collections of elements o
     - [Remove Duplicates from Sorted Array](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/remove-duplicates-from-sorted-array.md)
     - [Majority Element](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/majority-element.md)
     - [Product of Array Except Self](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/product-of-array-except-self.md)
+    - [Set Matrix Zeroes](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/set-matrix-zeroes.md#approach-3-optimal-in-place-solution)
 ---
 
 ## Strings:
