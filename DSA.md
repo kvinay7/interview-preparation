@@ -37,6 +37,12 @@ An array is a data structure that can store fixed-size collections of elements o
     ```
 
   - [Two Pointers](https://leetcode.com/discuss/study-guide/1905453/master-in-two-pointer), [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c), [Intervals](https://blog.algomaster.io/p/812e72f7-eced-4256-a4c1-00606ae50679)
+  
+  - **Problems:**
+    - [Move Zeroes](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/move-zeroes.md)
+    - [Remove Duplicates from Sorted Array](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/remove-duplicates-from-sorted-array.md)
+    - [Majority Element](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/majority-element.md)
+    - [Product of Array Except Self](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/product-of-array-except-self.md)
 ---
 
 ## Strings:
