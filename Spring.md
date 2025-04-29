@@ -39,6 +39,31 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   - `Session`: A bean is created once per HTTP session.
   - `Global Session`: A bean is created once per global HTTP session (used in portlet-based applications).
 
+- **Autowiring:** is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
+
+  - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods. `@Inject` is part of Java’s standard dependency injection mechanism (JSR-330).
+
+  - **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
+     ```java
+     @Autowired
+     @Qualifier("electricEngine")
+     private Engine engine;
+     ```
+
+  - **Autowire with `@Primary` (When multiple candidates are available)**: The `@Primary` annotation is used to mark one of the beans as the primary candidate for injection when multiple beans of the same type are available.
+     ```java
+     @Bean
+     @Primary
+     public Engine v8Engine() {
+       return new Engine("V8");
+     }
+
+     @Bean
+     public Engine electricEngine() {
+       return new Engine("Electric");
+     }
+     ```
+
 - **Configuration in XML:**
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
@@ -244,32 +269,6 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     }
   }
   ```
-
-### Autowiring
-Autowiring is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
-
-  - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods. `@Inject` is part of Java’s standard dependency injection mechanism (JSR-330).
-
-  - **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
-     ```java
-     @Autowired
-     @Qualifier("electricEngine")
-     private Engine engine;
-     ```
-
-  - **Autowire with `@Primary` (When multiple candidates are available)**: The `@Primary` annotation is used to mark one of the beans as the primary candidate for injection when multiple beans of the same type are available.
-     ```java
-     @Bean
-     @Primary
-     public Engine v8Engine() {
-       return new Engine("V8");
-     }
-
-     @Bean
-     public Engine electricEngine() {
-       return new Engine("Electric");
-     }
-     ```
 ---
 
 ## Spring Boot
