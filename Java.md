@@ -402,7 +402,7 @@ Generics can use wildcards (`?`) to work with unknown types.
 Collections Framework provides a unified architecture for storing and manipulating groups of objects.
 
 - **Collection Interface:**
-  - **List**: `ArrayList`, [`LinkedList`](https://leetcode.com/discuss/post/1800120/become-master-in-linked-list-by-hi-malik-qvdr/) is doubly linked list, `Vector` (thread-safe), `Stack`
+  - **List**: `ArrayList`, `LinkedList` is doubly linked list, `Vector` (thread-safe), `Stack`
   - **Set**: `HashSet` (allow null), `LinkedHashSet` (not allow null. Insertion order), `TreeSet` (not allow null. Sorted order)
   - **Queue**: `PriorityQueue`, `ArrayDeque` - Use Deque for efficient stack and queue operations (ArrayDeque is faster than Stack and LinkedList)
 - **Map Interface:**
@@ -513,7 +513,7 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
     - `collect(Collectors.toList())`, `forEach()`, `reduce()`, `count()`, `min()`, `max()`, `toArray()`
 - Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
     - `findFirst()`, `findAny()`, `anyMatch()`, `allMatch()`, `noneMatch()`
-- Practice: [See the code](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/streams.md)
+- Practice: [See here](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/streams.md)
 - Example: [See here](https://docs.google.com/document/d/e/2PACX-1vQDAFhUiB2iRfZppq4tFrJKnX8yVGsHBAPrSMmXLlj4CxcU2yi47QqBtAo4n-C4awhj2MNwt14XjOLP/pub)
   
 **Parallel Stream:** to perform operations in parallel on multi-core processors, which can result in performance improvements for large datasets.
