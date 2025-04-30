@@ -404,7 +404,7 @@ Collections Framework provides a unified architecture for storing and manipulati
 - **Collection Interface:**
   - **List**: `ArrayList`, [`LinkedList`](https://leetcode.com/discuss/post/1800120/become-master-in-linked-list-by-hi-malik-qvdr/) is doubly linked list, `Vector` (thread-safe), `Stack`
   - **Set**: `HashSet` (allow null), `LinkedHashSet` (not allow null. Insertion order), `TreeSet` (not allow null. Sorted order)
-  - **Queue**: `PriorityQueue`, `ArrayDeque`
+  - **Queue**: `PriorityQueue`, `ArrayDeque` - Use Deque for efficient stack and queue operations (ArrayDeque is faster than Stack and LinkedList)
 - **Map Interface:**
   - `HashMap` (allow null), `LinkedHashMap` (allow null), `TreeMap` (key can't be null), [`Hashtable`](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md#hash-table) (thread-safe, not allow null)
     
