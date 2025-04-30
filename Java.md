@@ -402,7 +402,7 @@ Generics can use wildcards (`?`) to work with unknown types.
 Collections Framework provides a unified architecture for storing and manipulating groups of objects.
 
 - **Collection Interface:**
-  - **List**: `ArrayList`, [`LinkedList`](https://leetcode.com/discuss/post/1800120/become-master-in-linked-list-by-hi-malik-qvdr/), `Vector` (thread-safe), `Stack`
+  - **List**: `ArrayList`, [`LinkedList`](https://leetcode.com/discuss/post/1800120/become-master-in-linked-list-by-hi-malik-qvdr/) is doubly linked list, `Vector` (thread-safe), `Stack`
   - **Set**: `HashSet` (allow null), `LinkedHashSet` (not allow null. Insertion order), `TreeSet` (not allow null. Sorted order)
   - **Queue**: `PriorityQueue`, `ArrayDeque`
 - **Map Interface:**
