@@ -27,6 +27,7 @@
     - [Non-Access Modifiers](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#non-access-modifiers)
     - [Abstraction](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstraction)
         - [`abstract` vs `interface`](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#abstract-vs-interface)
+    - [OOP Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#oop-practice)
     - [Enums](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#enums)
     - [Generics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#generics)
 - [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework)
@@ -383,7 +384,6 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
     * Implement a text-based UI and handle user authentication, balance check, etc.
 
 </details>
----
 
 ## Enums:
 Enums in Java offer a powerful way to define a set of constants, allowing for more readable, type-safe, and organized code. They can include fields, constructors, and methods, making them much more flexible than simple constant values.
