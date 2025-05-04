@@ -301,6 +301,90 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 
 ---
 
+<details>
+    <summary><h2>OOP Practice</h2></summary>
+
+### **Beginner Level**
+
+1. **Class and Object Basics**
+
+   * Create a `Book` class with attributes like title, author, and price.
+   * Create multiple objects and display their details.
+
+2. **Constructor Overloading**
+
+   * Create a `Rectangle` class with overloaded constructors for different input cases (e.g., square, rectangle).
+
+3. **Encapsulation**
+
+   * Create a `Student` class with private fields and public getters/setters.
+   * Implement validation in setters (e.g., age must be > 0).
+
+4. **Simple Aggregation**
+
+   * Create a `Library` class that contains an array/list of `Book` objects.
+   * Provide methods to add and display books.
+
+---
+
+### **Intermediate Level**
+
+5. **Inheritance**
+
+   * Create a `Person` superclass with `Employee` and `Manager` subclasses.
+   * Override a `getDetails()` method in each class.
+
+6. **Polymorphism**
+
+   * Implement a `Shape` superclass with `Rectangle`, `Circle`, and `Triangle` subclasses.
+   * Create a method to calculate and display area using overridden methods.
+
+7. **Abstraction**
+
+   * Use an abstract class `Vehicle` with subclasses like `Car` and `Bike`.
+   * Include abstract and concrete methods.
+
+8. **Interface Implementation**
+
+   * Define a `Playable` interface with a method `play()`.
+   * Implement it in classes like `Guitar`, `Piano`, and `Drum`.
+
+9. **Composition**
+
+   * Model a `Computer` class composed of `CPU`, `RAM`, and `HardDrive` classes.
+
+---
+
+### **Advanced Level**
+
+10. **Banking System Simulation**
+
+    * Classes: `Bank`, `Account`, `Customer`
+    * Implement deposit, withdrawal, and transfer methods.
+    * Use exception handling for invalid operations.
+
+11. **Online Shopping Cart**
+
+    * Classes: `Product`, `Cart`, `User`, `Order`
+    * Handle adding/removing items and order checkout with discounts.
+
+12. **Hotel Reservation System**
+
+    * Classes: `Room`, `Guest`, `Booking`, `Hotel`
+    * Include functionality to check room availability and make a booking.
+
+13. **File I/O with OOP**
+
+    * Extend any problem (like `Library` or `Banking`) to save/load data using file input/output.
+
+14. **Design a Mini ATM**
+
+    * Classes: `ATM`, `UserAccount`, `Transaction`
+    * Implement a text-based UI and handle user authentication, balance check, etc.
+
+</details>
+---
+
 ## Enums:
 Enums in Java offer a powerful way to define a set of constants, allowing for more readable, type-safe, and organized code. They can include fields, constructors, and methods, making them much more flexible than simple constant values.
 
