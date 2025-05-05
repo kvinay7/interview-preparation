@@ -475,8 +475,8 @@ The GitHub Actions workflow automatically handles the EB CLI installation and de
 #### 5.1 **Check AWS Elastic Beanstalk for Your Application**:
 
 Once the GitHub Action completes, visit the **Elastic Beanstalk URL** to see your application running live.     
----
 
+---
 </details>
 
    ```
