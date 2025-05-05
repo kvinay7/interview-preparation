@@ -278,10 +278,37 @@ Spring Boot is designed to make it easy to get started with Spring development b
 
 - **Spring Application Project Structure:** [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/01-spring-boot-overview/01-spring-boot-demo)
 
-- <details>
-  <summary><h3>Project Setup with Github and AWS</h3></summary>
-
+   ```
+   my-spring-boot-app/
+   ├── .mvn/                        		     	# Maven wrapper (if using Maven)
+   ├── mvnw                         		     	# Maven wrapper script (if using Maven)
+   ├── mvnw.cmd                     			# Maven wrapper for Windows (if using Maven)
+   ├── pom.xml                     			# Maven Project Object Model (POM) file
+   ├── src/                         			# Source code directory
+   │   ├── main/
+   │   │   ├── java/                			# Java source code
+   │   │   │   └── com/example/demo/  		       	# Main application package
+   │   │   │       ├── DemoApplication.java  	       	# Main Spring Boot application class
+   |   |   |       ├── controller/                     	# Controller layer (for handling HTTP requests)
+   │   |   |       ├── service/                        	# Service layer (business logic)
+   │   |   |       ├── repository/                     	# Data access layer (usually interacting with DB)
+   │   |   |       ├── model/                          	# Model classes (entities, DTOs)
+   │   |   |       └── config/                         	# Configuration classes (optional for custom beans)
+   │   │   ├── resources/           			# Resources like application.properties, static files, templates
+   │   │   │   ├── application.properties  		# Configuration properties for the application
+   │   │   │   ├── static/          			# Static resources (CSS, JS, images)
+   │   │   │   └── templates/       			# Template files (for Thymeleaf, etc.)
+   │   ├── test/                    			# Unit and integration tests
+   │   │   ├── java/                			# Test code
+   │   │   │   └── com/example/demo/   			# Test classes
+   │   │   │       └── DemoApplicationTests.java  	# Test class for the Spring Boot application
+   ├── target/                      			# Compiled classes and packaged artifacts (JAR/WAR)
+   ├── .gitignore                   			# Git ignore file (to ignore compiled files, etc.)
+   └── README.md                    			# Project documentation (optional)
+   ```
 ---
+
+## Project Setup with Github and AWS
 
 ### **Step 1: Spring Boot Project Setup in IntelliJ IDEA**
 
@@ -476,36 +503,6 @@ The GitHub Actions workflow automatically handles the EB CLI installation and de
 
 Once the GitHub Action completes, visit the **Elastic Beanstalk URL** to see your application running live.     
 
-</details>
-
-   ```
-   my-spring-boot-app/
-   ├── .mvn/                        		     	# Maven wrapper (if using Maven)
-   ├── mvnw                         		     	# Maven wrapper script (if using Maven)
-   ├── mvnw.cmd                     			# Maven wrapper for Windows (if using Maven)
-   ├── pom.xml                     			# Maven Project Object Model (POM) file
-   ├── src/                         			# Source code directory
-   │   ├── main/
-   │   │   ├── java/                			# Java source code
-   │   │   │   └── com/example/demo/  		       	# Main application package
-   │   │   │       ├── DemoApplication.java  	       	# Main Spring Boot application class
-   |   |   |       ├── controller/                     	# Controller layer (for handling HTTP requests)
-   │   |   |       ├── service/                        	# Service layer (business logic)
-   │   |   |       ├── repository/                     	# Data access layer (usually interacting with DB)
-   │   |   |       ├── model/                          	# Model classes (entities, DTOs)
-   │   |   |       └── config/                         	# Configuration classes (optional for custom beans)
-   │   │   ├── resources/           			# Resources like application.properties, static files, templates
-   │   │   │   ├── application.properties  		# Configuration properties for the application
-   │   │   │   ├── static/          			# Static resources (CSS, JS, images)
-   │   │   │   └── templates/       			# Template files (for Thymeleaf, etc.)
-   │   ├── test/                    			# Unit and integration tests
-   │   │   ├── java/                			# Test code
-   │   │   │   └── com/example/demo/   			# Test classes
-   │   │   │       └── DemoApplicationTests.java  	# Test class for the Spring Boot application
-   ├── target/                      			# Compiled classes and packaged artifacts (JAR/WAR)
-   ├── .gitignore                   			# Git ignore file (to ignore compiled files, etc.)
-   └── README.md                    			# Project documentation (optional)
-   ```
 ---
 
 ## Spring ORM:
