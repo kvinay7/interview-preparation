@@ -279,19 +279,6 @@ Spring Boot is designed to make it easy to get started with Spring development b
 - **Spring Application Project Structure:** [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/01-spring-boot-overview/01-spring-boot-demo)
 - <details>
   <summary><h3>Project Setup with Github and AWS</h3></summary>
-  To create a complete project setup, deploy a **Spring Boot application** from **IntelliJ IDEA** to **AWS Elastic Beanstalk** using **GitHub Actions** for **CI/CD**, here's a step-by-step guide:
-
----
-
-### **Complete Project Setup to Deployment**
-
-This will cover:
-
-1. **Spring Boot Project Setup in IntelliJ IDEA** with Maven.
-2. **Push the project to GitHub**.
-3. **Set up GitHub Actions for CI/CD**.
-4. **Deploy to AWS Elastic Beanstalk**.
-
 ---
 
 ### **Step 1: Spring Boot Project Setup in IntelliJ IDEA**
@@ -485,31 +472,8 @@ The GitHub Actions workflow automatically handles the EB CLI installation and de
 
 #### 5.1 **Check AWS Elastic Beanstalk for Your Application**:
 
-Once the GitHub Action completes, visit the **Elastic Beanstalk URL** to see your application running live.
-
+Once the GitHub Action completes, visit the **Elastic Beanstalk URL** to see your application running live.     
 ---
-
-### **Complete Flow Recap:**
-
-1. **Spring Boot in IntelliJ**:
-
-   * Create a Maven-based Spring Boot project.
-   * Test the application locally using `mvnw` or IntelliJ's built-in Maven support.
-
-2. **GitHub Repository**:
-
-   * Push your code to GitHub.
-   * Set up the `.github/workflows/ci-cd.yml` file to automate the build and deploy process using GitHub Actions.
-
-3. **CI/CD Pipeline**:
-
-   * GitHub Actions builds the project with Maven and deploys it to AWS Elastic Beanstalk.
-   * Monitor the deployment status via GitHub Actions and AWS Elastic Beanstalk.
-
-4. **Deploy to AWS**:
-
-   * Your Spring Boot app is deployed and accessible via an Elastic Beanstalk URL.
-     
 </details>
 
    ```
