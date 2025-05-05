@@ -279,6 +279,7 @@ Spring Boot is designed to make it easy to get started with Spring development b
 - **Spring Application Project Structure:** [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/01-spring-boot-overview/01-spring-boot-demo)
 - <details>
   <summary><h3>Project Setup with Github and AWS</h3></summary>
+
 ---
 
 ### **Step 1: Spring Boot Project Setup in IntelliJ IDEA**
