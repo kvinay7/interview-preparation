@@ -158,7 +158,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     }
 
     // Define Car bean with setter-based injection
-    @Bean(initMethod = "init", destroyMethod = "cleanup")
+    @Bean(name = "carWithSetters", initMethod = "init", destroyMethod = "cleanup")
     public Car carWithSetterInjection() {
         Car car = new Car(engine(), "BMW", 2023);
         car.setFeatures(features());
@@ -266,6 +266,9 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
         // Retrieve the Car bean with setter-based injection
         Car carWithSetterInjection = contextXml.getBean("carWithSetterInjection", Car.class);
         carWithSetterInjection.printCarDetails();  // Print details for setter-based Car bean
+
+        Car setterCar = context.getBean("carWithSetters", Car.class);
+        setterCar.printCarDetails();
 
         // Retrieve the Car bean with external properties
         Car carWithExternalProps = contextJava.getBean("carWithExternalProps", Car.class);
