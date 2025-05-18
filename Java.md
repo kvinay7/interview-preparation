@@ -590,9 +590,9 @@ public class Main {
 ## Stream API:
 Introduced in Java 8 as part of the java.util.stream package. It is used to process collections of data in a functional and declarative style (pipeline of functions). It doesn't store data. 
 
-- Declaring Streams: `stream.of(1,2,3)`, `Arrays.stream(arr)`, `list.stream()`
+- Declaring Streams: `Arrays.stream(arr)`, `list.stream()`, `Stream.of(1,2,3)`, `Stream.empty()`, `Stream.generate(Supplier<T>)`, `Stream.iterate(seed, UnaryOperator<T>)`
 - Intermediate Operations (lazy): they not executed until a terminal operation is invoked.
-    - `map()`, `filter()`, `sorted()`, `distinct()`, `limit()`, `skip()`, `flatMap()`, `peek()`
+    - `map(Function<T, R>)`, `filter(Predicate<T>)`, `sorted()`, `distinct()`, `limit(long maxSize)`, `skip(long n)`, `flatMap()`, `peek()`
 - Terminal Operations: once a terminal operation is invoked, stream can't be reused.
     - `collect(Collectors.toList())`, `forEach()`, `reduce()`, `count()`, `min()`, `max()`, `toArray()`
 - Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
