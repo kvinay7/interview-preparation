@@ -99,6 +99,11 @@ A variable is a container for storing data values and Data types define the type
 
 - **Scanner Class:**
   ```java
+      /**
+      * This is a Javadoc comment.
+      * It describes a class, method, or interface.
+     */
+  
       import java.util.Scanner;
       class StandardIO {
           public static void main(String[] args) {
