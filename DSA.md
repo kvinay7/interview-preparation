@@ -2,7 +2,7 @@
 Data structures are ways of organizing and storing data efficiently to perform operations such as retrieval, insertion, deletion, and searching. Algorithms are step-by-step instructions to solve a problem or perform a computation. Efficient algorithms often need to be designed with the appropriate data structures.
 
 ## Arrays:
-An array is a data structure that can store fixed-size collections of elements of the same type in a single variable. By default array elements are initialized to 0 if they are a numeric type ( int or double ), false if they are of type boolean , or null if they are an object type like String.
+An array is a linear data structure that can store fixed-size, sequential collections of elements of the same type in a single variable of contiguous memory locations. By default array elements are initialized to 0 if they are a numeric type ( int or double ), false if they are of type boolean , or null if they are an object type like String.
 
   - Declaring and Initializing Arrays:
     ```java
@@ -39,6 +39,7 @@ An array is a data structure that can store fixed-size collections of elements o
   - [Two Pointers](https://leetcode.com/discuss/study-guide/1905453/master-in-two-pointer), [Sliding Window](https://blog.algomaster.io/p/f4412a17-7a3a-4d0b-8e39-9ea8f429bf7c), [Intervals](https://blog.algomaster.io/p/812e72f7-eced-4256-a4c1-00606ae50679)
   
   - **Problems:**
+    - [Rotate Array](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/rotate-array.md)
     - [Move Zeroes](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/move-zeroes.md)
     - [Remove Duplicates from Sorted Array](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/remove-duplicates-from-sorted-array.md)
     - [Majority Element](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/java/majority-element.md)
