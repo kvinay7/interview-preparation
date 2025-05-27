@@ -58,8 +58,7 @@ A [`hash table`](https://github.com/kvinay7/interview-preparation/blob/main/Java
 ### Collision Resolution Techniques:
 Load Factor is the ratio of the number of elements in the hash table to the size of the table. A high load factor increases the likelihood of collisions. When the load factor exceeds a certain threshold (e.g., 0.75), the hash table is typically rehashed—the table size is increased, and the existing entries are redistributed according to the new size. This process helps maintain efficient access times and reduces collisions.
 
-  - **Seperate Chaining** (Open Hashing): Chaining involves storing multiple elements at the same index using a [`linked list`](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list) or another list-like structure. Each array index (bucket) holds a reference to a list of key-value pairs, allowing the bucket to store multiple entries that hash to the same index.
-    - [Implementation](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/MyHashMap.java):
+  - **Seperate Chaining** (Open Hashing): Chaining involves storing multiple elements at the same index using a [`linked list`](https://leetcode.com/discuss/study-guide/1800120/become-master-in-linked-list) or another list-like structure. Each array index (bucket) holds a reference to a list of key-value pairs, allowing the bucket to store multiple entries that hash to the same index. [Implementation](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/MyHashMap.java)
     
   - **Open Addressing** (Closed Hashing): Open addressing resolves collisions by finding another open slot within the hash table array itself. The key idea is that all elements remain in the table (in the array itself), rather than being stored in linked lists.
       - `Linear Probing`: Search for the next available slot linearly (clustering). Formula: `(hash(k) + i) % tableSize`, where i is the number of probes (0, 1, 2,...).
