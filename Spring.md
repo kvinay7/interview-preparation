@@ -267,7 +267,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
         Car carWithSetterInjection = contextXml.getBean("carWithSetterInjection", Car.class);
         carWithSetterInjection.printCarDetails();  // Print details for setter-based Car bean
 
-        Car setterCar = context.getBean("carWithSetters", Car.class);
+        Car setterCar = contextJava.getBean("carWithSetters", Car.class);
         setterCar.printCarDetails();
 
         // Retrieve the Car bean with external properties
