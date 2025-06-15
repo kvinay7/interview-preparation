@@ -15,19 +15,20 @@ A structured collection of related data that can be easily accessed, managed, an
 
 ## File System
 A system used by OS to store and organize files on storage devices.
+- Example: Storing student records in a .txt or .csv file
 - Characteristics:
- - Manual data management (no SQL, no automatic indexing)
- - Poor support for relationships between data
- - More prone to data redundancy, inconsistency, integrity and security issues
- - Example: Storing student records in a .txt or .csv file
+  - Manual data management (no SQL, no automatic indexing)
+  - Poor support for relationships between data
+  - More prone to data redundancy, inconsistency, integrity and security issues
 
 ## DBMS (Database Management System)
-Software used to manage databases by providing an interface for data insertion, deletion, updating, and retrieval. Database management systems were developed to handle the following difficulties of typical File-processing systems supported by conventional operating systems:
- - Data redundancy and inconsistency
- - Difficulty in accessing data
- - Data isolation – multiple files and formats
- - Integrity problems
- - Atomicity of updates
- - Concurrent access by multiple users
- - Security problems
+Software used to manage databases by providing an interface for data insertion, deletion, updating, and retrieval. 
+- Database management systems were developed to handle the following difficulties of typical File-processing systems supported by conventional operating systems:
+  - Data redundancy and inconsistency
+  - Difficulty in accessing data
+  - Data isolation – multiple files and formats
+  - Integrity problems
+  - Atomicity of updates
+  - Concurrent access by multiple users
+  - Security problems
 
