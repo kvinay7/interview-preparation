@@ -30,4 +30,8 @@ Software used to manage databases by providing an interface for data insertion, 
    - Transaction management (ACID)
    - Concurrency control
    - Backup and recovery
+ - 3-tier architecture:
+   - Presentation Layer - Handles the user interface
+   - Application Layer - Manages business logic
+   - Data Layer - Manages data storage and processing
 
