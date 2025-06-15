@@ -1,4 +1,4 @@
-# Database Management System
+<h1 align="center">Database Management System</h1>
 
 ## Data and Information
  - **Data**: Raw, unorganized facts that by themselves may have no meaning. Data becomes meaningful only when processed.
