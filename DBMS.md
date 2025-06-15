@@ -23,6 +23,7 @@ A system used by OS to store and organize files on storage devices.
 
 ## DBMS (Database Management System)
 Software used to manage databases by providing an interface for data insertion, deletion, updating, and retrieval. Database management systems were developed to handle the difficulties of typical File-processing systems supported by conventional operating systems.
+ - Examples: MySQL, PostgreSQL, Oracle, MongoDB
  - Features:
    - Data abstraction
    - Querying with SQL
