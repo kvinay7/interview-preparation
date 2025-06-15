@@ -22,8 +22,7 @@ A system used by OS to store and organize files on storage devices.
   - More prone to data redundancy, inconsistency, integrity and security issues
 
 ## DBMS (Database Management System)
-Software used to manage databases by providing an interface for data insertion, deletion, updating, and retrieval. 
-- Database management systems were developed to handle the following difficulties of typical File-processing systems supported by conventional operating systems:
+Software used to manage databases by providing an interface for data insertion, deletion, updating, and retrieval. Database management systems were developed to handle the following difficulties of typical File-processing systems supported by conventional operating systems:
   - Data redundancy and inconsistency
   - Difficulty in accessing data
   - Data isolation – multiple files and formats
