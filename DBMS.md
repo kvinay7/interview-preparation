@@ -36,3 +36,5 @@ Software used to manage databases by providing an interface for data insertion, 
    - Application Layer - Manages business logic
    - Data Layer - Manages data storage and processing
 
+---
+
