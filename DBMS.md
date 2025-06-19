@@ -39,7 +39,6 @@ Software used to manage databases by providing an interface for data insertion, 
 ---
 
 ## Relational Model
-### Relation
 A relation is basically a table in a relational database.
  - Rows: Tuples (each row represents a record)
  - Columns: Attributes (each column represents a field)
