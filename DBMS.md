@@ -40,19 +40,20 @@ Software used to manage databases by providing an interface for data insertion, 
 
 ## Relational Model
 A relation is basically a table in a relational database.
- - Rows: Tuples (each row represents a record)
- - Columns: Attributes (each column represents a field)
- - Schema: The structure or definition of the database. E.g., STUDENT(ID int, Name varchar, Age int)
- - Instance: The actual data stored at a given time (i.e., the rows).
- - Degree: Number of attributes (columns) in a relation.
- - Cardinality: Number of tuples (rows) in a relation.
+ - **Rows**: Tuples (each row represents a record)
+ - **Columns**: Attributes (each column represents a field)
+ - **Schema**: The structure or definition of the database. E.g., STUDENT(ID int, Name varchar, Age int)
+ - **Instance**: The actual data stored at a given time (i.e., the rows).
+ - **Degree**: Number of attributes (columns) in a relation.
+ - **Cardinality**: Number of tuples (rows) in a relation.
 
 ## ER Model
 It is a logical tool which is used for database schema design.
- - Entity: An object or concept that can be distinctly identified in the real world.
- - Entity Set: A collection of similar types of entities.
- - Attributes: Properties of an entity.
-   - Simple: Cannot be divided further (e.g., Age)
-   - Composite: Made of sub-parts (e.g., Name → FirstName, LastName)
-   - Derived: Can be calculated from other attributes (e.g., Age from DOB)
-   - Multivalued: Can have multiple values (e.g., PhoneNumbers)
+ - **Entity**: An object or concept that can be distinctly identified in the real world.
+ - **Entity Set**: A collection of similar types of entities.
+
+ - **Attributes**: Properties of an entity.
+   - **Simple**: Cannot be divided further (e.g., Age)
+   - **Composite**: Made of sub-parts (e.g., Name → FirstName, LastName)
+   - **Derived**: Can be calculated from other attributes (e.g., Age from DOB)
+   - **Multivalued**: Can have multiple values (e.g., PhoneNumbers)
