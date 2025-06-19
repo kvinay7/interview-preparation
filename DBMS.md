@@ -75,10 +75,10 @@ It is a logical tool which is used for database schema design.
    - **Partial** : Some entities participate
 
  - **Keys**: A key is a set of attributes that can identify each tuple uniquely in the given relation.
-   - **Super Key**: A superkey is a set of attributes that can identify each tuple uniquely in the given relation. A super key may consist of any number of attributes.
+   - **Super Key**: is a set of attributes that can identify each tuple uniquely in the given relation. A super key may consist of any no.of attributes.
    - **Candidate Key**: A set of minimal attribute(s) that can identify each tuple uniquely in the given relation is called a candidate key.
-   - **Primary Key**: A primary key is a candidate key that the database designer selects while designing the database. Primary Keys are unique and NOT NULL.
+   - **Primary Key**: is a candidate key that the database designer selects while designing the database. Primary Keys are unique and NOT NULL.
    - **Alternate Key**: Candidate keys that are left unimplemented or unused after implementing the primary key are called as alternate keys.
-   - **Foreign Key**: An attribute ‘X’ is called as a foreign key to some other attribute ‘Y’ when its values are dependent on the values of attribute ‘Y’. The relation in which attribute ‘Y’ is present is called as the referenced relation. The relation in which attribute ‘X’ is present is called as the referencing relation.
    - **Composite Key**: A primary key composed of multiple attributes and not just a single attribute is called a composite key.
-   - **Unique Key**: It is unique for all the records of the table. Once assigned, its value cannot be changed i.e. it is non-updatable. It may have a NULL value.
+   - **Unique Key**: It is unique for all the records of the table. Once assigned, its value cannot be changed. It may have a NULL value.
+   - **Foreign Key**: An attribute ‘X’ is called as a foreign key to some other attribute ‘Y’ when its values are dependent on the values of attribute ‘Y’. The relation in which attribute ‘Y’ is present is called as the referenced relation. The relation in which attribute ‘X’ is present is called as the referencing relation.
