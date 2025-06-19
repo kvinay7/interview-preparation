@@ -48,12 +48,27 @@ A relation is basically a table in a relational database.
  - **Cardinality**: Number of tuples (rows) in a relation.
 
 ## ER Model
+
 It is a logical tool which is used for database schema design.
+ 
  - **Entity**: An object or concept that can be distinctly identified in the real world.
+ 
  - **Entity Set**: A collection of similar types of entities.
+   - **Strong Entity Set**: contains sufficient attributes (primary key) to uniquely identify all its entities.
+   - **Weak Entity Set**: not contain sufficient attributes to uniquely identify its entities. Its existence is dependent on other strong entity sets.
 
  - **Attributes**: Properties of an entity.
    - **Simple**: Cannot be divided further (e.g., Age)
    - **Composite**: Made of sub-parts (e.g., Name → FirstName, LastName)
    - **Derived**: Can be calculated from other attributes (e.g., Age from DOB)
    - **Multivalued**: Can have multiple values (e.g., PhoneNumbers)
+
+ - **Relationship**: A relationship is an association among several entities.
+   - **Unary Relationship Set**: is a relationship set where only one entity set participates in a relationship set.
+   - **Binary Relationship Set**: is a relationship set where two entity sets participate in a relationship set.
+   - **Ternary Relationship Set**: is a relationship set where three entity sets participate in a relationship set.
+   - **N-ary Relationship Set**: is a relationship set where ‘n’ entity sets participate in a relationship set.
+ 
+ - **Participation**:
+   - **Total** : Every entity must participate in the relationship
+   - **Partial** : Some entities participate
