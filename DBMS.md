@@ -75,9 +75,9 @@ It is a logical tool which is used for database schema design.
    - **Partial** : Some entities participate
 
  - **Keys**: A key is a set of attributes that can identify each tuple uniquely in the given relation.
-   - **Super Key**: is a set of attributes that can identify each tuple uniquely in the given relation. A super key may consist of any no.of attributes.
+   - **Super Key**: is a set of attributes that can identify each tuple uniquely in the given relation. It may consist of any no.of attributes.
    - **Candidate Key**: A set of minimal attribute(s) that can identify each tuple uniquely in the given relation is called a candidate key.
-   - **Primary Key**: is a candidate key that the database designer selects while designing the database. Primary Keys are unique and NOT NULL.
+   - **Primary Key**: is a candidate key that the database designer selects while designing the database. It is unique and NOT NULL.
    - **Alternate Key**: Candidate keys that are left unimplemented or unused after implementing the primary key are called as alternate keys.
    - **Composite Key**: A primary key composed of multiple attributes and not just a single attribute is called a composite key.
    - **Unique Key**: It is unique for all the records of the table. Once assigned, its value cannot be changed. It may have a NULL value.
