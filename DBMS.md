@@ -98,3 +98,4 @@ In a relation R, an attribute Y is functionally dependent on attribute X (writte
  - **Trivial**: X → Y is said to be trivial if and only if Y ⊆ X.
  - **Non-Trivial**: X → Y is said to be non-trivial if and only if Y ⊄ X.
 
+## [Database Design](https://blog.algomaster.io/i/142880142/step-database-design)
