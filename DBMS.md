@@ -93,3 +93,8 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
  - **Key Constraint**: No two rows can have the same value for a primary key.
  - **Tuple Uniqueness**: Specifies that all the tuples must be necessarily unique in any relation.
 
+## Functional Dependency
+In a relation R, an attribute Y is functionally dependent on attribute X (written as X → Y, X determines Y) if, for any two tuples t1 and t2 in R, whenever t1.X = t2.X, then t1.Y = t2.Y.
+ - **Trivial**: X → Y is said to be trivial if and only if Y ⊆ X.
+ - **Non-Trivial**: X → Y is said to be non-trivial if and only if Y ⊄ X.
+
