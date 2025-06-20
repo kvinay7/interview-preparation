@@ -39,15 +39,6 @@ Software used to manage databases by providing an interface for data insertion, 
 
 ---
 
-## Relational Model
-A relation is basically a table in a relational database.
- - **Rows**: Tuples (each row represents a record)
- - **Columns**: Attributes (each column represents a field)
- - **Schema**: The structure or definition of the database. E.g., STUDENT(ID int, Name varchar, Age int)
- - **Instance**: The actual data stored at a given time (i.e., the rows).
- - **Degree**: Number of attributes (columns) in a relation.
- - **Cardinality**: Number of tuples (rows) in a relation.
-
 ## ER Model
 
 It is a logical tool which is used for database schema design.
@@ -82,3 +73,21 @@ It is a logical tool which is used for database schema design.
    - **Composite Key**: A primary key composed of multiple attributes and not just a single attribute is called a composite key.
    - **Unique Key**: It is unique for all the records of the table. Once assigned, its value cannot be changed. It may have a NULL value.
    - **Foreign Key**: An attribute ‘X’ is called as a foreign key to some other attribute ‘Y’ when its values are dependent on the values of attribute ‘Y’. The relation in which attribute ‘Y’ is present is called as the referenced relation. The relation in which attribute ‘X’ is present is called as the referencing relation.
+
+## Relational Model
+A relation is basically a table in a relational database.
+ - **Rows**: Tuples (each row represents a record)
+ - **Columns**: Attributes (each column represents a field)
+ - **Schema**: The structure or definition of the database. E.g., STUDENT(ID int, Name varchar, Age int)
+ - **Instance**: The actual data stored at a given time (i.e., the rows).
+ - **Degree**: Number of attributes (columns) in a relation.
+ - **Cardinality**: Number of tuples (rows) in a relation.
+
+## Constraints
+Constraints are rules enforced on data in a database to ensure accuracy and integrity.
+ - **Domain Constraint**: Restricts the type of data (e.g., age must be an integer).
+ - **Entity Integrity**: Primary key must be unique and not null.
+ - **Referential Integrity**: Foreign key must match a primary key in another table or be null.
+ - **Key Constraint**: No two rows can have the same value for a primary key.
+ - **Tuple Uniqueness**: Specifies that all the tuples must be necessarily unique in any relation.
+
