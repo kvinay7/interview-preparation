@@ -74,6 +74,8 @@ It is a logical tool which is used for database schema design.
    - **Unique Key**: It is unique for all the records of the table. Once assigned, its value cannot be changed. It may have a NULL value.
    - **Foreign Key**: An attribute ‘X’ is called as a foreign key to some other attribute ‘Y’ when its values are dependent on the values of attribute ‘Y’. The relation in which attribute ‘Y’ is present is called as the referenced relation. The relation in which attribute ‘X’ is present is called as the referencing relation.
 
+---
+
 ## Relational Model
 A relation is basically a table in a relational database.
  - **Rows**: Tuples (each row represents a record)
