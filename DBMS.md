@@ -93,12 +93,12 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
  - **Key Constraint**: No two rows can have the same value for a primary key.
  - **Tuple Uniqueness**: Specifies that all the tuples must be necessarily unique in any relation.
 
+## SQL & NoSQL
+
+## Caching & Indexing
+
 ## [Database Design](https://blog.algomaster.io/i/142880142/step-database-design)
 
 ## Transactions & Concurrency Control
 
 ## Backup & Recovery
-
-## SQL & NoSQL
-
-## Caching & Indexing
