@@ -319,6 +319,176 @@ Spring Boot is designed to make it easy to get started with Spring development b
    ```
 ---
 
+## Spring ORM:
+Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as JPA and Hibernate with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
+
+### 1. **Integration with ORM Frameworks**
+- **Java Persistence API (JPA)**: A standard API for ORM.
+- **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager, ...
+
+### 2. **Spring ORM with Hibernate**: [DBMS](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md), [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
+```java
+@Configuration
+@EnableTransactionManagement
+@ComponentScan(basePackages = "com.example")
+public class AppConfig {
+
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
+        dataSource.setUsername("root");
+        dataSource.setPassword("password");
+        return dataSource;
+    }
+
+    @Bean
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setPackagesToScan("com.example.models");
+        sessionFactory.setHibernateProperties(hibernateProperties());
+        return sessionFactory;
+    }
+
+    @Bean
+    public HibernateTransactionManager transactionManager() {
+        HibernateTransactionManager txManager = new HibernateTransactionManager();
+        txManager.setSessionFactory(sessionFactory().getObject());
+        return txManager;
+    }
+
+    private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.hbm2ddl.auto", "update");
+        return properties;
+    }
+}
+```
+---
+
+## Spring MVC
+Spring MVC (Model-View-Controller) is a powerful framework within the Spring ecosystem designed to build robust and scalable web applications.
+
+### 1. **Model-View-Controller (MVC) Pattern**
+- **Model**: Represents the application's data and business logic. It is often backed by service and persistence layers.
+- **View**: The presentation layer that displays data from the model to the user. It can use technologies like JSP, Thymeleaf, or other templating engines.
+- **Controller**: Handles user input, processes requests, interacts with the model, and determines which view to render.
+
+### 2. **DispatcherServlet**
+- **[Central Controller](https://www.javaguides.net/2020/07/how-spring-mvc-works-internally.html)**: Acts as the front controller in the Spring MVC architecture.
+- **Request Handling**: Delegates requests to appropriate handlers (controllers).
+- **Key Tasks**:
+  - Receives HTTP requests.
+  - Maps requests to the corresponding controller based on configurations.
+  - Selects the appropriate view for the response.
+
+### 3. **Handler Mapping**
+- Responsible for mapping incoming HTTP requests to the appropriate handler methods in controllers.
+- Examples of handler mappings: `@RequestMapping` or `@GetMapping`.
+    
+### 4. **Controller**
+- Annotated with `@Controller` or `@RestController` to define web request handlers.
+- Defines handler methods to process incoming HTTP requests.
+- Example:
+  ```java
+  @Controller
+  public class MyController {
+      @GetMapping("/welcome")
+      public String showWelcomePage() {
+          return "welcome"; // View name
+      }
+  }
+  ```
+
+### 5. **View Resolver**
+- Responsible for resolving the logical view name returned by a controller into an actual view.
+- Example:
+  - **InternalResourceViewResolver** maps logical view names to JSP files in a specific directory.
+  ```java
+  @Bean
+  public InternalResourceViewResolver viewResolver() {
+      InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+      resolver.setPrefix("/WEB-INF/views/");
+      resolver.setSuffix(".jsp");
+      return resolver;
+  }
+  ```
+
+### 6. **Model and ModelMap**
+- Used to pass data from controllers to the view.
+- `Model` or `ModelMap` objects allow adding attributes:
+  ```java
+  @GetMapping("/greet")
+  public String greet(Model model) {
+      model.addAttribute("message", "Hello, Spring MVC!");
+      return "greet"; // Logical view name
+  }
+  ```
+  
+### 7. **Interceptors**
+- Allow pre- and post-processing of requests.
+- Configure interceptors by implementing `HandlerInterceptor` or extending `HandlerInterceptorAdapter`.
+
+### 8. **Spring MVC Configuration**
+- Configured using:
+  - **XML-based**: Configuration in `web.xml` and Spring beans in XML files.
+  - **Java-based**: Using `@Configuration` and `@EnableWebMvc`.
+
+### 9. **Annotations in Spring MVC**
+- **@Controller**: Marks a class as a web controller.
+- **@RequestMapping**: Maps web requests to handler methods or classes.
+- **@GetMapping, @PostMapping, @PutMapping, @DeleteMapping**: Shortcut annotations for HTTP methods.
+- **@RestController**: Combines `@Controller` and `@ResponseBody`. [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/04-spring-boot-rest-crud/14-spring-boot-rest-crud-employee-with-spring-data-jpa)
+- **@ResponseBody**: Directly returns data (e.g., JSON or XML) instead of a view.
+
+### 10. **Request and Response Handling** - [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
+- **@RequestParam**: Extract query parameters from the request.
+  ```java
+  @GetMapping("/search")
+  public String search(@RequestParam("query") String query, Model model) {
+      model.addAttribute("result", "You searched for: " + query);
+      return "result";
+  }
+  ```
+- **@PathVariable**: Extract values from URI templates.
+  ```java
+  @GetMapping("/user/{id}")
+  public String getUser(@PathVariable("id") int userId, Model model) {
+      model.addAttribute("user", userService.getUserById(userId));
+      return "userDetails";
+  }
+  ```
+
+### 11. **Form Handling**
+- Spring MVC provides features to handle forms.
+- Use `@ModelAttribute` to bind form data to an object.
+  ```java
+  @PostMapping("/submit")
+  public String submitForm(@ModelAttribute("user") User user, Model model) {
+      // Process form data
+      model.addAttribute("message", "Form submitted successfully!");
+      return "result";
+  }
+  ```
+
+### 12. **Exception Handling**
+- `@ControllerAdvice` to handle exceptions globally and `@ExceptionHandler` to handle specific exceptions in controller classes.
+  ```java
+  @ControllerAdvice
+  public class GlobalExceptionHandler {
+      @ExceptionHandler(Exception.class)
+      public String handleException(Exception ex, Model model) {
+          model.addAttribute("error", ex.getMessage());
+          return "error";
+      }
+  }
+  ```
+---
+
 ## Project Setup with Github and AWS
 
 ### **Step 1: Spring Boot Project Setup in IntelliJ IDEA**
@@ -512,177 +682,7 @@ The GitHub Actions workflow automatically handles the EB CLI installation and de
 
 #### 5.1 **Check AWS Elastic Beanstalk for Your Application**:
 
-Once the GitHub Action completes, visit the **Elastic Beanstalk URL** to see your application running live.     
+Once the GitHub Action completes, visit the **Elastic Beanstalk URL** to see your application running live.
 
----
-
-## Spring ORM:
-Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as JPA and Hibernate with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
-
-### 1. **Integration with ORM Frameworks**
-- **Java Persistence API (JPA)**: A standard API for ORM.
-- **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager, ...
-
-### 2. **Spring ORM with Hibernate**: [DBMS](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md), [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
-```java
-@Configuration
-@EnableTransactionManagement
-@ComponentScan(basePackages = "com.example")
-public class AppConfig {
-
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
-        dataSource.setUsername("root");
-        dataSource.setPassword("password");
-        return dataSource;
-    }
-
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.example.models");
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        return sessionFactory;
-    }
-
-    @Bean
-    public HibernateTransactionManager transactionManager() {
-        HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory(sessionFactory().getObject());
-        return txManager;
-    }
-
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.put("hibernate.show_sql", "true");
-        properties.put("hibernate.hbm2ddl.auto", "update");
-        return properties;
-    }
-}
-```
----
-
-## Spring MVC
-Spring MVC (Model-View-Controller) is a powerful framework within the Spring ecosystem designed to build robust and scalable web applications.
-
-### 1. **Model-View-Controller (MVC) Pattern**
-- **Model**: Represents the application's data and business logic. It is often backed by service and persistence layers.
-- **View**: The presentation layer that displays data from the model to the user. It can use technologies like JSP, Thymeleaf, or other templating engines.
-- **Controller**: Handles user input, processes requests, interacts with the model, and determines which view to render.
-
-### 2. **DispatcherServlet**
-- **[Central Controller](https://www.javaguides.net/2020/07/how-spring-mvc-works-internally.html)**: Acts as the front controller in the Spring MVC architecture.
-- **Request Handling**: Delegates requests to appropriate handlers (controllers).
-- **Key Tasks**:
-  - Receives HTTP requests.
-  - Maps requests to the corresponding controller based on configurations.
-  - Selects the appropriate view for the response.
-
-### 3. **Handler Mapping**
-- Responsible for mapping incoming HTTP requests to the appropriate handler methods in controllers.
-- Examples of handler mappings: `@RequestMapping` or `@GetMapping`.
-    
-### 4. **Controller**
-- Annotated with `@Controller` or `@RestController` to define web request handlers.
-- Defines handler methods to process incoming HTTP requests.
-- Example:
-  ```java
-  @Controller
-  public class MyController {
-      @GetMapping("/welcome")
-      public String showWelcomePage() {
-          return "welcome"; // View name
-      }
-  }
-  ```
-
-### 5. **View Resolver**
-- Responsible for resolving the logical view name returned by a controller into an actual view.
-- Example:
-  - **InternalResourceViewResolver** maps logical view names to JSP files in a specific directory.
-  ```java
-  @Bean
-  public InternalResourceViewResolver viewResolver() {
-      InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-      resolver.setPrefix("/WEB-INF/views/");
-      resolver.setSuffix(".jsp");
-      return resolver;
-  }
-  ```
-
-### 6. **Model and ModelMap**
-- Used to pass data from controllers to the view.
-- `Model` or `ModelMap` objects allow adding attributes:
-  ```java
-  @GetMapping("/greet")
-  public String greet(Model model) {
-      model.addAttribute("message", "Hello, Spring MVC!");
-      return "greet"; // Logical view name
-  }
-  ```
-  
-### 7. **Interceptors**
-- Allow pre- and post-processing of requests.
-- Configure interceptors by implementing `HandlerInterceptor` or extending `HandlerInterceptorAdapter`.
-
-### 8. **Spring MVC Configuration**
-- Configured using:
-  - **XML-based**: Configuration in `web.xml` and Spring beans in XML files.
-  - **Java-based**: Using `@Configuration` and `@EnableWebMvc`.
-
-### 9. **Annotations in Spring MVC**
-- **@Controller**: Marks a class as a web controller.
-- **@RequestMapping**: Maps web requests to handler methods or classes.
-- **@GetMapping, @PostMapping, @PutMapping, @DeleteMapping**: Shortcut annotations for HTTP methods.
-- **@RestController**: Combines `@Controller` and `@ResponseBody`. [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/04-spring-boot-rest-crud/14-spring-boot-rest-crud-employee-with-spring-data-jpa)
-- **@ResponseBody**: Directly returns data (e.g., JSON or XML) instead of a view.
-
-### 10. **Request and Response Handling** - [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
-- **@RequestParam**: Extract query parameters from the request.
-  ```java
-  @GetMapping("/search")
-  public String search(@RequestParam("query") String query, Model model) {
-      model.addAttribute("result", "You searched for: " + query);
-      return "result";
-  }
-  ```
-- **@PathVariable**: Extract values from URI templates.
-  ```java
-  @GetMapping("/user/{id}")
-  public String getUser(@PathVariable("id") int userId, Model model) {
-      model.addAttribute("user", userService.getUserById(userId));
-      return "userDetails";
-  }
-  ```
-
-### 11. **Form Handling**
-- Spring MVC provides features to handle forms.
-- Use `@ModelAttribute` to bind form data to an object.
-  ```java
-  @PostMapping("/submit")
-  public String submitForm(@ModelAttribute("user") User user, Model model) {
-      // Process form data
-      model.addAttribute("message", "Form submitted successfully!");
-      return "result";
-  }
-  ```
-
-### 12. **Exception Handling**
-- `@ControllerAdvice` to handle exceptions globally and `@ExceptionHandler` to handle specific exceptions in controller classes.
-  ```java
-  @ControllerAdvice
-  public class GlobalExceptionHandler {
-      @ExceptionHandler(Exception.class)
-      public String handleException(Exception ex, Model model) {
-          model.addAttribute("error", ex.getMessage());
-          return "error";
-      }
-  }
-  ```
 ---
 
