@@ -113,7 +113,20 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
    - **Example**: If a column is defined as `NOT NULL`, a transaction inserting a `NULL` value will fail and preserve consistency.
 
  - **Isolation**: Concurrent transactions should not interfere with each other. The outcome should be the same as if the transactions were executed **sequentially**.
-   - **SQL Mechanism**: Controlled using **isolation levels** like: `READ UNCOMMITTED`, `READ COMMITTED`, `REPEATABLE READ`, `SERIALIZABLE`
+
+   - **Concurrency Issues**
+     - Lost Update: One transaction overwrites another’s changes.
+     - Dirty Read: Reading uncommitted data.
+     - Non-Repeatable Read: Inconsistent reads within a transaction.
+     - Phantom Read: New rows appear in subsequent queries.
+
+   - Concurrent transactions controlled using **isolation levels** like:
+     - **`READ UNCOMMITTED`**: Allows all transactions.
+     - **`READ COMMITTED`**: Prevents only dirty reads.
+     - **`REPEATABLE READ`**: Allows only phantom reads.
+     - **`SERIALIZABLE`**: Ensures complete isolation but may reduce concurrency.
+     - **Lower isolation**: better performance, but more risk of inconsistent data.
+     - **Higher isolation**: safer data, but more locking and slower performance.
 
  - **Durability**: Once a transaction is committed, the changes are **permanent**, even in the case of a system crash.
    - **SQL Mechanism**: Ensured by the database engine using **write-ahead logs** and **disk flushing**.
