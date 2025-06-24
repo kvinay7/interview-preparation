@@ -124,6 +124,33 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
 
  - **Durability**: Once a transaction is committed, the changes are **permanent**, even in the case of a system crash.
    - **SQL Mechanism**: Ensured by the database engine using **write-ahead logs** and **disk flushing**.
+
+### 2. lifecycle of a database transaction
+ - **Begin Transaction**
+   - The system starts a new transaction.
+   - SQL: `BEGIN TRANSACTION;` or `START TRANSACTION;`
+ 
+ - **Execute Operations**
+   - The transaction performs one or more operations like `INSERT`, `UPDATE`, `DELETE`, or `SELECT`.
+   - These changes are **not yet permanent**.
+
+ - **Write-Ahead Logging (WAL)**
+   - Before applying changes to the database, the system logs the operations to a **transaction log**.
+   - Ensures recovery in case of failure.
+
+ - **Validation / Constraint Checking**
+   - The system checks for **data integrity**, **constraints**, and **consistency**.
+   - If any rule is violated, the transaction is **rolled back**.
+
+ - **Commit or Rollback**
+   - If all operations succeed:
+     - SQL: `COMMIT;` → Changes are **permanently saved**.
+   - If any operation fails:
+     - SQL: `ROLLBACK;` → All changes are **undone**.
+
+ - **Disk Flushing**
+   - The committed data is **flushed to disk** to ensure **durability**.
+       
 ---
 
 ## Backup & Recovery
