@@ -109,10 +109,10 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
    - **Example**: If you're transferring money from Account A to Account B, both the debit and credit must succeed. If one fails, the entire transaction is rolled back.
 
     ```sql
-    BEGIN TRANSACTION;
-    UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
-    UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
-    COMMIT;
+      BEGIN TRANSACTION;
+      UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
+      UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
+      COMMIT;
     ```
 
  - **Consistency**: A transaction must bring the database from one valid state to another, maintaining all **data integrity constraints**.
