@@ -194,5 +194,3 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
    END CATCH;
    ```    
 ---
-
-## Backup & Recovery
