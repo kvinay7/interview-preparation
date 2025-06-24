@@ -114,7 +114,7 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
 
  - **Isolation**: Concurrent transactions should not interfere with each other. The outcome should be the same as if the transactions were executed **sequentially**.
 
-   - **Concurrency Issues**
+   - **Concurrency Issues**:
      - Lost Update: One transaction overwrites another’s changes.
      - Dirty Read: Reading uncommitted data.
      - Non-Repeatable Read: Inconsistent reads within a transaction.
@@ -125,8 +125,8 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
      - **`READ COMMITTED`**: Prevents only dirty reads.
      - **`REPEATABLE READ`**: Allows only phantom reads.
      - **`SERIALIZABLE`**: Ensures complete isolation but may reduce concurrency.
-     - **Lower isolation**: better performance, but more risk of inconsistent data.
-     - **Higher isolation**: safer data, but more locking and slower performance.
+
+   - Lower isolation: better performance, but more risk of inconsistent data. Higher isolation: safer data, but more locking and slower performance.
 
  - **Durability**: Once a transaction is committed, the changes are **permanent**, even in the case of a system crash.
    - **SQL Mechanism**: Ensured by the database engine using **write-ahead logs** and **disk flushing**.
