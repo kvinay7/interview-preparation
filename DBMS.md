@@ -106,7 +106,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 ## Transactions & Concurrency Control
 In SQL and database systems, **ACID** is a set of properties that ensure reliable processing of database transactions. The acronym stands for:
  - **Atomicity**: A transaction (sequence of operations) is treated as a single, indivisible unit, which either **completes entirely** or **does not happen at all**.
-  - **Example**: If you're transferring money from Account A to Account B, both the debit and credit must succeed. If one fails, the entire transaction is rolled back.
+   - **Example**: If you're transferring money from Account A to Account B, both the debit and credit must succeed. If one fails, the entire transaction is rolled back.
 
     ```sql
     BEGIN TRANSACTION;
@@ -116,18 +116,17 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
     ```
 
  - **Consistency**: A transaction must bring the database from one valid state to another, maintaining all **data integrity constraints**.
-  - **Example**: If a column is defined as `NOT NULL`, a transaction inserting a `NULL` value will fail and preserve consistency.
+   - **Example**: If a column is defined as `NOT NULL`, a transaction inserting a `NULL` value will fail and preserve consistency.
 
  - **Isolation**: Concurrent transactions should not interfere with each other. The outcome should be the same as if the transactions were executed **sequentially**.
-  - **SQL Mechanism**: Controlled using **isolation levels** like: `READ UNCOMMITTED`, `READ COMMITTED`, `REPEATABLE READ`, `SERIALIZABLE`
+   - **SQL Mechanism**: Controlled using **isolation levels** like: `READ UNCOMMITTED`, `READ COMMITTED`, `REPEATABLE READ`, `SERIALIZABLE`
 
     ```sql
     SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
     ```
 
  - **Durability**: Once a transaction is committed, the changes are **permanent**, even in the case of a system crash.
-  - **SQL Mechanism**: Ensured by the database engine using **write-ahead logs** and **disk flushing**.
-
+   - **SQL Mechanism**: Ensured by the database engine using **write-ahead logs** and **disk flushing**.
 ---
 
 ## Backup & Recovery
