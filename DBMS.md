@@ -109,13 +109,6 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
  - **Atomicity**: A transaction (sequence of operations) is treated as a single, indivisible unit, which either **completes entirely** or **does not happen at all**.
    - **Example**: If you're transferring money from Account A to Account B, both the debit and credit must succeed. If one fails, the entire transaction is rolled back.
 
-    ```sql
-      BEGIN TRANSACTION;
-      UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
-      UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
-      COMMIT;
-    ```
-
  - **Consistency**: A transaction must bring the database from one valid state to another, maintaining all **data integrity constraints**.
    - **Example**: If a column is defined as `NOT NULL`, a transaction inserting a `NULL` value will fail and preserve consistency.
 
@@ -152,7 +145,41 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
 
  - **Disk Flushing**
    - The committed data is **flushed to disk** to ensure **durability**.
-       
+  
+ - **Example**
+   ```sql
+   BEGIN TRANSACTION;
+
+   BEGIN TRY
+      -- Step 1: Deduct ₹1000 from Account A
+      UPDATE accounts
+      SET balance = balance - 1000
+      WHERE account_id = 'A';
+
+      -- Optional: Check if balance is negative
+      IF EXISTS (
+          SELECT 1 FROM accounts WHERE account_id = 'A' AND balance < 0
+      )
+      BEGIN
+          THROW 50001, 'Insufficient funds in Account A.', 1;
+      END
+
+      -- Step 2: Add ₹1000 to Account B
+      UPDATE accounts
+      SET balance = balance + 1000
+      WHERE account_id = 'B';
+
+      -- Step 3: Commit the transaction
+      COMMIT;
+   END TRY
+   BEGIN CATCH
+      -- If any error occurs, rollback the transaction
+      ROLLBACK;
+
+      -- Optional: Print the error
+      PRINT ERROR_MESSAGE();
+   END CATCH;
+   ```    
 ---
 
 ## Backup & Recovery
