@@ -125,6 +125,8 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
  - **Durability**: Once a transaction is committed, the changes are **permanent**, even in the case of a system crash.
    - **SQL Mechanism**: Ensured by the database engine using **write-ahead logs** and **disk flushing**.
 
+---
+
 ### 2. lifecycle of a database transaction
  - **Begin Transaction**
    - The system starts a new transaction.
