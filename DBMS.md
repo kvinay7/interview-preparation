@@ -104,7 +104,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 ---
 
 ## Transactions & Concurrency Control
-### ACID
+### 1. ACID Properties
 In SQL and database systems, **ACID** is a set of properties that ensure reliable processing of database transactions. The acronym stands for:
  - **Atomicity**: A transaction (sequence of operations) is treated as a single, indivisible unit, which either **completes entirely** or **does not happen at all**.
    - **Example**: If you're transferring money from Account A to Account B, both the debit and credit must succeed. If one fails, the entire transaction is rolled back.
