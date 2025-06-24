@@ -121,10 +121,6 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
  - **Isolation**: Concurrent transactions should not interfere with each other. The outcome should be the same as if the transactions were executed **sequentially**.
    - **SQL Mechanism**: Controlled using **isolation levels** like: `READ UNCOMMITTED`, `READ COMMITTED`, `REPEATABLE READ`, `SERIALIZABLE`
 
-    ```sql
-    SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-    ```
-
  - **Durability**: Once a transaction is committed, the changes are **permanent**, even in the case of a system crash.
    - **SQL Mechanism**: Ensured by the database engine using **write-ahead logs** and **disk flushing**.
 ---
