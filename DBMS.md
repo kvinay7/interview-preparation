@@ -99,7 +99,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ### 1. SQL Data Types
 
-#### **I. Numeric Types**
+#### **i. Numeric Types**
 
   | Data Type | Description                                     |
   | --------- | ----------------------------------------------- |
@@ -108,7 +108,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
   | `FLOAT`   | Approximate decimal number (floating point)     |
   | `DECIMAL` | Fixed precision decimal (useful for money)      |
 
-#### **II. String (Character/Text) Types**
+#### **ii. String (Character/Text) Types**
 
   | Data Type | Description                                            |
   | --------- | ------------------------------------------------------ |
@@ -116,14 +116,14 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
   | `VARCHAR` | Variable-length string (e.g., `VARCHAR(255)`)          |
   | `TEXT`    | Large text block (used for long strings or paragraphs) |
 
-#### **III. Enumerated/Set Types**
+#### **iii. Enumerated/Set Types**
 
   | Data Type | Description                                                                    |
   | --------- | ------------------------------------------------------------------------------ |
   | `ENUM`    | One value from a predefined list (e.g., `ENUM('small','medium','large')`)      |
   | `SET`     | Multiple values from a predefined list (e.g., `SET('A','B','C')`) – MySQL only |
 
-#### **IV. Date & Time Types**
+#### **iv. Date & Time Types**
 
   | Data Type   | Description                                   |
   | ----------- | --------------------------------------------- |
@@ -137,7 +137,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ### 2. SQL Operators
 
-#### **I. Comparison Operators**
+#### **i. Comparison Operators**
 
 | Operator      | Description                | Example                        |
 | ------------- | -------------------------- | ------------------------------ |
@@ -155,7 +155,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 | `LIKE`        | Pattern match              | `name LIKE 'A%'`               |
 | `NOT LIKE`    | Not matching pattern       | `name NOT LIKE '%son'`         |
 
-#### **II. Logical Operators**
+#### **ii. Logical Operators**
 
 | Operator | Description                    | Example                           |
 | -------- | ------------------------------ | --------------------------------- |
@@ -163,7 +163,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 | `OR`     | At least one condition is true | `role = 'admin' OR is_vip = TRUE` |
 | `NOT`    | Reverses condition             | `NOT is_active`                   |
 
-#### **III. Set Operators** *(combine query results)*
+#### **iii. Set Operators** *(combine query results)*
 
 | Operator           | Description                                | Example                                                    |
 | ------------------ | ------------------------------------------ | ---------------------------------------------------------- |
@@ -171,7 +171,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 | `UNION ALL`        | Combine and keep duplicates                | `... UNION ALL ...`                                        |
 | `EXCEPT` / `MINUS` | Return rows from first query not in second | `SELECT ... EXCEPT SELECT ...`                             |
 
-#### **IV. Special Operators**
+#### **iv. Special Operators**
 
 | Operator | Description                          | Example                                                    |
 | -------- | ------------------------------------ | ---------------------------------------------------------- |
@@ -183,7 +183,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ### 3. SQL commands
 
-#### **I. Data Definition Language (DDL)** – *Define or modify structure*
+#### **i. Data Definition Language (DDL)** – *Define or modify structure*
 
 | Command    | Description                   | Example                          |
 | ---------- | ----------------------------- | -------------------------------- |
@@ -194,7 +194,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ---
 
-#### **II. Data Manipulation Language (DML)** – *Manage data records*
+#### **ii. Data Manipulation Language (DML)** – *Manage data records*
 
 | Command  | Description          | Example                                                               |
 | -------- | -------------------- | --------------------------------------------------------------------- |
@@ -202,14 +202,14 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 | `UPDATE` | Modify existing data | `UPDATE users SET is_active = FALSE WHERE last_login < '2024-01-01';` |
 | `DELETE` | Remove data          | `DELETE FROM users WHERE is_active = FALSE;`                          |
 
-#### **III. Data Control Language (DCL)** – *Manage access*
+#### **iii. Data Control Language (DCL)** – *Manage access*
 
 | Command  | Description       | Example                                    |
 | -------- | ----------------- | ------------------------------------------ |
 | `GRANT`  | Give privileges   | `GRANT SELECT ON employees TO analyst;`    |
 | `REVOKE` | Remove privileges | `REVOKE SELECT ON employees FROM analyst;` |
 
-#### **IV. Transaction Control Language (TCL)** – *Control transactions*
+#### **iv. Transaction Control Language (TCL)** – *Control transactions*
 
 | Command                       | Description              | Example          |
 | ----------------------------- | ------------------------ | ---------------- |
@@ -218,7 +218,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 | `ROLLBACK`                    | Undo changes             | `ROLLBACK;`      |
 | `SAVEPOINT`                   | Set a point for rollback | `SAVEPOINT sp1;` |
 
-#### **V. Data Query Language (DQL)** – *Retrieve data*
+#### **v. Data Query Language (DQL)** – *Retrieve data*
 
 | Command  | Description                        | Example                                            |
 | -------- | ---------------------------------- | -------------------------------------------------- |
