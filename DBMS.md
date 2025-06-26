@@ -95,7 +95,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ---
 
-## SQL & NoSQL
+## Structured Query Language (SQL)
 
 ### 1. SQL Data Types
 
@@ -258,8 +258,6 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
    ORDER BY avg_salary DESC;
    ```
 ---
-
-## Caching & Indexing
 
 ## [Database Design](https://blog.algomaster.io/i/142880142/step-database-design)
 
