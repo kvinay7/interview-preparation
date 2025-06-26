@@ -135,6 +135,60 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ---
 
+Here’s a concise but thorough **overview of SQL commands**, grouped by category, with examples. This is essential for **FAANG SDE interviews**, coding tests, and real-world use.
+
+---
+
+## 🧠 **1. Data Query Language (DQL)** – *Retrieve data*
+
+| Command  | Description                        | Example                                            |
+| -------- | ---------------------------------- | -------------------------------------------------- |
+| `SELECT` | Fetch data from one or more tables | `SELECT name FROM employees WHERE salary > 50000;` |
+
+---
+
+## 🛠️ **2. Data Definition Language (DDL)** – *Define or modify structure*
+
+| Command    | Description                   | Example                          |
+| ---------- | ----------------------------- | -------------------------------- |
+| `CREATE`   | Create database/table/index   | `CREATE TABLE users (name CHAR(10) NOT NULL);`      |
+| `ALTER`    | Modify existing schema        | `ALTER TABLE users ADD age INT;`
+`ALTER TABLE users MODIFY name VARCHAR(10);` |
+| `DROP`     | Delete database/table/index   | `DROP TABLE users;`              |
+| `TRUNCATE` | Delete all data (reset table) | `TRUNCATE TABLE orders;`         |
+
+---
+
+## 🧱 **3. Data Manipulation Language (DML)** – *Manage data records*
+
+| Command  | Description          | Example                                                               |
+| -------- | -------------------- | --------------------------------------------------------------------- |
+| `INSERT` | Add new data         | `INSERT INTO users (name, email) VALUES ('Alice', 'a@example.com');`  |
+| `UPDATE` | Modify existing data | `UPDATE users SET is_active = FALSE WHERE last_login < '2024-01-01';` |
+| `DELETE` | Remove data          | `DELETE FROM users WHERE is_active = FALSE;`                          |
+
+---
+
+## 🔐 **4. Data Control Language (DCL)** – *Manage access*
+
+| Command  | Description       | Example                                    |
+| -------- | ----------------- | ------------------------------------------ |
+| `GRANT`  | Give privileges   | `GRANT SELECT ON employees TO analyst;`    |
+| `REVOKE` | Remove privileges | `REVOKE SELECT ON employees FROM analyst;` |
+
+---
+
+## 🔄 **5. Transaction Control Language (TCL)** – *Control transactions*
+
+| Command                       | Description              | Example          |
+| ----------------------------- | ------------------------ | ---------------- |
+| `BEGIN` / `START TRANSACTION` | Start a transaction      | `BEGIN;`         |
+| `COMMIT`                      | Save changes             | `COMMIT;`        |
+| `ROLLBACK`                    | Undo changes             | `ROLLBACK;`      |
+| `SAVEPOINT`                   | Set a point for rollback | `SAVEPOINT sp1;` |
+
+---
+
 ## Caching & Indexing
 
 ## [Database Design](https://blog.algomaster.io/i/142880142/step-database-design)
