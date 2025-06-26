@@ -237,7 +237,24 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
    | Conditional filter     | `WHERE col = CASE WHEN ... THEN ... END`      |
    | Custom sort order      | `ORDER BY CASE WHEN ... THEN ... END`         |
    | Conditional update     | `UPDATE SET col = CASE WHEN ... THEN ... END` |
-   
+
+ - **Example**:
+   ```sql
+   SELECT 
+     department, 
+     COUNT(*) AS employee_count, 
+     AVG(salary) AS avg_salary,
+     CASE 
+       WHEN AVG(salary) > 80000 THEN 'High Paying'
+       WHEN AVG(salary) BETWEEN 65000 AND 80000 THEN 'Medium Paying'
+       ELSE 'Low Paying'
+     END AS salary_category
+   FROM employees
+   WHERE salary > 50000
+   GROUP BY department
+   HAVING COUNT(*) >= 5
+   ORDER BY avg_salary DESC;
+   ```
 ---
 
 ## Caching & Indexing
