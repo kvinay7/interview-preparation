@@ -220,6 +220,26 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ---
 
+### 4. Conditional Statement
+ - **Syntax**:
+   ```sql
+   CASE
+       WHEN condition1 THEN result1
+       WHEN condition2 THEN result2
+       ...
+       ELSE default_result
+   END
+   ```
+   
+ - | Use Case               | Example Use                                   |
+   | ---------------------- | --------------------------------------------- |
+   | Select computed column | `SELECT CASE WHEN ... THEN ... END`           |
+   | Conditional filter     | `WHERE col = CASE WHEN ... THEN ... END`      |
+   | Custom sort order      | `ORDER BY CASE WHEN ... THEN ... END`         |
+   | Conditional update     | `UPDATE SET col = CASE WHEN ... THEN ... END` |
+   
+---
+
 ## Caching & Indexing
 
 ## [Database Design](https://blog.algomaster.io/i/142880142/step-database-design)
