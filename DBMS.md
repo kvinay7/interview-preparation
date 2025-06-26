@@ -97,7 +97,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ## SQL & NoSQL
 
-### 1. Data Types
+### 1. SQL Data Types
 
 #### **i. Numeric Types**
 
@@ -135,7 +135,53 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ---
 
-### 2. SQL commands
+### 2. SQL Operators
+
+#### **1. Comparison Operators**
+
+| Operator      | Description                | Example                        |
+| ------------- | -------------------------- | ------------------------------ |
+| `=`           | Equal                      | `salary = 50000`               |
+| `!=` or `<>`  | Not equal                  | `city != 'Delhi'`              |
+| `>`           | Greater than               | `age > 30`                     |
+| `<`           | Less than                  | `age < 18`                     |
+| `>=`          | Greater than or equal to   | `score >= 60`                  |
+| `<=`          | Less than or equal to      | `score <= 100`                 |
+| `BETWEEN`     | Within a range (inclusive) | `age BETWEEN 18 AND 25`        |
+| `IN`          | Matches a list of values   | `country IN ('India', 'USA')`  |
+| `NOT IN`      | Not in a list              | `country NOT IN ('UK', 'USA')` |
+| `IS NULL`     | Is NULL                    | `email IS NULL`                |
+| `IS NOT NULL` | Is not NULL                | `email IS NOT NULL`            |
+| `LIKE`        | Pattern match              | `name LIKE 'A%'`               |
+| `NOT LIKE`    | Not matching pattern       | `name NOT LIKE '%son'`         |
+
+#### **2. Logical Operators**
+
+| Operator | Description                    | Example                           |
+| -------- | ------------------------------ | --------------------------------- |
+| `AND`    | All conditions must be true    | `age > 18 AND is_active = TRUE`   |
+| `OR`     | At least one condition is true | `role = 'admin' OR is_vip = TRUE` |
+| `NOT`    | Reverses condition             | `NOT is_active`                   |
+
+#### **3. Set Operators** *(combine query results)*
+
+| Operator           | Description                                | Example                                                    |
+| ------------------ | ------------------------------------------ | ---------------------------------------------------------- |
+| `UNION`            | Combine and remove duplicates              | `SELECT city FROM users UNION SELECT city FROM employees;` |
+| `UNION ALL`        | Combine and keep duplicates                | `... UNION ALL ...`                                        |
+| `EXCEPT` / `MINUS` | Return rows from first query not in second | `SELECT ... EXCEPT SELECT ...`                             |
+
+#### **4. Special Operators**
+
+| Operator | Description                          | Example                                                    |
+| -------- | ------------------------------------ | ---------------------------------------------------------- |
+| `EXISTS` | Checks if subquery returns rows      | `WHERE EXISTS (SELECT 1 FROM orders WHERE user_id = u.id)` |
+| `ANY`/`SOME`    | Compares to any value from subquery  | `price > ANY (SELECT price FROM products)`          |
+| `ALL`    | Compares to all values from subquery | `price < ALL (SELECT price FROM discounts)`                |
+
+---
+
+### 3. SQL commands
 
 #### **i. Data Definition Language (DDL)** – *Define or modify structure*
 
