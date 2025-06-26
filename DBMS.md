@@ -85,7 +85,7 @@ A relation is basically a table in a relational database.
  - **Degree**: Number of attributes (columns) in a relation.
  - **Cardinality**: Number of tuples (rows) in a relation.
 
-## Constraints
+### Constraints
 Constraints are rules enforced on data in a database to ensure accuracy and integrity.
  - **Domain Constraint**: Restricts the type of data (e.g., age must be an integer).
  - **Entity Integrity**: Primary key must be unique and not null.
