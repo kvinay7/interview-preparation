@@ -259,6 +259,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
    ```
 ---
 
+## [SQL Practice](https://leetcode.com/studyplan/top-sql-50/)
 ## [Database Design](https://blog.algomaster.io/i/142880142/step-database-design)
 
 ---
