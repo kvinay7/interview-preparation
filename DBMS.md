@@ -141,12 +141,6 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 | Operator      | Description                | Example                        |
 | ------------- | -------------------------- | ------------------------------ |
-| `=`           | Equal                      | `salary = 50000`               |
-| `!=` or `<>`  | Not equal                  | `city != 'Delhi'`              |
-| `>`           | Greater than               | `age > 30`                     |
-| `<`           | Less than                  | `age < 18`                     |
-| `>=`          | Greater than or equal to   | `score >= 60`                  |
-| `<=`          | Less than or equal to      | `score <= 100`                 |
 | `BETWEEN`     | Within a range (inclusive) | `age BETWEEN 18 AND 25`        |
 | `IN`          | Matches a list of values   | `country IN ('India', 'USA')`  |
 | `NOT IN`      | Not in a list              | `country NOT IN ('UK', 'USA')` |
