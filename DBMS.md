@@ -99,39 +99,39 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ### 1. Data Types
 
-#### **Numeric Types**
+#### **i. Numeric Types**
 
-| Data Type | Description                                     |
-| --------- | ----------------------------------------------- |
-| `BIT`     | Bit-field (binary values; often used for flags) |
-| `INT`     | Integer number                                  |
-| `FLOAT`   | Approximate decimal number (floating point)     |
-| `DECIMAL` | Fixed precision decimal (useful for money)      |
+  | Data Type | Description                                     |
+  | --------- | ----------------------------------------------- |
+  | `BIT`     | Bit-field (binary values; often used for flags) |
+  | `INT`     | Integer number                                  |
+  | `FLOAT`   | Approximate decimal number (floating point)     |
+  | `DECIMAL` | Fixed precision decimal (useful for money)      |
 
-### **String (Character/Text) Types**
+#### **ii. String (Character/Text) Types**
 
-| Data Type | Description                                            |
-| --------- | ------------------------------------------------------ |
-| `CHAR`    | Fixed-length string (e.g., `CHAR(10)`)                 |
-| `VARCHAR` | Variable-length string (e.g., `VARCHAR(255)`)          |
-| `TEXT`    | Large text block (used for long strings or paragraphs) |
+  | Data Type | Description                                            |
+  | --------- | ------------------------------------------------------ |
+  | `CHAR`    | Fixed-length string (e.g., `CHAR(10)`)                 |
+  | `VARCHAR` | Variable-length string (e.g., `VARCHAR(255)`)          |
+  | `TEXT`    | Large text block (used for long strings or paragraphs) |
 
-### **Enumerated/Set Types**
+#### **iii. Enumerated/Set Types**
 
-| Data Type | Description                                                                    |
-| --------- | ------------------------------------------------------------------------------ |
-| `ENUM`    | One value from a predefined list (e.g., `ENUM('small','medium','large')`)      |
-| `SET`     | Multiple values from a predefined list (e.g., `SET('A','B','C')`) – MySQL only |
+  | Data Type | Description                                                                    |
+  | --------- | ------------------------------------------------------------------------------ |
+  | `ENUM`    | One value from a predefined list (e.g., `ENUM('small','medium','large')`)      |
+  | `SET`     | Multiple values from a predefined list (e.g., `SET('A','B','C')`) – MySQL only |
 
-### **Date & Time Types**
+#### **iv. Date & Time Types**
 
-| Data Type   | Description                                   |
-| ----------- | --------------------------------------------- |
-| `DATE`      | Date only (YYYY-MM-DD)                        |
-| `TIME`      | Time only (HH\:MM\:SS)                        |
-| `YEAR`      | Year only (e.g., 2025) – MySQL-specific       |
-| `DATETIME`  | Date and time (no time zone)                  |
-| `TIMESTAMP` | Date and time (may include time zone support) |
+  | Data Type   | Description                                   |
+  | ----------- | --------------------------------------------- |
+  | `DATE`      | Date only (YYYY-MM-DD)                        |
+  | `TIME`      | Time only (HH\:MM\:SS)                        |
+  | `YEAR`      | Year only (e.g., 2025) – MySQL-specific       |
+  | `DATETIME`  | Date and time (no time zone)                  |
+  | `TIMESTAMP` | Date and time (may include time zone support) |
 
 ---
 
