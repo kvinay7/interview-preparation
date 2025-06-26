@@ -220,7 +220,9 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
 
 ---
 
-### 4. Conditional Statement
+### 4. [SQL Joins](https://dk81.github.io/dkmathstats_site/set-theory-sql.html)
+
+### 5. Conditional Statement
  - **Syntax**:
    ```sql
    CASE
@@ -255,8 +257,6 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
    HAVING COUNT(*) >= 5
    ORDER BY avg_salary DESC;
    ```
-
-### 5. [SQL Joins](https://dk81.github.io/dkmathstats_site/set-theory-sql.html)
 ---
 
 ## Caching & Indexing
