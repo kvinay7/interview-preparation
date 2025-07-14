@@ -567,14 +567,14 @@ public class Main {
         System.out.println("Sorted by ID (Comparable): " + students);  // Output: [Bob, Charlie, Alice]
 
         // Sorting using Comparator (Name)
-        Collections.sort(students, new Comparator<Student>() { // Annonymous inner class
+        Collections.sort(students, new Comparator<Student>() { // Annonymous inner class is a local class without a name. It's used to define a one-time-use subclass or implementation of an interface or abstract class—all in one expression.
             public int compare(Student s1, Student s2) {
                 return s1.name.compareTo(s2.name);  // Sort by name
             }
         });
         System.out.println("Sorted by Name (Comparator without Lambda): " + students);  // Output: [Alice, Bob, Charlie]
 
-        // Sorting using Comparator (Name) - With Lambda - Annonymous inner class with Single Abstract Method (SAM - Funtional Interface - 1.8)
+        // Sorting using Comparator (Name) - With Lambda (A concise way to represent an implementation of a functional interface) - Annonymous inner class with Single Abstract Method (SAM - Funtional Interface - 1.8)
         students.sort((s1, s2) -> s1.name.compareTo(s2.name));  // Sort by name using Lambda
         System.out.println("Sorted by Name (Comparator with Lambda): " + students);  // Output: [Alice, Bob, Charlie]
     }
