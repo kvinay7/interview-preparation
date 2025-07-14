@@ -595,13 +595,34 @@ public class Main {
 ## Stream API:
 Introduced in Java 8 as part of the java.util.stream package. It is used to process collections of data in a functional and declarative style (pipeline of functions). It doesn't store data. 
 
-- Declaring Streams: `Arrays.stream(arr)`, `list.stream()`, `Stream.of(1,2,3)`, `Stream.empty()`, `Stream.generate()`, `Stream.iterate()`
+- Declaring Streams: `Arrays.stream(arr)`, `list.stream()`, `Stream.of(T...)`, `Stream.empty()`, `Stream.generate(Supplier<T>)`, `Stream.iterate(seed, UnaryOperator<T>)`, `Stream.builder()`.
+
 - Intermediate Operations (lazy): they not executed until a terminal operation is invoked.
-    - `map(Function<T, R>)`, `filter(Predicate<T>)`, `sorted()`, `distinct()`, `limit(long maxSize)`, `skip(long n)`, `flatMap()`, `peek()`
+    - `Stream<R> map(Function<T, R>)`
+    - `Stream<T> filter(Predicate<T>)`
+    - `Stream<T> sorted(Comparator<T>)`
+    - `Stream<T> distinct()`
+    - `Stream<T> limit(long maxSize)`
+    - `Stream<T> skip(long n)`
+    - `Stream<R> flatMap(Filter<T, Stream<R>>)`
+    - `Stream<T> peek(Consumer<T>)`
+    
 - Terminal Operations: once a terminal operation is invoked, stream can't be reused.
-    - `collect(Collectors.toList())`, `forEach()`, `reduce()`, `count()`, `min()`, `max()`, `toArray()`
+    - `T collect(Collector)`
+    - `void forEach(Consumer)`
+    - `Optional<T> reduce(BinaryOperator)`
+    - `long count()`
+    - `Optional<T> min(Comparator)`
+    - `Optional<T> max(Comparator)`
+    - `T[] toArray()`
+
 - Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
-    - `findFirst()`, `findAny()`, `anyMatch()`, `allMatch()`, `noneMatch()`
+    - `Optional<T> findFirst()`
+    - `Optional<T> findAny()`
+    - `boolean anyMatch()`
+    - `boolean allMatch()`
+    - `boolean noneMatch()`
+
 - Practice: [See here](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/streams.md)
 - Example: [See here](https://docs.google.com/document/d/e/2PACX-1vQDAFhUiB2iRfZppq4tFrJKnX8yVGsHBAPrSMmXLlj4CxcU2yi47QqBtAo4n-C4awhj2MNwt14XjOLP/pub)
   
