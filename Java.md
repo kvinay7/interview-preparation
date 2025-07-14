@@ -595,11 +595,19 @@ public class Main {
 ## Stream API:
 Introduced in Java 8 as part of the java.util.stream package. It is used to process collections of data in a functional and declarative style (pipeline of functions). It doesn't store data. 
 
-- Declaring Streams: `Arrays.stream(arr)`, `list.stream()`, `Stream.of(T...)`, `Stream.empty()`, `Stream.generate(Supplier<T>)`, `Stream.iterate(seed, UnaryOperator<T>)`, `Stream.builder()`.
+- Declaring Streams:
+    - `Stream<T> Arrays.stream(T[])`
+    - `Stream<T> Collection.stream()`
+    - `Stream<T> Stream.of(T...)`
+    - `Stream<T> Stream.empty()`
+    - `Stream<T> Stream.generate(Supplier<T>)`
+    - `Stream<T> Stream.iterate(T seed, UnaryOperator<T>)`
+    - `Stream.Builder<T> Stream.builder()`
 
 - Intermediate Operations (lazy): they not executed until a terminal operation is invoked.
     - `Stream<R> map(Function<T, R>)`
     - `Stream<T> filter(Predicate<T>)`
+    - `Stream<T> sorted()`
     - `Stream<T> sorted(Comparator<T>)`
     - `Stream<T> distinct()`
     - `Stream<T> limit(long maxSize)`
@@ -609,8 +617,8 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
     
 - Terminal Operations: once a terminal operation is invoked, stream can't be reused.
     - `T collect(Collector)`
-    - `void forEach(Consumer)`
-    - `Optional<T> reduce(BinaryOperator)`
+    - `void forEach(Consumer<T>)`
+    - `Optional<T> reduce(BinaryOperator<T>)`
     - `long count()`
     - `Optional<T> min(Comparator)`
     - `Optional<T> max(Comparator)`
@@ -619,9 +627,9 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
 - Short Circuit Operations: terminates the stream early when a condition is met. Used in searching.
     - `Optional<T> findFirst()`
     - `Optional<T> findAny()`
-    - `boolean anyMatch()`
-    - `boolean allMatch()`
-    - `boolean noneMatch()`
+    - `boolean anyMatch(Predicate<T>)`
+    - `boolean allMatch(Predicate<T>)`
+    - `boolean noneMatch(Predicate<T>)`
 
 - Practice: [See here](https://github.com/kvinay7/Practice-Kotlin-Fundamentals/blob/main/streams.md)
 - Example: [See here](https://docs.google.com/document/d/e/2PACX-1vQDAFhUiB2iRfZppq4tFrJKnX8yVGsHBAPrSMmXLlj4CxcU2yi47QqBtAo4n-C4awhj2MNwt14XjOLP/pub)
