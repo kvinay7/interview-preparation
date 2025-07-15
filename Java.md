@@ -591,6 +591,11 @@ public class Main {
 | **Code Structure**            | Code is usually more detailed, involving explicit loops, conditions, and assignments. | Code is more concise, expressing the intention rather than the steps. |
 | **Use Case**                  | Suitable for tasks requiring detailed control, such as system-level programming. | Suitable for tasks where the goal is to describe the outcome, like querying data, UI construction. |
 
+- **Functional Programming**: It emphasizes immutability, pure functions, and declarative code over imperative, state-changing operations. Java supports functional programming from Java-8 with key features: Functional Interfaces, Lamda Expressions, Method References, Streams, Optional.
+    - **Pure Functions**: It always produces the same output for the same input. It does not modify any external state.
+    - **Impure Functions**: An impure function is a function that has side effects, depends on external state or may produce different results for the same input.
+    - **First-class functions**: Functions can be assigned to variables, passed as arguments, or returned.
+    - **Higher-order functions**: Functions that take other functions as parameters or return functions.
 ---
 ## Stream API:
 Introduced in Java 8 as part of the java.util.stream package. It is used to process collections of data in a functional and declarative style (pipeline of functions). It doesn't store data. 
@@ -612,7 +617,7 @@ Introduced in Java 8 as part of the java.util.stream package. It is used to proc
     - `Stream<T> distinct()`
     - `Stream<T> limit(long maxSize)`
     - `Stream<T> skip(long n)`
-    - `Stream<R> flatMap(Filter<T, Stream<R>>)`
+    - `Stream<R> flatMap(Function<T, Stream<R>>)`
     - `Stream<T> peek(Consumer<T>)`
     
 - Terminal Operations: once a terminal operation is invoked, stream can't be reused.
