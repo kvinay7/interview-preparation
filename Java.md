@@ -589,7 +589,7 @@ public class Main {
 | **Focus**                     | Focuses on the *how* (step-by-step instructions).                | Focuses on the *what* (desired result).                           |
 | **Control Flow**              | The programmer defines the flow and logic explicitly.            | The framework or system controls the execution flow.              |
 | **Code Structure**            | Code is usually more detailed, involving explicit loops, conditions, and assignments. | Code is more concise, expressing the intention rather than the steps. |
-| **Use Case**                  | Suitable for tasks requiring detailed control, such as system-level programming. | Suitable for tasks where the goal is to describe the outcome, like querying data, UI construction. |
+| **Use Case**                  | Suitable for tasks requiring detailed control, such as system-level programming. Performance-critical.| Suitable for tasks where the goal is to describe the outcome, like querying data, UI construction. When readability and maintainability matter more than micro-performance. |
 
 - **Functional Programming**: It emphasizes immutability, pure functions, and declarative code over imperative, state-changing operations. Java supports functional programming from Java-8 with key features: Functional Interfaces, Lamda Expressions, Method References, Streams, Optional.
     - **Pure Functions**: It always produces the same output for the same input. It does not modify any external state.
