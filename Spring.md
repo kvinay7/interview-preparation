@@ -118,11 +118,10 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
         <property name="engineType" value="${car.engineType}" />
     </bean>
 
-    <!--
     <bean id="car" class="com.example.Car" autowire="byName" /> <!-- class must have a property named and a corresponding setter -->
     <bean id="car" class="com.example.Car" autowire="byType" /> <!-- byType is default behavior in Java config -->
     <bean id="car" class="com.example.Car" autowire="constructor" />
-    -->
+  
   </beans>
   ```
 
