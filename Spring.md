@@ -288,8 +288,9 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     }
   }
   ```
+---
 
-### Spring TEST
+## Spring TEST
 - **`@ExtendWith`**: is used in JUnit 5 to register extensions (also known as "test instance post-processors"). When we use `@ExtendWith(SpringExtension.class)` at class level, we're essentially telling JUnit to enable Spring support for the test class.
 
 - **`@ContextConfiguration`**: in Spring test framework is used to specify the locations of the configuration files that define the application context for the test. The Application context is loaded only once, and cached for all the test methods. `@ContextConfiguration(locations = "path")` - at class level.
