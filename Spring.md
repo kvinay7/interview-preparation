@@ -41,7 +41,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 
 - **Autowiring:** is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
 
-  - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods. `@Inject` is part of Java’s standard dependency injection mechanism (JSR-330).
+  - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods. `@Inject` is part of Java’s standard dependency injection mechanism (JSR-330). `@Resource` is JSR-250 annotation equivalent to `@Auttowired` but can't be applied on constructor level.
 
   - **Autowire with `@Qualifier` (In case of multiple beans of the same type)**
      ```java
@@ -193,7 +193,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   ```java
   import org.springframework.stereotype.Component;
   
-  @Component
+  @Component // Equivalent JSR-330 annotation - @Named
   public class Engine {
     public void start() {
         System.out.println("Engine is starting...");
@@ -288,6 +288,19 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     }
   }
   ```
+
+### Spring TEST
+- **`@ExtendWith`**: is used in JUnit 5 to register extensions (also known as "test instance post-processors"). When we use `@ExtendWith(SpringExtension.class)` at class level, we're essentially telling JUnit to enable Spring support for the test class.
+
+- **`@ContextConfiguration`**: in Spring test framework is used to specify the locations of the configuration files that define the application context for the test. The Application context is loaded only once, and cached for all the test methods. `@ContextConfiguration(locations = "path")` - at class level.
+
+- **`@DirtiesContext`**: is used to indicate that the ApplicationContext associated with a test is dirty and should be recreated before running a specific test method. When methodMode is set to BEFORE_METHOD, it indicates that the context should be marked as dirty and recreated before the execution of the test method.
+  - `@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)`
+  - `@DirtiesContext(methodMode = MethodMode.AFTER_METHOD)`
+  - `@DirtiesContext(classMode = ClassMode.BEFORE_CLASS)`
+  - `@DirtiesContext(classMode = ClassMode.AFTER_CLASS)`
+ 
+- **`@ActiveProfiles({"test"})`** is an annotation used to activate one or more profiles when running tests. 
 ---
 
 ## Spring Boot
