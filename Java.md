@@ -492,10 +492,23 @@ Collections Framework provides a unified architecture for storing and manipulati
 
 - **Collection Interface:**
   - **List**: `ArrayList`, `LinkedList` is doubly linked list, `Vector` (thread-safe), `Stack`
-  - **Set**: `HashSet` (allow null), `LinkedHashSet` (not allow null. Insertion order), `TreeSet` (not allow null. Sorted order)
+  - **Set**:
+    | Set Type         | Allows Null Element? | Maintains Order         | Sorted?        | Thread-Safe |
+    |------------------|----------------------|--------------------------|----------------|-------------|
+    | HashSet          | Yes (only one null)  | No                       | No             | No          |
+    | LinkedHashSet    | Yes (only one null)\*| Yes (insertion order)    | No             | No          |
+    | TreeSet          | No                   | No                       | Yes (sorted)   | No          |
+
   - **Queue**: `PriorityQueue`, `ArrayDeque` - Use Deque for efficient stack and queue operations (ArrayDeque is faster than Stack and LinkedList)
+
 - **Map Interface:**
-  - `HashMap` (allow null), `LinkedHashMap` (allow null), `TreeMap` (key can't be null), [`Hashtable`](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md#hash-table) (thread-safe, not allow null)
+  | Map Type           | Allows Null Key?     | Allows Null Value(s)? | Maintains Order         | Sorted?           | Thread-Safe |
+  |--------------------|----------------------|------------------------|--------------------------|--------------------|--------------|
+  | HashMap            | Yes (only one key)   | Yes                    | No                       | No                 | No           |
+  | LinkedHashMap      | Yes (only one key)   | Yes                    | Yes (insertion order)    | No                 | No           |
+  | TreeMap            | No                   | Yes                    | No                       | Yes (sorted by key)| No           |
+  | Hashtable          | No                   | No                     | No                       | No                 | Yes          |
+
     
 - **Iterator:**
     - Different collections have different internal structures, Iterator gives a common interface to loop through them.
