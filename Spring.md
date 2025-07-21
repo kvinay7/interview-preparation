@@ -376,7 +376,7 @@ public class AppConfig {
     }
 
     @Bean
-    public HibernateTransactionManager transactionManager() {
+    public HibernateTransactionManager transactionManager() { // It manages transactions for Hibernate sessions, allows to use @Transactional annotation at Service Layer to handle commit/rollback automatically.
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory().getObject());
         return txManager;
