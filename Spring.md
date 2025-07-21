@@ -393,7 +393,7 @@ public class AppConfig {
 ```
 
 ### 3. Propagation
-propagation controls what happens when a method annotated with @Transactional is called inside another transactional context.
+Propagation controls what happens when a method annotated with `@Transactional` is called inside another transactional context.
 
 | Propagation          | What happens                                                                                                     | Typical Use                                                                      |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
