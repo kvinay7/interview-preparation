@@ -356,7 +356,7 @@ Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that 
 public class AppConfig {
 
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource() { // DataSource is a key component that provides the database connection details to the application.
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
@@ -366,7 +366,7 @@ public class AppConfig {
     }
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
+    public LocalSessionFactoryBean sessionFactory() { // SessionFactory is a central factory class that creates Session instances, which are used to interact with the database. It is a heavyweight object, so it's typically created once and reused throughout the application.
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("com.example.models");
@@ -381,7 +381,7 @@ public class AppConfig {
         return txManager;
     }
 
-    private Properties hibernateProperties() {
+    private Properties hibernateProperties() { // Hibernate properties are configuration settings that control how Hibernate behaves.
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", "true");
