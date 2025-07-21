@@ -365,6 +365,8 @@ public class AppConfig {
         return dataSource;
     }
 
+    
+    // SessionFactory injected into DaoImpl class to perform database transactions.
     @Bean
     public LocalSessionFactoryBean sessionFactory() { // SessionFactory is a central factory class that creates Session instances, which are used to interact with the database. It is a heavyweight object, so it's typically created once and reused throughout the application.
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
