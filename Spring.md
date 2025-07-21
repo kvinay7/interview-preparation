@@ -391,6 +391,20 @@ public class AppConfig {
     }
 }
 ```
+
+### 3. Propagation
+propagation controls what happens when a method annotated with @Transactional is called inside another transactional context.
+
+| Propagation          | What happens                                                                                                     | Typical Use                                                                      |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `REQUIRED` (default) | Join the existing transaction if one exists; else start a new one.                                               | Common; keeps all operations in the same transaction.                            |
+| `REQUIRES_NEW`       | Always start a new transaction; suspend the existing one.                                                        | Use when you must commit/rollback this part independently (e.g., logging/audit). |
+| `SUPPORTS`           | Join existing transaction if present; else run non-transactionally.                                              | Read-only methods where tx is optional.                                          |
+| `NOT_SUPPORTED`      | Always run non-transactionally; suspend existing transaction if present.                                         | Non-critical parts that shouldn’t participate in tx.                             |
+| `MANDATORY`          | Must run inside an existing transaction; else throw exception.                                                   | Ensure certain code is always inside a tx.                                       |
+| `NEVER`              | Must not run inside a transaction; else throw exception.                                                         | For code that can’t run in a tx.                                                 |
+| `NESTED`             | Run inside nested transaction using savepoints; rollback can roll back inner part without rolling back outer tx. | Complex business flows that may partially rollback. Needs database support.      |
+
 ---
 
 ## Spring MVC
