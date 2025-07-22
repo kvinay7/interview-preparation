@@ -417,7 +417,6 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
 
 ### 2. **DispatcherServlet**
 - **[Central Controller](https://www.javaguides.net/2020/07/how-spring-mvc-works-internally.html)**: Acts as the front controller in the Spring MVC architecture.
-- **Request Handling**: Delegates requests to appropriate handlers (controllers).
 - **Key Tasks**:
   - Receives HTTP requests.
   - Maps requests to the corresponding controller based on configurations.
