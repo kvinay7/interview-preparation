@@ -428,15 +428,16 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
 - Examples of handler mappings: `@RequestMapping` or `@GetMapping`.
     
 ### 4. **Controller**
-- Annotated with `@Controller` or `@RestController` to define web request handlers.
-- Defines handler methods to process incoming HTTP requests.
+- `@Controller` or `@RestController` to define web request handlers to process incoming HTTP requests.
+- `Model` or `ModelMap` objects allow adding attributes to pass data from controllers to the view.
 - Example:
   ```java
   @Controller
   public class MyController {
-      @GetMapping("/welcome")
-      public String showWelcomePage() {
-          return "welcome"; // View name
+      @GetMapping("/greet")
+      public String greet(Model model) {
+          model.addAttribute("message", "Hello, Spring MVC!");
+          return "greet"; // Logical view name
       }
   }
   ```
@@ -446,43 +447,48 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
 - Example:
   - **InternalResourceViewResolver** maps logical view names to JSP files in a specific directory.
   ```java
-  @Bean
-  public InternalResourceViewResolver viewResolver() {
-      InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-      resolver.setPrefix("/WEB-INF/views/");
-      resolver.setSuffix(".jsp");
-      return resolver;
+  @Configuration
+  @EnableWebMvc
+  @ComponentScan(basePackages = "com.example.controller")
+  public class WebConfig implements WebMvcConfigurer {
+
+    @Bean
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
   }
   ```
 
-### 6. **Model and ModelMap**
-- Used to pass data from controllers to the view.
-- `Model` or `ModelMap` objects allow adding attributes:
-  ```java
-  @GetMapping("/greet")
-  public String greet(Model model) {
-      model.addAttribute("message", "Hello, Spring MVC!");
-      return "greet"; // Logical view name
+### 6. **Deployment Descriptor**
+- It is used to configure the `DispatcherServlet`, the context parameters, and other settings such as filters or listeners.
+```java
+  public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        // Web-related configurations like controllers, view resolvers
+        return new Class[] { WebConfig.class };
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        // Map DispatcherServlet to "/"
+        return new String[] { "/" };
+    }
   }
   ```
-  
-### 7. **Interceptors**
-- Allow pre- and post-processing of requests.
-- Configure interceptors by implementing `HandlerInterceptor` or extending `HandlerInterceptorAdapter`.
 
-### 8. **Spring MVC Configuration**
-- Configured using:
-  - **XML-based**: Configuration in `web.xml` and Spring beans in XML files.
-  - **Java-based**: Using `@Configuration` and `@EnableWebMvc`.
-
-### 9. **Annotations in Spring MVC**
+### 7. **Annotations in Spring MVC**
 - **@Controller**: Marks a class as a web controller.
 - **@RequestMapping**: Maps web requests to handler methods or classes.
 - **@GetMapping, @PostMapping, @PutMapping, @DeleteMapping**: Shortcut annotations for HTTP methods.
 - **@RestController**: Combines `@Controller` and `@ResponseBody`. [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/04-spring-boot-rest-crud/14-spring-boot-rest-crud-employee-with-spring-data-jpa)
 - **@ResponseBody**: Directly returns data (e.g., JSON or XML) instead of a view.
 
-### 10. **Request and Response Handling** - [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
+### 8. **Request and Response Handling** - [Example](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/07-spring-boot-spring-mvc-crud/04-02-thymeleaf-demo-employees-delete-alternate-solution-post-all-data)
 - **@RequestParam**: Extract query parameters from the request.
   ```java
   @GetMapping("/search")
@@ -500,7 +506,7 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   }
   ```
 
-### 11. **Form Handling**
+### 9. **Form Handling**
 - Spring MVC provides features to handle forms.
 - Use `@ModelAttribute` to bind form data to an object.
   ```java
@@ -512,7 +518,7 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   }
   ```
 
-### 12. **Exception Handling**
+### 10. **Exception Handling**
 - `@ControllerAdvice` to handle exceptions globally and `@ExceptionHandler` to handle specific exceptions in controller classes.
   ```java
   @ControllerAdvice
