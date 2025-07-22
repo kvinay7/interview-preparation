@@ -462,9 +462,15 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   ```
 
 ### 6. **Deployment Descriptor**
-- It is used to configure the `DispatcherServlet`, the context parameters, and other settings such as filters or listeners.
+- It is used to configure the `DispatcherServlet`, the context parameters (ApplicationContext), and other settings such as filters or listeners.
 ```java
   public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        // Application-wide configurations like services, repositories
+        return new Class[] { AppConfig.class };
+    }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
