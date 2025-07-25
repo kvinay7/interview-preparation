@@ -339,6 +339,31 @@ Spring Boot is designed to make it easy to get started with Spring development b
    ├── .gitignore                   			# Git ignore file (to ignore compiled files, etc.)
    └── README.md                    			# Project documentation (optional)
    ```
+
+Spring Boot and the wider Spring Framework rely heavily on annotations to define and manage application behavior, configuration, and dependency injection. Here's a breakdown of **core Spring Boot annotations** and their purposes:
+
+---
+
+### Core Annotations
+  - **`@SpringBootApplication`**: Main entry point for a Spring Boot application. Combines `@EnableAutoConfiguration`, `@ComponentScan` and `@Configuration`.
+  - **`@EnableAutoConfiguration`**: Enables Spring Boot’s auto-configuration mechanism.
+  - **`@ComponentScan`**: Enables component scanning for `@Component`, `@Service`, etc.
+  - **`@Configuration`**: Marks the class as a source of bean definitions.
+  - **`@Bean`**: Used inside a `@Configuration` class to define a bean manually.
+  - **`@Component`**: Generic stereotype for any Spring-managed component (bean).
+  - **`@Scope`**: Specifies the bean scope of a component.
+  - **`@Service`**: Specialization of `@Component` for service layer classes.
+  - **`@Repository`**: Specialization of `@Component` for DAO (data access) layer classes.
+  - **`@Controller`**: Marks a class as a Spring MVC controller (typically returns views).
+  - **`@RestController`**: Combination of `@Controller` and `@ResponseBody` (returns data as JSON/XML).
+  - **`@Autowired`**: Automatically injects dependencies by type.
+  - **`@Qualifier`**: Used alongside `@Autowired` to specify which bean to inject when multiple beans of the same type exist.
+  - **`@Primary`**: Marks a bean as primary candidate when multiple beans match for injection.
+  - **`@Value`**: Injects values into fields from application properties or environment.
+  - **`@PropertySource`**: Load custom property files
+  - **`@ConfigurationProperties`**: Bind groups of related properties into a POJO
+  - **`@PostConstruct`**: Marks a method to be executed after the bean has been created and dependency injection is done.
+  - **`@PreDestroy`**: Marks a method to be executed before the bean is removed from the context.
 ---
 
 ## Spring ORM:
