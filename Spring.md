@@ -339,9 +339,6 @@ Spring Boot is designed to make it easy to get started with Spring development b
    ├── .gitignore                   			# Git ignore file (to ignore compiled files, etc.)
    └── README.md                    			# Project documentation (optional)
    ```
-
-Spring Boot and the wider Spring Framework rely heavily on annotations to define and manage application behavior, configuration, and dependency injection. Here's a breakdown of **core Spring Boot annotations** and their purposes:
-
 ---
 
 ### Core Annotations
