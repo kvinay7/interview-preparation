@@ -55,7 +55,7 @@ It is a logical tool which is used for database schema design.
    - **Derived**: Can be calculated from other attributes (e.g., Age from DOB)
    - **Multivalued**: Can have multiple values (e.g., PhoneNumbers)
 
- - **Relationship**: A relationship is an association among several entities.
+ - **Relationship**: A relationship is an association among several entities. A relationship between two entities of the same entity set is called a recursive relationship.
    - **Unary Relationship Set**: is a relationship set where only one entity set participates in a relationship set.
    - **Binary Relationship Set**: is a relationship set where two entity sets participate in a relationship set.
    - **Ternary Relationship Set**: is a relationship set where three entity sets participate in a relationship set.
