@@ -361,6 +361,7 @@ Spring Boot is designed to make it easy to get started with Spring development b
   - **`@ConfigurationProperties`**: Bind groups of related properties into a POJO
   - **`@PostConstruct`**: Marks a method to be executed after the bean has been created and dependency injection is done.
   - **`@PreDestroy`**: Marks a method to be executed before the bean is removed from the context.
+  - **[Spring AOP](https://www.geeksforgeeks.org/advance-java/aspect-oriented-programming-aop-in-spring-framework/)**: It separates cross-cutting concerns like logging, security, transactions from the main business logic. Instead of adding them inside every class, AOP allows to write it once and apply it wherever needed.
 ---
 
 ## Spring ORM:
