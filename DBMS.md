@@ -114,6 +114,44 @@ It is the process of organizing data in a database to reduce redundancy and impr
 
 ### 4. Denormalization
  - Sometimes, for performance reasons (faster reads), tables are merged back together, partially reversing normalization.
+
+### 5. Indexing
+It is a technique to speed up (JOINs, ORDER BY, WHERE clauses) data retrieval operations in a database at the cost of extra space and slower writes. An index is a data structure (often a B-Tree or Hash) that allows quick lookup of rows in a table by one or more columns.
+
+#### **Types of Indexes**
+ - 1. **Primary Index**
+    - Automatically created on primary key.
+    - Unique and helps in fast lookup.
+
+ - 2. **Secondary Index**
+    - Created on non-primary key columns.
+    - Can be unique or non-unique.
+
+ - 3. **Composite Index**
+    - Created on multiple columns.
+
+ - 4. **Clustered Index**
+    - Alters the physical order of the table.
+    - Only one clustered index per table.
+    - In MySQL InnoDB, primary key is the clustered index.
+
+ - 5. **Non-clustered Index**
+    - Logical ordering; points to physical rows.
+    - Can have multiple non-clustered indexes.
+
+- **Example**:
+    ```sql
+     CREATE INDEX idx_name ON users(name);
+     CREATE INDEX idx_email ON users(email);
+     CREATE UNIQUE INDEX idx_unique_email ON users(email);
+     CREATE INDEX idx_multi ON orders(customer_id, product_id);
+    ```
+
+### **Optimization Techniques**
+ - **Indexes**: Use indexes to avoid full table scans.
+ - **Avoid SELECT***: Only fetch required columns.
+ - **WHERE clause**: Use WHERE clause to limit result set.
+ - **Denormalization**: for read-heavy workloads.
 ---
 
 ## Structured Query Language (SQL)
@@ -355,10 +393,4 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
      PRINT ERROR_MESSAGE();
    END CATCH;
    ```
----
-
-## Indexing
-It is a technique to speed up data retrieval operations in a database at the cost of extra space and slower writes. An index is a data structure (often a B-Tree or Hash) that allows quick lookup of rows in a table by one or more columns.
-  
-  - **Example**: ```sql CREATE INDEX idx_employee_name ON employees(name);```
 ---
