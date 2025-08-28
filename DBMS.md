@@ -85,7 +85,7 @@ A relation is basically a table in a relational database.
  - **Degree**: Number of attributes (columns) in a relation.
  - **Cardinality**: Number of tuples (rows) in a relation.
 
-### Constraints
+### 1. Constraints
 Constraints are rules enforced on data in a database to ensure accuracy and integrity.
  - **Domain Constraint**: Restricts the type of data (e.g., age must be an integer).
  - **Entity Integrity**: Primary key must be unique and not null.
@@ -93,7 +93,7 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
  - **Key Constraint**: No two rows can have the same value for a primary key.
  - **Tuple Uniqueness**: Specifies that all the tuples must be necessarily unique in any relation.
 
-### Relational Algebra 
+### 2. Relational Algebra 
 Relational Algebra operations take one or more relations as input and produce a new relation as output.
  - **Select (σ)**: Filters tuples (rows) based on a condition. Syntax: σ_condition(R)
    - Example: σ_age>25(Employees) → Selects employees older than 25.
@@ -127,7 +127,7 @@ Relational Algebra operations take one or more relations as input and produce a 
    - Example: π_student(Courses_Taken) ÷ π_course(Required_Courses) → Students who completed all required courses.
    - SQL Equivalent: Complex subqueries (e.g., SELECT student FROM Courses_Taken WHERE NOT EXISTS ...).
 
-### Normalization
+### 3. Normalization
 ---
 
 ## Structured Query Language (SQL)
