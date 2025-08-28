@@ -105,6 +105,15 @@ Relational Algebra operations take one or more relations as input and produce a 
  - **Division (÷)**: Values paired with all in another relation. E.g., π_student(Courses_Taken) ÷ π_course(Required_Courses) → Students completing all required courses.
 
 ### 3. Normalization
+It is the process of organizing data in a database to reduce redundancy and improve data integrity. It involves dividing large tables into smaller tables and defining relationships among them.
+
+ - **First Normal Form (1NF)**: Each table cell contains a single value (atomicity). No repeating groups or arrays.
+ - **Second Normal Form (2NF)**: In 1NF + Every non-key attribute is fully functionally dependent on the PRIMARY KEY (no partial dependency).
+ - **Third Normal Form (3NF)**: In 2NF + No transitive dependency: Non-key attributes do not depend on other non-key attributes.
+ - **Boyce-Codd Normal Form (BCNF)**: In 3NF + For every non-trivial functional dependency, the left side is a super key.
+
+### 4. Denormalization
+ - Sometimes, for performance reasons (faster reads), tables are merged back together, partially reversing normalization.
 ---
 
 ## Structured Query Language (SQL)
