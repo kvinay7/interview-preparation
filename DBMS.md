@@ -356,3 +356,41 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
    END CATCH;
    ```
 ---
+
+## Indexing
+
+**Indexing** is a technique to speed up data retrieval operations in a database at the cost of extra space and slower writes.
+
+### **What is an Index?**
+- An index is a data structure (often a B-Tree or Hash) that allows quick lookup of rows in a table by one or more columns.
+
+### **Types of Indexes**
+
+- **Primary Index**: Automatically created on the primary key.
+- **Unique Index**: Ensures all values in the indexed column are unique.
+- **Composite Index**: Index on multiple columns.
+- **Clustered Index**: Alters the table's physical storage order to match the index.
+- **Non-Clustered Index**: Separate from the table’s storage, contains pointers to data rows.
+- **Full-text Index**: Used for efficient text searches.
+
+### **Advantages**
+- Faster SELECT queries, especially with WHERE, JOIN, ORDER BY, and GROUP BY clauses.
+
+### **Disadvantages**
+- Slower INSERT, UPDATE, DELETE operations (index needs to be updated).
+- Takes up extra disk space.
+
+### **Index Creation Example**
+```sql
+CREATE INDEX idx_employee_name ON employees(name);
+```
+- Use indexes on columns frequently searched, joined, or sorted.
+
+### **How Indexing Works**
+- The DBMS uses the index to locate rows quickly instead of scanning the entire table.
+- Similar to an index in a book: it directs you to the right page without reading the whole book.
+
+### **Index Maintenance**
+- Regularly review and drop unused indexes to optimize performance.
+
+---
