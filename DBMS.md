@@ -93,6 +93,41 @@ Constraints are rules enforced on data in a database to ensure accuracy and inte
  - **Key Constraint**: No two rows can have the same value for a primary key.
  - **Tuple Uniqueness**: Specifies that all the tuples must be necessarily unique in any relation.
 
+### Relational Algebra 
+Relational Algebra operations take one or more relations as input and produce a new relation as output.
+ - **Select (σ)**: Filters tuples (rows) based on a condition. Syntax: σ_condition(R)
+   - Example: σ_age>25(Employees) → Selects employees older than 25.
+   - SQL Equivalent: SELECT * FROM Employees WHERE age > 25;
+ 
+ - **Project (π)**: Selects specific attributes (columns), removing duplicates. Syntax: π_attributes(R)
+   - Example: π_name,age(Employees) → Returns unique name and age of employees.
+   - SQL Equivalent: SELECT DISTINCT name, age FROM Employees;
+
+ - **Union (∪)**: Combines tuples from two relations, removing duplicates. Syntax: R ∪ S
+   - Example: Employees ∪ Contractors → All unique individuals from both tables.
+   - SQL Equivalent: SELECT * FROM Employees UNION SELECT * FROM Contractors;
+     
+ - **Difference (−)**: Returns tuples in one relation but not another. Syntax: R − S
+   - Example: Employees − Retired → Active employees not retired.
+   - SQL Equivalent: SELECT * FROM Employees EXCEPT SELECT * FROM Retired;
+ 
+ - **Cartesian Product (×)**: Combines all tuples from two relations. Syntax: R × S
+   - Example: Employees × Departments → All possible employee-department pairs.
+   - SQL Equivalent: SELECT * FROM Employees CROSS JOIN Departments;
+
+ - **Rename (ρ)**: Renames a relation or its attributes. Syntax: ρ_newName(R) or ρ_newAttrNames(R)
+   - Example: ρ_Staff(Employees) → Renames Employees table to Staff.
+   - SQL Equivalent: Used in aliases (AS in SQL).
+
+ - **Intersection (∩)**: Tuples common to two relations. Syntax: R ∩ S
+  - Example: Employees ∩ Managers → Employees who are also managers.
+  - SQL Equivalent: SELECT * FROM Employees INTERSECT SELECT * FROM Managers; or using joins.
+
+ - **Division (÷)**: Finds values in one relation paired with all values in another. Syntax: R ÷ S
+  - Example: π_student(Courses_Taken) ÷ π_course(Required_Courses) → Students who completed all required courses.
+  - SQL Equivalent: Complex subqueries (e.g., SELECT student FROM Courses_Taken WHERE NOT EXISTS ...).
+
+### Normalization
 ---
 
 ## Structured Query Language (SQL)
@@ -322,37 +357,16 @@ In SQL and database systems, **ACID** is a set of properties that ensure reliabl
   
  - **Example**
    ```sql
-   BEGIN TRANSACTION;
-
    BEGIN TRY
-      -- Step 1: Deduct ₹1000 from Account A
-      UPDATE accounts
-      SET balance = balance - 1000
-      WHERE account_id = 'A';
-
-      -- Optional: Check if balance is negative
-      IF EXISTS (
-          SELECT 1 FROM accounts WHERE account_id = 'A' AND balance < 0
-      )
-      BEGIN
-          THROW 50001, 'Insufficient funds in Account A.', 1;
-      END
-
-      -- Step 2: Add ₹1000 to Account B
-      UPDATE accounts
-      SET balance = balance + 1000
-      WHERE account_id = 'B';
-
-      -- Step 3: Commit the transaction
-      COMMIT;
+     BEGIN TRANSACTION;
+     UPDATE accounts SET balance = balance - 1000 WHERE id = 'A';
+     IF (SELECT balance FROM accounts WHERE id = 'A') < 0 THROW 50001, 'Insufficient funds', 1;
+     UPDATE accounts SET balance = balance + 1000 WHERE id = 'B';
+     COMMIT;
    END TRY
    BEGIN CATCH
-      -- If any error occurs, rollback the transaction
-      ROLLBACK;
-
-      -- Optional: Print the error
-      PRINT ERROR_MESSAGE();
+     ROLLBACK;
+     PRINT ERROR_MESSAGE();
    END CATCH;
-   ```    
+   ```
 ---
-
