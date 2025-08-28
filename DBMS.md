@@ -119,25 +119,10 @@ It is the process of organizing data in a database to reduce redundancy and impr
 It is a technique to speed up (JOINs, ORDER BY, WHERE clauses) data retrieval operations in a database at the cost of extra space and slower writes. An index is a data structure (often a B-Tree or Hash) that allows quick lookup of rows in a table by one or more columns.
 
 #### **Types of Indexes**
- - 1. **Primary Index**
-    - Automatically created on primary key.
-    - Unique and helps in fast lookup.
-
- - 2. **Secondary Index**
-    - Created on non-primary key columns.
-    - Can be unique or non-unique.
-
- - 3. **Composite Index**
-    - Created on multiple columns.
-
- - 4. **Clustered Index**
-    - Alters the physical order of the table.
-    - Only one clustered index per table.
-    - In MySQL InnoDB, primary key is the clustered index.
-
- - 5. **Non-clustered Index**
-    - Logical ordering; points to physical rows.
-    - Can have multiple non-clustered indexes.
+ - **Clustered index**: determines physical order (one per table; InnoDB uses PK as clustered index).
+ - **Non-clustered index**: separate structure pointing to rows.
+ - **Composite index**: multi-column; order matters — leftmost prefix is used.
+ - **Covering index**: index contains all columns needed for a query (no table lookup).
 
 - **Example**:
     ```sql
