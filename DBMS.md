@@ -120,12 +120,12 @@ Relational Algebra operations take one or more relations as input and produce a 
    - SQL Equivalent: Used in aliases (AS in SQL).
 
  - **Intersection (∩)**: Tuples common to two relations. Syntax: R ∩ S
-  - Example: Employees ∩ Managers → Employees who are also managers.
-  - SQL Equivalent: SELECT * FROM Employees INTERSECT SELECT * FROM Managers; or using joins.
+   - Example: Employees ∩ Managers → Employees who are also managers.
+   - SQL Equivalent: SELECT * FROM Employees INTERSECT SELECT * FROM Managers; or using joins.
 
  - **Division (÷)**: Finds values in one relation paired with all values in another. Syntax: R ÷ S
-  - Example: π_student(Courses_Taken) ÷ π_course(Required_Courses) → Students who completed all required courses.
-  - SQL Equivalent: Complex subqueries (e.g., SELECT student FROM Courses_Taken WHERE NOT EXISTS ...).
+   - Example: π_student(Courses_Taken) ÷ π_course(Required_Courses) → Students who completed all required courses.
+   - SQL Equivalent: Complex subqueries (e.g., SELECT student FROM Courses_Taken WHERE NOT EXISTS ...).
 
 ### Normalization
 ---
