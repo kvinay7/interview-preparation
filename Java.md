@@ -407,7 +407,7 @@ Enums in Java offer a powerful way to define a set of constants, allowing for mo
             public static void main(String[] args) {
                 Day today = Day.MONDAY;
         
-                switch (today) {
+                switch (today) { // `switch` statement supports the primitive types `char`, `byte`, `short`, `int`, their corresponding wrapper types, and the `String`. 
                     case MONDAY:
                         System.out.println("Start of the work week!");
                         break;
