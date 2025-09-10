@@ -14,7 +14,6 @@
     - [Control Statements](https://www.javatpoint.com/control-flow-in-java)
     - [Conceptual Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#conceptual-questions)
     - [Coding Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#coding-practice)
-    - [Data Structures and Algorithms](https://docs.google.com/document/d/14mReZ46zhM2bxL9YGm6hkYRPQw_t4fz7UUVWGH7SgnQ/edit?usp=sharing)
 - [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop)
     - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
     - [Packages](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#packages)
