@@ -13,7 +13,6 @@
         - [Precedence and Associativity](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#precedence-and-associativity)
     - [Control Statements](https://www.javatpoint.com/control-flow-in-java)
     - [Conceptual Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#conceptual-questions)
-    - [Coding Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#coding-practice)
 - [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop)
     - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
     - [Packages](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#packages)
@@ -182,16 +181,7 @@ Higher precedence operators are evaluated first. Operators with the same precede
 - How does switch work in Java? What are the fall-through and break behaviors?
 - What are labeled break and continue? Give an example where this is useful.
 - What is the difference between a ternary operator and if-else? Which is better and why?
-
-## Coding Practice:
-- Swap two numbers with and without using third variable.
-- Find min and max of three numbers. (Math Class usage)
-- Calculator program with all operators.
-- Find factorial of a number and check given number is factorial or not.
-- Find sum of digits of a number. (Reverse number)
-- Fibonacci series upto N terms.
-- Given number is prime or not
-- Find LCM and GCD (HCF) of two numbers.
+  
 ---
 
 # Object-Oriented Programming (OOP): 
