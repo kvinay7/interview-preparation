@@ -12,8 +12,9 @@
     - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
         - [Precedence and Associativity](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#precedence-and-associativity)
     - [Control Statements](https://www.javatpoint.com/control-flow-in-java)
+    - [Conceptual Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#conceptual-questions)
     - [Coding Practice](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#coding-practice)
-    - [Data Structures and Algorithms](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md)
+    - [Data Structures and Algorithms](https://docs.google.com/document/d/14mReZ46zhM2bxL9YGm6hkYRPQw_t4fz7UUVWGH7SgnQ/edit?usp=sharing)
 - [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop)
     - [Stack vs Heap memory](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#stack-vs-heap-memory)
     - [Packages](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#packages)
@@ -160,6 +161,28 @@ Higher precedence operators are evaluated first. Operators with the same precede
 | 12             | `,`                                | Comma operator                         |   Left-to-right    |
 
 ---
+
+## Conceptual Questions:
+- What is java and the role of the JVM in achieving Java's platform independence?
+- Explain the flow from .java to .class to execution. Where does each component (JDK, JRE, JVM) fit?
+- How does Java ensure security in runtime? Explain the role of bytecode verifier and class loader.
+- What is JIT (Just-In-Time) compilation? How does it improve performance?
+- What is dynamic linking? How does it help in application flexibility?
+- What is the structure of a basic Java program? Why must the main method be static?
+- What happens if we remove the main method or having more main methods?
+- Can you have multiple classes in one .java file? What are the rules?
+- What are the default values of each primitive data type in Java?
+- How are int and Integer different in terms of memory and behavior?
+- What is autoboxing and unboxing? What problems can it cause in collections?
+- What is the difference between == and .equals()? How does this apply to Strings and Integers?
+- What is the difference between >> and >>>? When would you use each?
+- Explain the precedence and associativity of Java operators. Why does it matter in complex expressions?
+- Why doesn’t Java support operator overloading?
+- What are short-circuit operators? How do they help in performance and logic safety?
+- Compare for, while, and do-while. When is each preferable?
+- How does switch work in Java? What are the fall-through and break behaviors?
+- What are labeled break and continue? Give an example where this is useful.
+- What is the difference between a ternary operator and if-else? Which is better and why?
 
 ## Coding Practice:
 - Swap two numbers with and without using third variable.
