@@ -82,8 +82,8 @@ A variable is a container for storing data values and Data types define the type
   - **short:** default - 0 and size - 2 bytes
   - **int:** default - 0 (%d) and size - 4 bytes
   - **long:** default - 0L and size - 8 bytes
-  - **float:** default - 0.0f (%f) and size - 4 bytes
-  - **double:** default - 0.0d (%lf) and size - 8 bytes
+  - **float:** default - 0.0f (%f) and size - 4 bytes, Single-precision (6–7 decimal digits)
+  - **double:** default - 0.0d (%lf) and size - 8 bytes, Double-precision (15–16 decimal digits)
 
 - **Type Casting:**
   - Implicit/Widening: automatically converts smaller data type to larger.
