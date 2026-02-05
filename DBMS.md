@@ -14,7 +14,7 @@ A structured collection of related data that can be easily accessed, managed, an
   - Supports relationships between entities
   - Supports queries and transactions
 - A database provides persistence — storing data so that it survives program restarts, crashes, and time.
-- In backend systems, database usually means disk-based storage: HDD / SSD, Not RAM.
+- In backend systems, database usually means disk-based storage: HDD / SSD, Not RAM and databases act as the source of truth shared across users, devices, and services.
   
 ## File System
 A system used by OS to store and organize files on storage devices.
@@ -116,6 +116,7 @@ It is the process of organizing data in a database to reduce redundancy and impr
 
 ### 4. Denormalization
  - Sometimes, for performance reasons (faster reads), tables are merged back together, partially reversing normalization.
+ - In backend systems, normalization is preferred for writes & integrity, while selective denormalization is used for read-heavy APIs.
 
 ### 5. Indexing
 It is a technique to speed up (JOINs, ORDER BY, WHERE clauses) data retrieval operations in a database at the cost of extra space and slower writes. An index is a data structure (often a B-Tree or Hash) that allows quick lookup of rows in a table by one or more columns.
