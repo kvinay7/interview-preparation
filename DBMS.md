@@ -13,7 +13,9 @@ A structured collection of related data that can be easily accessed, managed, an
   - Organized using tables
   - Supports relationships between entities
   - Supports queries and transactions
-
+- A database provides persistence — storing data so that it survives program restarts, crashes, and time.
+- In backend systems, database usually means disk-based storage: HDD / SSD, Not RAM.
+  
 ## File System
 A system used by OS to store and organize files on storage devices.
 - Example: Storing student records in a .txt or .csv file
