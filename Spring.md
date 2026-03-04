@@ -418,11 +418,27 @@ public class AppConfig {
 
 ## Spring MVC
 Spring MVC (Model-View-Controller) is a powerful framework within the Spring ecosystem designed to build robust and scalable web applications.
-
-### 1. **Model-View-Controller (MVC) Pattern**
 - **Model**: Represents the application's data and business logic. It is often backed by service and persistence layers.
 - **View**: The presentation layer that displays data from the model to the user. It can use technologies like JSP, Thymeleaf, or other templating engines.
 - **Controller**: Handles user input, processes requests, interacts with the model, and determines which view to render.
+
+### 1. **HTTP Request/Response Flow**
+ - **Client sends HTTP request** (browser/frontend/Postman -> DNS/TCP/TLS -> IP -> Server Port).
+ - Request reaches the **embedded servlet container (Tomcat)**.
+ - The request passes through the **Servlet Filter Chain**, where:
+   - Security headers are added.
+   - Logging and correlation IDs are generated.
+   - JWT authentication is validated.
+ - The request then enters **Spring Security** for authorization checks.
+ - The **DispatcherServlet** (front controller) receives the request.
+ - **HandlerMapping** determines which controller should handle the request.
+ - **HandlerAdapter** prepares the method invocation and binds request data.
+ - The **Controller** processes the request and calls the **Service layer**.
+ - The **Service layer** performs business logic and interacts with the **Repository / Database or external services**.
+ - The response travels back to the controller.
+ - **HttpMessageConverters** convert Java objects into JSON.
+ - Response passes back through filters.
+ - **Tomcat sends the HTTP response back to the client**.
 
 ### 2. **DispatcherServlet**
 - **[Central Controller](https://www.javaguides.net/2020/07/how-spring-mvc-works-internally.html)**: Acts as the front controller in the Spring MVC architecture.
@@ -545,4 +561,3 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
   }
   ```
 ---
-
