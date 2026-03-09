@@ -22,7 +22,7 @@ A system used by OS to store and organize files on storage devices.
 - Characteristics:
   - Manual data management (no SQL, no automatic indexing)
   - Poor support for relationships between data
-  - More prone to data redundancy, inconsistency, integrity and security issues
+  - More prone to data redundancy (duplicated data), inconsistency (conflicting data versions), integrity (accuracy and reliability) and security issues
 
 ## DBMS (Database Management System)
 Software used to manage databases by providing an interface for data insertion, deletion, updating, and retrieval. Database management systems were developed to handle the difficulties of typical File-processing systems supported by conventional operating systems.
