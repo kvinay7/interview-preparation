@@ -307,7 +307,7 @@ It is a technique to speed up (JOINs, ORDER BY, WHERE clauses) data retrieval op
 ---
 
 ## [SQL Practice](https://leetcode.com/studyplan/top-sql-50/)
-## [Database Design](https://blog.algomaster.io/i/142880142/step-database-design)
+## [Database Design](https://blog.algomaster.io/i/142880142/design-the-database-schema)
 
 ---
 
