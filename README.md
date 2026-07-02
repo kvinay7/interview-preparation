@@ -2,7 +2,7 @@
 
 ## [Python](https://github.com/kvinay7/DSA/blob/main/Python.md)
 
-## [Syntax Practice](https://github.com/kvinay7/DSA/tree/main/SyntaxPractice)
+## [Practice](https://github.com/kvinay7/DSA/tree/main/SyntaxPractice)
 
 ## [ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md)
 
