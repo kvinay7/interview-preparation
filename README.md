@@ -7,3 +7,5 @@
 ## [ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md)
 
 ## [Spring](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md)
+
+## [HTTP](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md)
