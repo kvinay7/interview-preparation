@@ -1,17 +1,218 @@
 # Spring Framework
 The Spring Framework is a comprehensive and modular framework for building Java-based enterprise applications. It's designed to simplify development by providing a wide range of features, making it one of the most popular frameworks in the Java ecosystem.
 
-## [Spring Core](https://www.udemy.com/course/spring-certified-tutorial/)
+## Spring Core
 Spring Core is the foundational module of the Spring Framework. It provides essential functionality for managing objects and their dependencies. The core concepts and components in Spring Core are primarily Inversion of Control (IoC) and Dependency Injection (DI). These concepts form the foundation for building flexible, maintainable, and loosely-coupled applications.
 
 - **Inversion of Control (IoC):** is a design principle where the control of object creation and their dependencies is transferred to an external container or framework, such as the Spring IoC container.
   
 - **Dependency Injection (DI):** is a form of IoC where the dependencies of a class are provided (injected) by the Spring container rather than the class creating them itself. DI helps in achieving loose coupling and improves testability.
-  - Constructor-based DI
-  - Setter-based DI
-  - Field-based DI 
-  
+
 - **Spring IoC container:** is responsible for managing the lifecycle of objects and handling their dependencies. `ApplicationContext` (eager) is the central interface to the Spring IoC container. It is an extended version of the `BeanFactory` (lazy) interface, which is a basic container for managing objects.
+
+  #### 1. Without IoC / DI (Tightly Coupled)
+
+  ```java
+  public class Engine {
+      public void start() {
+          System.out.println("Engine Started");
+      }
+  }
+  ```
+
+  ```java
+  public class Car {
+
+      private Engine engine;
+
+      public Car() {
+          this.engine = new Engine();      // Car creates its own dependency
+      }
+
+      public void drive() {
+          engine.start();
+          System.out.println("Car Moving");
+      }
+  }
+  ```
+
+  ```java
+  public class Main {
+    public static void main(String[] args) {
+          Car car = new Car();
+          car.drive();
+      }
+  }
+  ```
+
+  #### Problems
+
+  - Tight Coupling
+  - Hard to replace dependency
+  - Hard to unit test
+  - Object creation is inside the class
+
+  ----
+
+  #### 2. With IoC / DI (Manual Dependency Injection)
+
+  ```java
+  public class Engine {
+      public void start() {
+          System.out.println("Engine Started");
+      }
+  }
+  ```
+
+  ```java
+  public class Car {
+
+      private Engine engine;
+
+      public Car(Engine engine) {
+          this.engine = engine;
+      }
+
+      public void drive() {
+          engine.start();
+          System.out.println("Car Moving");
+      }
+  }
+  ```
+
+  ```java
+  public class Main {
+      public static void main(String[] args) {
+          Engine engine = new Engine();
+          Car car = new Car(engine);
+          car.drive();
+      }
+  }
+  ```
+
+  #### Advantages
+
+  - Loose Coupling
+  - Easy to replace dependency
+  - Easy to test
+  - Dependency Injection done manually
+
+  ----
+
+  #### 3. With Spring IoC / DI
+
+  #### i. Constructor Injection (Recommended)
+
+  ```java
+  @Component
+  public class Engine {
+      public void start() {
+          System.out.println("Engine Started");
+      }
+  }
+  ```
+
+  ```java
+  @Service
+  public class Car {
+
+      private final Engine engine;
+
+      public Car(Engine engine) {
+          this.engine = engine;
+      }
+
+      public void drive() {
+          engine.start();
+          System.out.println("Car Moving");
+      }
+  }
+  ```
+
+  ----
+
+  #### ii. Setter Injection
+
+  ```java
+  @Component
+  public class Engine {
+      public void start() {
+          System.out.println("Engine Started");
+      }
+  }
+  ```
+
+  ```java
+  @Service
+  public class Car {
+
+      private Engine engine;
+
+      @Autowired
+      public void setEngine(Engine engine) {
+          this.engine = engine;
+      }
+
+      public void drive() {
+          engine.start();
+          System.out.println("Car Moving");
+      }
+  }
+  ```
+
+  ----
+
+  #### iii. Field Injection
+
+  ```java
+  @Component
+  public class Engine {
+      public void start() {
+          System.out.println("Engine Started");
+      }
+  }
+  ```
+
+  ```java
+  @Service
+  public class Car {
+
+      @Autowired
+      private Engine engine;
+
+      public void drive() {
+          engine.start();
+          System.out.println("Car Moving");
+      }
+  }
+  ```
+
+  #### Main Application
+
+  ```java
+  @SpringBootApplication
+  public class MainApplication {
+      public static void main(String[] args) {
+          ApplicationContext context = SpringApplication.run(MainApplication.class, args);
+          Car car = context.getBean(Car.class);
+          car.drive();
+
+          BeanFactory factory = context;
+          Car car = factory.getBean(Car.class);
+      }
+  }
+  ```
+
+  #### Advantages
+
+  - Loose Coupling
+  - Automatic Dependency Injection
+  - Better Testability
+  - Better Maintainability
+  - Object lifecycle managed by Spring
+  - No manual object creation
+
+----
 
 - **Bean:** A bean in Spring is an object that is managed by the Spring IoC container. Beans are created, configured, and assembled by the container. Beans are defined in configuration files (XML, annotations, or Java configuration).
 
@@ -33,10 +234,10 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
                              +-----------------------+       +------+
                                                         
 - **Bean Scopes:** The scope of a Spring bean defines the lifecycle and visibility of that bean within the container:
-  - `Singleton`: The default scope; only one instance of the bean is created and shared across the entire Spring container.
-  - `Prototype`: A new instance of the bean is created every time it is requested.
-  - `Request`: A bean is created once per HTTP request. This is typically used in web applications.
-  - `Session`: A bean is created once per HTTP session.
+  - `Singleton` - `@Scope("singleton")`: The default scope; only one instance of the bean is created and shared across the entire Spring container.
+  - `Prototype` - `@Scope("prototype")`: A new instance of the bean is created every time it is requested.
+  - `Request` - `@RequestScope`: A bean is created once per HTTP request. This is typically used in web applications.
+  - `Session` - `@SessionScope`: A bean is created once per HTTP session.
   - `Global Session`: A bean is created once per global HTTP session (used in portlet-based applications).
 
 - **Autowiring:** is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
@@ -288,20 +489,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
     }
   }
   ```
----
-
-## Spring TEST
-- **`@ExtendWith`**: is used in JUnit 5 to register extensions (also known as "test instance post-processors"). When we use `@ExtendWith(SpringExtension.class)` at class level, we're essentially telling JUnit to enable Spring support for the test class.
-
-- **`@ContextConfiguration`**: in Spring test framework is used to specify the locations of the configuration files that define the application context for the test. The Application context is loaded only once, and cached for all the test methods. `@ContextConfiguration(locations = "path")` - at class level.
-
-- **`@DirtiesContext`**: is used to indicate that the ApplicationContext associated with a test is dirty and should be recreated before running a specific test method. When methodMode is set to BEFORE_METHOD, it indicates that the context should be marked as dirty and recreated before the execution of the test method.
-  - `@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)`
-  - `@DirtiesContext(methodMode = MethodMode.AFTER_METHOD)`
-  - `@DirtiesContext(classMode = ClassMode.BEFORE_CLASS)`
-  - `@DirtiesContext(classMode = ClassMode.AFTER_CLASS)`
- 
-- **`@ActiveProfiles({"test"})`** is an annotation used to activate one or more profiles when running tests. 
+  
 ---
 
 ## Spring Boot
@@ -339,81 +527,53 @@ Spring Boot is designed to make it easy to get started with Spring development b
    ├── .gitignore                   			# Git ignore file (to ignore compiled files, etc.)
    └── README.md                    			# Project documentation (optional)
    ```
+   
+  ---
+
+## Core Annotations
+
+### 1. Application Bootstrap
+
+- **`@SpringBootApplication`**: Main entry point of a Spring Boot application. Combines `@Configuration`, `@EnableAutoConfiguration`, and `@ComponentScan`.
+- **`@EnableAutoConfiguration`**: Automatically configures Spring beans based on the project's dependencies and configuration.
+- **`@ComponentScan`**: Scans the specified packages for Spring-managed components such as `@Component`, `@Service`, and `@Repository`.
+
 ---
 
-### Core Annotations
-  - **`@SpringBootApplication`**: Main entry point for a Spring Boot application. Combines `@EnableAutoConfiguration`, `@ComponentScan` and `@Configuration`.
-  - **`@EnableAutoConfiguration`**: Enables Spring Boot’s auto-configuration mechanism.
-  - **`@ComponentScan`**: Enables component scanning for `@Component`, `@Service`, etc.
-  - **`@Configuration`**: Marks the class as a source of bean definitions.
-  - **`@Bean`**: Used inside a `@Configuration` class to define a bean manually.
-  - **`@Component`**: Generic stereotype for any Spring-managed component (bean).
-  - **`@Scope`**: Specifies the bean scope of a component.
-  - **`@Service`**: Specialization of `@Component` for service layer classes.
-  - **`@Repository`**: Specialization of `@Component` for DAO (data access) layer classes.
-  - **`@Controller`**: Marks a class as a Spring MVC controller (typically returns views).
-  - **`@RestController`**: Combination of `@Controller` and `@ResponseBody` (returns data as JSON/XML).
-  - **`@Autowired`**: Automatically injects dependencies by type.
-  - **`@Qualifier`**: Used alongside `@Autowired` to specify which bean to inject when multiple beans of the same type exist.
-  - **`@Primary`**: Marks a bean as primary candidate when multiple beans match for injection.
-  - **`@Value`**: Injects values into fields from application properties or environment.
-  - **`@PropertySource`**: Load custom property files
-  - **`@ConfigurationProperties`**: Bind groups of related properties into a POJO
-  - **`@PostConstruct`**: Marks a method to be executed after the bean has been created and dependency injection is done.
-  - **`@PreDestroy`**: Marks a method to be executed before the bean is removed from the context.
-  - **[Spring AOP](https://www.geeksforgeeks.org/advance-java/aspect-oriented-programming-aop-in-spring-framework/)**: It separates cross-cutting concerns like logging, security, transactions from the main business logic. Instead of adding them inside every class, AOP allows to write it once and apply it wherever needed.
+### 2. Bean Registration
+
+- **`@Configuration`**: Marks a class as a source of Spring bean definitions.
+- **`@Bean`**: Registers a bean explicitly inside a `@Configuration` class.
+- **`@Component`**: Generic annotation for registering a Spring-managed bean.
+- **`@Service`**: Specialized `@Component` used for the service (business logic) layer.
+- **`@Repository`**: Specialized `@Component` used for the data access layer. Also enables Spring's exception translation.
+- **`@Controller`**: Marks a class as a Spring MVC controller that typically returns views.
+- **`@RestController`**: Combination of `@Controller` and `@ResponseBody`; used to build REST APIs that return JSON or XML.
+- **`@Scope`**: Defines the lifecycle and visibility of a Spring bean (Singleton, Prototype, Request, Session, etc.).
+
 ---
 
-## Spring ORM:
-Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as JPA and Hibernate with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
+### 3. Dependency Injection
 
-### 1. **Integration with ORM Frameworks**
-- **Java Persistence API (JPA)**: A standard API for ORM.
-- **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager, ...
+- **`@Autowired`**: Automatically injects a dependency by type.
+- **`@Qualifier`**: Specifies which bean should be injected when multiple beans of the same type exist.
+- **`@Primary`**: Marks a bean as the default choice when multiple candidates are available for injection.
 
-### 2. **Spring ORM with Hibernate**: [DBMS](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md), [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
-```java
-@Configuration
-@EnableTransactionManagement
-@ComponentScan(basePackages = "com.example")
-public class AppConfig {
+---
 
-    @Bean
-    public DataSource dataSource() { // DataSource is a key component that provides the database connection details to the application.
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
-        dataSource.setUsername("root");
-        dataSource.setPassword("password");
-        return dataSource;
-    }
+### 4. External Configuration
 
-    @Bean
-    // SessionFactory injected into DaoImpl class to perform database transactions.
-    public LocalSessionFactoryBean sessionFactory() { // SessionFactory is a central factory class that creates Session instances, which are used to interact with the database. It is a heavyweight object, so it's typically created once and reused throughout the application.
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.example.models");
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        return sessionFactory;
-    }
+- **`@Value`**: Injects a single value from `application.properties`, `application.yml`, or environment variables.
+- **`@PropertySource`**: Loads additional property files into the Spring Environment.
+- **`@ConfigurationProperties`**: Binds a group of related configuration properties into a strongly typed Java class.
 
-    @Bean
-    public HibernateTransactionManager transactionManager() { // It manages transactions for Hibernate sessions, allows to use @Transactional annotation at Service Layer to handle commit/rollback automatically.
-        HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory(sessionFactory().getObject());
-        return txManager;
-    }
+---
 
-    private Properties hibernateProperties() { // Hibernate properties are configuration settings that control how Hibernate behaves.
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.put("hibernate.show_sql", "true");
-        properties.put("hibernate.hbm2ddl.auto", "update");
-        return properties;
-    }
-}
-```
+### 5. Bean Lifecycle
+
+- **`@PostConstruct`**: Executes a method immediately after the bean is created and dependency injection is completed.
+- **`@PreDestroy`**: Executes a method just before the bean is removed from the Spring container.
+
 ---
 
 ## Spring MVC
@@ -560,4 +720,75 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
       }
   }
   ```
+
 ---
+
+## Spring ORM:
+Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that simplifies the integration of ORM frameworks such as JPA and Hibernate with Spring. It provides support for working with relational databases using ORM tools while managing transactions and resources efficiently.
+
+### 1. **Integration with ORM Frameworks**
+- **Java Persistence API (JPA)**: A standard API for ORM.
+- **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager, ...
+
+### 2. **Spring ORM with Hibernate**: [DBMS](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md), [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
+```java
+@Configuration
+@EnableTransactionManagement
+@ComponentScan(basePackages = "com.example")
+public class AppConfig {
+
+    @Bean
+    public DataSource dataSource() { // DataSource is a key component that provides the database connection details to the application.
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
+        dataSource.setUsername("root");
+        dataSource.setPassword("password");
+        return dataSource;
+    }
+
+    @Bean
+    // SessionFactory injected into DaoImpl class to perform database transactions.
+    public LocalSessionFactoryBean sessionFactory() { // SessionFactory is a central factory class that creates Session instances, which are used to interact with the database. It is a heavyweight object, so it's typically created once and reused throughout the application.
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setPackagesToScan("com.example.models");
+        sessionFactory.setHibernateProperties(hibernateProperties());
+        return sessionFactory;
+    }
+
+    @Bean
+    public HibernateTransactionManager transactionManager() { // It manages transactions for Hibernate sessions, allows to use @Transactional annotation at Service Layer to handle commit/rollback automatically.
+        HibernateTransactionManager txManager = new HibernateTransactionManager();
+        txManager.setSessionFactory(sessionFactory().getObject());
+        return txManager;
+    }
+
+    private Properties hibernateProperties() { // Hibernate properties are configuration settings that control how Hibernate behaves.
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.hbm2ddl.auto", "update");
+        return properties;
+    }
+}
+```
+
+---
+
+## Spring TEST
+- **`@ExtendWith`**: is used in JUnit 5 to register extensions (also known as "test instance post-processors"). When we use `@ExtendWith(SpringExtension.class)` at class level, we're essentially telling JUnit to enable Spring support for the test class.
+
+- **`@ContextConfiguration`**: in Spring test framework is used to specify the locations of the configuration files that define the application context for the test. The Application context is loaded only once, and cached for all the test methods. `@ContextConfiguration(locations = "path")` - at class level.
+
+- **`@DirtiesContext`**: is used to indicate that the ApplicationContext associated with a test is dirty and should be recreated before running a specific test method. When methodMode is set to BEFORE_METHOD, it indicates that the context should be marked as dirty and recreated before the execution of the test method.
+  - `@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)`
+  - `@DirtiesContext(methodMode = MethodMode.AFTER_METHOD)`
+  - `@DirtiesContext(classMode = ClassMode.BEFORE_CLASS)`
+  - `@DirtiesContext(classMode = ClassMode.AFTER_CLASS)`
+ 
+- **`@ActiveProfiles({"test"})`** is an annotation used to activate one or more profiles when running tests.
+- **[Spring AOP](https://www.geeksforgeeks.org/advance-java/aspect-oriented-programming-aop-in-spring-framework/)**: It separates cross-cutting concerns like logging, security, transactions from the main business logic. Instead of adding them inside every class, AOP allows to write it once and apply it wherever needed.
+
+---
+
