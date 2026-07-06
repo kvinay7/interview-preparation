@@ -379,7 +379,7 @@ Content negotiation is a mechanism where clients and servers agree on the best f
 
 ### What is a REST API?
 
-- REST (Representational State Transfer) is an architectural style used to design backend APIs that are scalable, stateless, and predictable
+- [REST](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-mvc) (Representational State Transfer) is an architectural style used to design backend APIs that are scalable, stateless, and predictable
 - A REST API treats everything as a resource and uses standard HTTP methods to operate on those resources
 - Routing is the mechanism by which a backend maps an incoming HTTP request (method + URL path) to a specific handler (server-side logic)
 - URLs represent nouns, HTTP methods represent actions:
