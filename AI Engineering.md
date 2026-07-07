@@ -532,3 +532,133 @@ query = "What is LangGraph and how is it related to LangChain?"
 output = graph.invoke({"input_text": query})
 print(f"Graph Output: {output}")
 ```
+
+---
+
+<h1 align="center">Spring AI</h1>
+
+# 1. Introduction
+
+### Q1. What is Spring AI?
+
+Spring AI is a Spring ecosystem project that simplifies integrating AI models into Java applications. It provides consistent APIs for interacting with different LLM providers such as OpenAI, Azure OpenAI, Anthropic, Ollama, and Bedrock.
+
+---
+
+### Q2. What is ChatModel?
+
+`ChatModel` is Spring AI's abstraction over different chat providers. Instead of writing provider-specific code, developers interact with the `ChatModel` interface.
+
+```
+Application
+      │
+      ▼
+ ChatModel
+      │
+      ▼
+OpenAI / Claude / Ollama / Bedrock
+```
+
+```java
+@Bean
+ChatModel chatModel(...) {
+    ...
+}
+```
+
+---
+
+### Q3. What is ChatClient?
+
+ChatClient is a higher-level API built on top of ChatModel. It provides a fluent builder API for sending prompts.
+
+```
+User Prompt
+      │
+      ▼
+ChatClient
+      │
+      ▼
+ChatModel
+      │
+      ▼
+LLM Provider
+      │
+      ▼
+AI Response
+```
+
+```java
+@Bean
+ChatClient chatClient(ChatModel chatModel) {
+    return ChatClient.create(chatModel);
+}
+```
+
+#### Example 1 — Simple Prompt
+
+```java
+String response = chatClient
+        .prompt("Hello")
+        .call()
+        .content();
+```
+
+---
+
+#### Example 2 — Prompt Template
+
+```java
+String response = chatClient
+        .prompt()
+        .user("Tell me about {topic}")
+        .param("topic", "Spring AI")
+        .call()
+        .content();
+```
+
+---
+
+#### Example 3 — System Prompt
+
+```java
+String response = chatClient
+        .prompt()
+        .system("You are a Java expert.")
+        .user("Explain Dependency Injection.")
+        .call()
+        .content();
+```
+
+---
+
+#### Example 4 — Streaming
+
+```java
+chatClient
+    .prompt("Explain Spring AI")
+    .stream();
+```
+
+---
+
+### Q4. What is ChatResponse?
+
+`ChatResponse` represents the complete response returned by the LLM.
+
+It contains:
+- Generated content
+- Metadata
+- Token usage
+- Finish reason
+
+```java
+ChatResponse response = chatModel.call(prompt);
+
+String content = response.getResult()
+                         .getOutput()
+                         .getText();
+```
+
+---
+
