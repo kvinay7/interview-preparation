@@ -124,7 +124,7 @@ Generative AI models create new content (text, images, audio, code, etc.) that r
 
 ---
 
-## Q14. What is a Large Language Model (LLM)?
+## Q14. What is a Large Language Model ([LLM](https://youtu.be/r37RoPQBXNU?t=0&si=fqbYdpZYdlNhFvhP))?
 
 LLMs are Transformer-based models trained on massive text corpora with billions of parameters. They understand and generate human-like text.
 
@@ -181,14 +181,6 @@ A framework to build LLM-powered apps with building blocks:
 - Prompts, Chains, Memory, Retrieval, Agents, Tools
 - Handles RAG pipelines and production use-cases
 - It helps developers create dynamic, context-aware applications rather than static text generators
-
----
-
-## MCP (Model Context Protocol)
-
-MCP refers to the design pattern or strategy for managing the inputs (prompts, data, memory, tools, instructions) and outputs (responses, parsed results) that flow into and out of an LLM within a larger system.
-
-**Purpose:** Safe bridge between LLM reasoning and real-world tools. It prevents N×M integration complexity and creates a standardized tool invocation boundary while protecting enterprise systems from uncontrolled LLM behavior.
 
 ---
 
@@ -265,7 +257,7 @@ print(f"Buffer: {buffer_mem.buffer} \nSummary: {summary_mem.buffer}")
 
 ---
 
-## Q21. How Retrieval-Augmented Generation (RAG) Works?
+## Q21. How Retrieval-Augmented Generation ([RAG](https://youtu.be/r37RoPQBXNU?t=420&si=-VYkYmlo_nSTCjqX)) Works?
 
 ### Document Storage
 
@@ -430,10 +422,12 @@ print(df)
 
 ---
 
-## Q28. What are Tools and Agents?
+## Q28. What are Tools, Agents and MCP?
 
 - **Tools** — LangChain provides a framework to build tools (deterministic functions that perform a single, well-defined task) that extend LLMs' capabilities such as accessing live data, executing tasks, and interfacing with APIs
 - **Agents (LLMs)** — Can decide when and which tool to use based on user queries. Performs specific predefined tasks automatically
+- **MCP (Model Context Protocol)** - MCP refers to the design pattern or strategy for managing the inputs (prompts, data, memory, tools, instructions) and outputs (responses, parsed results) that flow into and out of an LLM within a larger system.
+- **MCP Purpose:** Safe bridge between LLM reasoning and real-world tools. It prevents N×M integration complexity and creates a standardized tool invocation boundary while protecting enterprise systems from uncontrolled LLM behavior.
 
 ```python
 from langchain.agents import initialize_agent, load_tools, AgentType
