@@ -1,4 +1,4 @@
-# AI Engineering
+# [AI Engineering](https://youtu.be/OYvlznJ4IZQ?si=SGihFX9c-iN7s7c6)
 
 ---
 
