@@ -1,8 +1,8 @@
 ## [Java](https://github.com/kvinay7/DSA/blob/main/Java.md)
 
-## [Python](https://github.com/kvinay7/DSA/blob/main/Python.md)
+## [DSA]()
 
-## [Practice](https://github.com/kvinay7/DSA/tree/main/SyntaxPractice)
+## [Python](https://github.com/kvinay7/DSA/blob/main/Python.md)
 
 ## [ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md)
 
