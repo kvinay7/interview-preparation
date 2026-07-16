@@ -71,3 +71,50 @@ Follow Workflow
 ↓
 Iterate
 ```
+
+## AI/Backend Project Structure
+
+```
+ai-backend/
+
+README.md
+pom.xml
+
+src/
+└── main/
+    ├── java/
+    │   └── com/example/aibackend/
+    │       ├── controller/
+    │       ├── service/
+    │       ├── repository/
+    │       ├── entity/
+    │       ├── dto/
+    │       ├── exception/
+    │       ├── logging/
+    │       ├── config/
+    │       ├── util/
+    │       ├── ai/
+    │       │   ├── chat/
+    │       │   ├── prompt/
+    │       │   ├── document/
+    │       │   ├── embedding/
+    │       │   ├── vectorstore/
+    │       │   ├── retrieval/
+    │       │   ├── memory/
+    │       │   ├── advisor/
+    │       │   ├── rag/
+    │       │   ├── tool/
+    │       │   ├── mcp/
+    │       │   └── agent/
+    │       └── Main.java
+    │
+    └── resources/
+        ├── application.properties
+        ├── documents/
+        ├── prompts/
+        └── static/
+            ├── index.html
+            ├── css/
+            └── js/
+```
+
