@@ -47,6 +47,8 @@ Analyze
 ↓
 Decide
 ↓
+Learn
+↓
 Design
 ↓
 Implement
@@ -56,6 +58,8 @@ Validate
 Review
 ↓
 Document
+↓
+Prepare
 ↓
 Deliver
 ```
