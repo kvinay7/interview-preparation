@@ -124,3 +124,11 @@ src/
             └── js/
 ```
 
+## Tech Stack
+
+- **Java**: Basics, Collections, Streams, OOPs, Exceptions & Logging
+- **Spring**: Core, Boot, MVC, HTTP & REST APIs, Swagger, Testing
+- **Databases**: SQL, JPA
+- **AI**: Spring AI, RAG, MCP, Agents
+- **UI**: HTML, CSS, JavaScript
+- **DevOps**: Git, Linux, Docker, CI/CD, AWS
