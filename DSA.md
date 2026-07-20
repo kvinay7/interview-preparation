@@ -69,3 +69,14 @@ Load Factor is the ratio of the number of elements in the hash table to the size
 ---
 
 ## [Trees](https://leetcode.com/discuss/study-guide/1820334/Become-Master-in-Tree) and [Heaps](https://leetcode.com/discuss/study-guide/6149018/Heap-and-Priority-Queue-in-Java-Cheat-Sheet/)
+
+## [Trie](https://takeuforward.org/data-structure/implement-trie-1/) and [Backtracking](https://leetcode.com/discuss/post/2107728/12-popular-lc-backtracking-problem-solut-mqkj/)
+
+## [Graphs](https://www.geeksforgeeks.org/introduction-to-graphs-data-structure-and-algorithm-tutorials/)
+- [Depth First Search](https://blog.algomaster.io/i/148610160/depth-first-search-dfs)
+- [Breadth First Search](https://blog.algomaster.io/i/148610160/breadth-first-search-bfs)
+- [Topological Sort](https://blog.algomaster.io/i/148610160/topological-sort)
+- [Union Find](https://takeuforward.org/data-structure/disjoint-set-union-by-rank-union-by-size-path-compression-g-46/)
+- [Shotest Path](https://blog.algomaster.io/i/148610160/shortest-path)
+- [Minimus Spanning Tree](https://blog.algomaster.io/i/148610160/minimum-spanning-tree)
+
