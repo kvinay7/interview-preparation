@@ -26,11 +26,9 @@ project-root/
 │
 ├── docs/
 │   ├── DESIGN.md
-│   ├── decision-log.md
-│   ├── tasks/
-│   ├── reviews/
-│   ├── star/
-│   └── deployment/
+│   ├── DECISION.md
+│   ├── CONTRIBUTING.md
+│   └── star/
 │
 │
 └── src/
@@ -109,6 +107,7 @@ src/
     │       │   ├── memory/
     │       │   ├── advisor/
     │       │   ├── rag/
+    │       │   ├── evals/
     │       │   ├── tool/
     │       │   ├── mcp/
     │       │   └── agent/
