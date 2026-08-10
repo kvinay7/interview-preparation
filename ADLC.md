@@ -19,8 +19,14 @@ project-root/
 │
 ├── ai-context/
 │   ├── instructions/
-│   ├── prompts/
+|   |   └── instructions.md   # Orchestration
+|   |
+│   ├── workflows/
+│   │   └── adlc-workflow.md
+|   |
 │   ├── requirements/
+│   │   └── requirements.md
+|   |
 │   ├── business-context.md
 │   └── technical-context.md
 │
@@ -29,7 +35,6 @@ project-root/
 │   ├── DECISION.md
 │   ├── CONTRIBUTING.md
 │   └── star/
-│
 │
 └── src/
 ```
