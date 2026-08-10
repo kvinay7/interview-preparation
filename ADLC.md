@@ -130,6 +130,10 @@ src/
             ├── index.html
             ├── css/
             └── js/
+
+src/test/                      
+    └── java/
+        └── com/example/aibackend/
 ```
 
 ## Tech Stack
