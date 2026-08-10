@@ -25,14 +25,18 @@ project-root/
 │   │   └── adlc-workflow.md
 |   |
 │   ├── requirements/
-│   │   └── requirements.md
+│   │   └── R001.md
+|   |
+│   ├── decisions/
+│   │   └── R001_D01.md
+|   |
+│   ├── design/
+│   │   └── R001_D01.md
 |   |
 │   ├── business-context.md
 │   └── technical-context.md
 │
 ├── docs/
-│   ├── DESIGN.md
-│   ├── DECISION.md
 │   ├── CONTRIBUTING.md
 │   └── star/
 │
