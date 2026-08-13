@@ -1,6 +1,6 @@
 # ADLC Quick Reference — Plan, Setup, Execute
 
-## PHASE 1: PLAN (Week 1-2)
+## PHASE 1: PLAN 
 
 ### What to Create
 1. **PROJECT_CHARTER.md** — Vision, stakeholders, constraints, success metrics
@@ -22,7 +22,7 @@ Folder: `ai-context/project-preparation/` with all 4 documents signed off
 
 ---
 
-## PHASE 2: SETUP (Week 2-3)
+## PHASE 2: SETUP 
 
 ### What to Create
 1. **Repository** — Clone/create repo with folder structure
@@ -45,9 +45,9 @@ Working repository + CI/CD + documented setup process
 
 ---
 
-## PHASE 3: EXECUTE (Week 4+, Repeat Per Feature)
+## PHASE 3: [EXECUTE](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md#adlc-workflow) 
 
-### Per-Feature Cycle (3-7 days)
+### Per-Feature Cycle
 
 #### Step 1-3: Create Artifacts
 ```bash
@@ -74,7 +74,9 @@ git checkout -b feature/R001
 # Implement code following 12-step workflow
 # Step 7: Implement
 # Step 8: Validate (write tests)
-# Step 9: Review (create PR, get 2 approvals)
+# Step 9: Review:
+    - Team project → PR + required approvals
+    - Solo project → self-review + tests + PR/checklist
 
 git push origin feature/R001
 ```
