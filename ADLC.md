@@ -1,4 +1,4 @@
-# AI-Assisted Development Lifecycle (ADLC)
+# AI-Assisted Development Lifecycle ([ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC_WORKFLOW.md)
 
 ## Project Structure
 
