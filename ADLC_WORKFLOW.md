@@ -3,22 +3,20 @@
 ## PHASE 1: PLAN 
 
 ### What to Create
-1. **PROJECT_CHARTER.md** — Vision, stakeholders, constraints, success metrics
+1. **PROJECT_CHARTER.md** — Vision, constraints, success metrics
 2. **ROADMAP.md** — Epics, features, timeline, prioritization
 3. **BUSINESS_CONTEXT.md** — Problem statement, current state, desired state
 4. **TECHNICAL_CONTEXT.md** — Tech stack, architecture decisions (ADRs)
 
 ### Checklist
 - [ ] Vision statement clear
-- [ ] Stakeholders identified
-- [ ] Timeline & budget realistic
+- [ ] Timeline realistic
 - [ ] Success metrics quantified
 - [ ] Epics & features listed
 - [ ] Risks documented
-- [ ] Stakeholder sign-off obtained
 
 ### Output
-Folder: `ai-context/project-preparation/` with all 4 documents signed off
+Folder: `ai-context/project-preparation/` with all documents signed off
 
 ---
 
@@ -35,10 +33,9 @@ Folder: `ai-context/project-preparation/` with all 4 documents signed off
 - [ ] Repository created with folder structure
 - [ ] .gitignore, .copilotignore configured
 - [ ] CI/CD workflow running (test on every push)
-- [ ] Dev environment documented (build locally in 30 min)
+- [ ] Dev environment documented 
 - [ ] Contributing guide written
 - [ ] PR template created
-- [ ] Team onboarded (can build locally)
 
 ### Output
 Working repository + CI/CD + documented setup process
