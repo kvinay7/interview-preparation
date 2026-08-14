@@ -138,20 +138,16 @@ src/test/
 
 ## Tech Stack
 
-- **Java**: Basics, Collections, Streams, OOPs, Exceptions, Logging, Multithreading, Design Patterns 
+- **Java**: Basics, Collections, Streams, OOPs, Exceptions, Logging 
 - **Spring**: Core, Boot, MVC, REST, OpenAPI, Testing, Security, AOP
-- **Databases**: SQL, Database Design, Transactions, Optimisations, JPA
+- **Databases**: SQL, Database Design, Transactions, Indexing, JPA
 - **AI**: Spring AI, RAG, MCP, Agents, Evaluation 
 - **UI**: HTML, CSS, JavaScript
 - **DevOps**: Git, Linux, Docker, CI/CD, AWS
 
 ---
 
-| Pillar | Components | Purpose |
-|--------|------------|---------|
-| **1. Learn Tech Stack** | Java → Spring → DB → AI → UI → DevOps | Deepen skills; to apply in projects |
-| **2. System Design** | Architecture → APIs → DB → scalability → caching → messaging → security → reliability | Interview + project foundation |
-| **3. Build Projects (ADLC)** | PLAN → SETUP → 12-Step per feature → TEST → DEPLOY → DOCUMENT | Portfolio + business software |
-| **4. Interview Prep** | DSA, Design, Technical, Behavioral, HR | Convert skills to offers |
+- **Java Developer**: DSA + LLD + Spring + ADLC + STAR
+- **FSD**: Java Developer + HLD + GenAI + UI + Cloud
 
 
