@@ -138,10 +138,10 @@ src/test/
 
 ## Tech Stack
 
-- **Java**: Basics, Collections, Streams, OOPs, Exceptions & Logging
-- **Spring**: Core, Boot, MVC, HTTP & REST APIs, Swagger, Testing
-- **Databases**: SQL, JPA
-- **AI**: Spring AI, RAG, MCP, Agents
+- **Java**: Basics, Collections, Streams, OOPs, Exceptions, Logging, Multithreading, Design Patterns 
+- **Spring**: Core, Boot, MVC, REST, OpenAPI, Testing, Security, AOP
+- **Databases**: SQL, Database Design, Transactions, Optimisations, JPA
+- **AI**: Spring AI, RAG, MCP, Agents, Evaluation 
 - **UI**: HTML, CSS, JavaScript
 - **DevOps**: Git, Linux, Docker, CI/CD, AWS
 
