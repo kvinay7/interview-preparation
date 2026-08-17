@@ -89,20 +89,3 @@ src/test/
 
 pom.xml
 ```
-
-## Tech Stack
-
-- **Java**: Basics, Collections, Streams, OOPs, Exceptions, Logging 
-- **Spring**: Core, Boot, MVC, REST, OpenAPI, Testing, Security, AOP
-- **Databases**: SQL, Database Design, Transactions, Indexing, JPA
-- **AI**: Spring AI, RAG, Memory, Advisor, MCP, Agents, Evaluation 
-- **UI**: HTML, CSS, JavaScript, Bootstrap, ReactJS
-- **DevOps/Cloud**: Git, Linux, Docker, CI/CD, AWS
-
----
-
-- **Java Developer**: DSA + LLD + Spring + ADLC + STAR
-- **FSD**: Java Developer + HLD + GenAI + UI + Cloud
-
----
-
