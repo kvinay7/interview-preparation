@@ -1,4 +1,19 @@
-# AI-Assisted Development Lifecycle ([ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC_WORKFLOW.md))
+# AI-Assisted Development Lifecycle (ADLC)
+
+## [ADLC Workflow](https://github.com/kvinay7/interview-preparation/blob/main/ADLC_WORKFLOW.md)
+
+1. [Understand](https://github.com/kvinay7/interview-preparation/blob/main/Requirements.md) 
+2. Analyze
+3. [Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
+4. Design
+5. [Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
+6. Validate
+7. Review
+8. Document
+9. Prepare
+10. Deliver
+
+---
 
 ## Project Structure
 
@@ -43,42 +58,7 @@ project-root/
 └── src/
 ```
 
-## ADLC Workflow
-
-1. [Understand](https://github.com/kvinay7/interview-preparation/blob/main/Requirements.md) 
-2. Analyze
-3. Decide
-4. [Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
-5. Design
-6. [Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
-7. Validate
-8. Review
-9. Document
-10. Prepare
-11. Deliver
-
-## AI Orchestration
-
-```text
-Load Context
-↓
-Load Requirements
-↓
-Follow Workflow
-↓
-Update Context
-↓
-Iterate
 ```
-
-## AI/Backend Project Structure
-
-```
-ai-backend/
-
-README.md
-pom.xml
-
 src/
 └── main/
     ├── java/
@@ -92,20 +72,6 @@ src/
     │       ├── logging/
     │       ├── config/
     │       ├── util/
-    │       ├── ai/
-    │       │   ├── chat/
-    │       │   ├── prompt/
-    │       │   ├── document/
-    │       │   ├── embedding/
-    │       │   ├── vectorstore/
-    │       │   ├── retrieval/
-    │       │   ├── memory/
-    │       │   ├── advisor/
-    │       │   ├── rag/
-    │       │   ├── evals/
-    │       │   ├── tool/
-    │       │   ├── mcp/
-    │       │   └── agent/
     │       └── Main.java
     │
     └── resources/
@@ -120,6 +86,8 @@ src/
 src/test/                      
     └── java/
         └── com/example/aibackend/
+
+pom.xml
 ```
 
 ## Tech Stack
@@ -136,4 +104,5 @@ src/test/
 - **Java Developer**: DSA + LLD + Spring + ADLC + STAR
 - **FSD**: Java Developer + HLD + GenAI + UI + Cloud
 
+---
 
