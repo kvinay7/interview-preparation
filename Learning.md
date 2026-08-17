@@ -1,5 +1,21 @@
 # Backend Engineering Learning Roadmap
 
+## Tech Stack
+
+- **Java**: Basics, Collections, Streams, OOPs, Exceptions, Logging 
+- **Spring**: Core, Boot, MVC, REST, OpenAPI, Testing, Security, AOP
+- **Databases**: SQL, Database Design, Transactions, Indexing, JPA
+- **AI**: Spring AI, RAG, Memory, Advisor, MCP, Agents, Evaluation 
+- **UI**: HTML, CSS, JavaScript, Bootstrap, ReactJS
+- **DevOps/Cloud**: Git, Linux, Docker, CI/CD, AWS
+
+---
+
+- **Java Developer**: DSA + LLD + Spring + ADLC + STAR
+- **FSD**: Java Developer + HLD + GenAI + UI + Cloud
+
+---
+
 ## JAVA Learning Order
 
 ### SDE-1 Now (Before Building Features)
@@ -227,83 +243,6 @@
 - Micrometer metrics, custom metrics
 - Health checks, actuator endpoints
 - Time: 2 days (~10 hours)
-
----
-
-## JPA (Java Persistence API)
-
-### SDE-1 Now (Before Building Features)
-
-**Week 3-4: JPA Basics (covered in Spring Data section above)**
-
-1. ✅ **Entity Mapping** (covered: @Entity, @Table, @Id, @Column, relationships)
-   - Constraints: nullable, unique, length
-   - Validation: @NotNull, @NotBlank, @Email
-   - Time: 2 days
-
-2. ✅ **Relationships** (covered: @OneToMany, @ManyToOne, @OneToOne, @ManyToMany)
-   - Cascade rules, fetch strategies (LAZY, EAGER)
-   - Orphan removal
-   - Time: 2 days
-
-3. ✅ **Queries** (covered: derived queries, @Query, Pageable)
-   - JPQL: `@Query("SELECT u FROM User u WHERE ...")`
-   - Native SQL: `@Query(nativeQuery=true)`
-   - Pagination with Page<T>
-   - Time: 2 days
-
-4. ✅ **SQL Basics** (covered: SELECT, JOIN, WHERE, ORDER BY, GROUP BY)
-   - Time: 1 day
-
-**Total SDE-1 JPA:** ~7 days (covered in Spring Data section)
-
----
-
-### SDE-2/System Design Later (After 6+ months working)
-
-**Query Optimization**
-- EXPLAIN PLAN analysis
-- N+1 problem identification and fixes
-- Index strategies: single, composite, partial
-- Query cost analysis
-- Time: 3 days (~15 hours)
-
-**Fetch Strategies (Deep)**
-- LazyInitializationException handling
-- Entity graphs: @NamedEntityGraph, @EntityGraph
-- Explicit JOINs vs lazy loading
-- Batch fetching
-- Time: 2 days (~10 hours)
-
-**Locking**
-- Optimistic locking: @Version
-- Pessimistic locking: @Lock(LockModeType.PESSIMISTIC_WRITE)
-- Deadlock prevention
-- Time: 2 days (~10 hours)
-
-**Inheritance Strategies**
-- Single table, joined table, table-per-class
-- Polymorphic queries
-- Time: 1 day (~5 hours)
-
-**Advanced Features**
-- Criteria API, QueryDSL for dynamic queries
-- JPA Callbacks: @PrePersist, @PostPersist, @PreUpdate, @PostUpdate
-- Projections (interface-based, DTO)
-- Stored procedures, database functions
-- Time: 3 days (~15 hours)
-
-**Bulk Operations**
-- Batch inserts, updates, deletes
-- flush(), clear() strategies
-- Bulk DELETE/UPDATE via @Modifying
-- Time: 1 day (~5 hours)
-
-**Caching**
-- L1 (Session) caching
-- L2 (Application-level) caching
-- Cache invalidation
-- Time: 1 day (~5 hours)
 
 ---
 
