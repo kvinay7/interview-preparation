@@ -1,504 +1,444 @@
-# Requirements Understanding Template
+# Requirements Understanding Template (SDE-1)
 
 - **Phase:** ADLC Step 2 (Understand)
 - **Owner:** You (SDE-1 Backend)
 - **Input:** Requirement document (from PM/designer/stakeholder)
 - **Output:** Organized requirement details in structured format
 
-**Goal:** Extract all necessary details to move to Analyze phase without blocking.
+**Scope:** Pure CRUD - data models, endpoints, validation, testing. Nothing else.
 
 ---
 
 ## Part 1: Requirement Overview
 
-**Requirement ID:** R001 (from JIRA/ticket)
+**Requirement ID:** R001
 
 **Title:** [One-line description]
-Example: "User authentication with JWT and refresh tokens"
+Example: "User management API"
 
-**Description (from spec):**
-[Copy/paste the full requirement text]
+**Description:**
+[Copy/paste requirement text]
 
-**Acceptance Criteria (from spec):**
+**Acceptance Criteria:**
 - [ ] [Criterion 1]
 - [ ] [Criterion 2]
 - [ ] [Criterion 3]
 
-**Related Requirements:**
-- R002 (dependency - must understand first)
-- R010 (related, but separate implementation)
+**Priority:** P0 / P1 / P2 / P3
 
-**Priority:** P0 (blocking) / P1 (high) / P2 (medium) / P3 (low)
-
-**Estimated Effort:** [Provided by PM or your estimate]
+**Effort Estimate:** [hours]
 
 ---
 
-## Part 2: Data Model Questions
+## Part 2: Data Model
 
-**Fill these out by asking PM/designer or inferring from spec:**
+### 2.1 What entities?
 
-### 2.1 What entities are involved?
+| Entity | Fields | Example |
+|---|---|---|
+| User | id, name, email, createdAt | id=1, name="Alice", email="alice@example.com" |
+| Order | id, userId, total, status, createdAt | id=101, userId=1, total=100.50, status="PENDING" |
+| [Entity 3] | [fields] | [example] |
 
-| Entity | Example Fields | Relationships | Notes |
-|---|---|---|---|
-| User | id, email, password, role, createdAt | 1:N with Order | Primary actor |
-| Order | id, userId, total, status, createdAt | N:1 with User | What business data? |
-| [Entity 3] | [Fields] | [Relationships] | [Notes] |
+**Ask PM:**
+- What entities (tables) need to be created/modified?
+- What fields on each?
+- Required vs optional fields?
+- Enums? (e.g., status: PENDING, CONFIRMED, SHIPPED)
 
-**Questions to ask:**
-- What entities need to be created/modified in this requirement?
-- Are there existing entities we reuse?
-- What fields are required vs optional?
-- Are there enum fields (status, role, type)?
-- Do we soft-delete or hard-delete?
-
-### 2.2 What are the relationships?
+### 2.2 Relationships
 
 ```
 User (1) ──── (N) Order
-User (1) ──── (N) RefreshToken
+User (1) ──── (N) Address
 Order (1) ──── (N) OrderItem
 ```
 
-**Questions to ask:**
-- Is it one-to-many, many-to-one, many-to-many?
-- Is the relationship bidirectional (both sides reference)?
-- Cascade rules? If User is deleted, delete Orders?
-- Are there composite keys or foreign key constraints?
+**Ask PM:**
+- Is it 1:N, N:1, N:N, or 1:1?
+- Cascade delete? (if User deleted, delete Orders?)
+- Soft delete or hard delete?
 
-### 2.3 What constraints/validations exist?
+### 2.3 Field Constraints
 
-| Field | Constraint | Example |
+| Field | Constraint | Validation |
 |---|---|---|
-| email | Unique, Required, Email format | user@example.com |
-| password | Min 8 chars, max 128, Required | hashed (BCrypt) |
-| status | Enum (PENDING, APPROVED, REJECTED) | PENDING |
-| amount | Positive number, Required | 100.50 |
-| createdAt | Auto-populated, Not null | 2025-01-15T10:30:00Z |
+| email | Unique, Required | @Email, @NotBlank, @Column(unique=true) |
+| name | Required, max 100 chars | @NotBlank, @Size(max=100) |
+| total | Positive number | @Positive, @DecimalMin("0.01") |
+| status | Enum (PENDING, SHIPPED) | @Enumerated(EnumType.STRING) |
+| createdAt | Auto-populated, not null | @CreationTimestamp |
 
-**Questions to ask:**
-- What fields are mandatory?
-- What uniqueness constraints? (email, username, external ID)
-- What format validations? (email, phone, UUID, date range)
-- Min/max values for numbers/strings?
-- Are there database-level constraints or application-level only?
+**Ask PM:**
+- Which fields are required?
+- Unique constraints? (email, username, etc.)
+- Format validation? (email, phone, etc.)
+- Min/max values? (length, numbers)
+- Auto-populate fields? (createdAt, updatedAt)
 
 ---
 
-## Part 3: API Contract Questions
+## Part 3: API Endpoints
 
-**Fill these out by reading spec or asking PM:**
+### 3.1 List all endpoints
 
-### 3.1 What API endpoints are needed?
+| Method | Path | Purpose | Status | Request | Response |
+|---|---|---|---|---|---|
+| GET | /api/v1/users | List all users (paginated) | 200 | - | Page<UserResponse> |
+| POST | /api/v1/users | Create user | 201 | CreateUserRequest | UserResponse |
+| GET | /api/v1/users/{userId} | Get user by ID | 200 | - | UserResponse |
+| PUT | /api/v1/users/{userId} | Update user | 200 | UpdateUserRequest | UserResponse |
+| DELETE | /api/v1/users/{userId} | Delete user | 204 | - | (empty) |
+| POST | /api/v1/orders | Create order | 201 | CreateOrderRequest | OrderResponse |
+| GET | /api/v1/orders/{orderId} | Get order by ID | 200 | - | OrderResponse |
+| [METHOD] | [PATH] | [PURPOSE] | [STATUS] | [REQUEST] | [RESPONSE] |
 
-| Method | Path | Purpose | Request DTO | Response DTO | Status | Errors |
-|---|---|---|---|---|---|---|
-| POST | /api/v1/auth/login | User login | LoginRequest (email, password) | LoginResponse (accessToken, expiresIn) | 201 | 400, 401 |
-| POST | /api/v1/auth/refresh | Refresh token | RefreshRequest (refreshToken) | LoginResponse | 200 | 401 |
-| GET | /api/v1/users/{userId} | Get user profile | - | UserResponse | 200 | 401, 403, 404 |
-| [METHOD] | [PATH] | [PURPOSE] | [REQUEST] | [RESPONSE] | [STATUS] | [ERRORS] |
+**Ask PM:**
+- What CRUD operations needed? (Create, Read, Update, Delete, List)
+- Pagination on list endpoints?
+- What HTTP status codes?
+- Any search/filter endpoints?
 
-**Questions to ask:**
-- What HTTP methods (GET, POST, PUT, DELETE, PATCH)?
-- What are the paths? (/api/v1/users, /api/v1/orders, etc.)
-- What request body (if POST/PUT)?
-- What response body (if any)?
-- What HTTP status codes for success and errors?
-- Do endpoints require authentication (Bearer token)?
-- Are there pagination requirements (page size, sorting)?
+### 3.2 Request/Response Examples
 
-### 3.2 Request/Response Details
-
-**For each endpoint, document:**
-
-#### Endpoint: POST /api/v1/auth/login
+#### POST /api/v1/users
 
 **Request DTO:**
 ```json
 {
-  "email": "user@example.com",
-  "password": "password123"
+  "name": "Alice",
+  "email": "alice@example.com",
+  "phone": "+1234567890"
 }
 ```
 
-**Response DTO (Success - 201 Created):**
+**Response DTO (201 Created):**
 ```json
 {
-  "accessToken": "eyJhbGc...",
-  "expiresIn": 900,
-  "tokenType": "Bearer",
-  "refreshToken": "refresh_token_here"
+  "id": 1,
+  "name": "Alice",
+  "email": "alice@example.com",
+  "phone": "+1234567890",
+  "createdAt": "2025-01-15T10:30:00Z"
 }
 ```
 
-**Error Responses:**
-- 400 Bad Request: Missing email or password
-- 401 Unauthorized: Email not found or password incorrect
-- 500 Internal Server Error: Database error
+**Errors:**
+- 400 Bad Request: Missing required fields, invalid email format, email already exists
+- 500 Server Error: Database error
 
-**Questions to ask:**
-- Exact field names in request/response?
-- Are there nested objects?
-- What are field types and formats?
-- Optional vs required fields?
-- Example values?
+#### GET /api/v1/users (paginated list)
 
-### 3.3 Authentication & Authorization
+**Request:**
+```
+GET /api/v1/users?page=0&size=10&sort=createdAt,desc
+```
+
+**Response (200 OK):**
+```json
+{
+  "content": [
+    {"id": 1, "name": "Alice", "email": "alice@example.com", "createdAt": "2025-01-15T10:30:00Z"},
+    {"id": 2, "name": "Bob", "email": "bob@example.com", "createdAt": "2025-01-14T09:15:00Z"}
+  ],
+  "totalElements": 2,
+  "totalPages": 1,
+  "size": 10,
+  "number": 0
+}
+```
+
+#### PUT /api/v1/users/{userId}
+
+**Request DTO:**
+```json
+{
+  "name": "Alice Updated",
+  "phone": "+9876543210"
+}
+```
+
+**Response DTO (200 OK):**
+```json
+{
+  "id": 1,
+  "name": "Alice Updated",
+  "email": "alice@example.com",
+  "phone": "+9876543210",
+  "createdAt": "2025-01-15T10:30:00Z",
+  "updatedAt": "2025-01-15T11:45:00Z"
+}
+```
+
+**Ask PM:**
+- Exact field names in requests/responses?
+- Are all fields returned or only some?
+- What's included in list vs detail response?
+- Date/time format? (ISO 8601)
+
+### 3.3 Pagination & Sorting
 
 | Question | Answer |
 |---|---|
-| Is authentication required? | Yes, Bearer JWT token |
-| Token type? | JWT |
-| Token expiry? | 15 minutes (900 seconds) |
-| Refresh token? | Yes, 7 days |
-| Authorization type? | Role-based (USER, ADMIN) |
-| BOLA checks? | Yes, user can only access own profile/orders |
+| Paginate list endpoints? | Yes, default 10 per page, max 100 |
+| Sortable fields? | id, name, createdAt, updatedAt |
+| Default sort? | createdAt DESC (newest first) |
 
-**Questions to ask:**
-- Is this endpoint public or authenticated?
-- What token format (JWT, OAuth2, API key)?
-- What roles/permissions are needed?
-- BOLA check: Can user A access user B's data? (Answer: NO)
-- Rate limiting? (e.g., 100 requests/hour per user)
+**Ask PM:**
+- Default page size? Max page size?
+- Which fields sortable?
+- Default sort order?
 
-### 3.4 Pagination & Sorting
+### 3.4 Error Responses
 
-| Question | Answer |
-|---|---|
-| Are list endpoints paginated? | Yes, for /users, /orders |
-| Default page size? | 20 |
-| Max page size? | 100 |
-| Sortable fields? | createdAt, updatedAt, name |
-| Default sort order? | createdAt DESC |
+**Format:**
+```json
+{
+  "status": 400,
+  "error": "BadRequest",
+  "message": "Email format invalid",
+  "timestamp": "2025-01-15T10:30:00Z"
+}
+```
 
-**Questions to ask:**
-- Which endpoints return lists?
-- Default and max page size?
-- Which fields can be sorted?
-- Cursor-based or offset-based pagination?
+| Error Scenario | Status | Message |
+|---|---|---|
+| Missing required field | 400 | "Field 'name' is required" |
+| Invalid email format | 400 | "Email format invalid" |
+| User not found | 404 | "User not found" |
+| Duplicate email | 400 | "Email already exists" |
+| Database error | 500 | "Internal server error" |
+
+**Ask PM:**
+- What error cases can happen?
+- User-friendly error messages?
+- Include field names in validation errors?
 
 ---
 
-## Part 4: Business Logic Questions
+## Part 4: Business Logic
 
-**Fill these out by understanding the "why" behind the requirement:**
+### 4.1 Workflows
 
-### 4.1 Workflows & Sequences
-
-**Example: User Login Flow**
+**Create User:**
 ```
-User submits email + password
-→ Verify email exists in DB
-→ Compare password with BCrypt hash
-→ Generate JWT access token (15 min expiry)
-→ Generate refresh token (7 day expiry, store in DB, hash before storing)
-→ Return both tokens to user
-→ User includes access token in Authorization header for future requests
-→ When access token expires, use refresh token to get new pair
-→ On logout, delete refresh token from DB (invalidate it)
+1. Receive CreateUserRequest (name, email, phone)
+2. Validate fields (required, format)
+3. Check if email already exists → if yes, return 400
+4. Create User entity
+5. Save to database
+6. Return UserResponse with generated id and createdAt
 ```
 
-**Questions to ask:**
-- What is the step-by-step flow?
-- What data transformations happen?
-- What external APIs are called (if any)?
-- Are there async operations?
-- What happens on error/retry?
+**List Users (Paginated):**
+```
+1. Receive query params (page, size, sort)
+2. Query database (ORDER BY sort, LIMIT size OFFSET (page * size))
+3. Return Page<UserResponse> with pagination metadata
+```
+
+**Update User:**
+```
+1. Receive UpdateUserRequest (name, phone)
+2. Look up User by id → if not found, return 404
+3. Update fields (only provided ones)
+4. Save to database
+5. Return updated UserResponse
+```
+
+**Delete User:**
+```
+1. Look up User by id → if not found, return 404
+2. Soft delete (set isDeleted=true) OR hard delete
+3. Return 204 No Content
+```
+
+**Ask PM:**
+- Step-by-step for each operation?
+- Validations at each step?
+- What to do on error?
+- Soft delete or hard delete?
 
 ### 4.2 Business Rules
 
-| Rule | Constraint | Example |
+| Rule | Example |
+|---|---|
+| Email uniqueness | Can't have two users with same email |
+| Name required | User must have a name |
+| Email format | Must be valid email (user@domain.com) |
+| Phone optional | Phone can be null/empty |
+| Order status flow | Can go PENDING → CONFIRMED → SHIPPED → DELIVERED (not backwards) |
+| Soft delete | Don't hard delete; mark isDeleted=true, filter in queries |
+
+**Ask PM:**
+- What must always be true?
+- What transitions are allowed?
+- What validations must pass?
+
+### 4.3 Data Validation
+
+| Field | Validation | Rule |
 |---|---|---|
-| Email uniqueness | Each user has unique email | user@example.com can only register once |
-| Password hashing | Never store plain passwords | Must use BCrypt with cost 12 |
-| Token expiry | Access token valid 15 min | After 15 min, user must refresh |
-| Refresh token storage | Store hashed in DB | Compare against hash on refresh |
-| BOLA | User can only access own data | User 1 cannot GET /users/2/orders |
+| email | @Email, @NotBlank | Must be valid email, required |
+| name | @NotBlank, @Size(max=100) | Required, max 100 chars |
+| phone | @Pattern(regex) | Optional, but if provided must match format |
+| total (Order) | @Positive, @DecimalMin("0.01") | Must be > 0 |
+| status (Order) | @Enumerated | Must be one of: PENDING, CONFIRMED, SHIPPED, DELIVERED |
 
-**Questions to ask:**
-- Are there business rules that prevent certain operations?
-- What validations must pass before proceeding?
-- Are there rate limits or quotas?
-- Are there audit/compliance requirements?
-
-### 4.3 Error Handling
-
-| Error Scenario | Response | Status | Message |
-|---|---|---|---|
-| Email not found | 401 Unauthorized | "Invalid credentials" (don't reveal email doesn't exist) |
-| Password wrong | 401 Unauthorized | "Invalid credentials" (same message, prevent user enumeration) |
-| Token expired | 401 Unauthorized | "Token expired, please refresh" |
-| User doesn't own resource | 403 Forbidden | "Access denied" |
-| Input validation fails | 400 Bad Request | "Email format invalid" |
-
-**Questions to ask:**
-- What error cases must be handled?
-- What should the error message say (user-friendly vs technical)?
-- Should we reveal or hide details (e.g., "user not found" vs "invalid credentials")?
-- Should errors be logged and monitored?
+**Ask PM:**
+- Validation rules for each field?
+- Min/max lengths?
+- Regular expressions for format?
+- Enum values?
 
 ---
 
-## Part 5: Performance & Scale Questions
+## Part 5: Database
 
-**Fill these out for production readiness:**
-
-### 5.1 Database
+### 5.1 Data Volume & Performance
 
 | Question | Answer | Impact |
 |---|---|---|
-| How many users expected? | 100K initially | Indexing strategy |
-| How many requests/sec? | 100 req/sec during peak | Connection pool size |
-| Are queries complex? | Yes, JOIN with multiple tables | Need query optimization |
-| Soft delete or hard delete? | Soft delete (keep audit trail) | Always filter isDeleted=false |
-| Backup/retention policy? | 30 days backup, 1 year retention | Storage & compliance |
+| Expected # of users? | 10K initially | Indexing on email for lookup |
+| Expected # of orders? | 50K initially | Index on userId for filtering |
+| Query complexity? | Simple lookups (by id, email) | No complex JOINs needed |
+| Soft delete needed? | Yes, keep audit trail | Always filter isDeleted=false |
 
-**Questions to ask:**
-- Expected data volume?
-- Query complexity (simple lookups vs complex joins)?
-- Do we need indexes (and on which fields)?
-- Backup/recovery requirements?
-- Data retention policies?
+**Ask PM:**
+- How many records expected?
+- Simple lookups or complex queries?
+- Need to keep deleted records?
 
-### 5.2 Caching
+### 5.2 Indexes
 
-| Question | Answer |
-|---|---|
-| Should we cache user profiles? | No, frequently changes |
-| Should we cache roles/permissions? | Yes, rarely change |
-| Cache TTL? | 1 hour |
-| Cache strategy? | Invalidate on role update |
+| Table | Index | Reason |
+|---|---|---|
+| users | (email) UNIQUE | Fast lookup by email, prevent duplicates |
+| users | (created_at) | Sorting by creation date |
+| orders | (user_id) | Filter orders by user |
+| orders | (status) | Filter by order status |
+| orders | (user_id, created_at) | Composite: find recent orders per user |
 
-**Questions to ask:**
-- What data is read-heavy and rarely changes?
-- How long can data be stale?
-- Invalidation strategy (TTL, event-based)?
-
-### 5.3 Monitoring
-
-| Metric | Alert Threshold |
-|---|---|
-| API latency (p99) | > 500ms |
-| Error rate | > 1% |
-| Login success rate | < 99% |
-| Database connection pool | > 80% utilization |
-
-**Questions to ask:**
-- What should we monitor (latency, error rate, throughput)?
-- What are acceptable SLAs?
-- Alert thresholds?
+**Ask PM:**
+- Which fields queried most?
+- Need compound indexes?
 
 ---
 
-## Part 6: Dependencies & Blockers
+## Part 6: Validation & Testing
 
-**Identify what you need from others:**
+### 6.1 Unit Tests (JUnit + Mockito)
 
-### 6.1 Dependencies
+**Test happy path:**
+- [ ] Create user with valid data → returns UserResponse
+- [ ] Get user by id → returns UserResponse
+- [ ] Update user → updates fields correctly
+- [ ] Delete user → soft delete sets isDeleted=true
+- [ ] List users → returns paginated Page<UserResponse>
 
-| Item | Owner | Status | Notes |
-|---|---|---|---|
-| User entity design (R000) | PM/Backend | ✅ Done | Already implemented |
-| PasswordEncoder configuration | Ops/Security | ⏳ In Progress | Need password policy doc |
-| JWT secret management | Ops/Security | ❌ Blocked | Need KMS setup |
-| CORS configuration | Frontend/PM | ⏳ Waiting | Need frontend origin |
+**Test error cases:**
+- [ ] Create user with duplicate email → returns 400
+- [ ] Get non-existent user → returns 404
+- [ ] Create user missing required field → returns 400
+- [ ] Invalid email format → returns 400
 
-**Questions to ask:**
-- Does this requirement depend on other requirements?
-- Are upstream dependencies complete?
-- Do we need secrets/config from Ops?
-- Do we need API/library from another team?
+**Mock dependencies:**
+- @Mock UserRepository
+- Test Service layer (UserService)
 
-### 6.2 Blockers
+### 6.2 Integration Tests (Spring Boot + Testcontainers)
 
-| Blocker | Resolution | Owner | ETA |
-|---|---|---|---|
-| JWT secret location (file vs environment) | Need security policy | Ops | Jan 20 |
-| Refresh token storage location (in-memory vs DB) | Architecture decision needed | Tech Lead | Jan 18 |
+**Test with real database (PostgreSQL):**
+- [ ] Create user → verify saved in DB
+- [ ] Query user → verify correct data retrieved
+- [ ] Update user → verify DB updated
+- [ ] Delete user → verify isDeleted=true in DB
+- [ ] List users paginated → verify pagination metadata
 
-**Questions to ask:**
-- What unknown unknowns could block you?
-- What decisions haven't been made?
-- What needs architectural review?
-
----
-
-## Part 7: Non-Functional Requirements
-
-**Document cross-cutting concerns:**
-
-### 7.1 Security
-
-| Requirement | How | Example |
-|---|---|---|
-| No plain passwords | Hash with BCrypt | BCryptPasswordEncoder(12) |
-| Token in headers | Authorization Bearer | Authorization: Bearer <JWT> |
-| HTTPS only | Configure in prod | Secure=true on cookies |
-| BOLA checks | Verify user owns resource | if (!userId.equals(requestingUserId)) throw Unauthorized |
-| Rate limiting | 100 req/min per user | Use Spring Security rate limit |
-| No PII in logs | Mask sensitive data | Log email but never password |
-
-### 7.2 Logging & Observability
-
-| Requirement | How | Example |
-|---|---|---|
-| Request tracking | X-Request-Id header | MDC.put("request_id", uuid) |
-| User context | Log userId | MDC.put("user_id", userId) |
-| Error logging | Full exception + context | log.error("Login failed. UserId: {}", userId, ex) |
-| Audit trail | Log all auth events | log.info("User logged in. UserId: {}", userId) |
-
-### 7.3 Testing
-
-| Requirement | How | Example |
-|---|---|---|
-| Unit tests | JUnit + Mockito | @Mock UserRepository in test |
-| Integration tests | Testcontainers + PostgreSQL | @SpringBootTest with @Testcontainers |
-| BOLA tests | Verify 403 on unauthorized access | User 2 accessing User 1's resource returns 403 |
-| Happy path | Test success case | Login with valid credentials returns 201 |
-| Error cases | Test all error paths | Login with invalid password returns 401 |
+**Use:**
+- @SpringBootTest (full Spring context)
+- @Testcontainers with PostgreSQL (real DB, not H2)
+- MockMvc to call REST endpoints
+- Verify both response and database state
 
 ---
 
-## Part 8: Clarification Checklist
+## Part 7: Checklist (Before Analyze Phase)
 
-**Before moving to Analyze phase, confirm you understand:**
-
-### Data Model
+**Data Model:**
 - [ ] All entities identified
-- [ ] All relationships documented
-- [ ] All constraints/validations known
-- [ ] Soft delete vs hard delete decision made
-- [ ] Audit fields (createdAt, updatedAt) understood
+- [ ] All fields documented
+- [ ] Relationships understood
+- [ ] Field constraints known
+- [ ] Soft delete vs hard delete decided
 
-### API Contract
-- [ ] All endpoints listed (method, path, status codes)
-- [ ] Request/response DTOs documented with examples
-- [ ] Authentication & authorization requirements clear
-- [ ] Pagination/sorting details known
-- [ ] Error responses documented
+**API:**
+- [ ] All endpoints listed (method, path, status)
+- [ ] Request/response examples provided
+- [ ] Pagination documented
+- [ ] Error cases documented
 
-### Business Logic
-- [ ] Workflows/sequences understood
-- [ ] Business rules & validations known
-- [ ] Error handling strategy clear
-- [ ] BOLA checks identified
+**Business Logic:**
+- [ ] Workflows understood
+- [ ] Business rules documented
+- [ ] Validations clear
 
-### Technical
-- [ ] Performance expectations known
-- [ ] Database indexing strategy understood
-- [ ] Monitoring/alerting thresholds set
-- [ ] Dependencies/blockers identified
-- [ ] Security requirements clear
+**Testing:**
+- [ ] Unit test cases identified
+- [ ] Integration test cases identified
+- [ ] Error cases to test listed
 
-### If ANY checkbox unchecked → Ask PM/designer for clarification
+**Database:**
+- [ ] Data volume understood
+- [ ] Index strategy identified
 
----
-
-## Part 9: Open Questions
-
-**Document questions to ask PM/designer:**
-
-| Question | Answer | Resolved? |
-|---|---|---|
-| Should we store refresh tokens in DB or in-memory cache? | DB (for logout support) | ✅ |
-| What's the password complexity requirement? | Min 8 chars, uppercase, digit | ✅ |
-| Can users change email? | No, email is immutable | ✅ |
-| Should we send confirmation email on signup? | Yes (async, out of scope for this req) | ✅ |
-| What happens if token is compromised? | Logout invalidates all tokens | ⏳ Need to clarify scope |
+### If ANY unchecked → Ask PM for clarification
 
 ---
 
-## Part 10: Example Use Case
-
-**One user journey through the requirement:**
-
-```
-1. Alice (new user) goes to signup page
-   → POST /api/v1/auth/register with email=alice@example.com, password=MyPass123
-   → Backend creates User entity, hashes password with BCrypt
-   → Response: 201 Created, userId=5
-
-2. Alice logs in
-   → POST /api/v1/auth/login with email=alice@example.com, password=MyPass123
-   → Backend verifies password against BCrypt hash
-   → Generates JWT access token (15 min), refresh token (7 days)
-   → Stores refresh token in DB (hashed)
-   → Response: 201 Created, accessToken=..., refreshToken=...
-
-3. Alice accesses her profile
-   → GET /api/v1/users/5
-   → Headers: Authorization: Bearer {accessToken}
-   → AuthFilter validates JWT, extracts userId=5
-   → Request attribute: userId=5
-   → Controller: Verify request.getAttribute("userId") == 5 (BOLA check)
-   → Response: 200 OK, UserResponse(id=5, email=alice@example.com, role=USER)
-
-4. Alice's access token expires (after 15 min)
-   → Frontend tries to GET /api/v1/users/5
-   → Gets 401 Unauthorized (expired token)
-   → Frontend calls POST /api/v1/auth/refresh with refreshToken=...
-   → Backend hashes token, looks up in DB
-   → Generates new accessToken (15 min), new refreshToken (7 days)
-   → Deletes old refresh token from DB
-   → Response: 200 OK, new tokens
-
-5. Alice logs out
-   → POST /api/v1/auth/logout with refreshToken=...
-   → Backend hashes token, deletes from DB
-   → Response: 204 No Content
-   → Refresh token now invalid, cannot use anymore
-```
-
----
-
-## Output: Summary Document
-
-**Once completed, create a 1-page summary:**
+## Part 8: Summary (1 Page)
 
 ```markdown
-# R001: User Authentication - Requirement Summary
+# R001: User Management API - Summary
 
 ## Entities
-- User (id, email, password_hash, role, created_at, updated_at, is_deleted)
-- RefreshToken (id, user_id, token_hash, expires_at, is_deleted)
+- User (id, name, email, phone, createdAt, updatedAt, isDeleted)
 
 ## Endpoints
-- POST /auth/login → LoginResponse (accessToken, refreshToken, expiresIn)
-- POST /auth/refresh → LoginResponse
-- POST /auth/logout → 204 No Content
+- GET /api/v1/users → Page<UserResponse> (paginated)
+- POST /api/v1/users → UserResponse (201)
+- GET /api/v1/users/{userId} → UserResponse (200)
+- PUT /api/v1/users/{userId} → UserResponse (200)
+- DELETE /api/v1/users/{userId} → 204 No Content
 
 ## Key Rules
-- Password: BCrypt hash, min 8 chars
-- Access token: 15 min expiry
-- Refresh token: 7 days expiry, stored hashed in DB
-- BOLA: User can only refresh own tokens
-- Error messages: Same for "user not found" and "password wrong" (prevent enumeration)
+- Email unique
+- Email format validation
+- Soft delete (isDeleted=true)
+- Pagination: default 10, max 100
+- Sort by: id, name, createdAt, updatedAt
+
+## Indexes
+- (email) UNIQUE
+- (created_at)
 
 ## Dependencies
-- ✅ User entity complete
-- ⏳ JWT secret setup (blocked on Ops)
+- None (standalone feature)
 
-## Questions
-- None (all clarified)
-
-## Effort Estimate
+## Effort
 - 8 hours (1 day sprint)
 ```
 
-Save this summary and move to **Analyze** phase.
+---
+
+## Tips
+
+1. **Fill top-to-bottom** (Part 1 → 8)
+2. **Ask PM** if unclear
+3. **Use real examples** (actual JSON, field values)
+4. **Mark unknowns** with ❓
+5. **Share with PM** before Analyze
 
 ---
 
-## Tips for Using This Template
-
-1. **Fill top-to-bottom** (Part 1 → Part 10)
-2. **Ask PM/designer** if anything is unclear (don't assume)
-3. **Use examples** (actual data values, JSON samples)
-4. **Mark blockers** with ❌ (don't proceed until resolved)
-5. **Update as you learn** (this document evolves)
-6. **Share with PM** (confirm understanding before implementing)
-
----
-
-**End Goal:** Move to Analyze phase with zero unknowns about what to build.
+**End Goal:** Zero unknowns before Analyze phase.
