@@ -45,7 +45,6 @@ project-root/
 
 ## ADLC Workflow
 
-```text
 Requirement
 ↓
 Understand
@@ -54,11 +53,11 @@ Analyze
 ↓
 Decide
 ↓
-Learn
+[Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
 ↓
 Design
 ↓
-Implement
+[Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
 ↓
 Validate
 ↓
@@ -69,7 +68,6 @@ Document
 Prepare
 ↓
 Deliver
-```
 
 ## AI Orchestration
 
