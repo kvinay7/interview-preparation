@@ -95,9 +95,9 @@ pom.xml
 - **Java**: Basics, Collections, Streams, OOPs, Exceptions, Logging 
 - **Spring**: Core, Boot, MVC, REST, OpenAPI, Testing, Security, AOP
 - **Databases**: SQL, Database Design, Transactions, Indexing, JPA
-- **AI**: Spring AI, RAG, MCP, Agents, Evaluation 
-- **UI**: HTML, CSS, JavaScript
-- **DevOps**: Git, Linux, Docker, CI/CD, AWS
+- **AI**: Spring AI, RAG, Memory, Advisor, MCP, Agents, Evaluation 
+- **UI**: HTML, CSS, JavaScript, Bootstrap, ReactJS
+- **DevOps/Cloud**: Git, Linux, Docker, CI/CD, AWS
 
 ---
 
