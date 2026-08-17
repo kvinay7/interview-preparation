@@ -1,5 +1,10 @@
 # Learning Roadmap
 
+- **Java Developer**: DSA + LLD + Spring + ADLC + STAR
+- **FSD**: Java Developer + HLD + GenAI + UI + Cloud
+
+---
+
 ## Tech Stack
 
 - **Java**: Basics, Collections, Streams, OOPs, Exceptions, Logging 
@@ -8,11 +13,6 @@
 - **AI**: Spring AI, RAG, Memory, Advisor, MCP, Agents, Evaluation 
 - **UI**: HTML, CSS, JavaScript, Bootstrap, ReactJS
 - **DevOps/Cloud**: Git, Linux, Docker, CI/CD, AWS
-
----
-
-- **Java Developer**: DSA + LLD + Spring + ADLC + STAR
-- **FSD**: Java Developer + HLD + GenAI + UI + Cloud
 
 ---
 
