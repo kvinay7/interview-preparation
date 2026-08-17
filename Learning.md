@@ -1,4 +1,4 @@
-# Backend Engineering Learning Roadmap
+# Learning Roadmap
 
 ## Tech Stack
 
@@ -84,6 +84,7 @@
 - Class.forName(), Method invocation, Reflection API
 - Custom annotations, @Retention, @Target
 - Annotation processing
+- Design Patterns
 - Time: 3 days (~15 hours)
 
 **Advanced Features**
