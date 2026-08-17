@@ -2,9 +2,9 @@
 
 ## [ADLC Workflow](https://github.com/kvinay7/interview-preparation/blob/main/ADLC_WORKFLOW.md)
 
-1. [Understand](https://github.com/kvinay7/interview-preparation/blob/main/Requirements.md) 
-2. Analyze
-3. [Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
+1. [Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
+2. [Understand](https://github.com/kvinay7/interview-preparation/blob/main/Requirements.md) 
+3. Analyze
 4. Design
 5. [Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
 6. Validate
