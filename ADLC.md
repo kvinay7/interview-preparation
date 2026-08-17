@@ -45,29 +45,18 @@ project-root/
 
 ## ADLC Workflow
 
-Requirement
-↓
-Understand
-↓
-Analyze
-↓
-Decide
-↓
-[Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
-↓
-Design
-↓
-[Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
-↓
-Validate
-↓
-Review
-↓
-Document
-↓
-Prepare
-↓
-Deliver
+1. Requirement
+2. Understand
+3. Analyze
+4. Decide
+5. [Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
+6. Design
+7. [Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
+8. Validate
+9. Review
+10. Document
+11. Prepare
+12. Deliver
 
 ## AI Orchestration
 
