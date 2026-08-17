@@ -1,9 +1,9 @@
 # Requirements Understanding Template
 
-**Phase:** ADLC Step 2 (Understand)
-**Owner:** You (SDE-1 Backend)
-**Input:** Requirement document (from PM/designer/stakeholder)
-**Output:** Organized requirement details in structured format
+- **Phase:** ADLC Step 2 (Understand)
+- **Owner:** You (SDE-1 Backend)
+- **Input:** Requirement document (from PM/designer/stakeholder)
+- **Output:** Organized requirement details in structured format
 
 **Goal:** Extract all necessary details to move to Analyze phase without blocking.
 
