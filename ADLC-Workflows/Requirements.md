@@ -133,19 +133,20 @@ When requirement framing is complete:
 ```text
 Requirement Framing
       ↓
-Understand → update /ai-context/requirements/R001.md
+Understand        → update /ai-context/requirements/R001.md
+                                              ├── Requirement Framing
+      ↓                                       └── Understanding
+Analyze/Decide    → /ai-context/decisions/R001_A001.md
       ↓
-Analyze/Decide → /ai-context/decisions/R001_A001.md
+Design/Learn      → /ai-context/design/R001_D001.md
       ↓
-Design/Learn → /ai-context/design/R001_D001.md
-      ↓
-Implement → /src/main
+Implementation    → /src/main
       ↓
 Validation/Review → /src/test
-  ↓
-Document/Prepare → /docs
-  ↓
-Deliver → Git & CI/CD
+      ↓
+Document/Prepare  → /docs
+      ↓
+Deliver/Deploy    → Git & CI/CD
 ```
 
 > **Requirement Framing defines WHAT is required. It does not define HOW the system will be technically implemented.**
