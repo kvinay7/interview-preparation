@@ -2,16 +2,18 @@
 
 ## [ADLC Workflow](https://github.com/kvinay7/interview-preparation/blob/main/ADLC_WORKFLOW.md)
 
-1. [Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
+1. [Requirement](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/Requirements.md)
 2. [Understand](https://github.com/kvinay7/interview-preparation/blob/main/Requirements.md) 
 3. Analyze
-4. Design
-5. [Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
-6. Validate
-7. Review
-8. Document
-9. Prepare
-10. Deliver
+4. Decide
+5. Design
+6. [Learn](https://github.com/kvinay7/interview-preparation/blob/main/Learning.md)
+7. [Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
+8. Validate
+9. Review
+10. Document
+11. Prepare
+12. Deliver
 
 ---
 
