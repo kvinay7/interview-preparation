@@ -126,29 +126,6 @@ Expected Outcome
 
 ---
 
-## Requirement Status
-
-**Status:** `Draft`
-
-### Requirement Framing Checklist
-
-* [ ] Original requirement captured
-* [ ] Business goal identified
-* [ ] Problem identified
-* [ ] Expected outcome identified
-* [ ] Scope defined
-* [ ] Functional requirements identified
-* [ ] Business rules identified
-* [ ] Workflow identified
-* [ ] Acceptance criteria defined
-* [ ] Dependencies identified
-* [ ] Constraints identified
-* [ ] Known information captured
-* [ ] Unknowns identified
-* [ ] Clarification questions identified
-
----
-
 ## Handoff
 
 When requirement framing is complete:
