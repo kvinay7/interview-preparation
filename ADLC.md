@@ -4,8 +4,8 @@
 
 1. [Requirement](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/Requirements.md)
 2. [Understand](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/Understand.md) 
-3. Analysis
-4. Design
+3. [Analysis](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/Analysis.md)
+4. [Design](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/Design.md)
 5. [Implement](https://github.com/kvinay7/interview-preparation/blob/main/Implementation.md)
 6. Validate
 7. Review
@@ -58,34 +58,3 @@ project-root/
 └── src/
 ```
 
-```
-src/
-└── main/
-    ├── java/
-    │   └── com/example/aibackend/
-    │       ├── controller/
-    │       ├── service/
-    │       ├── repository/
-    │       ├── entity/
-    │       ├── dto/
-    │       ├── exception/
-    │       ├── logging/
-    │       ├── config/
-    │       ├── util/
-    │       └── Main.java
-    │
-    └── resources/
-        ├── application.properties
-        ├── documents/
-        ├── prompts/
-        └── static/
-            ├── index.html
-            ├── css/
-            └── js/
-
-src/test/                      
-    └── java/
-        └── com/example/aibackend/
-
-pom.xml
-```
