@@ -133,7 +133,7 @@ When requirement framing is complete:
 ```text
 Requirement Framing
       ↓
-Understand        → update /ai-context/requirements/R001.md
+Understanding     → update /ai-context/requirements/R001.md
                                               ├── Requirement Framing
       ↓                                       └── Understanding
 Analyze/Decide    → /ai-context/decisions/R001_A001.md
