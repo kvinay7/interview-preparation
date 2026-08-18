@@ -154,17 +154,21 @@ Expected Outcome
 When requirement framing is complete:
 
 ```text
-R001.md
-   ↓
-Understand
-   ↓
-Analyze
-   ↓
-Learn
-   ↓
-Decide
-   ↓
-Design
+Requirement Framing
+      ↓
+Understand → update /ai-context/requirements/R001.md
+      ↓
+Analyze/Decide → /ai-context/decisions/R001_A001.md
+      ↓
+Design/Learn → /ai-context/design/R001_D001.md
+      ↓
+Implement → /src/main
+      ↓
+Validation/Review → /src/test
+  ↓
+Document/Prepare → /docs
+  ↓
+Deliver → Git & CI/CD
 ```
 
 > **Requirement Framing defines WHAT is required. It does not define HOW the system will be technically implemented.**
