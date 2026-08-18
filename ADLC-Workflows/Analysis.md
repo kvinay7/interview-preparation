@@ -158,7 +158,7 @@
 
 ---
 
-## 10. Learn / Prepare Requirements
+## 10. [Learn](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/Learning.md) / Prepare Requirements
 
 ### Knowledge Gaps
 
