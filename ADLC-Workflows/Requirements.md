@@ -1,4 +1,4 @@
-# Requirement R001 — [Title]
+# Requirement Template
 
 ## 1. Requirement
 
@@ -64,7 +64,7 @@ Business Rules
 Expected Outcome
 ````
 
-[Describe the required business workflow.]
+[Describe the required business workflow]
 
 ---
 
@@ -121,8 +121,8 @@ Expected Outcome
 
 ### Clarification Questions
 
-* [ ] [Question for stakeholder/client]
-* [ ] [Question for stakeholder/client]
+* [ ] [Question for Lead/Manager]
+* [ ] [Question for Lead/Manager]
 
 ---
 
