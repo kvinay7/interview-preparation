@@ -1,7 +1,7 @@
 # Learning Roadmap
 
-- **Java Developer**: DSA + LLD + Spring + ADLC + STAR
-- **FSD**: Java Developer + HLD + GenAI + UI + Cloud
+- **Java Developer**: [Java](https://github.com/kvinay7/DSA/blob/main/Java.md) + [DSA](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md) + [LLD](https://github.com/ashishps1/awesome-low-level-design) + [ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md) + [STAR](https://github.com/ashishps1/awesome-behavioral-interviews)
+- **FSD**: Java Developer + HLD + [GenAI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md) + UI + Cloud
 
 ---
 
