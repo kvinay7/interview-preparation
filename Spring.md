@@ -582,7 +582,7 @@ Spring MVC (Model-View-Controller) is a powerful framework within the Spring eco
 - **View**: The presentation layer that displays data from the model to the user. It can use technologies like JSP, Thymeleaf, or other templating engines.
 - **Controller**: Handles user input, processes requests, interacts with the model, and determines which view to render.
 
-### 1. **HTTP Request/Response Flow**
+### 1. **[HTTP](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md) Request/Response Flow**
  - **Client sends HTTP request** (browser/frontend/Postman -> DNS/TCP/TLS -> IP -> Server Port).
  - Request reaches the **embedded servlet container (Tomcat)**.
  - The request passes through the **Servlet Filter Chain**, where:
