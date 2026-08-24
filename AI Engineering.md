@@ -1627,7 +1627,7 @@ public class RAGController {
 
 ---
 
-# 7. Evaluation
+# 8. Evaluation
 
 ## RAGAS Metrics
 
@@ -1710,7 +1710,7 @@ public class RAGEvaluator {
 
 ---
 
-# 8. Production Considerations
+# 9. Production Considerations
 
 ## Caching
 
@@ -1812,7 +1812,7 @@ public class ObservableRAGService {
 
 ---
 
-# 9. Spring AI Integration
+# 10. Spring AI Integration
 
 Spring AI provides a higher-level abstraction over RAG components.
 
