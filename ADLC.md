@@ -1,4 +1,4 @@
-# AI-Assisted Development Lifecycle (ADLC)
+# AI-Assisted Development Lifecycle ([ADLC](https://github.com/addyosmani/agent-skills))
 
 ## [ADLC Workflow](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/ADLC_Guide.md)
 
