@@ -1,4 +1,4 @@
-# [AI Engineering](https://youtu.be/OYvlznJ4IZQ?si=SGihFX9c-iN7s7c6)
+<h1 align="center">AI Engineering</h1>
 
 ---
 
@@ -531,8 +531,6 @@ print(f"Graph Output: {output}")
 
 <h1 align="center">Spring AI</h1>
 
-# 1. Introduction
-
 ### Q1. What is Spring AI?
 
 Spring AI is a Spring ecosystem project that simplifies integrating AI models into Java applications. It provides consistent APIs for interacting with different LLM providers such as OpenAI, Azure OpenAI, Anthropic, Ollama, and Bedrock.
@@ -655,4 +653,1264 @@ String content = response.getResult()
 ```
 
 ---
+
+<h1 align="center">RAG with Java</h1>
+
+# 1. RAG Fundamentals
+
+## What is RAG?
+
+**Retrieval-Augmented Generation** combines information retrieval with LLM generation.
+
+```
+User Query
+    ↓
+[RETRIEVE] Search for relevant documents/chunks
+    ↓
+[AUGMENT] Add retrieved context to prompt
+    ↓
+[GENERATE] LLM produces answer grounded in context
+    ↓
+Response
+```
+
+## Why RAG?
+
+| Problem | RAG Solution |
+|---------|--------------|
+| LLM knowledge outdated | Retrieve current/real-time data |
+| LLM doesn't know private data | Retrieve from private knowledge base |
+| LLM hallucinates | Ground answer in retrieved facts |
+| Fine-tuning is expensive | No retraining needed; update documents |
+
+## RAG vs Fine-tuning
+
+| Aspect | RAG | Fine-tuning |
+|--------|-----|-------------|
+| **Latency** | Retrieval overhead (~100–200ms) | None; model inference only |
+| **Knowledge update** | Change documents; instant effect | Retrain model; hours/days |
+| **Cost** | Retrieval + inference | Compute + storage for training |
+| **Use case** | Private/changing data | Behavior adaptation |
+
+---
+
+# 2. Embeddings
+
+## What is an Embedding?
+
+A dense vector (typically 384–1536 dimensions) that represents the **semantic meaning** of text. Similar texts have similar embeddings.
+
+```
+Text: "How do I reset my password?"
+         ↓
+Embedding Model (e.g., SBERT)
+         ↓
+Vector: [0.23, -0.15, 0.88, ..., -0.41]  // 384 dimensions
+```
+
+## Embedding Models
+
+| Model | Dimensions | Speed | Quality | Use Case |
+|-------|-----------|-------|---------|----------|
+| **Sentence-BERT (all-MiniLM-L6-v2)** | 384 | Fast | Good | General purpose, on-prem |
+| **OpenAI text-embedding-3-small** | 1536 | Moderate | Excellent | Production, cloud |
+| **Cohere Embed** | 1024 | Moderate | Excellent | Multilingual |
+| **Ollama (local models)** | 384–768 | Slow | Varies | Privacy, no API keys |
+
+## Java: Computing Embeddings
+
+### Option 1: OpenAI Embeddings API
+
+```java
+import com.openai.client.OpenAIClient;
+import com.openai.models.CreateEmbeddingResponse;
+
+public class EmbeddingService {
+    private final OpenAIClient client;
+
+    public EmbeddingService(String apiKey) {
+        this.client = new OpenAIClient(apiKey);
+    }
+
+    public double[] embed(String text) {
+        CreateEmbeddingResponse response = client.embeddings().create(
+            request -> request
+                .model("text-embedding-3-small")
+                .input(text)
+        );
+        
+        // Extract embedding vector
+        return response.data().get(0).embedding().stream()
+            .mapToDouble(Double::doubleValue)
+            .toArray();
+    }
+}
+```
+
+### Option 2: Spring AI Embeddings
+
+```java
+import org.springframework.ai.embedding.EmbeddingClient;
+import org.springframework.ai.embedding.EmbeddingResponse;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EmbeddingService {
+    private final EmbeddingClient embeddingClient;
+
+    public EmbeddingService(EmbeddingClient embeddingClient) {
+        this.embeddingClient = embeddingClient;
+    }
+
+    public float[] embed(String text) {
+        EmbeddingResponse response = embeddingClient.embedForObject(text);
+        return response.getResult().getOutput().stream()
+            .mapToFloat(Float::floatValue)
+            .toArray();
+    }
+
+    public List<float[]> embedBatch(List<String> texts) {
+        return texts.stream()
+            .map(this::embed)
+            .collect(Collectors.toList());
+    }
+}
+```
+
+### Option 3: Local Embeddings (Ollama)
+
+```java
+import okhttp3.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class LocalEmbeddingService {
+    private final OkHttpClient httpClient;
+    private final ObjectMapper objectMapper;
+    private final String ollamaUrl = "http://localhost:11434/api/embeddings";
+
+    public LocalEmbeddingService() {
+        this.httpClient = new OkHttpClient();
+        this.objectMapper = new ObjectMapper();
+    }
+
+    public double[] embed(String text) throws Exception {
+        String jsonBody = objectMapper.writeValueAsString(Map.of(
+            "model", "nomic-embed-text",
+            "prompt", text
+        ));
+
+        Request request = new Request.Builder()
+            .url(ollamaUrl)
+            .post(RequestBody.create(jsonBody, MediaType.get("application/json")))
+            .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            Map<String, Object> result = objectMapper.readValue(
+                response.body().string(), 
+                new TypeReference<Map<String, Object>>() {}
+            );
+            List<Double> embedding = (List<Double>) result.get("embedding");
+            return embedding.stream().mapToDouble(Double::doubleValue).toArray();
+        }
+    }
+}
+```
+
+---
+
+# 3. Vector Similarity Search
+
+## Cosine Similarity
+
+Measures the angle between two vectors. Higher = more similar.
+
+```
+cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)
+                         = dot_product / (magnitude_A × magnitude_B)
+
+Range: -1 to 1
+  1.0 = identical direction
+  0.0 = perpendicular
+ -1.0 = opposite
+```
+
+## Java: Cosine Similarity
+
+```java
+public class VectorUtils {
+    
+    /**
+     * Computes cosine similarity between two vectors
+     * @param a first vector
+     * @param b second vector
+     * @return similarity score (-1.0 to 1.0)
+     */
+    public static double cosineSimilarity(double[] a, double[] b) {
+        if (a.length != b.length) {
+            throw new IllegalArgumentException("Vectors must have same dimension");
+        }
+
+        double dotProduct = 0.0;
+        double magnitudeA = 0.0;
+        double magnitudeB = 0.0;
+
+        for (int i = 0; i < a.length; i++) {
+            dotProduct += a[i] * b[i];
+            magnitudeA += a[i] * a[i];
+            magnitudeB += b[i] * b[i];
+        }
+
+        magnitudeA = Math.sqrt(magnitudeA);
+        magnitudeB = Math.sqrt(magnitudeB);
+
+        if (magnitudeA == 0.0 || magnitudeB == 0.0) {
+            return 0.0; // Handle zero vectors
+        }
+
+        return dotProduct / (magnitudeA * magnitudeB);
+    }
+
+    /**
+     * Batch similarity computation
+     */
+    public static List<Double> cosineSimilarityBatch(double[] query, List<double[]> documents) {
+        return documents.stream()
+            .map(doc -> cosineSimilarity(query, doc))
+            .collect(Collectors.toList());
+    }
+}
+```
+
+## Other Similarity Metrics
+
+```java
+public class VectorMetrics {
+    
+    // Euclidean Distance (L2)
+    public static double euclideanDistance(double[] a, double[] b) {
+        double sum = 0.0;
+        for (int i = 0; i < a.length; i++) {
+            double diff = a[i] - b[i];
+            sum += diff * diff;
+        }
+        return Math.sqrt(sum);
+    }
+
+    // Manhattan Distance (L1)
+    public static double manhattanDistance(double[] a, double[] b) {
+        double sum = 0.0;
+        for (int i = 0; i < a.length; i++) {
+            sum += Math.abs(a[i] - b[i]);
+        }
+        return sum;
+    }
+
+    // Dot Product (for normalized vectors, ~ cosine sim)
+    public static double dotProduct(double[] a, double[] b) {
+        double sum = 0.0;
+        for (int i = 0; i < a.length; i++) {
+            sum += a[i] * b[i];
+        }
+        return sum;
+    }
+}
+```
+
+---
+
+# 4. Chunking & Document Processing
+
+## What is Chunking?
+
+Split large documents into smaller, overlapping pieces before embedding.
+
+```
+Large Document (100 pages)
+         ↓
+Split into chunks (e.g., 500 tokens each)
+         ↓
+Add overlap (e.g., 50-token overlap)
+         ↓
+Embed each chunk
+         ↓
+Store in vector DB
+```
+
+## Why Chunking?
+
+- Embedding long documents is expensive
+- Smaller chunks → precise retrieval (exact relevant section found)
+- Overlap → preserves context between chunks
+- Prevents truncation at logical boundaries
+
+## Chunking Strategies
+
+| Strategy | Pros | Cons |
+|----------|------|------|
+| **Fixed-size** | Simple, fast | May split mid-sentence |
+| **Recursive** | Preserves structure (sentence → paragraph → size) | Slightly slower |
+| **Semantic** | Groups related sentences together | Complex, slower |
+
+## Java: Fixed-Size Chunking
+
+```java
+public class ChunkingService {
+    
+    /**
+     * Split text into fixed-size chunks with overlap
+     * @param text input text
+     * @param chunkSize size of each chunk (in characters)
+     * @param overlapSize overlap between chunks (in characters)
+     * @return list of chunks
+     */
+    public static List<String> fixedSizeChunking(String text, int chunkSize, int overlapSize) {
+        List<String> chunks = new ArrayList<>();
+        
+        if (text.length() <= chunkSize) {
+            chunks.add(text);
+            return chunks;
+        }
+
+        int step = chunkSize - overlapSize; // How far to move for next chunk
+        for (int i = 0; i < text.length(); i += step) {
+            int end = Math.min(i + chunkSize, text.length());
+            chunks.add(text.substring(i, end));
+            
+            if (end == text.length()) break; // Reached end
+        }
+
+        return chunks;
+    }
+}
+
+// Usage
+String document = "This is a long document...";
+List<String> chunks = ChunkingService.fixedSizeChunking(document, 500, 50);
+System.out.println("Number of chunks: " + chunks.size());
+```
+
+## Java: Recursive Chunking (by Sentence)
+
+```java
+public class RecursiveChunkingService {
+    
+    /**
+     * Split text recursively: sentences → paragraphs → fixed size
+     */
+    public static List<String> recursiveChunking(String text, int chunkSize, int overlapSize) {
+        // Step 1: Split by paragraphs (double newline)
+        List<String> paragraphs = Arrays.asList(text.split("\n\n+"));
+        
+        // Step 2: For each paragraph, split by sentences
+        List<String> sentences = new ArrayList<>();
+        for (String para : paragraphs) {
+            String[] paras = para.split("(?<=[.!?])\\s+");
+            sentences.addAll(Arrays.asList(paras));
+        }
+        
+        // Step 3: Group sentences into chunks of desired size
+        List<String> chunks = new ArrayList<>();
+        StringBuilder currentChunk = new StringBuilder();
+        
+        for (String sentence : sentences) {
+            if ((currentChunk.length() + sentence.length()) <= chunkSize) {
+                currentChunk.append(" ").append(sentence);
+            } else {
+                // Start new chunk with overlap
+                if (currentChunk.length() > 0) {
+                    chunks.add(currentChunk.toString().trim());
+                }
+                
+                // Overlap: keep last N chars from previous chunk
+                String overlap = currentChunk.length() > overlapSize 
+                    ? currentChunk.substring(currentChunk.length() - overlapSize)
+                    : currentChunk.toString();
+                    
+                currentChunk = new StringBuilder(overlap + " " + sentence);
+            }
+        }
+        
+        if (currentChunk.length() > 0) {
+            chunks.add(currentChunk.toString().trim());
+        }
+
+        return chunks;
+    }
+}
+```
+
+## Document Parsing: Extract Text from PDF
+
+```java
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import java.io.File;
+
+public class DocumentParsingService {
+    
+    /**
+     * Extract text from PDF
+     */
+    public static String extractTextFromPdf(String pdfPath) throws Exception {
+        try (PDDocument document = PDDocument.load(new File(pdfPath))) {
+            PDFTextStripper stripper = new PDFTextStripper();
+            return stripper.getText(document);
+        }
+    }
+
+    /**
+     * Clean extracted text (remove boilerplate, normalize whitespace)
+     */
+    public static String cleanText(String text) {
+        return text
+            .replaceAll("\\s+", " ")          // Multiple spaces → single space
+            .replaceAll("(?m)^\\s+|\\s+$", "") // Remove leading/trailing whitespace per line
+            .trim();
+    }
+
+    /**
+     * Extract text, clean, and chunk
+     */
+    public static List<String> extractAndChunk(String pdfPath) throws Exception {
+        String rawText = extractTextFromPdf(pdfPath);
+        String cleanedText = cleanText(rawText);
+        return RecursiveChunkingService.recursiveChunking(cleanedText, 500, 50);
+    }
+}
+```
+
+---
+
+# 5. Retrieval Strategies
+
+## 1. Dense Retrieval (Semantic/Vector Search)
+
+Find documents based on embedding similarity.
+
+```java
+public class DenseRetriever {
+    private final EmbeddingService embeddingService;
+    private final List<Document> documentStore; // In-memory; use vector DB in production
+
+    public DenseRetriever(EmbeddingService embeddingService, List<Document> documentStore) {
+        this.embeddingService = embeddingService;
+        this.documentStore = documentStore;
+    }
+
+    /**
+     * Retrieve top-K documents by semantic similarity
+     */
+    public List<Document> retrieve(String query, int k) {
+        double[] queryEmbedding = embeddingService.embed(query);
+
+        // Compute similarity with all documents
+        List<DocumentScore> scores = documentStore.stream()
+            .map(doc -> new DocumentScore(
+                doc,
+                VectorUtils.cosineSimilarity(queryEmbedding, doc.getEmbedding())
+            ))
+            .sorted((a, b) -> Double.compare(b.score, a.score)) // Descending
+            .limit(k)
+            .collect(Collectors.toList());
+
+        return scores.stream().map(ds -> ds.document).collect(Collectors.toList());
+    }
+
+    static class DocumentScore {
+        Document document;
+        double score;
+
+        DocumentScore(Document document, double score) {
+            this.document = document;
+            this.score = score;
+        }
+    }
+}
+
+class Document {
+    private String id;
+    private String content;
+    private double[] embedding;
+    private String source; // For attribution
+
+    // Getters, setters...
+}
+```
+
+## 2. Sparse Retrieval (BM25)
+
+Traditional keyword-based ranking.
+
+```java
+public class BM25Retriever {
+    private final List<Document> documentStore;
+    private final Map<String, Map<String, Integer>> invertedIndex; // word → {doc_id → count}
+
+    public BM25Retriever(List<Document> documentStore) {
+        this.documentStore = documentStore;
+        this.invertedIndex = buildInvertedIndex();
+    }
+
+    /**
+     * Build inverted index for BM25
+     */
+    private Map<String, Map<String, Integer>> buildInvertedIndex() {
+        Map<String, Map<String, Integer>> index = new HashMap<>();
+
+        for (Document doc : documentStore) {
+            String[] tokens = tokenize(doc.getContent());
+            for (String token : tokens) {
+                index.computeIfAbsent(token, k -> new HashMap<>())
+                    .merge(doc.getId(), 1, Integer::sum);
+            }
+        }
+
+        return index;
+    }
+
+    /**
+     * BM25 ranking (simplified)
+     * BM25(q, D) = sum over terms t in q of:
+     *   IDF(t) * (f(t, D) * (k1 + 1)) / (f(t, D) + k1 * (1 - b + b * |D| / avgDocLen))
+     */
+    public List<Document> retrieve(String query, int k) {
+        String[] queryTerms = tokenize(query);
+        double avgDocLen = documentStore.stream()
+            .mapToInt(d -> d.getContent().split("\\s+").length)
+            .average()
+            .orElse(100);
+
+        double k1 = 1.2; // Term frequency saturation parameter
+        double b = 0.75;  // Length normalization parameter
+
+        Map<String, Double> scores = new HashMap<>();
+
+        for (String term : queryTerms) {
+            if (!invertedIndex.containsKey(term)) continue;
+
+            double idf = Math.log((documentStore.size() - invertedIndex.get(term).size() + 0.5) 
+                                / (invertedIndex.get(term).size() + 0.5));
+
+            for (Map.Entry<String, Integer> entry : invertedIndex.get(term).entrySet()) {
+                String docId = entry.getKey();
+                int freq = entry.getValue();
+                int docLen = documentStore.stream()
+                    .filter(d -> d.getId().equals(docId))
+                    .findFirst()
+                    .map(d -> d.getContent().split("\\s+").length)
+                    .orElse(0);
+
+                double bm25Score = idf * ((freq * (k1 + 1)) 
+                    / (freq + k1 * (1 - b + b * (docLen / avgDocLen))));
+
+                scores.merge(docId, bm25Score, Double::sum);
+            }
+        }
+
+        return scores.entrySet().stream()
+            .sorted((a, b) -> Double.compare(b.getValue(), a.getValue()))
+            .limit(k)
+            .map(e -> documentStore.stream()
+                .filter(d -> d.getId().equals(e.getKey()))
+                .findFirst()
+                .orElse(null))
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
+    }
+
+    private String[] tokenize(String text) {
+        return text.toLowerCase().split("\\W+");
+    }
+}
+```
+
+## 3. Hybrid Retrieval (Semantic + BM25)
+
+Combine both approaches.
+
+```java
+public class HybridRetriever {
+    private final DenseRetriever denseRetriever;
+    private final BM25Retriever bm25Retriever;
+
+    public HybridRetriever(DenseRetriever denseRetriever, BM25Retriever bm25Retriever) {
+        this.denseRetriever = denseRetriever;
+        this.bm25Retriever = bm25Retriever;
+    }
+
+    /**
+     * Hybrid retrieval: combine semantic + BM25
+     * Use Reciprocal Rank Fusion (RRF) to merge rankings
+     */
+    public List<Document> retrieve(String query, int k) {
+        List<Document> semanticResults = denseRetriever.retrieve(query, k * 2);
+        List<Document> bm25Results = bm25Retriever.retrieve(query, k * 2);
+
+        // RRF scoring: score = 1 / (rank + 60)
+        Map<String, Double> rrfScores = new HashMap<>();
+        
+        for (int i = 0; i < semanticResults.size(); i++) {
+            String docId = semanticResults.get(i).getId();
+            rrfScores.merge(docId, 1.0 / (i + 60), Double::sum);
+        }
+
+        for (int i = 0; i < bm25Results.size(); i++) {
+            String docId = bm25Results.get(i).getId();
+            rrfScores.merge(docId, 1.0 / (i + 60), Double::sum);
+        }
+
+        // Merge unique documents, sorted by RRF score
+        Set<String> allDocIds = new HashSet<>();
+        allDocIds.addAll(semanticResults.stream().map(Document::getId).collect(Collectors.toSet()));
+        allDocIds.addAll(bm25Results.stream().map(Document::getId).collect(Collectors.toSet()));
+
+        List<Document> documentStore = new ArrayList<>(semanticResults);
+        documentStore.addAll(bm25Results);
+        Map<String, Document> docMap = documentStore.stream()
+            .distinct()
+            .collect(Collectors.toMap(Document::getId, d -> d, (a, b) -> a));
+
+        return rrfScores.entrySet().stream()
+            .sorted((a, b) -> Double.compare(b.getValue(), a.getValue()))
+            .limit(k)
+            .map(e -> docMap.get(e.getKey()))
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
+    }
+}
+```
+
+---
+
+# 6. LLM Integration
+
+## What is an LLM?
+
+A transformer-based model that generates text token-by-token based on input prompt + context.
+
+## Java: LLM Integration
+
+### Option 1: OpenAI API
+
+```java
+import com.openai.client.OpenAIClient;
+import com.openai.models.*;
+
+public class OpenAILLMService {
+    private final OpenAIClient client;
+
+    public OpenAILLMService(String apiKey) {
+        this.client = new OpenAIClient(apiKey);
+    }
+
+    /**
+     * Generate text based on prompt + context
+     */
+    public String generate(String systemPrompt, String userPrompt) {
+        ChatCompletion response = client.chat().completions().create(
+            ChatCompletionCreateParams.builder()
+                .model("gpt-4")
+                .messages(Arrays.asList(
+                    ChatCompletionMessageParam.ofChatCompletionMessage(
+                        ChatCompletionMessage.builder()
+                            .role(ChatCompletionMessage.Role.SYSTEM)
+                            .content(systemPrompt)
+                            .build()
+                    ),
+                    ChatCompletionMessageParam.ofChatCompletionMessage(
+                        ChatCompletionMessage.builder()
+                            .role(ChatCompletionMessage.Role.USER)
+                            .content(userPrompt)
+                            .build()
+                    )
+                ))
+                .temperature(0.0) // Deterministic for factual tasks
+                .maxTokens(500)
+                .build()
+        );
+
+        return response.choices().get(0).message().content();
+    }
+
+    /**
+     * Streaming response
+     */
+    public void generateStream(String systemPrompt, String userPrompt) {
+        client.chat().completions().create(
+            ChatCompletionCreateParams.builder()
+                .model("gpt-4")
+                .messages(Arrays.asList(
+                    ChatCompletionMessageParam.ofChatCompletionMessage(
+                        ChatCompletionMessage.builder()
+                            .role(ChatCompletionMessage.Role.SYSTEM)
+                            .content(systemPrompt)
+                            .build()
+                    ),
+                    ChatCompletionMessageParam.ofChatCompletionMessage(
+                        ChatCompletionMessage.builder()
+                            .role(ChatCompletionMessage.Role.USER)
+                            .content(userPrompt)
+                            .build()
+                    )
+                ))
+                .stream(true)
+                .build()
+        ).stream().forEach(event -> {
+            if (event.choices().get(0).delta().content() != null) {
+                System.out.print(event.choices().get(0).delta().content());
+            }
+        });
+    }
+}
+```
+
+### Option 2: Spring AI
+
+```java
+import org.springframework.ai.chat.ChatClient;
+import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SpringAILLMService {
+    private final ChatClient chatClient;
+
+    public SpringAILLMService(ChatClient chatClient) {
+        this.chatClient = chatClient;
+    }
+
+    /**
+     * Simple chat response
+     */
+    public String chat(String userMessage) {
+        return chatClient
+            .prompt(userMessage)
+            .call()
+            .content();
+    }
+
+    /**
+     * Chat with system prompt + user message
+     */
+    public String chatWithSystem(String systemPrompt, String userMessage) {
+        return chatClient
+            .prompt()
+            .system(systemPrompt)
+            .user(userMessage)
+            .call()
+            .content();
+    }
+
+    /**
+     * Chat with template variables
+     */
+    public String chatWithTemplate(String systemPrompt, String userTemplate, Map<String, Object> variables) {
+        PromptTemplate promptTemplate = new PromptTemplate(userTemplate);
+        Prompt prompt = promptTemplate.create(variables);
+
+        return chatClient
+            .prompt()
+            .system(systemPrompt)
+            .user(prompt.getContents())
+            .call()
+            .content();
+    }
+
+    /**
+     * Streaming response
+     */
+    public void chatStreaming(String userMessage) {
+        chatClient
+            .prompt(userMessage)
+            .stream()
+            .content()
+            .forEach(System.out::print);
+    }
+}
+```
+
+### Option 3: AWS Bedrock
+
+```java
+import software.amazon.awssdk.services.bedrockruntime.BedrockRuntimeClient;
+import software.amazon.awssdk.services.bedrockruntime.model.*;
+
+public class BedrockLLMService {
+    private final BedrockRuntimeClient client;
+
+    public BedrockLLMService() {
+        this.client = BedrockRuntimeClient.builder().build();
+    }
+
+    /**
+     * Generate text using Claude via AWS Bedrock
+     */
+    public String generate(String systemPrompt, String userPrompt) {
+        String prompt = String.format(
+            "<|im_start|>system\n%s\n<|im_end|>\n<|im_start|>user\n%s\n<|im_end|>\n<|im_start|>assistant",
+            systemPrompt, userPrompt
+        );
+
+        InvokeModelRequest request = InvokeModelRequest.builder()
+            .modelId("anthropic.claude-3-5-sonnet-20241022-v2:0") // Model ID varies
+            .body(SdkBytes.fromUtf8String(String.format(
+                "{\"prompt\": \"%s\", \"max_tokens\": 500, \"temperature\": 0.0}",
+                prompt
+            )))
+            .build();
+
+        InvokeModelResponse response = client.invokeModel(request);
+        return new String(response.body().asByteArray());
+    }
+
+    public void close() {
+        client.close();
+    }
+}
+```
+
+---
+
+# 7. RAG Pipeline
+
+## Complete RAG Flow
+
+```
+1. INGESTION (offline)
+   ├─ Load documents (PDF, text, etc.)
+   ├─ Parse & clean text
+   ├─ Chunk into smaller pieces
+   ├─ Embed each chunk
+   └─ Store in vector DB
+
+2. QUERY (online)
+   ├─ Receive user query
+   ├─ Embed query
+   ├─ Retrieve top-K similar chunks
+   ├─ Construct prompt (query + context)
+   └─ Call LLM
+
+3. RESPONSE
+   └─ Generate grounded answer
+```
+
+## Java: Complete RAG Service
+
+```java
+@Service
+public class RAGService {
+    private final EmbeddingService embeddingService;
+    private final HybridRetriever retriever;
+    private final SpringAILLMService llmService;
+
+    public RAGService(EmbeddingService embeddingService, 
+                      HybridRetriever retriever,
+                      SpringAILLMService llmService) {
+        this.embeddingService = embeddingService;
+        this.retriever = retriever;
+        this.llmService = llmService;
+    }
+
+    /**
+     * Ingest documents: parse, chunk, embed, store
+     */
+    public void ingestDocuments(List<String> filePaths) throws Exception {
+        for (String filePath : filePaths) {
+            List<String> chunks = DocumentParsingService.extractAndChunk(filePath);
+
+            for (int i = 0; i < chunks.size(); i++) {
+                String chunk = chunks.get(i);
+                double[] embedding = embeddingService.embed(chunk);
+
+                Document doc = new Document();
+                doc.setId(filePath + "_chunk_" + i);
+                doc.setContent(chunk);
+                doc.setEmbedding(embedding);
+                doc.setSource(filePath);
+
+                // Store in vector DB (or in-memory for demo)
+                documentStore.add(doc);
+            }
+        }
+    }
+
+    /**
+     * Main RAG query: retrieve + generate
+     */
+    public RAGResponse query(String userQuery) {
+        // Step 1: Retrieve top-K relevant documents
+        List<Document> retrievedDocs = retriever.retrieve(userQuery, 5);
+
+        // Step 2: Construct context from retrieved documents
+        String context = retrievedDocs.stream()
+            .map(d -> "Source: " + d.getSource() + "\n" + d.getContent())
+            .collect(Collectors.joining("\n\n---\n\n"));
+
+        // Step 3: Construct grounded prompt
+        String systemPrompt = "You are a helpful assistant. Answer based ONLY on the provided context. "
+            + "If the context doesn't contain the answer, say 'I don't have enough information'.";
+
+        String userPrompt = String.format(
+            "Context:\n%s\n\nQuestion: %s",
+            context, userQuery
+        );
+
+        // Step 4: Call LLM
+        String generatedAnswer = llmService.chatWithSystem(systemPrompt, userPrompt);
+
+        // Step 5: Return response with sources
+        return new RAGResponse(
+            userQuery,
+            generatedAnswer,
+            retrievedDocs.stream().map(Document::getSource).distinct().collect(Collectors.toList())
+        );
+    }
+
+    /**
+     * Response class with attribution
+     */
+    static class RAGResponse {
+        String query;
+        String answer;
+        List<String> sources;
+
+        RAGResponse(String query, String answer, List<String> sources) {
+            this.query = query;
+            this.answer = answer;
+            this.sources = sources;
+        }
+
+        @Override
+        public String toString() {
+            return "Answer: " + answer + "\n\nSources: " + String.join(", ", sources);
+        }
+    }
+}
+```
+
+## REST Endpoint: RAG Query
+
+```java
+@RestController
+@RequestMapping("/api/rag")
+public class RAGController {
+    private final RAGService ragService;
+
+    public RAGController(RAGService ragService) {
+        this.ragService = ragService;
+    }
+
+    @PostMapping("/ingest")
+    public ResponseEntity<String> ingestDocuments(@RequestBody IngestRequest request) throws Exception {
+        ragService.ingestDocuments(request.getFilePaths());
+        return ResponseEntity.ok("Documents ingested successfully");
+    }
+
+    @PostMapping("/query")
+    public ResponseEntity<RAGService.RAGResponse> query(@RequestBody QueryRequest request) {
+        RAGService.RAGResponse response = ragService.query(request.getQuery());
+        return ResponseEntity.ok(response);
+    }
+
+    static class IngestRequest {
+        List<String> filePaths;
+        // Getters, setters...
+    }
+
+    static class QueryRequest {
+        String query;
+        // Getters, setters...
+    }
+}
+```
+
+---
+
+# 7. Evaluation
+
+## RAGAS Metrics
+
+RAG systems need structured evaluation.
+
+| Metric | Measures | Ideal Score |
+|--------|----------|------------|
+| **Context Precision** | % of retrieved docs that are relevant | 1.0 |
+| **Context Recall** | % of relevant docs that were retrieved | 1.0 |
+| **Faithfulness** | % of answer supported by context | > 0.8 |
+| **Answer Relevancy** | % that answer addresses the query | > 0.8 |
+
+## Java: Basic Evaluation (Manual)
+
+```java
+public class RAGEvaluator {
+    private final SpringAILLMService llmService;
+
+    /**
+     * Evaluate faithfulness: "Is answer supported by context?"
+     * Returns score 0–1
+     */
+    public double evaluateFaithfulness(String context, String answer) {
+        String prompt = String.format(
+            "Given this context:\n%s\n\nDoes this answer faithfully follow from the context?\n%s\n\n"
+            + "Answer with a score 0–1 where 1 means fully supported.",
+            context, answer
+        );
+
+        String response = llmService.chat(prompt);
+        try {
+            return Double.parseDouble(response.trim());
+        } catch (NumberFormatException e) {
+            return 0.5; // Default if parsing fails
+        }
+    }
+
+    /**
+     * Evaluate relevancy: "Does answer address the query?"
+     */
+    public double evaluateRelevancy(String query, String answer) {
+        String prompt = String.format(
+            "Query: %s\n\nAnswer: %s\n\n"
+            + "Does the answer directly address the query? "
+            + "Answer with a score 0–1 where 1 means fully relevant.",
+            query, answer
+        );
+
+        String response = llmService.chat(prompt);
+        try {
+            return Double.parseDouble(response.trim());
+        } catch (NumberFormatException e) {
+            return 0.5;
+        }
+    }
+
+    /**
+     * Evaluate retrieval precision: "Are retrieved docs relevant to query?"
+     */
+    public double evaluateRetrievalPrecision(String query, List<Document> retrievedDocs) {
+        int relevantCount = 0;
+
+        for (Document doc : retrievedDocs) {
+            String prompt = String.format(
+                "Query: %s\n\nDocument: %s\n\nIs this document relevant to the query? "
+                + "Answer yes or no.",
+                query, doc.getContent()
+            );
+
+            String response = llmService.chat(prompt);
+            if (response.toLowerCase().contains("yes")) {
+                relevantCount++;
+            }
+        }
+
+        return (double) relevantCount / retrievedDocs.size();
+    }
+}
+```
+
+---
+
+# 8. Production Considerations
+
+## Caching
+
+Reduce latency by caching embeddings.
+
+```java
+@Service
+public class CachedEmbeddingService {
+    private final EmbeddingService embeddingService;
+    private final Cache<String, double[]> cache; // Caffeine, Redis, etc.
+
+    public CachedEmbeddingService(EmbeddingService embeddingService) {
+        this.embeddingService = embeddingService;
+        this.cache = Caffeine.newBuilder()
+            .maximumSize(10000)
+            .expireAfterWrite(24, TimeUnit.HOURS)
+            .build();
+    }
+
+    public double[] embed(String text) {
+        return cache.get(text, key -> embeddingService.embed(key));
+    }
+}
+```
+
+## Error Handling & Retries
+
+```java
+@Service
+public class ResilientRAGService {
+    private final RAGService ragService;
+    private final RetryTemplate retryTemplate;
+
+    public ResilientRAGService(RAGService ragService) {
+        this.ragService = ragService;
+        this.retryTemplate = new RetryTemplate();
+        this.retryTemplate.setRetryPolicy(new SimpleRetryPolicy(3)); // Retry up to 3 times
+        this.retryTemplate.setBackOffPolicy(new ExponentialBackOffPolicy());
+    }
+
+    public RAGService.RAGResponse queryWithRetry(String query) {
+        try {
+            return retryTemplate.execute(ctx -> ragService.query(query));
+        } catch (Exception e) {
+            log.error("RAG query failed after retries: {}", query, e);
+            // Fallback: return direct LLM response without retrieval
+            return ragService.fallbackQuery(query);
+        }
+    }
+}
+```
+
+## Observability: Logging & Metrics
+
+```java
+@Service
+public class ObservableRAGService {
+    private final RAGService ragService;
+    private final MeterRegistry meterRegistry;
+
+    public ObservableRAGService(RAGService ragService, MeterRegistry meterRegistry) {
+        this.ragService = ragService;
+        this.meterRegistry = meterRegistry;
+    }
+
+    public RAGService.RAGResponse query(String userQuery) {
+        long startTime = System.currentTimeMillis();
+
+        try {
+            // Step 1: Retrieve
+            long retrievalStart = System.currentTimeMillis();
+            List<Document> docs = retriever.retrieve(userQuery, 5);
+            long retrievalTime = System.currentTimeMillis() - retrievalStart;
+
+            // Step 2: Generate
+            long generationStart = System.currentTimeMillis();
+            String answer = llmService.chatWithSystem(systemPrompt, userPrompt);
+            long generationTime = System.currentTimeMillis() - generationStart;
+
+            // Log metrics
+            meterRegistry.timer("rag.retrieval.latency").record(retrievalTime, TimeUnit.MILLISECONDS);
+            meterRegistry.timer("rag.generation.latency").record(generationTime, TimeUnit.MILLISECONDS);
+            meterRegistry.counter("rag.query.success").increment();
+
+            log.info("RAG query completed. Retrieval: {}ms, Generation: {}ms", 
+                retrievalTime, generationTime);
+
+            return new RAGService.RAGResponse(userQuery, answer, 
+                docs.stream().map(Document::getSource).distinct().collect(Collectors.toList()));
+
+        } catch (Exception e) {
+            meterRegistry.counter("rag.query.failure").increment();
+            log.error("RAG query failed: {}", userQuery, e);
+            throw e;
+        }
+    }
+}
+```
+
+---
+
+# 9. Spring AI Integration
+
+Spring AI provides a higher-level abstraction over RAG components.
+
+## Spring AI: RAG with VectorStore
+
+```java
+import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
+import org.springframework.ai.transformer.splitter.TokenTextSplitter;
+import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.ai.document.Document;
+
+@Configuration
+public class RAGConfiguration {
+    
+    /**
+     * Configure VectorStore (e.g., FAISS, Pinecone, etc.)
+     */
+    @Bean
+    public VectorStore vectorStore(EmbeddingClient embeddingClient) {
+        return new SimpleVectorStore(embeddingClient); // Or use production-grade store
+    }
+
+    /**
+     * Configure Document loader pipeline
+     */
+    @Bean
+    public DocumentLoader documentLoader(VectorStore vectorStore, EmbeddingClient embeddingClient) {
+        return new DocumentLoader() {
+            public void load(String filePath) {
+                // 1. Load documents
+                PagePdfDocumentReader reader = new PagePdfDocumentReader(new File(filePath));
+                List<Document> documents = reader.get();
+
+                // 2. Split documents into chunks
+                TokenTextSplitter splitter = new TokenTextSplitter();
+                List<Document> chunks = splitter.apply(documents);
+
+                // 3. Add to vector store (auto-embedded)
+                vectorStore.add(chunks);
+            }
+        };
+    }
+}
+
+@Service
+public class SpringAIRAGService {
+    private final VectorStore vectorStore;
+    private final ChatClient chatClient;
+
+    public SpringAIRAGService(VectorStore vectorStore, ChatClient chatClient) {
+        this.vectorStore = vectorStore;
+        this.chatClient = chatClient;
+    }
+
+    /**
+     * RAG: retrieve + augment + generate
+     */
+    public String query(String userQuery) {
+        // Step 1: Retrieve similar documents
+        List<Document> retrievedDocs = vectorStore.similaritySearch(userQuery, 5);
+
+        // Step 2: Construct context
+        String context = retrievedDocs.stream()
+            .map(Document::getText)
+            .collect(Collectors.joining("\n\n"));
+
+        // Step 3: Generate grounded response
+        return chatClient
+            .prompt()
+            .system("Answer based ONLY on the provided context.")
+            .user("Context: " + context + "\n\nQuestion: " + userQuery)
+            .call()
+            .content();
+    }
+}
+```
+
+## Spring AI: RAG Advisors (Advanced)
+
+```java
+import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
+import org.springframework.ai.chat.client.advisor.VectorStoreAdvisor;
+
+@Service
+public class SpringAIAdvisorsRAGService {
+    private final ChatClient chatClient;
+    private final VectorStore vectorStore;
+
+    /**
+     * Use VectorStoreAdvisor to automatically handle RAG
+     */
+    public String queryWithAdvisor(String userQuery) {
+        return chatClient
+            .prompt(userQuery)
+            .advisors(new VectorStoreAdvisor(vectorStore)) // Auto-retrieve + augment
+            .call()
+            .content();
+    }
+}
+```
 
