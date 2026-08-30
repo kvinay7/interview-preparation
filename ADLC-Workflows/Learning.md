@@ -57,6 +57,7 @@
 - Packages & Libraries
 - Enums & Generics
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
+- [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)
 - [Practice Problems](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#oop-practice)
 
 ---
