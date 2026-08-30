@@ -400,7 +400,7 @@ Abstraction in Java is a core concept in object-oriented programming (OOP) that 
 
 </details>
 
-## Enums:
+## [Enums](https://algomaster.io/learn/lld/enums):
 Enums in Java offer a powerful way to define a set of constants, allowing for more readable, type-safe, and organized code. They can include fields, constructors, and methods, making them much more flexible than simple constant values.
 
 - **Defining an Enum**:
