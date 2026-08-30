@@ -28,23 +28,7 @@
 
 ---
 
-### B. [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop) 
-- [Classes & Objects](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/classesandobjects)
-- [Enums](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-oop-fundamentals)
-- [Encapsulation](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/encapsulation) 
-- [Inheritance](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/inheritance)
-- [Polymorphism](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/polymorphism)
-- [Abstraction](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/abstraction)
-- [Interfaces](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/interfaces)
-- [Relationships](https://github.com/ashishps1/awesome-low-level-design/tree/main#-class-relationships)
-- [Design Principles](https://github.com/ashishps1/awesome-low-level-design/tree/main#-design-principles)
-- [UML Diagrams](https://github.com/ashishps1/awesome-low-level-design/tree/main#%EF%B8%8F-uml)
-- [Design Patterns](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-design-patterns)
-- [Practice Problems](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-how-to-answer-a-lld-interview-problem)
-
----
-
-### C. [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework) 
+### B. [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework) 
 - [Array](https://github.com/kvinay7/DSA/blob/main/Java.md#section-3-arrays--array-methods)
 - [String](https://github.com/kvinay7/DSA/blob/main/Java.md#section-4-string--stringbuilder)
 - [List](https://github.com/kvinay7/DSA/blob/main/Java.md#arraylist-dynamic-array)
@@ -57,4 +41,20 @@
 - [Numerical](https://github.com/kvinay7/DSA/blob/main/Java.md#section-1-numerical--character-methods)
 - [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
 - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
+- [Blind 75](https://algomaster.io/practice/dsa-patterns?tab=am-75)
+---
+
+### C. [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop) 
+- [Classes & Objects](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/classesandobjects)
+- [Enums](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-oop-fundamentals)
+- [Encapsulation](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/encapsulation) 
+- [Inheritance](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/inheritance)
+- [Polymorphism](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/polymorphism)
+- [Abstraction](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/abstraction)
+- [Interfaces](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/interfaces)
+- [Relationships](https://github.com/ashishps1/awesome-low-level-design/tree/main#-class-relationships)
+- [Design Principles](https://github.com/ashishps1/awesome-low-level-design/tree/main#-design-principles)
+- [UML Diagrams](https://github.com/ashishps1/awesome-low-level-design/tree/main#%EF%B8%8F-uml)
+- [Design Patterns](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-design-patterns)
+- [Design Practice](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-how-to-answer-a-lld-interview-problem)
 
