@@ -16,6 +16,538 @@
 
 ---
 
+## JAVA
+
+### A. [Basics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction) 
+- [Variables](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#basics)
+- [Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
+- [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
+- [Control Flow](https://www.baeldung.com/java-control-structures)
+- [Numerical](https://github.com/kvinay7/DSA/blob/main/Java.md#section-1-numerical--character-methods)
+- [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
+- [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
+- [Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#conceptual-questions)
+
+---
+
+### B. [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework) 
+- [Array](https://github.com/kvinay7/DSA/blob/main/Java.md#section-3-arrays--array-methods)
+- [String](https://github.com/kvinay7/DSA/blob/main/Java.md#section-4-string--stringbuilder)
+- [List](https://github.com/kvinay7/DSA/blob/main/Java.md#arraylist-dynamic-array)
+- [Set](https://github.com/kvinay7/DSA/blob/main/Java.md#hashset-unordered-no-duplicates)
+- [Map](https://github.com/kvinay7/DSA/blob/main/Java.md#hashmap-key-value-pairs)
+- [Stack](https://github.com/kvinay7/DSA/blob/main/Java.md#stack-lifo--last-in-first-out)
+- [Queue](https://github.com/kvinay7/DSA/blob/main/Java.md#queue-fifo--first-in-first-out)
+- [Heap](https://github.com/kvinay7/DSA/blob/main/Java.md#priorityqueue-min-heap-by-default)
+- [Sorting](https://github.com/kvinay7/DSA/blob/main/Java.md#section-6-comparator--sorting)
+
+---
+
+### C. OOPs 
+- Classes & Objects, Constructors
+- Encapsulation (private fields, getters/setters)
+- Inheritance (extends, this vs super)
+- Polymorphism (overloading, overriding, Dynamic Method Dispatch, Covariant Return Type)
+- Abstraction (abstract classes, interfaces, abstract vs interface)
+- Access Modifiers (public, private, protected, package-private)
+- Non-Access Modifiers (static, final, abstract, synchronized, volatile, transient, native, strictfp)
+- Stack vs Heap memory
+- Packages
+- Enums (with fields, methods, values(), valueOf(), ordinal())
+
+---
+
+### D. Exceptions ✅
+- Checked vs Unchecked exceptions
+- try-catch-finally, try-with-resources
+- throw vs throws
+- Custom exceptions
+- Exception hierarchy (Error, Exception, RuntimeException)
+- Ducking exceptions
+- finalize() (deprecated info noted)
+
+**Status:** Complete. Ready to use.
+
+---
+
+### E. Java-8 (Functional Programming) ✅
+- Lambda expressions (syntax, functional interfaces)
+- Functional Interfaces (@FunctionalInterface, SAM — Single Abstract Method)
+- Method References (::)
+- Stream API (intermediate, terminal, short-circuit operations)
+  - map, filter, flatMap, sorted, distinct, limit, skip, peek, reduce, collect
+  - Collectors (toList, toSet, groupingBy, partitioningBy, counting)
+- Optional (of, ofNullable, empty, orElse, orElseGet, orElseThrow, map, filter, ifPresent)
+- Imperative vs Declarative programming
+- Parallel Streams (basics)
+
+**Status:** Complete. Ready to use.
+
+---
+
+### F. Generics ✅
+- Generic classes, Generic methods
+- Type bounds (extends, super)
+- Wildcards (?, ? extends T, ? super T)
+- Type erasure (basics)
+
+**Status:** Complete. Ready to use.
+
+---
+
+### G. Missing (For SDE-1 — Not Critical Yet)
+
+⚠️ **Add to Java notes (brief, SDE-2 focus):**
+- Concurrency basics (Thread creation, Thread lifecycle, synchronized keyword, volatile keyword, race conditions)
+- JVM Memory Model (GC basics, String Pool, intern() method, Mark & Sweep)
+- String immutability (why, impact on HashMap keys, performance)
+
+**Decision:** Optional. Add or defer to SDE-2? **→ Defer to SDE-2** (not blocking for SDE-1 problems).
+
+---
+
+## 🌱 SPRING (80% Complete → Add 3 Critical Sections)
+
+### A. Spring Core ✅
+- IoC (Inversion of Control)
+- DI (Dependency Injection) — Constructor, Setter, Field
+- Spring Beans (@Component, @Service, @Repository, @Bean)
+- ApplicationContext vs BeanFactory
+- Bean Lifecycle (instantiation, DI, init, ready, destroy)
+- Bean Scopes (Singleton, Prototype, Request, Session)
+- Autowiring (@Autowired, @Qualifier, @Primary, @Inject, @Resource)
+- Configuration (XML, Java config with @Configuration, @ComponentScan)
+- @Value, @PropertySource, environment variables
+
+**Status:** Complete. Ready to use.
+
+---
+
+### B. Spring Boot ✅
+- @SpringBootApplication
+- Auto-configuration
+- Starters (spring-boot-starter-web, spring-boot-starter-data-jpa, etc.)
+- application.properties / application.yml
+- Profiles (dev, test, prod)
+- Embedded server (Tomcat)
+- Project structure (Maven, src/main/java, src/main/resources, src/test/java)
+
+**Status:** Complete. Ready to use.
+
+---
+
+### C. Spring MVC / REST APIs ✅
+- HTTP Request/Response flow
+- DispatcherServlet (front controller)
+- HandlerMapping, HandlerAdapter
+- @RestController vs @Controller
+- Request Mapping (@RequestMapping, @GetMapping, @PostMapping, @PutMapping, @PatchMapping, @DeleteMapping)
+- Path Variables (@PathVariable)
+- Query Parameters (@RequestParam)
+- Request Body (@RequestBody)
+- ResponseEntity, HTTP status codes (200, 201, 204, 400, 401, 403, 404, 500)
+- @ModelAttribute (form handling)
+- View Resolver (for @Controller, not @RestController)
+
+**Status:** Complete. Ready to use.
+
+---
+
+### D. Spring Data JPA ✅
+- JPA/Hibernate concepts, ORM
+- @Entity, @Table, @Id, @GeneratedValue, @Column
+- JpaRepository interface
+- CRUD operations
+- Derived query methods (findByXxx, findAllByXxx)
+- @Query (JPQL)
+- @Modifying (updates/deletes)
+- Pagination & Sorting (Pageable, Page<T>)
+- Relationships (@OneToOne, @OneToMany, @ManyToOne, @ManyToMany)
+  - Owning side, mappedBy
+  - Cascade types (PERSIST, MERGE, REMOVE, DETACH, ALL)
+  - Fetch types (LAZY, EAGER — LAZY preferred by default)
+- Entity lifecycle
+
+**Status:** Complete. Ready to use.
+
+---
+
+### E. Testing ✅
+- JUnit 5 (@Test, assertions, lifecycle)
+- Mockito (@Mock, @InjectMocks, when/thenReturn, verify)
+- Unit testing (service layer)
+- @SpringBootTest (integration testing)
+- MockMvc (REST endpoint testing)
+- @ExtendWith(SpringExtension.class)
+- @ContextConfiguration
+- @DirtiesContext
+- @ActiveProfiles
+- Testcontainers basics
+
+**Status:** Complete. Ready to use.
+
+---
+
+### F. AOP (Aspect-Oriented Programming) ✅ (Brief)
+- Cross-cutting concerns (logging, security, transactions)
+- Separation of concerns
+- Mentioned with reference links
+
+**Status:** Brief coverage. Sufficient for SDE-1 (detailed code not required).
+
+---
+
+### G. 🔴 CRITICAL MISSING — Must Add Before Spring Projects
+
+#### 1. **DTOs & Validation** ❌ Missing
+
+**What to add:**
+- DTO Pattern (Request DTO, Response DTO)
+- DTO vs Entity (why separate)
+- Bean Validation annotations (@Valid, @Validated)
+- Common annotations (@NotNull, @NotBlank, @NotEmpty, @Email, @Size, @Min, @Max, @Pattern)
+- Validation error handling (MethodArgumentNotValidException)
+- Custom validation (@Constraint, @Documented)
+- Code examples with @RestController + @Valid
+
+**Importance:** CRITICAL — used in every Spring REST API project.
+
+**Example needed:**
+```java
+@Data
+public class UserDTO {
+    @NotBlank(message = "Name is required")
+    @Size(min = 2, max = 50)
+    private String name;
+    
+    @Email(message = "Email must be valid")
+    private String email;
+    
+    @Min(value = 18, message = "Age must be >= 18")
+    private Integer age;
+}
+
+@PostMapping("/users")
+public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO dto) {
+    return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(dto));
+}
+```
+
+---
+
+#### 2. **Global Exception Handling** ❌ Missing
+
+**What to add:**
+- @ControllerAdvice
+- @RestControllerAdvice
+- @ExceptionHandler (specific exception handling)
+- Consistent error response design (ErrorResponse class)
+- Handling MethodArgumentNotValidException (validation errors)
+- Handling ResourceNotFoundException (custom exceptions)
+- Error codes, messages, timestamps
+- HTTP status code mapping
+
+**Importance:** CRITICAL — every REST API needs centralized exception handling. Interview standard.
+
+**Example needed:**
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {
+        ErrorResponse error = new ErrorResponse(
+            "NOT_FOUND",
+            ex.getMessage(),
+            System.currentTimeMillis()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleValidationError(MethodArgumentNotValidException ex) {
+        String message = ex.getBindingResult().getFieldErrors().stream()
+            .map(e -> e.getField() + ": " + e.getDefaultMessage())
+            .collect(Collectors.joining(", "));
+        ErrorResponse error = new ErrorResponse("VALIDATION_ERROR", message, System.currentTimeMillis());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+}
+
+@Data
+@AllArgsConstructor
+public class ErrorResponse {
+    private String code;
+    private String message;
+    private Long timestamp;
+}
+```
+
+---
+
+#### 3. **Transactions** ❌ Missing
+
+**What to add:**
+- @Transactional annotation
+- ACID properties (Atomicity, Consistency, Isolation, Durability)
+- Rollback (automatic on RuntimeException)
+- Transaction boundaries
+- Propagation modes (REQUIRED, REQUIRES_NEW, NESTED, SUPPORTS, NOT_SUPPORTED, NEVER, MANDATORY)
+- Isolation levels (READ_UNCOMMITTED, READ_COMMITTED, REPEATABLE_READ, SERIALIZABLE)
+- Declarative vs Programmatic transactions
+- Best practices (apply at Service layer, not Repository)
+
+**Importance:** CRITICAL — every service modifying data needs @Transactional. Interview standard.
+
+**Example needed:**
+```java
+@Service
+@Transactional
+public class OrderService {
+    
+    private final OrderRepository orderRepo;
+    private final UserRepository userRepo;
+    
+    @Transactional(rollbackFor = Exception.class)
+    public Order placeOrder(Long userId, OrderDTO dto) {
+        User user = userRepo.findById(userId)
+            .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        
+        Order order = new Order();
+        order.setUser(user);
+        order.setOrderNumber(dto.getOrderNumber());
+        
+        return orderRepo.save(order);
+        // Automatic commit on success, rollback on exception
+    }
+    
+    @Transactional(readOnly = true)
+    public Order getOrder(Long id) {
+        return orderRepo.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Order not found"));
+    }
+}
+```
+
+---
+
+### H. Bonus Sections (Brief, Can Defer)
+- Spring Security basics (Authentication, Authorization, Password hashing, JWT basics, RBAC)
+- API Documentation (OpenAPI, Swagger UI)
+- Spring Boot Actuator (Health checks, metrics)
+- Logging (SLF4J, log levels, structured logging, MDC)
+
+**Status:** Mentioned. Sufficient for SDE-1 awareness. Depth → SDE-2.
+
+---
+
+## 🏗️ LLD (Complete Syllabus)
+
+### A. OOP Design Fundamentals ✅
+- Encapsulation, Abstraction, Inheritance, Polymorphism
+- Composition vs Inheritance
+- Interfaces as contracts
+- Dependency Injection (DI)
+- Coupling & Cohesion (tight vs loose, low vs high)
+
+**Status:** Complete.
+
+---
+
+### B. SOLID Principles ✅
+- S: Single Responsibility Principle
+- O: Open/Closed Principle
+- L: Liskov Substitution Principle
+- I: Interface Segregation Principle
+- D: Dependency Inversion Principle
+
+**With code examples for each.**
+
+**Status:** Complete.
+
+---
+
+### C. UML (Class Diagrams) ✅
+- Class boxes (attributes, methods)
+- Relationships:
+  - Association (arrow, dependency)
+  - Aggregation (hollow diamond, loose ownership)
+  - Composition (filled diamond, tight ownership)
+  - Inheritance (arrow with empty triangle)
+- Multiplicity (1:1, 1:N, N:M)
+- Example class diagrams (E-Commerce, Library)
+
+**Status:** Complete.
+
+---
+
+### D. Design Patterns ✅
+**Learn Deeply (6 core patterns):**
+1. **Singleton** — one instance globally
+2. **Factory** — create objects without hardcoding classes
+3. **Builder** — construct complex objects step-by-step
+4. **Strategy** — encapsulate interchangeable algorithms
+5. **Observer** — notify multiple objects on state change
+6. **State** — alter behavior based on object state
+
+**Understand Well (5 secondary patterns):**
+7. Adapter — make incompatible interfaces compatible
+8. Decorator — add behavior dynamically
+9. Facade — simplify complex subsystem
+10. Command — encapsulate operations as objects
+11. Template Method — define algorithm skeleton
+
+**With code examples for each.**
+
+**Status:** Complete.
+
+---
+
+### E. Domain Modeling ✅
+- Identify Entities (things with identity)
+- Identify Value Objects (immutable, represent values)
+- Define Relationships (1:1, 1:N, N:M)
+- Assign Responsibilities (which class owns which method)
+- Business Rules & Constraints
+- Aggregates (basics)
+
+**With E-Commerce example.**
+
+**Status:** Complete.
+
+---
+
+### F. LLD Process ✅
+**Step-by-step for every problem:**
+1. Understand requirements (functional, constraints, assumptions)
+2. Identify use cases (user actions, system responses)
+3. Identify core entities (User, Order, Product, Payment)
+4. Define relationships (1:1, 1:N, N:N)
+5. Assign responsibilities (SRP)
+6. Apply SOLID principles
+7. Select design patterns (only if they solve a real problem)
+8. Create class diagram (UML)
+9. Write clean Java code (implementation)
+10. Test (business scenarios)
+
+**Status:** Complete.
+
+---
+
+### G. Practice Problems ✅
+**Level 1 — Java Syntax (5 problems):**
+1. Student Grade Management System
+2. Employee Salary Calculator
+3. Inventory Stock Tracker
+4. Library Book Management
+5. Bank Account Operations
+
+**Topics:** OOP, Collections, Streams, Exceptions, Java-8
+
+**Status:** Defined. Ready to code.
+
+---
+
+**Level 2 — Spring + LLD (3 problems):**
+1. E-Commerce Order Management System
+2. User Management & Authentication API
+3. Task Management & Notification System
+
+**Topics:** REST APIs, JPA, DTOs, Validation, Exception Handling, Services, Transactions, Testing
+
+**Status:** Defined. Ready to code.
+
+---
+
+**Level 3 — Core LLD Systems (5 problems):**
+1. Parking Lot System
+2. Library Management System
+3. Vending Machine
+4. Restaurant Ordering System
+5. Movie Ticket Booking System
+
+**Topics:** Domain Modeling, SOLID, Design Patterns, State Machines, Notifications
+
+**Status:** Defined. Ready to code.
+
+---
+
+## 📊 SUMMARY TABLE
+
+| Component | Status | Action |
+|-----------|--------|--------|
+| **Java Basics** | ✅ Complete | Use as is |
+| **Java OOPs** | ✅ Complete | Use as is |
+| **Java Collections** | ✅ Complete | Use as is |
+| **Java Exceptions** | ✅ Complete | Use as is |
+| **Java-8** | ✅ Complete | Use as is |
+| **Java Generics** | ✅ Complete | Use as is |
+| **Concurrency (Java)** | ⚠️ Missing | Defer to SDE-2 |
+| **JVM Memory (Java)** | ⚠️ Missing | Defer to SDE-2 |
+| **Spring Core** | ✅ Complete | Use as is |
+| **Spring Boot** | ✅ Complete | Use as is |
+| **Spring MVC / REST** | ✅ Complete | Use as is |
+| **Spring JPA** | ✅ Complete | Use as is |
+| **Spring Testing** | ✅ Complete | Use as is |
+| **DTOs & Validation** | 🔴 **MISSING** | **ADD before 3 Spring projects** |
+| **Global Exception Handling** | 🔴 **MISSING** | **ADD before 3 Spring projects** |
+| **Transactions** | 🔴 **MISSING** | **ADD before 3 Spring projects** |
+| **Spring Security** | ⚠️ Brief | Sufficient for SDE-1 |
+| **Spring AOP** | ⚠️ Brief | Sufficient for SDE-1 |
+| **LLD (SOLID, Patterns, UML)** | ✅ Complete | Use as is |
+| **LLD Practice (13 problems)** | ✅ Complete | Ready to code |
+
+---
+
+## 🎯 EXECUTION ROADMAP
+
+### **Phase 1: Add 3 Missing Sections to Spring Notes** (1 hour)
+- DTOs & Validation (with code examples)
+- Global Exception Handling (with code examples)
+- Transactions (with code examples)
+
+### **Phase 2: Code 5 Java Problems** (1–2 weeks)
+- Focus: OOP, Collections, Exceptions, Java-8
+- No Spring needed yet
+- Apply: Basics + Collections + OOPs + Exceptions syllabus
+
+### **Phase 3: Learn Spring Concepts** (1 week)
+- Core, Boot, MVC, REST, JPA, Testing
+- Practice: Small Spring Boot CRUD app
+- Reference: Updated Spring notes with 3 new sections
+
+### **Phase 4: Code 3 Spring Projects** (2–3 weeks)
+- E-Commerce Orders API
+- User Management & Auth API
+- Task Management API
+- Apply: All Spring concepts + 3 new sections (DTOs, Validation, Exception Handling, Transactions)
+
+### **Phase 5: Learn LLD** (1 week)
+- SOLID, UML, Design Patterns (6 core)
+- Domain Modeling
+- LLD Process (10 steps)
+
+### **Phase 6: Code 5 LLD System Design Problems** (2–3 weeks)
+- Parking Lot, Library, Vending Machine, Restaurant, Movie Tickets
+- Apply: SOLID, Patterns, Domain Modeling, UML
+
+---
+
+## ✅ FINAL VERDICT
+
+**Java:** Complete. Ready to use.
+
+**Spring:** 80% complete. **Add 3 critical sections** (DTOs, Exception Handling, Transactions) before coding projects.
+
+**LLD:** Complete. Ready to use.
+
+**13 Problems:** Complete syllabus defined. Ready to execute.
+
+---
+
+**Next action:** Add 3 Spring sections, then execute Phase 2 (5 Java problems). ✅
+---
+
 ## JAVA Learning Order
 
 ### SDE-1 Now (Before Building Features)
