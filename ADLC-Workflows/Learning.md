@@ -39,8 +39,6 @@
 - [Heap](https://github.com/kvinay7/DSA/blob/main/Java.md#priorityqueue-min-heap-by-default)
 - [Sorting](https://github.com/kvinay7/DSA/blob/main/Java.md#section-6-comparator--sorting)
 - [Numerical](https://github.com/kvinay7/DSA/blob/main/Java.md#section-1-numerical--character-methods)
-- [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
-- [Java-8](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
 
 ---
 
@@ -57,6 +55,8 @@
 - Packages & Libraries
 - Enums & Generics
 - [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
+- [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
+- [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
 - [Multithreading](https://github.com/kvinay7/interview-preparation/blob/main/OS.md)
 - [Practice Problems](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#oop-practice)
 
