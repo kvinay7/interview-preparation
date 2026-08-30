@@ -62,17 +62,6 @@
 
 ---
 
-### E. Missing (For SDE-1 — Not Critical Yet)
-
-⚠️ **Add to Java notes (brief, SDE-2 focus):**
-- Concurrency basics (Thread creation, Thread lifecycle, synchronized keyword, volatile keyword, race conditions)
-- JVM Memory Model (GC basics, String Pool, intern() method, Mark & Sweep)
-- String immutability (why, impact on HashMap keys, performance)
-
-**Decision:** Optional. Add or defer to SDE-2? **→ Defer to SDE-2** (not blocking for SDE-1 problems).
-
----
-
 ## 🌱 SPRING (80% Complete → Add 3 Critical Sections)
 
 ### A. Spring Core ✅
