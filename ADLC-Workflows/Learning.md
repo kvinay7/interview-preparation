@@ -1,6 +1,6 @@
 # Learning Roadmap
 
-- **Java Developer**: [Java](https://github.com/kvinay7/DSA/blob/main/Java.md) + [DSA](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md) + [LLD](https://github.com/ashishps1/awesome-low-level-design) + [ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md) + [STAR](https://github.com/ashishps1/awesome-behavioral-interviews)
+- **Java Developer**: [Java](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/Learning.md#java) + [DSA](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md) + [LLD](https://github.com/ashishps1/awesome-low-level-design) + [ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md) + [STAR](https://github.com/ashishps1/awesome-behavioral-interviews)
 - **FSD**: Java Developer + HLD + [GenAI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md) + UI + Cloud
 
 ---
@@ -23,9 +23,7 @@
 - [Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
 - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
 - [Control Flow](https://www.baeldung.com/java-control-structures)
-- [Numerical](https://github.com/kvinay7/DSA/blob/main/Java.md#section-1-numerical--character-methods)
 - [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
-- [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
 - [Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#conceptual-questions)
 
 ---
@@ -40,6 +38,8 @@
 - [Queue](https://github.com/kvinay7/DSA/blob/main/Java.md#queue-fifo--first-in-first-out)
 - [Heap](https://github.com/kvinay7/DSA/blob/main/Java.md#priorityqueue-min-heap-by-default)
 - [Sorting](https://github.com/kvinay7/DSA/blob/main/Java.md#section-6-comparator--sorting)
+- [Numerical](https://github.com/kvinay7/DSA/blob/main/Java.md#section-1-numerical--character-methods)
+- [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
 
 ---
 
