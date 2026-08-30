@@ -40,62 +40,28 @@
 - [Sorting](https://github.com/kvinay7/DSA/blob/main/Java.md#section-6-comparator--sorting)
 - [Numerical](https://github.com/kvinay7/DSA/blob/main/Java.md#section-1-numerical--character-methods)
 - [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
+- [Java-8](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
 
 ---
 
-### C. OOPs 
-- Classes & Objects, Constructors
-- Encapsulation (private fields, getters/setters)
-- Inheritance (extends, this vs super)
-- Polymorphism (overloading, overriding, Dynamic Method Dispatch, Covariant Return Type)
-- Abstraction (abstract classes, interfaces, abstract vs interface)
-- Access Modifiers (public, private, protected, package-private)
-- Non-Access Modifiers (static, final, abstract, synchronized, volatile, transient, native, strictfp)
+### C. [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop) 
+- Classes & Objects
+- Methods & Constructors
+- Encapsulation 
+- Inheritance
+- Polymorphism
+- Abstraction
+- Access Modifiers
+- Non-Access Modifiers
 - Stack vs Heap memory
-- Packages
-- Enums (with fields, methods, values(), valueOf(), ordinal())
+- Packages & Libraries
+- Enums & Generics
+- [Exception Handling](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#exception-handling)
+- [Practice Problems](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#oop-practice)
 
 ---
 
-### D. Exceptions ✅
-- Checked vs Unchecked exceptions
-- try-catch-finally, try-with-resources
-- throw vs throws
-- Custom exceptions
-- Exception hierarchy (Error, Exception, RuntimeException)
-- Ducking exceptions
-- finalize() (deprecated info noted)
-
-**Status:** Complete. Ready to use.
-
----
-
-### E. Java-8 (Functional Programming) ✅
-- Lambda expressions (syntax, functional interfaces)
-- Functional Interfaces (@FunctionalInterface, SAM — Single Abstract Method)
-- Method References (::)
-- Stream API (intermediate, terminal, short-circuit operations)
-  - map, filter, flatMap, sorted, distinct, limit, skip, peek, reduce, collect
-  - Collectors (toList, toSet, groupingBy, partitioningBy, counting)
-- Optional (of, ofNullable, empty, orElse, orElseGet, orElseThrow, map, filter, ifPresent)
-- Imperative vs Declarative programming
-- Parallel Streams (basics)
-
-**Status:** Complete. Ready to use.
-
----
-
-### F. Generics ✅
-- Generic classes, Generic methods
-- Type bounds (extends, super)
-- Wildcards (?, ? extends T, ? super T)
-- Type erasure (basics)
-
-**Status:** Complete. Ready to use.
-
----
-
-### G. Missing (For SDE-1 — Not Critical Yet)
+### E. Missing (For SDE-1 — Not Critical Yet)
 
 ⚠️ **Add to Java notes (brief, SDE-2 focus):**
 - Concurrency basics (Thread creation, Thread lifecycle, synchronized keyword, volatile keyword, race conditions)
