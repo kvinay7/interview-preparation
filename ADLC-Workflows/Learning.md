@@ -46,7 +46,7 @@
 
 ### C. [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop) 
 - [Classes & Objects](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/classesandobjects)
-- [Enums](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-oop-fundamentals)
+- [Enums](https://algomaster.io/learn/lld/enums)
 - [Encapsulation](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/encapsulation) 
 - [Inheritance](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/inheritance)
 - [Polymorphism](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/polymorphism)
