@@ -214,6 +214,8 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
 
 ----
 
+### Bean Management
+
 - **Bean:** A bean in Spring is an object that is managed by the Spring IoC container. Beans are created, configured, and assembled by the container. Beans are defined in configuration files (XML, annotations, or Java configuration).
 
 - **Bean Lifecycle:**
@@ -240,6 +242,10 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
   - `Session` - `@SessionScope`: A bean is created once per HTTP session.
   - `Global Session`: A bean is created once per global HTTP session (used in portlet-based applications).
 
+---
+
+### Autowiring
+
 - **Autowiring:** is a feature that allows Spring to automatically inject dependencies into beans, eliminating the need to explicitly specify dependencies through setter or constructor injection. 
 
   - **Autowire with `@Autowired` Annotation (Java-based Configuration)**: The `@Autowired` annotation can be applied to fields, constructors, or setter methods to automatically inject the required dependency. By default true and can't apply for static fields or methods. `@Inject` is part of Java’s standard dependency injection mechanism (JSR-330). `@Resource` is JSR-250 annotation equivalent to `@Auttowired` but can't be applied on constructor level.
@@ -264,6 +270,10 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
        return new Engine("Electric");
      }
      ```
+
+---
+
+### Configuration
 
 - **Configuration in XML:**
   ```xml
@@ -381,7 +391,7 @@ Spring Core is the foundational module of the Spring Framework. It provides esse
         return car;
     }
   }
-  ```
+  ``` 
   
   ```properties
   # application.properties
