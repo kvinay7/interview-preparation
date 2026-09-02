@@ -92,7 +92,7 @@
 ---
 
 ### 3. [Spring MVC](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-mvc)
-- **[Request/Response Flow](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#1-http-requestresponse-flow)**
+- **[Response Flow](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#1-http-requestresponse-flow)**
 - **[Annotations](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#7-annotations-in-spring-mvc)**
 - **[Request Handling](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#8-request-and-response-handling---example)**
 - **[Form Handling](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#9-form-handling)**
@@ -104,15 +104,9 @@
 
 ---
 
-### 5. Testing
+### 5. AI Engineering
 
 ---
 
-## Tech Stack
+### 6. System Design
 
-- **Java**: Basics, Collections, Streams, OOPs, Exceptions, Logging 
-- **Spring**: Core, Boot, MVC, REST, OpenAPI, Testing, Security, AOP
-- **Databases**: SQL, Database Design, Transactions, Indexing, JPA
-- **AI**: Spring AI, RAG, Memory, Advisor, MCP, Agents, Evaluation 
-- **UI**: HTML, CSS, JavaScript, Bootstrap, ReactJS
-- **DevOps/Cloud**: Git, Linux, Docker, CI/CD, AWS
