@@ -5,19 +5,19 @@
 
 ---
 
-## JAVA
+## 1. Programming
 
-### 1. [Basics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction) 
+### A. [Basics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction) 
 - [Variables](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#basics)
 - [Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
 - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
 - [Control Flow](https://www.baeldung.com/java-control-structures)
-- [Standard I/O](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
+- [Input/Output](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
 - [Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#conceptual-questions)
 
 ---
 
-### 2. [Collections](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework) 
+### B. [Data Structures](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework) 
 - [Array](https://github.com/kvinay7/DSA/blob/main/Java.md#section-3-arrays--array-methods)
 - [String](https://github.com/kvinay7/DSA/blob/main/Java.md#section-4-string--stringbuilder)
 - [List](https://github.com/kvinay7/DSA/blob/main/Java.md#arraylist-dynamic-array)
@@ -34,7 +34,7 @@
 
 ---
 
-### 3. [OOP](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop) 
+### C. [Object-Oriented](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#object-oriented-programming-oop) 
 - [Classes & Objects](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/classesandobjects)
 - [Enums & Generics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#enums)
 - [Encapsulation](https://github.com/ashishps1/awesome-low-level-design/tree/main/oop/java/encapsulation) 
@@ -51,9 +51,25 @@
 
 ---
 
-## [Backend Engineering](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#how-is-backend-different-from-frontend)
+## 2. [Backend Engineering](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#how-is-backend-different-from-frontend)
 
-### 1. [Spring Framework](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-framework)
+### A. HTTP & APIs
+- **[OSI Model](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#osi-model)**
+- **[HTTP](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-basics)**
+- **[Request Flow](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#what-happens-when-we-hit-a-url)**
+- **[Messages](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-messages)**
+- **[Versions](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-versions)**
+- **[Headers](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-headers)**
+- **[Methods](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-methods-intent-of-requests)**
+- **[CORS](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#cors-cross-origin-resource-sharing)**
+- **[Status Codes](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-status-codes)**
+- **[Caching](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-caching)**
+- **[Content Negotiation](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-content-negotiation)**
+- **[API Design](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#rest-api-design)**
+
+---
+
+### B. [Spring Framework](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-framework)
 - **[IoC](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-core) (Inversion of Control)**
   - IoC Container
   - Dependecy Injection
@@ -74,24 +90,8 @@
   - [Annotations](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#core-annotations)
 
 ---
- 
-### 2. HTTP & APIs
-- **[OSI Model](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#osi-model)**
-- **[HTTP](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-basics)**
-- **[Request Flow](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#what-happens-when-we-hit-a-url)**
-- **[Messages](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-messages)**
-- **[Versions](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-versions)**
-- **[Headers](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-headers)**
-- **[Methods](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-methods-intent-of-requests)**
-- **[CORS](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#cors-cross-origin-resource-sharing)**
-- **[Status Codes](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-status-codes)**
-- **[Caching](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-caching)**
-- **[Content Negotiation](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-content-negotiation)**
-- **[API Design](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#rest-api-design)**
 
----
-
-### 3. [Spring MVC](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-mvc)
+### C. [Spring MVC](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-mvc)
 - **[Response Flow](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#1-http-requestresponse-flow)**
 - **[Annotations](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#7-annotations-in-spring-mvc)**
 - **[Request Handling](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#8-request-and-response-handling---example)**
@@ -100,13 +100,9 @@
 
 ---
 
-### 4. Databases
+## 3. Data & AI
 
 ---
 
-### 5. AI Engineering
-
----
-
-### 6. System Design
+## 4. System Design
 
