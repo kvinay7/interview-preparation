@@ -1,7 +1,7 @@
 # Learning Roadmap
 
-- **Java Developer**: [Java](https://github.com/kvinay7/interview-preparation/blob/main/ADLC-Workflows/Learning.md#java) + [DSA](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md) + [LLD](https://github.com/ashishps1/awesome-low-level-design) + [ADLC](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md) + [STAR](https://github.com/ashishps1/awesome-behavioral-interviews)
-- **FSD**: Java Developer + HLD + [GenAI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md) + UI + Cloud
+- **Java Developer**: Java + DSA + LLD + ADLC + STAR
+- **FSD**: Java Developer + HLD + GenAI + UI + Cloud
 
 ---
 
@@ -67,7 +67,7 @@
 
 ## 2. [Backend Engineering](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#how-is-backend-different-from-frontend)
 
-### A. HTTP & APIs
+### A. [HTTP & APIs](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md)
 - **[OSI Model](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#osi-model)**
 - **[HTTP](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#http-basics)**
 - **[Request Flow](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#what-happens-when-we-hit-a-url)**
@@ -84,9 +84,7 @@
 ---
 
 ### B. [Spring Framework](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-framework)
-- **[IoC](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-core) (Inversion of Control)**
-  - IoC Container
-  - Dependecy Injection
+- **[Inversion of Control (IoC)](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-core)**
   - [Without IoC/DI](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#1-without-ioc--di-tightly-coupled)
   - [Manual DI](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#2-with-ioc--di-manual-dependency-injection)
   - **[Spring DI](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#3-with-spring-ioc--di)**
@@ -94,12 +92,8 @@
     - [Setter injection](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#ii-setter-injection)
     - [Field injection](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#iii-field-injection)
 - **[Bean Management](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#bean-management)**
-  - Bean Lifecycle
-  - Bean Scopes
 - **[Autowiring](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#autowiring)**
 - **[Configuration](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#configuration)**
-  - XML configuration 
-  - Java-based configuration
 - **[Spring Boot](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-boot)**
   - [Annotations](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#core-annotations)
 
