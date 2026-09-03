@@ -5,9 +5,22 @@
 
 ---
 
-## 1. Programming
+## Learning Order
 
-### A. [Basics](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction) 
+**Java → Spring → Database → AI → UI → Cloud → STAR**
+
+- **Business Logic Layer:** Java + DSA + LLD + ADLC
+- **Application Layer:** HTTP/REST APIs + Spring + HLD
+- **Data Layer:** SQL + Database Design + JPA/Hibernate
+- **AI Layer:** LLM + RAG + MCP + Agents + Evaluation
+- **UI Layer:** HTML + CSS + JS + ReactJS (Optional)
+- **Cloud Layer:** Linux + Git + Docker + CI/CD + AWS
+
+---
+
+## 1. Business Logic Layer
+
+### A. [Java](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction) 
 - [Variables](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#basics)
 - [Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
 - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
@@ -47,6 +60,7 @@
 - [Design Principles](https://github.com/ashishps1/awesome-low-level-design/tree/main#-design-principles)
 - [UML Diagrams](https://github.com/ashishps1/awesome-low-level-design/tree/main#%EF%B8%8F-uml)
 - [Design Patterns](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-design-patterns)
+- [ADLC Methodology](https://github.com/kvinay7/interview-preparation/blob/main/ADLC.md)
 - [Design Practice](https://github.com/ashishps1/awesome-low-level-design/blob/main/README.md#-how-to-answer-a-lld-interview-problem)
 
 ---
@@ -100,9 +114,13 @@
 
 ---
 
-## 3. Data & AI
+## 3. Databases Layer
 
 ---
 
-## 4. System Design
+## 4. AI Engineering
+
+---
+
+## 5. System Design
 
