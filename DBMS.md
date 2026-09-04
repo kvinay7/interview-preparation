@@ -142,6 +142,10 @@ It is a technique to speed up (JOINs, ORDER BY, WHERE clauses) data retrieval op
  - **Denormalization**: for read-heavy workloads.
 ---
 
+## [Database Design](https://blog.algomaster.io/i/142880142/design-the-database-schema)
+
+---
+
 ## Structured Query Language (SQL)
 
 ### 1. SQL Data Types
@@ -307,7 +311,6 @@ It is a technique to speed up (JOINs, ORDER BY, WHERE clauses) data retrieval op
 ---
 
 ## [SQL Practice](https://leetcode.com/studyplan/top-sql-50/)
-## [Database Design](https://blog.algomaster.io/i/142880142/design-the-database-schema)
 
 ---
 
