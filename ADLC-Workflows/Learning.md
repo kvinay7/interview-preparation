@@ -65,7 +65,7 @@
 
 ---
 
-## 2. [Backend Engineering](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#how-is-backend-different-from-frontend)
+## 2. Application Layer
 
 ### A. [HTTP & APIs](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md)
 - **[OSI Model](https://github.com/kvinay7/interview-preparation/blob/main/HTTP%20%26%20REST%20APIs.md#osi-model)**
@@ -108,7 +108,52 @@
 
 ---
 
-## 3. Databases Layer
+## 3. Database Layer
+
+### A. DBMS
+- **[Introduction](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#database-management-system)**
+  - [Data](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#data-and-information)
+  - [Database](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#database)
+  - [File System](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#file-system)
+  - [DBMS](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#dbms-database-management-system)
+- **[ER Model](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#er-model)**
+- **[Relational Model](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#relational-model)**
+  - [Constraints](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#1-constraints)
+  - [Relational Algebra](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#2-relational-algebra)
+  - [Normalization](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#3-normalization)
+  - [Denormalization](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#4-denormalization)
+  - [Indexing](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#5-indexing)
+- **[DB Design](https://blog.algomaster.io/p/how-to-answer-a-system-design-interview-problem?open=false#%C2%A7design-the-database-schema)**
+
+---
+
+### B. SQL & Transactions
+- **[SQL](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#structured-query-language-sql)**
+  - [Data Types](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#1-sql-data-types)
+  - [Commands](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#2-sql-commands)
+  - [Operators](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#3-sql-operators)
+  - [Joins](https://dk81.github.io/dkmathstats_site/set-theory-sql.html)
+  - [Conditionals](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#5-conditional-statement)
+  - [SQL Prcatice](https://leetcode.com/studyplan/top-sql-50/)
+- **[Transactions](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#transactions--concurrency-control)**
+  - [ACID](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#1-acid-properties)
+  - [Life Cycle](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md#2-lifecycle-of-a-database-transaction)
+
+---
+
+### C. ORM & JPA
+- **[Spring ORM](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-orm)**
+- **[Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)**
+  - Entity Mapping (@Entity, @Table, @Column, @Id, relationships)
+  - Relationships (@OneToMany, @ManyToOne, @OneToOne, @ManyToMany)
+  - Cascade & Fetch Strategies (LAZY vs EAGER)
+  - JPA Callbacks (@PrePersist, @PostPersist, @PreUpdate, @PostUpdate)
+  - Pagination (Pageable, Page<T>)
+  - Custom Validators (@Valid, @NotBlank, custom @interface)
+  - Propagation (REQUIRED, NEW, SUPPORTS, NESTED)
+  - Dirty Checking & Persistence Context
+  - Query Optimization (N+1, JOIN FETCH, EXPLAIN PLAN)
+  - Testing (JUnit, Mockito, Testcontainers, MockMvc)
 
 ---
 
