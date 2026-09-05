@@ -143,21 +143,41 @@
 
 ### C. ORM & JPA
 - **[Spring ORM](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-orm)**
-- **[Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)**
-  - Entity Mapping (@Entity, @Table, @Column, @Id, relationships)
-  - Relationships (@OneToMany, @ManyToOne, @OneToOne, @ManyToMany)
-  - Cascade & Fetch Strategies (LAZY vs EAGER)
-  - JPA Callbacks (@PrePersist, @PostPersist, @PreUpdate, @PostUpdate)
-  - Pagination (Pageable, Page<T>)
-  - Custom Validators (@Valid, @NotBlank, custom @interface)
-  - Propagation (REQUIRED, NEW, SUPPORTS, NESTED)
-  - Dirty Checking & Persistence Context
-  - Query Optimization (N+1, JOIN FETCH, EXPLAIN PLAN)
-  - Testing (JUnit, Mockito, Testcontainers, MockMvc)
+- **[Data JPA](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#spring-data-jpa)**
+  - [Entity Mapping](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#1-entity-mapping) 
+  - [Relationships](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#2-relationships) 
+  - [Cascade & Fetch](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#3-cascade--fetch-strategies)
+  - [JPA Callbacks](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#4-jpa-callbacks)
+  - [Pagination](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#5-pagination)
+  - [Validation](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#6-custom-validators)
+  - [Propagation](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#7-propagation)
+  - [Persistence Context](https://github.com/kvinay7/interview-preparation/blob/main/Spring.md#8-dirty-checking--persistence-context)
 
 ---
 
 ## 4. AI Engineering
+- **[Introduction](https://youtu.be/OYvlznJ4IZQ?si=xQYHfRZPzDtGbZjN)**
+  - [Artificial Intelligence](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q1-what-is-artificial-intelligence-ai)
+  - [Machine Learning](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q6-what-is-machine-learning-ml)
+  - [Deep Learning](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q8-what-is-deep-learning-dl)
+  - [Natural Language Processing](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q11-what-is-natural-language-processing-nlp)
+  - [Generative AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q13-what-is-generative-ai)
+- **[Large Language Models](https://youtu.be/r37RoPQBXNU?t=0&si=fqbYdpZYdlNhFvhP)**
+  - [LLM](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q14-what-is-a-large-language-model-llm)
+  - [Terminology](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#llm-terminology--key-concepts)
+  - [Hugging Face](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q26-what-is-hugging-face)
+  - [Tokenization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q27-what-is-tokenization)
+  - [Cost Optimization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q23-why-is-cost-optimization-important-in-llm-apps)
+  - [Monitoring](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q25-how-do-you-monitor-llm-usage--costs)
+- **[Retrieval-Augmented Generation](https://youtu.be/r37RoPQBXNU?t=420&si=-VYkYmlo_nSTCjqX)**
+  - [RAG](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q21-how-retrieval-augmented-generation-rag-works)
+  - [LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q17-what-is-langchain)
+  - [RAG with LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q22-rag-implementation-with-langchain)
+  - [Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#spring-ai)
+  - [RAG with Java & Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#rag-with-java)
+- **[MCP](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q28-what-are-tools-agents-and-mcp)**
+- **[Agentic AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q29-what-is-agentic-ai)**
+  - [LangGraph](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q30-what-is-langgraph)
 
 ---
 
