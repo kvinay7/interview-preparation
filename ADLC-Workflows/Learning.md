@@ -1,22 +1,4 @@
-# Learning Roadmap
-
-- **Java Developer**: Java + DSA + LLD + ADLC + STAR
-- **FSD**: Java Developer + HLD + GenAI + UI + Cloud
-
----
-
-## Learning Order
-
-**Java → Spring → Database → AI → UI → Cloud → STAR**
-
-- **Business Logic Layer:** Java + DSA + LLD + ADLC
-- **Application Layer:** HTTP/REST APIs + Spring + HLD
-- **Data Layer:** SQL + Database Design + JPA/Hibernate
-- **AI Layer:** LLM + RAG + MCP + Agents + Evaluation
-- **UI Layer:** HTML + CSS + JS + ReactJS (Optional)
-- **Cloud Layer:** Linux + Git + Docker + CI/CD + AWS
-
----
+# AI and Software Engineering 
 
 ## 1. Business Logic Layer
 
@@ -168,14 +150,15 @@
   - [Terminology](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#llm-terminology--key-concepts)
   - [Hugging Face](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q26-what-is-hugging-face)
   - [Tokenization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q27-what-is-tokenization)
-  - [Cost Optimization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q23-why-is-cost-optimization-important-in-llm-apps)
-  - [Monitoring](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q25-how-do-you-monitor-llm-usage--costs)
+  - [LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q17-what-is-langchain)
+  - [Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#spring-ai)
 - **[Retrieval-Augmented Generation](https://youtu.be/r37RoPQBXNU?t=420&si=-VYkYmlo_nSTCjqX)**
   - [RAG](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q21-how-retrieval-augmented-generation-rag-works)
-  - [LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q17-what-is-langchain)
   - [RAG with LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q22-rag-implementation-with-langchain)
-  - [Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#spring-ai)
   - [RAG with Java & Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#rag-with-java)
+  - [Evaluation]()
+  - [Optimization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q23-why-is-cost-optimization-important-in-llm-apps)
+  - [Monitoring](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q25-how-do-you-monitor-llm-usage--costs)
 - **[MCP](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q28-what-are-tools-agents-and-mcp)**
 - **[Agentic AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q29-what-is-agentic-ai)**
   - [LangGraph](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q30-what-is-langgraph)
