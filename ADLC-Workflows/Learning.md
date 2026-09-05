@@ -43,6 +43,7 @@
 - [Numerical](https://github.com/kvinay7/DSA/blob/main/Java.md#section-1-numerical--character-methods)
 - [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
 - [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
+- [Python](https://github.com/kvinay7/DSA/blob/main/Python.md)
 - [Blind 75](https://algomaster.io/practice/dsa-patterns?tab=am-75)
 
 ---
