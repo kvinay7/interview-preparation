@@ -740,7 +740,7 @@ Spring ORM (Object-Relational Mapping) is a module of the Spring Framework that 
 - **Java Persistence API (JPA)**: A standard API for ORM.
 - **Hibernate**: A widely used ORM framework. In Spring Boot, Hibernate is the default implementation of JPA. Based on configs, spring boot will automatically create the beans such as DataSource, EntityManager, ...
 
-### 2. **Spring ORM with Hibernate**: [DBMS](https://github.com/kvinay7/interview-preparation/blob/main/DBMS.md), [JDBC](https://github.com/RameshMF/JDBC-Tutorial), [Spring JPA](https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginners/tree/main/03-spring-boot-hibernate-jpa-crud/08-cruddemo-create-db-tables-automatically), [Data JPA](https://www.javaguides.net/p/spring-data-jpa-tutorial.html)
+### 2. **Spring ORM with Hibernate**: 
 ```java
 @Configuration
 @EnableTransactionManagement
@@ -782,6 +782,976 @@ public class AppConfig {
         return properties;
     }
 }
+```
+
+---
+
+## Spring Data JPA
+
+**Purpose:** CRUD operations, data persistence, and database interaction in Spring Boot applications.
+
+### 1. Entity Mapping
+ 
+**Purpose:** Define persistent data structures using JPA annotations.
+ 
+#### 1.1 Core Annotations
+ 
+```java
+@Entity                    // Mark class as JPA entity (mapped to DB table)
+@Table(name = "users")     // Specify table name (optional, defaults to class name)
+@Data                      // Lombok: auto-generate getters/setters/toString/equals/hashCode
+@NoArgsConstructor         // Lombok: no-arg constructor (required by JPA)
+public class User {
+    
+    @Id                    // Primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-increment ID
+    private Long id;
+    
+    @Column(
+        nullable = false,  // NOT NULL constraint
+        unique = true,     // UNIQUE constraint
+        length = 100       // VARCHAR(100)
+    )
+    @NotBlank              // Validation: must not be blank
+    @Email                 // Validation: must be valid email
+    private String email;
+    
+    @Column(nullable = false, length = 100)
+    @NotBlank
+    @Size(max = 100)
+    private String name;
+    
+    @Column(length = 20)
+    @Size(max = 20)
+    private String phone;
+    
+    @CreationTimestamp     // Auto-populate on INSERT
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+    
+    @UpdateTimestamp       // Auto-populate on UPDATE
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
+    
+    @Column(nullable = false)
+    private Boolean isDeleted = false;  // Soft delete pattern
+    
+    @Enumerated(EnumType.STRING)  // Store enum as string (not numeric)
+    @Column(nullable = false)
+    private UserRole role = UserRole.USER;  // Default role
+}
+```
+ 
+#### 1.2 Data Types Mapping
+ 
+| Java Type | SQL Type | JPA Annotation |
+|---|---|---|
+| `Long` | `BIGINT` | @Id @GeneratedValue |
+| `String` | `VARCHAR(n)` | @Column(length=n) |
+| `Integer` | `INT` | - |
+| `BigDecimal` | `DECIMAL(10,2)` | @Column(precision=10, scale=2) |
+| `LocalDateTime` | `TIMESTAMP` | @CreationTimestamp / @UpdateTimestamp |
+| `Boolean` | `BOOLEAN` | - |
+| `Enum` | `VARCHAR(50)` | @Enumerated(EnumType.STRING) |
+| `UUID` | `UUID` (PostgreSQL) | - |
+ 
+#### 1.3 Constraints
+ 
+```java
+// Field constraints
+@Column(nullable = false)          // NOT NULL
+@Column(unique = true)             // UNIQUE
+@Column(length = 100)              // VARCHAR(100)
+@Column(precision = 10, scale = 2) // DECIMAL(10,2)
+ 
+// Validation constraints
+@NotNull                 // Value must not be null
+@NotBlank               // String must not be blank
+@Email                  // Valid email format
+@Size(min=1, max=100)   // String length 1-100
+@Min(0)                 // Number >= 0
+@Max(100)               // Number <= 100
+@Positive               // Number > 0
+@Negative               // Number < 0
+@Pattern(regexp="...")  // Regex validation
+```
+ 
+#### 1.4 Lombok Benefits
+ 
+```java
+// WITHOUT Lombok (verbose)
+public class User {
+    private Long id;
+    private String email;
+    
+    // 20+ lines of getters, setters, toString, equals, hashCode
+}
+ 
+// WITH Lombok @Data (clean)
+@Data
+public class User {
+    private Long id;
+    private String email;
+    // All getters/setters/toString/equals/hashCode auto-generated
+}
+```
+
+---
+ 
+### 2. Relationships
+ 
+**Purpose:** Define associations between entities (User ↔ Order, Order ↔ OrderItem, etc.)
+ 
+#### 2.1 One-to-Many (1:N)
+ 
+**One User has many Orders**
+ 
+```java
+@Entity
+@Table(name = "users")
+@Data
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String email;
+    
+    // One user can have many orders
+    @OneToMany(
+        mappedBy = "user",           // Inverse side (Order.user)
+        cascade = CascadeType.ALL,   // Delete user → delete orders
+        orphanRemoval = true,        // Delete order from list → delete from DB
+        fetch = FetchType.LAZY       // Load orders only when accessed
+    )
+    private Set<Order> orders = new HashSet<>();
+}
+ 
+@Entity
+@Table(name = "orders")
+@Data
+public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private BigDecimal total;
+    
+    // Many orders belong to one user (owning side)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)  // Foreign key
+    private User user;
+}
+```
+ 
+**Database Schema Generated:**
+```sql
+CREATE TABLE users (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL UNIQUE
+);
+ 
+CREATE TABLE orders (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+```
+ 
+#### 2.2 Many-to-One (N:1)
+ 
+**Inverse of 1:N (simpler, usually on child side)**
+ 
+```java
+@Entity
+@Table(name = "orders")
+@Data
+public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    // Many orders belong to one user
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+}
+```
+ 
+#### 2.3 One-to-One (1:1)
+ 
+**One User has one Profile**
+ 
+```java
+@Entity
+@Table(name = "users")
+@Data
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String email;
+    
+    @OneToOne(
+        mappedBy = "user",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true,
+        fetch = FetchType.LAZY
+    )
+    private UserProfile profile;
+}
+ 
+@Entity
+@Table(name = "user_profiles")
+@Data
+public class UserProfile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String bio;
+    private String profilePicUrl;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
+}
+```
+ 
+#### 2.4 Many-to-Many (N:N)
+ 
+**Many Users can belong to many Groups (junction table)**
+ 
+```java
+@Entity
+@Table(name = "users")
+@Data
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String email;
+    
+    @ManyToMany(
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+        fetch = FetchType.LAZY
+    )
+    @JoinTable(
+        name = "user_groups",              // Junction table name
+        joinColumns = @JoinColumn(name = "user_id"),      // FK to users
+        inverseJoinColumns = @JoinColumn(name = "group_id")  // FK to groups
+    )
+    private Set<Group> groups = new HashSet<>();
+}
+ 
+@Entity
+@Table(name = "groups")
+@Data
+public class Group {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)  // Inverse side
+    private Set<User> users = new HashSet<>();
+}
+```
+ 
+**Database Schema:**
+```sql
+CREATE TABLE users (id BIGINT PRIMARY KEY, email VARCHAR(100));
+CREATE TABLE groups (id BIGINT PRIMARY KEY, name VARCHAR(100));
+CREATE TABLE user_groups (
+    user_id BIGINT NOT NULL,
+    group_id BIGINT NOT NULL,
+    PRIMARY KEY (user_id, group_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (group_id) REFERENCES groups(id)
+);
+```
+
+---
+ 
+### 3. Cascade & Fetch Strategies
+ 
+**Purpose:** Control how related entities are loaded and persisted
+ 
+#### 3.1 Cascade Types
+ 
+```java
+@OneToMany(cascade = CascadeType.ALL)  // ALL = PERSIST, MERGE, REMOVE, REFRESH, DETACH
+ 
+// Specific cascades:
+@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+// When saving User, also save new orders (PERSIST)
+// When merging detached User, also merge orders (MERGE)
+// But don't delete orders when user is deleted
+ 
+@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+// Equivalent to above for delete scenario
+// If you remove an order from user.orders list, delete from DB (orphan removal)
+```
+ 
+#### 3.2 Fetch Strategies
+ 
+```java
+// LAZY (Default) - Load relationship only when accessed
+@OneToMany(fetch = FetchType.LAZY)
+public Set<Order> orders;
+ 
+// Usage:
+User user = userRepository.findById(1L).get();
+// orders NOT loaded yet
+ 
+List<Order> orders = user.getOrders();  // Now orders loaded (separate query)
+```
+ 
+**Problem: LazyInitializationException**
+```java
+// WRONG
+@Transactional  // ← Missing!
+public User getUser(Long id) {
+    return userRepository.findById(id).get();  // Session closes after return
+}
+ 
+// In controller
+User user = getUser(1L);
+List<Order> orders = user.getOrders();  // ERROR: LazyInitializationException!
+// Session is closed, can't load lazy orders
+ 
+// CORRECT
+@Transactional
+public User getUser(Long id) {
+    User user = userRepository.findById(id).get();
+    user.getOrders().size();  // Eager load while session open
+    return user;
+}
+```
+ 
+#### 3.3 EAGER Loading
+ 
+```java
+// EAGER - Load relationship immediately
+@OneToMany(fetch = FetchType.EAGER)
+public Set<Order> orders;
+ 
+// Usage:
+User user = userRepository.findById(1L).get();
+// orders loaded automatically (same query or JOIN)
+List<Order> orders = user.getOrders();  // No extra query
+```
+ 
+**Trade-off:**
+- EAGER: Always load (slower queries, but safe)
+- LAZY: Load on demand (faster initial query, but risk of LazyInitializationException)
+  
+#### 3.4 orphanRemoval
+ 
+```java
+@OneToMany(orphanRemoval = true)
+private Set<Order> orders;
+ 
+// Usage:
+user.getOrders().remove(order);  // Removes from list
+userRepository.save(user);        // Deletes order from DB (orphan)
+ 
+// Equivalent to cascade REMOVE for this case
+```
+
+---
+ 
+### 4. JPA Callbacks
+ 
+**Purpose:** Execute logic automatically at entity lifecycle events
+ 
+#### 4.1 Lifecycle Events
+ 
+```java
+@Entity
+@Table(name = "users")
+@Data
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String email;
+    
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+    
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
+    
+    private Boolean isDeleted = false;
+    
+    // Called before INSERT
+    @PrePersist
+    private void prePersist() {
+        System.out.println("Before saving user: " + email);
+        // Initialize defaults, validate, etc.
+        if (this.isDeleted == null) {
+            this.isDeleted = false;
+        }
+    }
+    
+    // Called after INSERT
+    @PostPersist
+    private void postPersist() {
+        System.out.println("User saved with ID: " + id);
+        // Logging, send event, etc.
+    }
+    
+    // Called before UPDATE
+    @PreUpdate
+    private void preUpdate() {
+        System.out.println("Before updating user: " + email);
+        // Validation, audit trail, etc.
+    }
+    
+    // Called after UPDATE
+    @PostUpdate
+    private void postUpdate() {
+        System.out.println("User updated: " + email);
+        // Logging, cache invalidation, etc.
+    }
+    
+    // Called before DELETE
+    @PreRemove
+    private void preRemove() {
+        System.out.println("Before deleting user: " + email);
+    }
+    
+    // Called after DELETE
+    @PostRemove
+    private void postRemove() {
+        System.out.println("User deleted: " + email);
+    }
+}
+```
+ 
+#### 4.2 Lifecycle Sequence
+ 
+```
+1. User user = new User("alice@example.com");
+   ↓
+2. userRepository.save(user);
+   ↓
+3. @PrePersist called
+   ↓
+4. INSERT into database
+   ↓
+5. @PostPersist called
+   ↓
+6. Return saved user with ID
+ 
+---
+ 
+1. user.setEmail("alice2@example.com");
+   ↓
+2. userRepository.save(user);  // Call save again
+   ↓
+3. @PreUpdate called
+   ↓
+4. UPDATE database
+   ↓
+5. @PostUpdate called
+   ↓
+6. Return updated user
+```
+ 
+#### 4.3 Common Use Cases
+ 
+```java
+// Auto-populate audit fields
+@PrePersist
+private void prePersist() {
+    this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
+}
+ 
+@PreUpdate
+private void preUpdate() {
+    this.updatedAt = LocalDateTime.now();
+}
+ 
+// Validate state
+@PrePersist
+private void validateBeforeSave() {
+    if (email == null || email.isBlank()) {
+        throw new IllegalArgumentException("Email is required");
+    }
+}
+ 
+// Logging
+@PostPersist
+private void logCreation() {
+    logger.info("User created: {} at {}", email, createdAt);
+}
+```
+
+---
+
+### 5. Pagination
+ 
+**Purpose:** Retrieve large datasets in pages to improve performance and UX
+ 
+#### 5.1 Pageable Interface
+ 
+```java
+// Controller
+@GetMapping("/users")
+public ResponseEntity<Page<UserResponse>> listUsers(
+    @RequestParam(defaultValue = "0") int page,
+    @RequestParam(defaultValue = "10") int size,
+    @RequestParam(defaultValue = "createdAt,desc") String sort,
+    Pageable pageable  // Spring auto-constructs from params
+) {
+    Page<User> users = userService.listUsers(pageable);
+    return ResponseEntity.ok(users.map(UserResponse::from));
+}
+ 
+// Example requests:
+GET /users?page=0&size=20&sort=createdAt,desc
+GET /users?page=1&size=10
+GET /users (uses defaults: page=0, size=20)
+```
+ 
+#### 5.2 Repository Query
+ 
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+    
+    // Return Page<User> for pagination
+    Page<User> findByIsDeletedFalse(Pageable pageable);
+    
+    // Multiple fields sorting
+    Page<User> findByRoleAndIsDeletedFalse(
+        Role role,
+        Pageable pageable
+    );
+}
+ 
+// Service
+@Transactional(readOnly = true)
+public Page<UserResponse> listUsers(Pageable pageable) {
+    return userRepository.findByIsDeletedFalse(pageable)
+        .map(user -> new UserResponse(
+            user.getId(),
+            user.getEmail(),
+            user.getCreatedAt()
+        ));
+}
+```
+ 
+#### 5.3 Page<T> vs Slice<T>
+ 
+```java
+// Page<T> - includes total count (heavier query)
+Page<User> users = userRepository.findAll(pageable);
+users.getTotalElements();  // Total records (runs COUNT query)
+users.getTotalPages();     // Total pages
+users.getNumber();         // Current page (0-indexed)
+users.getSize();           // Page size
+ 
+// Slice<T> - no total count (lighter query)
+Slice<User> users = userRepository.findAllByIdGreaterThan(1L, pageable);
+users.hasNext();           // Is there a next page?
+users.hasPrevious();       // Is there a previous page?
+// No total count calculation, faster for large datasets
+```
+ 
+#### 5.4 Response Format
+ 
+```json
+{
+  "content": [
+    {"id": 1, "email": "alice@example.com"},
+    {"id": 2, "email": "bob@example.com"}
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10,
+    "sort": {
+      "empty": false,
+      "sorted": true
+    }
+  },
+  "totalElements": 100,
+  "totalPages": 10,
+  "numberOfElements": 10,
+  "first": true,
+  "last": false,
+  "empty": false
+}
+```
+
+---
+
+### 6. Custom Validators
+ 
+**Purpose:** Implement complex validation logic beyond standard annotations
+ 
+#### 6.1 Standard Validators (JPA/Spring)
+ 
+```java
+@Entity
+public class User {
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
+    @Size(min = 5, max = 100, message = "Email must be 5-100 chars")
+    private String email;
+    
+    @NotNull(message = "Role is required")
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+    
+    @Positive(message = "Age must be positive")
+    @Min(18)
+    @Max(120)
+    private Integer age;
+}
+```
+ 
+#### 6.2 Custom Validator - UniqueEmail
+ 
+**Problem:** Need to validate email uniqueness at DB level
+ 
+```java
+// Step 1: Create custom annotation
+@Target({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = UniqueEmailValidator.class)
+@Documented
+public @interface UniqueEmail {
+    String message() default "Email already exists";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
+}
+ 
+// Step 2: Implement ConstraintValidator
+@Component
+public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Override
+    public void initialize(UniqueEmail annotation) {
+        // Initialize if needed
+    }
+    
+    @Override
+    public boolean isValid(String email, ConstraintValidatorContext context) {
+        if (email == null) {
+            return true;  // Let @NotBlank handle null
+        }
+        
+        boolean exists = userRepository.existsByEmailAndIsDeletedFalse(email);
+        return !exists;  // Valid if email doesn't exist
+    }
+}
+ 
+// Step 3: Use annotation on entity/DTO
+@Entity
+public class User {
+    @UniqueEmail  // Custom validator
+    @Email
+    @NotBlank
+    private String email;
+}
+```
+ 
+#### 6.3 Custom Validator - ValidUserRole
+ 
+```java
+@Target({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = ValidUserRoleValidator.class)
+public @interface ValidUserRole {
+    String message() default "Invalid user role";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
+}
+ 
+public class ValidUserRoleValidator implements ConstraintValidator<ValidUserRole, UserRole> {
+    
+    @Override
+    public boolean isValid(UserRole role, ConstraintValidatorContext context) {
+        if (role == null) {
+            return true;
+        }
+        
+        // Only ADMIN and USER allowed (not DELETED role)
+        return role == UserRole.ADMIN || role == UserRole.USER;
+    }
+}
+ 
+@Entity
+public class User {
+    @ValidUserRole
+    private UserRole role;
+}
+```
+ 
+#### 6.4 Nested Validation
+ 
+```java
+public record CreateUserRequest(
+    @NotBlank
+    @Email
+    String email,
+    
+    @NotNull
+    @Valid  // ← Validate nested object
+    CreateAddressRequest address
+) {}
+ 
+public record CreateAddressRequest(
+    @NotBlank
+    String street,
+    
+    @NotBlank
+    String city,
+    
+    @NotBlank
+    String postalCode
+) {}
+ 
+// When CreateUserRequest validated via @Valid:
+// 1. Email validated
+// 2. Address object validated
+// 3. All fields inside address validated
+```
+
+---
+ 
+### 7. Propagation
+ 
+**Purpose:** Control transaction behavior when methods call other methods
+ 
+#### 7.1 Propagation Types
+ 
+```java
+@Service
+public class OrderService {
+    
+    @Autowired
+    private OrderRepository orderRepository;
+    
+    @Autowired
+    private UserService userService;
+    
+    // REQUIRED (default) - Use current transaction or create new
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void createOrder(Long userId, Order order) {
+        userService.validateUser(userId);  // Uses same transaction
+        orderRepository.save(order);
+        // All changes committed together
+    }
+    
+    // REQUIRES_NEW - Always create new transaction
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void logAudit(String action) {
+        // If createOrder rolls back, audit log still saved
+        // (separate transaction)
+    }
+    
+    // SUPPORTS - Use transaction if exists, otherwise none
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public Order getOrder(Long id) {
+        // Can be called from transactional or non-transactional context
+    }
+    
+    // MANDATORY - Must have transaction, throw error if none
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void updateOrder(Long id, Order order) {
+        // Must be called from within a transaction
+    }
+    
+    // NOT_SUPPORTED - Run without transaction
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    public void generateReport() {
+        // Read-only operation, no transaction overhead
+    }
+    
+    // NEVER - Throw error if transaction exists
+    @Transactional(propagation = Propagation.NEVER)
+    public void testMethod() {
+        // Should never be called from transaction
+    }
+    
+    // NESTED - Create savepoint within current transaction
+    @Transactional(propagation = Propagation.NESTED)
+    public void saveOrder(Order order) {
+        // Can rollback to savepoint without rolling back outer transaction
+    }
+}
+```
+ 
+#### 7.2 Common Scenarios
+ 
+**Scenario 1: Audit logging should always save**
+```java
+@Transactional
+public void createOrder(Order order) {
+    orderRepository.save(order);
+    logAudit("Order created");  // Should succeed even if order creation fails? NO
+}
+ 
+// Better: Log in separate transaction
+@Transactional
+public void createOrder(Order order) {
+    orderRepository.save(order);
+    logAuditAsync("Order created");  // Separate transaction via @Async/@REQUIRES_NEW
+}
+ 
+@Transactional(propagation = Propagation.REQUIRES_NEW)
+public void logAuditAsync(String action) {
+    auditRepository.save(new AuditLog(action));
+}
+```
+ 
+**Scenario 2: Read-only doesn't need transaction**
+```java
+@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+public User getUser(Long id) {
+    // No transaction overhead for read
+    return userRepository.findById(id).get();
+}
+```
+
+---
+
+### 8. Dirty Checking & Persistence Context
+ 
+**Purpose:** Understand how JPA tracks entity changes and persists them
+ 
+#### 8.1 Persistence Context (L1 Cache)
+ 
+```java
+// Persistence context = session-level cache
+// Tracks all entities loaded in current session
+ 
+@Transactional
+public void updateUser(Long id, String newEmail) {
+    User user = userRepository.findById(id).get();  // Load from DB
+    // user now in persistence context (managed state)
+    
+    user.setEmail(newEmail);  // Change tracked automatically
+    
+    // No explicit save() needed!
+    userRepository.save(user);  // Redundant but safe
+    
+}  // @Transactional ends here → flush() & commit()
+```
+ 
+#### 8.2 Entity States
+ 
+```
+Transient → Managed → Detached → Removed
+ 
+Transient: new User("alice@example.com")
+           (not yet saved, not in persistence context)
+ 
+Managed:   userRepository.findById(1L).get()
+           (loaded from DB, tracked by JPA)
+           Changes automatically flushed on commit
+ 
+Detached:  User user = ...;
+           entityManager.detach(user);
+           OR session ends (outside @Transactional)
+           (was managed, now not tracked)
+ 
+Removed:   userRepository.deleteById(1L);
+           (marked for deletion, flushed on commit)
+```
+ 
+#### 8.3 Dirty Checking
+ 
+```java
+@Transactional
+public void updateUserDirtyChecking(Long id) {
+    User user = userRepository.findById(id).get();  // 1 query: SELECT
+    
+    user.setEmail("newemail@example.com");  // Change tracked
+    user.setName("New Name");               // Change tracked
+    
+}  // Transaction ends → flush()
+   // 1 query: UPDATE user SET email=?, name=? WHERE id=?
+   
+// Total: 2 queries (1 SELECT, 1 UPDATE)
+// No explicit userRepository.save() needed!
+```
+ 
+#### 8.4 merge() for Detached Entities
+ 
+```java
+@Transactional
+public void updateDetachedUser(User detachedUser) {
+    // detachedUser not in persistence context
+    
+    // Option 1: merge() re-attaches and loads fresh state
+    User managedUser = entityManager.merge(detachedUser);
+    managedUser.setEmail("newemail@example.com");
+    // Changes tracked and flushed on commit
+    
+    // Option 2: Use repository.save()
+    User savedUser = userRepository.save(detachedUser);
+    // If detached: performs UPDATE
+    // If new: performs INSERT
+}
+```
+ 
+#### 8.5 flush() vs commit()
+ 
+```java
+@Transactional
+public void flushExample() {
+    User user = userRepository.findById(1L).get();
+    user.setEmail("email@example.com");  // Tracked but not yet in DB
+    
+    entityManager.flush();  // Write changes to DB NOW (but not committed)
+    // User can see changes in same session
+    
+    // ... more logic ...
+    
+}  // @Transactional ends → commit()
+   // All changes persisted permanently
+```
+ 
+#### 8.6 LazyInitializationException Revisited
+ 
+```java
+// WRONG
+public User getUser(Long id) {
+    return userRepository.findById(id).get();  // No @Transactional
+    // Session closes after method returns
+}
+ 
+// In controller
+User user = getUser(1L);
+List<Order> orders = user.getOrders();  // ERROR!
+// Session is closed, can't load lazy orders
+ 
+// CORRECT
+@Transactional(readOnly = true)
+public User getUser(Long id) {
+    User user = userRepository.findById(id).get();
+    user.getOrders().size();  // Force load while session open
+    return user;  // Now it's safe to access in controller
+}
+ 
+// OR use JOIN FETCH
+@Query("SELECT u FROM User u LEFT JOIN FETCH u.orders WHERE u.id = :id")
+Optional<User> findByIdWithOrders(@Param("id") Long id);
 ```
 
 ---
