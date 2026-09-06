@@ -72,7 +72,8 @@ An identifier is the name used to identify a variable & method (CamelCase), clas
 ## Variables and Data Types:
 A variable is a container for storing data values and Data types define the type of data that can be stored in a variable.
 - **Reference Data Types:** refer to objects, [arrays](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md#arrays), [strings](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md#strings), enum and can be null.
-- **Primitives:** Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null. In memory, char are stored as ASCII values, 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. Signed values range: -(2^(n-1)) to (2^(n-1))-1.
+- **Primitives:** Java isn't considered a pure oop language mainly because it has primitive types which represent single value and can't be null. 48-57 -> '0'-'9', 65-90 -> 'A'-'Z', 97-122 -> 'a'-'z'. Signed values range: -(2^(n-1)) to (2^(n-1))-1.
+- Instance/static fields and array elements receive default values; local variables must be initialized before use.
   - **boolean:** default - false 
   - **char:** default - '\u0000' (%c), size - 2 bytes and range is 0-65,535
   - **byte:** default - 0 and size - 8 bits
@@ -80,7 +81,7 @@ A variable is a container for storing data values and Data types define the type
   - **int:** default - 0 (%d) and size - 4 bytes
   - **long:** default - 0L and size - 8 bytes
   - **float:** default - 0.0f (%f) and size - 4 bytes, Single-precision (6–7 decimal digits)
-  - **double:** default - 0.0d (%lf) and size - 8 bytes, Double-precision (15–16 decimal digits)
+  - **double:** default - 0.0d (%f) and size - 8 bytes, Double-precision (15–16 decimal digits)
 
 - **Type Casting:**
   - Implicit/Widening: automatically converts smaller data type to larger.
