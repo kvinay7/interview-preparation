@@ -1,44 +1,35 @@
 <h1 align="center">AI Engineering</h1>
 
----
+## Artificial Intelligence (AI)
 
-## Q1. What is Artificial Intelligence (AI)?
+AI is a field of computer science that enables machines or systems to mimic human intelligence such as learning, reasoning, problem-solving, and decision-making. Unlike traditional software, AI improves automatically from data and feedback. 
 
-AI is a field of computer science that enables machines or systems to mimic human intelligence such as learning, reasoning, problem-solving, and decision-making. Unlike traditional software, AI improves automatically from data and feedback.
+### Examples
+- Siri (NLP)
+- Netflix recommendations (ML)
+- Tesla Autopilot (CV + RL).
 
-**Examples:** Siri (NLP), Netflix recommendations (ML), Tesla Autopilot (CV + RL).
+### Types of AI 
 
----
+- #### Based on Capabilities
+    - **Narrow AI (Weak AI)** — Specialized for one task. Example: ChatGPT, Gemini
+    - **General AI (Strong AI)** — As intelligent as humans across all domains
+    - **Superintelligent AI** — Hypothetical future AI surpassing human intelligence
 
-## Q2. Types of AI (Based on Capabilities)
+- ####  Based on Functionality
+    - **Reactive Machines** — No memory, react only to current input
+    - **Limited Memory** — Uses short-term memory from past data
+    - **Theory of Mind** — Understands human emotions, beliefs, and intentions
+    - **Self-Aware AI** — Has consciousness and self-awareness (Hypothetical)
 
-1. **Narrow AI (Weak AI)** — Specialized for one task. Example: ChatGPT, Gemini
-2. **General AI (Strong AI)** — As intelligent as humans across all domains
-3. **Superintelligent AI** — Hypothetical future AI surpassing human intelligence
-
----
-
-## Q3. Types of AI (Based on Functionality)
-
-1. **Reactive Machines** — No memory, react only to current input
-2. **Limited Memory** — Uses short-term memory from past data
-3. **Theory of Mind** — Understands human emotions, beliefs, and intentions
-4. **Self-Aware AI** — Has consciousness and self-awareness (Hypothetical)
-
----
-
-## Q4. Advantages of AI
-
+### Advantages of AI
 - Automates repetitive and complex tasks
 - Personalization (e.g., Spotify, YouTube)
 - Faster pattern detection (e.g., fraud, disease diagnosis)
 - Scalable and consistent decision-making
 - Improves accuracy with data
 
----
-
-## Q5. Challenges of AI
-
+### Challenges of AI
 - **Bias** — Biased data → biased predictions
 - **Privacy** — Data misuse, surveillance
 - **Explainability** — "Black-box" problem in deep learning
@@ -49,88 +40,77 @@ AI is a field of computer science that enables machines or systems to mimic huma
 
 ---
 
-## Q6. What is Machine Learning (ML)?
+## Machine Learning (ML)
 
 ML is a subset of AI where algorithms learn patterns from data instead of being explicitly programmed. Enable systems to improve performance automatically through experience.
 
----
-
-## Q7. Types of Machine Learning
-
-1. **Supervised Learning** — Learns from labeled data. Example: Spam vs. Non-Spam emails
-2. **Unsupervised Learning** — Learns from unlabeled data. Example: Customer segmentation, topic modeling
-3. **Semi-Supervised Learning** — Mix of labeled + unlabeled data. Example: Speech recognition
-4. **Reinforcement Learning** — Learns by trial and error with rewards/penalties. Example: Game bots, robotics
+### Types of Machine Learning
+- **Supervised Learning** — Learns from labeled data. Example: Spam vs. Non-Spam emails
+- **Unsupervised Learning** — Learns from unlabeled data. Example: Customer segmentation, topic modeling
+- **Semi-Supervised Learning** — Mix of labeled + unlabeled data. Example: Speech recognition
+- **Reinforcement Learning** — Learns by trial and error with rewards/penalties. Example: Game bots, robotics
 
 ---
 
-## Q8. What is Deep Learning (DL)?
+## Deep Learning (DL)
 
 DL is a subset of ML that uses multi-layered neural networks to learn complex hierarchical patterns from raw data.
 
 - Learns directly from pixels, sound, or text
 - Uses backpropagation for learning
+- Achieves state-of-the-art performance in CV, NLP, and Speech
 - Scales efficiently with big data + GPUs
 
----
+### Neural Network
 
-## Q9. What is a Neural Network?
+- A computational model inspired by the human brain:
+    - **Input Layer** — Raw data (e.g., pixels)
+    - **Hidden Layers** — Weighted transformations + activation functions
+    - **Output Layer** — Final prediction (e.g., cat/dog)
 
-A computational model inspired by the human brain:
-
-- **Input Layer** — Raw data (e.g., pixels)
-- **Hidden Layers** — Weighted transformations + activation functions
-- **Output Layer** — Final prediction (e.g., cat/dog)
-
-Each neuron applies a weighted sum + activation function to introduce non-linearity.
+- Each neuron applies a weighted sum + activation function to introduce non-linearity.
 
 ---
 
-## Q10. Why is Deep Learning Powerful?
-
-- Learns nonlinear + complex relationships
-- Handles massive unstructured data (text, image, video, audio)
-- Achieves state-of-the-art performance in CV, NLP, and Speech
-- Supports transfer learning and generalization
-
----
-
-## Q11. What is Natural Language Processing (NLP)?
+## Natural Language Processing (NLP)
 
 NLP is a subfield of AI focused on enabling machines to understand, interpret, and generate human language.
 
-**Core Tasks:** Tokenization, POS tagging, NER, sentiment analysis, translation, summarization, chatbots.
+### Core Tasks 
+- Tokenization
+- POS tagging
+- NER
+- Sentiment Analysis
+- Translation
+- Summarization
+- Chatbots
+
+### Architectures Evolution
+
+- #### Text/NLP
+    - **RNNs** → handle sequential data
+    - **LSTMs / GRUs** → solve vanishing gradient issues
+    - **Transformers (2017)** → Attention-based (Capture relationships between tokens), parallelized architecture (BERT, GPT)
+
+- #### Generative Models
+    - **Autoencoders (2010s)** → Compress + reconstruct data
+    - **VAEs (2013)** → Learn latent distributions
+    - **GANs (2014)** → Adversarial generation of images
+    - **Diffusion Models (2020+)** → Iteratively refine noise to generate images (DALL·E, Stable Diffusion)
 
 ---
 
-## Q12. Key Architectures in NLP Evolution
-
-**For Text/NLP:**
-- **RNNs** → handle sequential data
-- **LSTMs / GRUs** → solve vanishing gradient issues
-- **Transformers (2017)** → Attention-based, parallelized architecture (BERT, GPT)
-
-**For Generative Models:**
-- **Autoencoders (2010s)** → Compress + reconstruct data
-- **VAEs (2013)** → Learn latent distributions
-- **GANs (2014)** → Adversarial generation of images
-- **Diffusion Models (2020+)** → Iteratively refine noise to generate images (DALL·E, Stable Diffusion)
-
----
-
-## Q13. What is Generative AI?
+## Generative AI
 
 Generative AI models create new content (text, images, audio, code, etc.) that resembles training data. Traditional AI models analyze existing data to make predictions, classifications, or decisions based on learned patterns, without creating new content.
 
 ---
 
-## Q14. What is a Large Language Model ([LLM](https://youtu.be/r37RoPQBXNU?t=0&si=fqbYdpZYdlNhFvhP))?
+## Large Language Model ([LLM](https://youtu.be/r37RoPQBXNU?t=0&si=fqbYdpZYdlNhFvhP))
 
 LLMs are Transformer-based models trained on massive text corpora with billions of parameters. They understand and generate human-like text.
 
----
-
-## Q15. How do LLMs Work at a High Level?
+### LLMs Execution Flow
 
 1. **Tokenize input text** → convert words into token IDs
 2. **Lookup embeddings** → token IDs → dense vectors (token embeddings)
@@ -141,9 +121,7 @@ LLMs are Transformer-based models trained on massive text corpora with billions 
 7. **Repeat autoregressively** → predict tokens one by one until end of sequence
 8. **Output text** → convert generated token IDs back to words
 
----
-
-## Q16. Limitations of LLMs
+### Limitations of LLMs
 
 - **Bias** — Reflect training data bias
 - **Hallucinations** — Produce false but confident answers
@@ -151,17 +129,18 @@ LLMs are Transformer-based models trained on massive text corpora with billions 
 - **Limited Context** — Can't remember beyond fixed window (e.g., 128k tokens)
 - **Cost** — High inference/training cost
 
----
-
-## LLM Terminology & Key Concepts
+### Terminology & Key Concepts
 
 | Term | Meaning |
 |---|---|
+| **Inference** | The process of generating predictions/output from a trained model |
 | **Prompt** | Instructions or query given to the model |
 | **Tokens** | Basic units of text the model processes |
 | **Context Window** | Max token length model can remember |
 | **Hallucination** | False but confident output |
 | **Temperature** | Controls randomness (0 = factual, 1 = creative) |
+| **Top-k** | Considers only the k most probable tokens |
+| **Top-p** | Dynamically filters tokens based on their cumulative probability threshold |
 | **Embeddings** | Vector representation of text that capture semantic meaning (similar meaning) |
 | **Vector Store** | Database that stores embeddings + metadata |
 | **Chunking** | Splitting documents into smaller pieces |
@@ -173,6 +152,45 @@ LLMs are Transformer-based models trained on massive text corpora with billions 
 | **Guardrails / Moderation** | Prevent harmful output |
 
 ---
+
+## Tokenization
+
+Tokenization is the process of converting text (like a sentence) into smaller pieces called tokens that a language model can understand and process.
+
+### Tokenization Algorithms
+- **Word-level tokenization** — splits into words
+- **Character-level tokenization** — splits into individual characters
+- **Subword tokenization** — splits words into smaller meaningful pieces (Primarily used by modern LLMs)
+
+```python
+from transformers import AutoTokenizer
+import pandas as pd
+
+# Load GPT-2 tokenizer
+tokenizer = AutoTokenizer.from_pretrained("gpt2")
+
+# Define your input text
+text = "Large language models process text by converting it into tokens."
+
+# Tokenize the input
+tokens = tokenizer.tokenize(text)
+token_ids = tokenizer.convert_tokens_to_ids(tokens)
+
+# Create a DataFrame to show tokens and their IDs
+df = pd.DataFrame({
+    "Token": tokens,
+    "Token ID": token_ids
+})
+
+# Display the result
+print(df)
+```
+
+---
+
+## Hugging Face
+
+Hugging Face is like GitHub for AI models — it provides a place where developers, researchers, and organizations can share, collaborate on, and use pre-trained machine learning models for tasks like text generation, translation, sentiment analysis, image recognition, and more.
 
 ## Q17. What is LangChain?
 
@@ -383,42 +401,6 @@ print(f" - Total Cost (USD): ${cb.total_cost:.6f}")
 ### Dashboards
 
 LangSmith, or custom dashboards.
-
----
-
-## Q26. What is Hugging Face?
-
-Hugging Face is like GitHub for AI models — it provides a place where developers, researchers, and organizations can share, collaborate on, and use pre-trained machine learning models for tasks like text generation, translation, sentiment analysis, image recognition, and more.
-
----
-
-## Q27. What is Tokenization?
-
-Tokenization is the process of converting text (like a sentence) into smaller pieces called tokens that a language model can understand and process.
-
-```python
-from transformers import AutoTokenizer
-import pandas as pd
-
-# Load GPT-2 tokenizer
-tokenizer = AutoTokenizer.from_pretrained("gpt2")
-
-# Define your input text
-text = "Udacity is the best place to learn about generative AI."
-
-# Tokenize the input
-tokens = tokenizer.tokenize(text)
-token_ids = tokenizer.convert_tokens_to_ids(tokens)
-
-# Create a DataFrame to show tokens and their IDs
-df = pd.DataFrame({
-    "Token": tokens,
-    "Token ID": token_ids
-})
-
-# Display the result
-print(df)
-```
 
 ---
 
