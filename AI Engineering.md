@@ -2,7 +2,7 @@
 
 ## 1. Artificial Intelligence (AI)
 
-AI is a field of computer science that builds systems capable of performing tasks that normally require human-like intelligence, such as perception, learning, reasoning, problem-solving, language understanding, and decision-making. AI enables software systems to:
+AI is a field of computer science that builds systems capable of performing tasks that normally require human-like intelligence, such as **perception, learning, reasoning, problem-solving, language understanding, and decision-making**. AI enables software systems to:
 
 - Automate complex tasks
 - Learn patterns from data
@@ -50,9 +50,9 @@ AI is a field of computer science that builds systems capable of performing task
 
 ---
 
-## Machine Learning (ML)
+## 2. Machine Learning (ML)
 
-ML is a subset of AI in which systems learn patterns from data to make predictions, classifications, or decisions, rather than relying entirely on explicitly programmed rules. ML enables systems to:
+ML is a subset of AI in which systems **learn patterns from data to make predictions, classifications, or decisions**, rather than relying entirely on explicitly programmed rules. ML enables systems to:
 
 - Learn from historical data
 - Make predictions on new/unseen data
@@ -109,114 +109,321 @@ Monitoring & Feedback
 
 ---
 
-## Deep Learning (DL)
+## 3. Deep Learning (DL)
 
-DL is a subset of ML that uses multi-layered neural networks to learn complex hierarchical patterns from raw data.
+Deep Learning (DL) is a subset of Machine Learning that uses **multi-layered neural networks** to automatically learn complex patterns and representations from data.
 
-- Learns directly from pixels, sound, or text
-- Uses backpropagation for learning
-- Achieves state-of-the-art performance in CV, NLP, and Speech
-- Scales efficiently with big data + GPUs
+- Learns complex patterns automatically
+- Reduces dependence on manual feature engineering
+- Performs well with large datasets
+- Scales effectively with GPUs/accelerators
+- Powers modern **computer vision, speech, NLP, and many Generative AI systems**
 
 ### Neural Network
 
-- A computational model inspired by the human brain:
+- A neural network consists of layers of interconnected computational units (neurons).
     - **Input Layer** — Raw data (e.g., pixels)
     - **Hidden Layers** — Weighted transformations + activation functions
     - **Output Layer** — Final prediction (e.g., cat/dog)
 
-- Each neuron applies a weighted sum + activation function to introduce non-linearity.
+- Each neuron applies a weighted sum + activation function to introduce non-linearity, allowing neural networks to learn complex relationships.
+
+### Training Loop
+
+```
+Input Data
+    ↓
+Forward Pass — produces predictions.
+    ↓
+Prediction
+    ↓
+Loss Function — measures prediction error.
+    ↓
+Backpropagation — calculates gradients of the loss with respect to model parameters.
+    ↓
+Gradients
+    ↓
+Optimizer — uses gradients to update the parameters.
+    ↓
+Update Weights
+    ↓
+Repeat
+```
+
+### Advantages
+
+* Automatic feature/representation learning
+* Strong performance on complex problems
+* Excellent scalability with large datasets and compute
+* Supports modern AI applications such as LLMs and generative models
+
+### Challenges / Limitations
+
+* Requires substantial data for many tasks
+* High training/inference compute requirements
+* Can require significant GPU memory
+* Training can be expensive and time-consuming
+* Often difficult to interpret
+* Can inherit bias and errors from training data
 
 ---
 
-## Natural Language Processing (NLP)
+## 4. Natural Language Processing (NLP)
 
-NLP is a subfield of AI focused on enabling machines to understand, interpret, and generate human language.
+NLP is a subfield of AI that enables computers to **process, understand, interpret, and generate human language**. NLP enables software to work with human language at scale:
+
+- Understand user queries
+- Extract information from text
+- Classify and analyze text
+- Translate languages
+- Summarize documents
+- Generate text
+- Build conversational systems
 
 ### Core Tasks 
-- Tokenization
-- POS tagging
-- NER
-- Sentiment Analysis
-- Translation
+
+| Task                    | Purpose                    | Example                  |
+| ----------------------- | -------------------------- | ------------------------ |
+| **Tokenization**        | Split text into tokens     | `"Hello world"` → tokens |
+| **POS Tagging**         | Identify grammatical roles | `run → verb`             |
+| **NER**                 | Identify entities          | `Apple → Organization`   |
+| **Sentiment Analysis**  | Determine sentiment        | Positive / Negative      |
+| **Text Classification** | Assign categories          | Spam / Not spam          |
+| **Machine Translation** | Translate languages        | English → Telugu         |
+| **Text Summarization**  | Condense text              | Article → Summary        |
+| **Question Answering**  | Answer questions from text | Document → Answer        |
+| **Text Generation**     | Generate text              | Prompt → Response        |
+| **Chatbots**            | Conversational interaction | User ↔ AI                |
+
+
+### Architecture Evolution
+
+| Architecture    | Key Idea                                  | Limitation / Improvement                                  |
+| --------------- | ----------------------------------------- | --------------------------------------------------------- |
+| **RNN**         | Processes sequential data                 | Difficult long-range dependencies; sequential computation |
+| **LSTM / GRU**  | Better handling of long-term dependencies | More complex than basic RNNs; still sequential            |
+| **Transformer** | Self-attention + parallel processing      | Became the foundation for modern NLP/LLMs                 |
+
+### Transformers
+
+- Transformers use **self-attention** to capture relationships between tokens, allowing the model to determine which parts of the input are relevant to each other.
+- They enabled highly scalable NLP architectures such as:
+  
+    - **BERT** — primarily encoder-based, strong for language understanding, classification, and search.
+    - **GPT** — decoder-based, strong for autoregressive, open-ended text and code generation.
+    - **BART** — encoder-decoder hybrid, strong for sequence-to-sequence tasks like summarization and translation.
+
+### Advantages
+
+* Automates language processing
+* Handles large-scale text
+* Supports many language tasks
+* Modern Transformer-based systems scale effectively
+* Foundation for LLMs and Generative AI
+
+### Challenges
+
+* Language ambiguity
+* Context and meaning can be difficult to interpret
+* Multilingual complexity
+* Bias in training data
+* Computational cost of modern Transformer models
+* Hallucinations in generative NLP systems
+
+---
+
+## 5. Generative AI (GenAI)
+
+**Generative AI** is a category of AI systems that **learn patterns from data and generate new content** such as text, code, images, audio, and video. Unlike traditional predictive AI, which primarily **classifies, predicts, or decides**, GenAI focuses on **creating new outputs**.
+
+* Automates content generation
+* Enables natural-language interfaces
+* Accelerates software development
+* Supports document analysis and summarization
+* Enables AI assistants and copilots
+* Powers RAG and agentic applications
+* Allows enterprises to build AI-powered workflows
+
+### Generative Model Families
+
+| Model family              | Basic idea                                                     | Typical generation   |
+| ------------------------- | -------------------------------------------------------------- | -------------------- |
+| **Autoregressive Models** | Generate output sequentially, predicting the next token/item   | Text, code           |
+| **VAEs**                  | Learn a latent representation and reconstruct/generate samples | Images, data         |
+| **GANs**                  | Generator competes with discriminator                          | Images               |
+| **Diffusion Models**      | Learn to generate data by reversing a gradual noise process    | Images, audio, video |
+
+
+### Typical GenAI Application Flow
+
+```text
+User
+ ↓
+Application
+ ↓
+Prompt + Context
+ ↓
+LLM / Generative Model
+ ↓
+Tools / RAG / External Systems
+ ↓
+Validation / Guardrails
+ ↓
+Response
+```
+
+### Advantages
+
+* Natural-language interaction
+* Flexible content generation
+* Reduces repetitive knowledge-work
+* Can handle many tasks with one model
+* Enables new AI-powered applications and workflows
+
+### Challenges / Limitations
+
+* Hallucinations
+* Bias
+* Non-deterministic outputs
+* High inference cost
+* Latency
+* Security risks such as prompt injection
+* Copyright/data-governance concerns
+* Requires evaluation and monitoring
+* Model output may require human or programmatic verification
+
+---
+
+## 6. Large Language Model (LLM)
+
+LLMs are **Transformer-based models** trained on massive data with billions of parameters to understand and generate natural language. LLMs provide a general-purpose language capability that can be integrated into software applications for:
+
+- Question answering
+- Text generation
 - Summarization
-- Chatbots
-
-### Architectures Evolution
-
-- #### Text/NLP
-    - **RNNs** → handle sequential data
-    - **LSTMs / GRUs** → solve vanishing gradient issues
-    - **Transformers (2017)** → Attention-based (Capture relationships between tokens), parallelized architecture (BERT, GPT)
-
-- #### Generative Models
-    - **Autoencoders (2010s)** → Compress + reconstruct data
-    - **VAEs (2013)** → Learn latent distributions
-    - **GANs (2014)** → Adversarial generation of images
-    - **Diffusion Models (2020+)** → Iteratively refine noise to generate images (DALL·E, Stable Diffusion)
-
----
-
-## Generative AI
-
-Generative AI models create new content (text, images, audio, code, etc.) that resembles training data. Traditional AI models analyze existing data to make predictions, classifications, or decisions based on learned patterns, without creating new content.
-
----
-
-## Large Language Model ([LLM](https://youtu.be/r37RoPQBXNU?t=0&si=fqbYdpZYdlNhFvhP))
-
-LLMs are Transformer-based models trained on massive text corpora with billions of parameters. They understand and generate human-like text.
-
-### LLMs Execution Flow
-
-1. **Tokenize input text** → convert words into token IDs
-2. **Lookup embeddings** → token IDs → dense vectors (token embeddings)
-3. **Add positional embeddings** → tell the model the order of tokens
-4. **Pass through transformer layers** → use self-attention + feed-forward layers to capture context
-5. **Compute logits for next token** → predict probability distribution over vocabulary
-6. **Sample or choose next token** → append predicted token to sequence
-7. **Repeat autoregressively** → predict tokens one by one until end of sequence
-8. **Output text** → convert generated token IDs back to words
-
-### Limitations of LLMs
-
-- **Bias** — Reflect training data bias
-- **Hallucinations** — Produce false but confident answers
-- **Resource Intensive** — Require GPUs, memory, tokens
-- **Limited Context** — Can't remember beyond fixed window (e.g., 128k tokens)
-- **Cost** — High inference/training cost
+- Translation
+- Code generation
+- Classification
+- Information extraction
+- Conversational applications
+- Reasoning and problem solving
+- AI agents
 
 ### Terminology & Key Concepts
 
-| Term | Meaning |
-|---|---|
-| **Inference** | The process of generating predictions/output from a trained model |
-| **Prompt** | Instructions or query given to the model |
-| **Tokens** | Basic units of text the model processes |
-| **Context Window** | Max token length model can remember |
-| **Hallucination** | False but confident output |
-| **Temperature** | Controls randomness (0 = factual, 1 = creative) |
-| **Top-k** | Considers only the k most probable tokens |
-| **Top-p** | Dynamically filters tokens based on their cumulative probability threshold |
-| **Embeddings** | Vector representation of text that capture semantic meaning (similar meaning) |
-| **Vector Store** | Database that stores embeddings + metadata |
-| **Chunking** | Splitting documents into smaller pieces |
-| **Overlapping** | Maintains context between chunks |
-| **RAG (Retrieval-Augmented Generation)** | Retrieve external docs + feed to LLM to improve accuracy |
-| **Fine-Tuning** | Retrain LLM on domain data |
-| **PEFT (LoRA, Prefix-Tuning)** | Lightweight fine-tuning for efficiency |
-| **Chatbot** | AI program that simulates conversational interactions with users via text or voice |
-| **Guardrails / Moderation** | Prevent harmful output |
+| Term                                | Meaning                                                                                                      |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **LLM**                             | Large Language Model trained on large-scale text data to understand and generate language                    |
+| **Parameter**                       | Learned numerical value that determines model behavior                                                       |
+| **Inference**                       | Using a trained model to generate predictions or outputs                                                     |
+| **Prompt**                          | Instructions, question, or context provided to the model                                                     |
+| **Token**                           | Basic unit of text processed by an LLM; may be a word, subword, character, or symbol                         |
+| **Context**                         | Information available to the model for generating the current response                                       |
+| **Context Window**                  | Maximum number of tokens the model can process in a single request                                           |
+| **Temperature**                     | Controls randomness in token selection; lower = more deterministic, higher = more diverse                    |
+| **Top-k**                           | Limits token selection to the k highest-probability tokens                                                   |
+| **Top-p**                           | Limits token selection to the smallest set of tokens whose cumulative probability reaches p                  |
+| **Logits**                          | Raw model scores for possible next tokens before converting them into probabilities                          |
+| **Probability / Softmax**           | Converts logits into a probability distribution over possible next tokens                                    |
+| **Embedding**                       | Dense vector representation capturing semantic information                                                   |
+| **Vector Store**                    | Storage system for embeddings and associated metadata, commonly used for semantic retrieval                  |
+| **Chunking**                        | Splitting documents into smaller pieces for processing and retrieval                                         |
+| **Chunk Overlap**                   | Repeating content between adjacent chunks to preserve contextual continuity                                  |
+| **RAG**                             | Retrieves relevant external information and provides it to an LLM as context before generation               |
+| **Fine-Tuning**                     | Further training a pretrained model on task/domain-specific data                                             |
+| **PEFT**                            | Parameter-Efficient Fine-Tuning; updates a small portion/additional parameters instead of the entire model   |
+| **LoRA**                            | PEFT technique that trains low-rank adapter matrices instead of modifying all model weights                  |
+| **Hallucination**                   | Generation of incorrect or unsupported information presented as if it were true                              |
+| **Guardrails**                      | Rules, validation, or controls that constrain model inputs/outputs and behavior                              |
+| **Moderation**                      | Detecting or preventing harmful, unsafe, or policy-violating content                                         |
+| **System Prompt**                   | High-priority instructions defining the model/application's behavior and constraints                         |
+| **User Prompt**                     | User-provided request or instruction                                                                         |
+| **Assistant Message**               | Model-generated response in a conversational interaction                                                     |
+| **Tool Calling / Function Calling** | Allows an LLM to request execution of external tools or functions                                            |
+| **Structured Output**               | Constraining model output to a defined format such as JSON/schema                                            |
+| **Multimodal LLM**                  | LLM capable of processing or generating multiple modalities such as text, images, audio, or video            |
+| **Reasoning Model**                 | Model optimized to spend additional inference computation on complex reasoning tasks                         |
+| **Agent**                           | AI system that uses an LLM with planning, tools, memory, feedback, and iterative actions to accomplish goals |
+
+### LLMs Execution Flow
+
+```
+Text
+ ↓
+Tokenization
+ ↓
+Token IDs
+ ↓
+Embedding Lookup
+ ↓
+Token Embeddings
+ +
+Positional Information
+ ↓
+Transformer Blocks
+ │
+ ├─ Self-Attention
+ │    ├─ Query
+ │    ├─ Key
+ │    ├─ Value
+ │    ├─ Attention Scores
+ │    └─ Multi-Head Attention
+ │
+ ├─ Residual Connection
+ │
+ ├─ Layer Normalization
+ │
+ ├─ Feed-Forward Network
+ │
+ └─ Residual Connection
+ ↓
+Final Hidden States
+ ↓
+LM Head
+ ↓
+Logits
+ ↓
+Probability Distribution
+ ↓
+Sampling / Selection
+ ↓
+Next Token
+ ↓
+KV Cache + Updated Context
+ ↓
+Repeat
+ ↓
+Generated Response
+```
+
+### Production Trade-offs
+
+| Concern     | Important concept                                      |
+| ----------- | ------------------------------------------------------ |
+| Quality     | Model size, prompting, reasoning, RAG                  |
+| Latency     | Model size, KV cache, batching, inference optimization |
+| Cost        | Tokens, GPU compute, model size                        |
+| Memory      | Model weights + KV cache                               |
+| Context     | Context-window limitations                             |
+| Throughput  | Batching, parallelism                                  |
+| Accuracy    | RAG, tools, verification, evaluation                   |
+| Reliability | Guardrails, retries, fallbacks                         |
+| Scalability | Distributed serving, batching, model optimization      |
 
 ---
 
-## Tokenization
+## 7. Tokenization
 
-Tokenization is the process of converting text (like a sentence) into smaller pieces called tokens that a language model can understand and process.
+Tokenization is the process of converting text into smaller units called tokens, which are then converted into numerical token IDs that an LLM can process.
+
+- LLMs process tokens, not raw text.
+- Token count affects context-window usage.
+- Token count affects inference cost and latency in many APIs.
+- Different tokenizers can produce different token counts for the same text.
 
 ### Tokenization Algorithms
-- **Word-level tokenization** — splits into words
-- **Character-level tokenization** — splits into individual characters
+- **Word-level tokenization** — splits text into words
+- **Character-level tokenization** — splits text into individual characters
 - **Subword tokenization** — splits words into smaller meaningful pieces (Primarily used by modern LLMs)
 
 ```python
@@ -226,11 +433,11 @@ import pandas as pd
 # Load GPT-2 tokenizer
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 
-# Define your input text
-text = "Large language models process text by converting it into tokens."
+# Define your input prompt
+prompt = "Large language models process text by converting it into tokens."
 
 # Tokenize the input
-tokens = tokenizer.tokenize(text)
+tokens = tokenizer.tokenize(prompt)
 token_ids = tokenizer.convert_tokens_to_ids(tokens)
 
 # Create a DataFrame to show tokens and their IDs
@@ -242,6 +449,18 @@ df = pd.DataFrame({
 # Display the result
 print(df)
 ```
+
+### Prompt Components
+
+| Component                      | Purpose                                            |
+| ------------------------------ | -------------------------------------------------- |
+| **Role / System Instructions** | Define behavior, responsibilities, and constraints |
+| **Task**                       | Explain what the model should do                   |
+| **Context**                    | Provide relevant information                       |
+| **Examples**                   | Demonstrate expected behavior                      |
+| **Constraints**                | Define rules and limitations                       |
+| **Output Format**              | Specify the expected response structure            |
+| **Input**                      | Actual user data/question                          |
 
 ---
 
