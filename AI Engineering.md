@@ -345,6 +345,18 @@ LLMs are **Transformer-based models** trained on massive data with billions of p
 | **Reasoning Model**                 | Model optimized to spend additional inference computation on complex reasoning tasks                         |
 | **Agent**                           | AI system that uses an LLM with planning, tools, memory, feedback, and iterative actions to accomplish goals |
 
+### Prompt Components
+
+| Component                      | Purpose                                            |
+| ------------------------------ | -------------------------------------------------- |
+| **Role / System Instructions** | Define behavior, responsibilities, and constraints |
+| **Task**                       | Explain what the model should do                   |
+| **Context**                    | Provide relevant information                       |
+| **Examples**                   | Demonstrate expected behavior                      |
+| **Constraints**                | Define rules and limitations                       |
+| **Output Format**              | Specify the expected response structure            |
+| **Input**                      | Actual user data/question                          |
+
 ### LLMs Execution Flow
 
 ```
@@ -426,6 +438,8 @@ Tokenization is the process of converting text into smaller units called tokens,
 - **Character-level tokenization** — splits text into individual characters
 - **Subword tokenization** — splits words into smaller meaningful pieces (Primarily used by modern LLMs)
 
+### Hugging Face Transformers
+
 ```python
 from transformers import AutoTokenizer
 import pandas as pd
@@ -449,18 +463,6 @@ df = pd.DataFrame({
 # Display the result
 print(df)
 ```
-
-### Prompt Components
-
-| Component                      | Purpose                                            |
-| ------------------------------ | -------------------------------------------------- |
-| **Role / System Instructions** | Define behavior, responsibilities, and constraints |
-| **Task**                       | Explain what the model should do                   |
-| **Context**                    | Provide relevant information                       |
-| **Examples**                   | Demonstrate expected behavior                      |
-| **Constraints**                | Define rules and limitations                       |
-| **Output Format**              | Specify the expected response structure            |
-| **Input**                      | Actual user data/question                          |
 
 ---
 
