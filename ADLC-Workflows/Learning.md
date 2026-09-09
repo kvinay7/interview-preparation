@@ -140,29 +140,28 @@
 
 ## 4. AI Engineering
 - **[Introduction](https://youtu.be/OYvlznJ4IZQ?si=xQYHfRZPzDtGbZjN)**
-  - [Artificial Intelligence](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q1-what-is-artificial-intelligence-ai)
-  - [Machine Learning](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q6-what-is-machine-learning-ml)
-  - [Deep Learning](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q8-what-is-deep-learning-dl)
-  - [Natural Language Processing](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q11-what-is-natural-language-processing-nlp)
-  - [Generative AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q13-what-is-generative-ai)
+  - [Artificial Intelligence](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#1-artificial-intelligence-ai)
+  - [Machine Learning](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#2-machine-learning-ml)
+  - [Deep Learning](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#3-deep-learning-dl)
+  - [Natural Language Processing](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#4-natural-language-processing-nlp)
+  - [Generative AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#5-generative-ai-genai)
 - **[Large Language Models](https://youtu.be/r37RoPQBXNU?t=0&si=fqbYdpZYdlNhFvhP)**
-  - [LLM](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q14-what-is-a-large-language-model-llm)
-  - [Terminology](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#llm-terminology--key-concepts)
-  - [Tokenization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q27-what-is-tokenization)
-  - [Hugging Face](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q26-what-is-hugging-face)
-  - [LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q17-what-is-langchain)
-  - [Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#spring-ai)
-- **[Retrieval-Augmented Generation](https://youtu.be/r37RoPQBXNU?t=420&si=-VYkYmlo_nSTCjqX)**
-  - [RAG](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q21-how-retrieval-augmented-generation-rag-works)
-  - [RAG with LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q22-rag-implementation-with-langchain)
-  - [RAG with Java & Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#rag-with-java)
-  - [Evaluation]()
-  - [Optimization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q23-why-is-cost-optimization-important-in-llm-apps)
-  - [Monitoring](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q25-how-do-you-monitor-llm-usage--costs)
-- **[MCP](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q28-what-are-tools-agents-and-mcp)**
-- **[Agentic AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q29-what-is-agentic-ai)**
-  - [LangGraph](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#q30-what-is-langgraph)
-- **[AI System Design](https://www.aidaddy.tech/)**
+  - [LLM](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#6-large-language-model-llm)
+  - [Tokenization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#7-tokenization)
+  - Hugging Face
+  - LangChain
+  - Spring AI
+- **Retrieval-Augmented Generation**
+  - RAG
+  - RAG with LangChain
+  - RAG with Java & Spring AI
+  - Evaluation
+  - Optimization
+  - Monitoring
+- **MCP**
+- **Agentic AI**
+  - LangGraph
+- **AI System Design**
 
 ---
 
