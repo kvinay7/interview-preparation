@@ -438,6 +438,23 @@ Tokenization is the process of converting text into smaller units called tokens,
 - **Character-level tokenization** — splits text into individual characters
 - **Subword tokenization** — splits words into smaller meaningful pieces (Primarily used by modern LLMs)
 
+---
+
+## 8. Hugging Face
+
+Hugging Face is an AI/ML platform and ecosystem that provides **pre-trained models, datasets, tokenizers, and libraries** for building and deploying machine-learning and Generative AI applications.
+
+### Components
+
+| Component            | Purpose                                                 |
+| -------------------- | ------------------------------------------------------- |
+| **Hugging Face Hub** | Repository for models, datasets, and other AI artifacts |
+| **Transformers**     | Library for working with Transformer-based models       |
+| **Tokenizers**       | Converts text into tokens/token IDs                     |
+| **Datasets**         | Provides datasets for training and evaluation           |
+| **Pipelines**        | High-level API for common inference tasks               |
+| **Models**           | Pre-trained or fine-tuned neural networks               |
+
 ### Hugging Face Transformers
 
 ```python
@@ -466,89 +483,34 @@ print(df)
 
 ---
 
-## Hugging Face
+## 9. LangChain
 
-Hugging Face is like GitHub for AI models — it provides a place where developers, researchers, and organizations can share, collaborate on, and use pre-trained machine learning models for tasks like text generation, translation, sentiment analysis, image recognition, and more.
+LangChain is a framework for building applications powered by Large Language Models (LLMs). It helps developers build dynamic, context-aware LLM applications and workflows rather than simple single-prompt applications. It provides reusable components for:
 
-## Q17. What is LangChain?
+- Models
+- Prompt templates
+- LCEL / Runnables
+- Structured output
+- State / memory
+- Tools
+- Retrieval
+- Agents
 
-A framework to build LLM-powered apps with building blocks:
+### Models
 
-- Prompts, Chains, Memory, Retrieval, Agents, Tools
-- Handles RAG pipelines and production use-cases
-- It helps developers create dynamic, context-aware applications rather than static text generators
-
----
-
-## Q18. How to Use LLM and Prompt Templates in LangChain?
+LangChain provides a common interface for interacting with different model providers.
 
 ```python
-from langchain.prompts import PromptTemplate
-from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
 
-llm = OpenAI(
-    model_name = MODEL_NAME,
-    openai_api_key = OPENAI_API_KEY,
-    openai_api_base = OPENAI_API_BASE,
-    temperature = 0
+model = ChatOpenAI(
+    model="gpt-4o-mini",
+    temperature=0
 )
 
-template = """
-Summarize this in 3 bullet points and return output as JSON:
-{
-  "bullets": ["point 1", "point 2", "point 3"]
-}
-Text: {text}
-"""
+response = model.invoke("Explain Spring Boot.")
 
-prompt = PromptTemplate(
-    template=template, 
-    input_variables=["text"]
-)
-```
-
----
-
-## Q19. What are Chains and Output Parsers in LangChain?
-
-**Chains** = sequence of steps (prompt → LLM → output parser). Chains define reusable workflows.
-
-```python
-from langchain.chains import LLMChain
-from langchain.output_parsers import JsonOutputParser
-
-parser = JsonOutputParser()
-chain = LLMChain(llm=llm, prompt=prompt)
-
-input_text = """Python is Awesome."""
-output = chain.run({"text": input_text})
-parsed_output = parser.parse(output)
-```
-
----
-
-## Q20. Why Use Memory?
-
-Memory preserves context and state to enable multi-turn conversations.
-
-- **ConversationBufferMemory** → remembers full history
-- **ConversationBufferWindowMemory** → remembers only last n exchanges
-- **ConversationSummaryMemory** → summarizes past interactions
-- **ConversationKGMemory** → remembers conversations as a knowledge graph
-- **CombinedMemory** → combines multiple memory mechanisms in one memory
-- **ZepMemory** → provides long-term persistent memory across sessions
-
-```python
-from langchain.memory import CombinedMemory, ConversationBufferMemory, ConversationSummaryMemory
-
-buffer_mem = ConversationBufferMemory()
-summary_mem = ConversationSummaryMemory()
-combined_mem = CombinedMemory(memories={"buffer": buffer_mem, "summary": summary_mem})
-
-combined_mem.chat_memory.add_user_message("Hello!")
-combined_mem.chat_memory.add_ai_message("Hi there!")
-
-print(f"Buffer: {buffer_mem.buffer} \nSummary: {summary_mem.buffer}")
+print(response.content)
 ```
 
 ---
