@@ -48,9 +48,21 @@ AI is a field of computer science that builds systems capable of performing task
 - **Energy Use** — Large models require heavy computation
 - **Regulation** — Compliance with laws like GDPR, AI Act
 
+### Major work areas & roles
+
+| Work Area                                         | Example Products / Platforms                                                                       | Typical Roles                                                   |
+| ------------------------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| 🧠 **Foundation Models & APIs**                   | OpenAI models/API, Anthropic Claude, Google Gemini, Hugging Face models                            | AI/ML Researchers, ML Engineers                                 |
+| 💬 **AI Applications & Agents**                   | ChatGPT, Claude, Gemini, GitHub Copilot, coding agents, AI assistants                              | AI Engineers, Software/Backend Engineers                        |
+| 🏢 **Enterprise AI & Integration**                | Microsoft Copilot, Salesforce Einstein, ServiceNow AI, enterprise RAG/agent platforms              | AI Systems Engineers, AI Solutions / Forward-Deployed Engineers |
+| 🔌 **Tools, Integrations & Developer Platforms**  | LangChain, Spring AI, Hugging Face, MCP-based tools, model APIs                                    | AI Engineers, Software/Platform Engineers                       |
+| 🛡️ **Infrastructure, Data, Evaluation & Safety** | GPU/cloud infrastructure, ML pipelines, observability/evaluation platforms, AI security/guardrails | MLOps, Data, AI Evaluation, Security Engineers                  |
+
+**Focus here: AI Systems Engineer** — use existing AI models and tools with **business data, backend systems, business logic, and workflows** to build, test, deploy, and maintain reliable AI solutions.
+
 ---
 
-## 2. Machine Learning (ML)
+## 2. [Machine Learning (ML)](https://github.com/rohitg00/ai-engineering-from-scratch)
 
 ML is a subset of AI in which systems **learn patterns from data to make predictions, classifications, or decisions**, rather than relying entirely on explicitly programmed rules. ML enables systems to:
 
@@ -483,22 +495,108 @@ print(df)
 
 ---
 
-## 9. LangChain
+## 9. Framework & Tools
 
-LangChain is a framework for building applications powered by Large Language Models (LLMs). It helps developers build dynamic, context-aware LLM applications and workflows rather than simple single-prompt applications. It provides reusable components for:
+AI frameworks provide reusable abstractions and components for integrating AI models with application logic, data, retrieval systems, tools, and workflows. AI frameworks help developers:
 
-- Models
-- Prompt templates
-- LCEL / Runnables
-- Structured output
-- State / memory
-- Tools
-- Retrieval
-- Agents
+- Integrate different AI model providers
+- Build reusable AI application components
+- Manage prompts and model interactions
+- Connect AI models with application data
+- Implement retrieval and tools
+- Build workflows and agents
+- Reduce low-level integration code
+- Integrate AI capabilities into production applications
 
-### Models
+### Common Framework Architecture
+
+```
+Application
+     ↓
+AI Framework
+     ↓
+ ┌───┼──────────┬───────────┐
+ ↓   ↓          ↓           ↓
+Model Prompt   Data        Tools
+ ↓      ↓       ↓            ↓
+LLM   Context  Retrieval   External Systems
+              ↓
+             RAG
+              ↓
+           Response
+```
+
+### Common Components
+
+| Component             | Purpose                                                                |
+| --------------------- | ---------------------------------------------------------------------- |
+| **Model Interface**   | Connect application to AI models                                       |
+| **Prompt Templates**  | Create reusable dynamic prompts                                        |
+| **Structured Output** | Convert model responses into defined schemas                           |
+| **Documents**         | Represent application knowledge/data                                   |
+| **Embeddings**        | Convert data into vector representations                               |
+| **Vector Store**      | Store and search embeddings                                            |
+| **Retrieval**         | Find relevant information                                              |
+| **Tools**             | Allow models to interact with external systems                         |
+| **Memory / State**    | Maintain relevant conversation/workflow state                          |
+| **Workflows**         | Compose multiple AI/application steps                                  |
+| **Agents**            | Use models with tools, state and iterative actions to accomplish goals |
+| **Evaluation**        | Measure AI application quality                                         |
+| **Observability**     | Monitor AI application behavior and performance                        |
+
+### Framework Trade-offs
+
+| Concern                  | Trade-off                                              |
+| ------------------------ | ------------------------------------------------------ |
+| **Abstraction**          | Easier development vs. less low-level control          |
+| **Provider portability** | Easier model switching vs. provider-specific features  |
+| **Productivity**         | Faster development vs. framework dependency            |
+| **Flexibility**          | Reusable components vs. framework constraints          |
+| **Performance**          | Convenience vs. abstraction overhead                   |
+| **Maintenance**          | Less custom integration code vs. framework/API changes |
+
+### Framework Selection
+```python
+Python
+   ↓
+LangChain → Python LLM application components and workflows
+   ↓
+LangGraph → Stateful and complex agent/workflow orchestration
+   ↓
+RAG / Agents
+```
+```java
+Java
+   ↓
+Spring AI → Java/Spring-based AI applications and enterprise backend integration
+   ↓
+RAG / Tool Calling / MCP / Agents
+```
+---
+
+## 10. LangChain
+
+LangChain is a framework for building applications powered by Large Language Models (LLMs). It helps developers build dynamic, context-aware LLM applications and workflows rather than simple single-prompt applications.
+
+### i. Models
 
 LangChain provides a common interface for interacting with different model providers.
+
+**Model Flow**
+
+```
+Application
+     ↓
+LangChain Model Interface
+     ↓
+LLM Provider
+     ↓
+Model
+     ↓
+Response
+```
+
+**Example**
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -511,6 +609,122 @@ model = ChatOpenAI(
 response = model.invoke("Explain Spring Boot.")
 
 print(response.content)
+```
+
+### ii. Prompt templates
+
+Prompt templates create reusable prompts with dynamic inputs.
+
+```python
+from langchain_core.prompts import ChatPromptTemplate
+
+prompt = ChatPromptTemplate.from_template(
+    "Explain {topic} in simple terms."
+)
+
+messages = prompt.invoke({
+    "topic": "Spring AI"
+})
+
+print(messages)
+```
+
+### iii. LangChain Expression Language
+
+LCEL (LangChain Expression Language) allows LangChain components to be composed into reusable workflows using the `|` operator.
+
+```python
+chain = prompt | model
+
+response = chain.invoke({
+    "topic": "Spring AI"
+})
+
+print(response.content)
+```
+
+### iv. Structured Output
+
+Structured output constrains an LLM response to a predefined structure or schema instead of returning arbitrary text.
+
+```python
+from pydantic import BaseModel
+
+class Product(BaseModel):
+    name: str
+    category: str
+
+structured_model = model.with_structured_output(Product)
+
+result = structured_model.invoke(
+    "The iPhone is a smartphone."
+)
+
+print(result)
+```
+
+---
+
+## 11. Spring AI
+
+Spring AI is a Spring framework for building **AI-powered applications in Java**, providing abstractions and integrations for LLMs, embeddings, vector stores, RAG, tool calling, MCP, memory, and AI application workflows. 
+
+### Core Abstractions
+
+#### i. ChatModel
+
+Represents the underlying chat-capable AI model.
+
+```text
+Application
+     ↓
+ChatModel
+     ↓
+LLM Provider
+     ↓
+Model
+     ↓
+Response
+```
+
+#### ii. ChatClient
+
+Higher-level fluent API for interacting with chat models.
+
+```java
+ChatClient chatClient = ChatClient.builder(chatModel).build();
+
+String response = chatClient
+        .prompt()
+        .user("Explain Spring Boot")
+        .call()
+        .content();
+
+System.out.println(response);
+```
+
+#### iii. Prompting
+
+Spring AI allows prompts to be constructed dynamically.
+
+```java
+String response = chatClient
+        .prompt()
+        .system("You are a Java expert.")
+        .user("Explain {topic}.")
+        .call()
+        .content();
+```
+
+#### iv. Structured Output
+
+Instead of receiving arbitrary text, you can request a structured Java object.
+
+```java
+public record Product(
+        String name,
+        String category
+) {}
 ```
 
 ---
@@ -580,298 +794,6 @@ qa = RetrievalQA.from_chain_type(llm=llm, retriever=retriever)
 
 # Step 7: Run a query
 response = qa.run("Your question here")
-```
-
----
-
-## Q23. Why is Cost Optimization Important in LLM Apps?
-
-- **LLM inference cost** = #tokens input + #tokens output × $per token rate
-- Large context windows + long answers → exponential cost
-- Without optimization, costs can scale uncontrollably for production apps
-
----
-
-## Q24. What are Strategies for LLM Cost Optimization?
-
-### Prompt Optimization
-
-- Keep prompts concise (reduce unnecessary tokens)
-- Use structured instructions (JSON schema) to avoid verbose outputs
-
-### Model Selection
-
-- Use smaller/cheaper models (GPT-3.5, LLaMA 3-8B) for simple tasks
-- Reserve larger models (GPT-4, Claude Opus) for complex reasoning
-
-### Hybrid Pipelines
-
-- Preprocess with rules / embeddings before calling the LLM
-- Use RAG (RAGAS) → narrows context → fewer tokens
-
-### Token Control
-
-- Limit max output tokens
-- Use summarization to compress documents before feeding
-
-### Open-Source Models (Self-Hosting)
-
-- For high-volume workloads, host LLaMA / Mistral on GPUs
-
----
-
-## Q25. How Do You Monitor LLM Usage & Costs?
-
-### Custom Logging
-
-Log token usage per request.
-
-```python
-from langchain.callbacks import get_openai_callback
-
-with get_openai_callback() as cb:
-    response = chain.invoke(query)
-
-print(f" - Prompt Tokens: {cb.prompt_tokens}")
-print(f" - Completion Tokens: {cb.completion_tokens}")
-print(f" - Total Tokens: {cb.total_tokens}")
-print(f" - Total Cost (USD): ${cb.total_cost:.6f}")
-```
-
-### Dashboards
-
-LangSmith, or custom dashboards.
-
----
-
-## Q28. What are Tools, Agents and MCP?
-
-- **Tools** — LangChain provides a framework to build tools (deterministic functions that perform a single, well-defined task) that extend LLMs' capabilities such as accessing live data, executing tasks, and interfacing with APIs
-- **Agents (LLMs)** — Can decide when and which tool to use based on user queries. Performs specific predefined tasks automatically
-- **MCP (Model Context Protocol)** - MCP refers to the design pattern or strategy for managing the inputs (prompts, data, memory, tools, instructions) and outputs (responses, parsed results) that flow into and out of an LLM within a larger system.
-- **MCP Purpose:** Safe bridge between LLM reasoning and real-world tools. It prevents N×M integration complexity and creates a standardized tool invocation boundary while protecting enterprise systems from uncontrolled LLM behavior.
-
-```python
-from langchain.agents import initialize_agent, load_tools, AgentType
-from langchain.chat_models import ChatOpenAI
-from langchain.agents.agent import AgentExecutor
-
-def get_llm():
-    return ChatOpenAI(
-        temperature=0, 
-        streaming=True  # Streaming gives a live output feel
-    )
-
-def get_tools(llm):
-    return load_tools(
-        tool_names=["ddg-search", "wolfram-alpha", "arxiv", "wikipedia"],
-        llm=llm
-    )
-
-def load_agent() -> AgentExecutor:
-    llm = get_llm()
-    tools = get_tools(llm)
-    return initialize_agent(
-        tools=tools,
-        llm=llm,
-        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-        verbose=True
-    )
-
-if __name__ == "__main__":
-    agent = load_agent()
-    query = "What is the solution to 2x + 5 = -3x + 7."
-    response = agent.run(query)
-    print("\nFinal Answer:\n", response)
-```
-
----
-
-## Q29. What is Agentic AI?
-
-Agentic AI refers to artificial intelligence systems (state machines, not just chatbots) that act autonomously to achieve specific goals by perceiving their environment, reasoning, making decisions, and taking actions — often without continuous human oversight. Unlike general-purpose AI, Agentic AI is specialized, goal-driven, and capable of tool use and adaptation.
-
-**Agentic Loop** — Think, Act, Observe and Repeat
-
-| Agent Type | Main Strength | Limitations | Best For | Example |
-|---|---|---|---|---|
-| Simple Reflex Agent | Instant reaction based on fixed rules | No memory or learning; fails in dynamic environments | Fully observable, stable and simple environments | Traffic light timers |
-| Model-Based Reflex Agent | Handles partial observability with internal state | More computational demand; depends on model accuracy | Dynamic or partially observable environments | Robot vacuum cleaners |
-| Goal-Based Agent | Plans ahead to achieve specific objectives | Needs clear goals and planning algorithms | Strategic tasks with defined goals | Logistics route planning |
-| Utility-Based Agent | Balances multiple factors for best outcome | Requires complex utility functions | Multi-criteria decision-making | Financial portfolio management |
-| Learning Agent | Improves over time via experience | Needs data and training time | Dynamic environments with changing conditions | AI chatbots |
-| Multi-Agent System (MAS) | Distributed problem-solving with cooperation or competition | Complex interactions; unpredictable behaviors | Decentralized, multi-entity systems | Smart traffic control |
-| Hierarchical Agent | Breaks complex tasks into levels for efficiency | Requires well-defined interfaces between layers | Large-scale, multi-level operations | Drone delivery management |
-
----
-
-## Q30. What is LangGraph?
-
-LangGraph is a graph-based stateful orchestration framework used to build explicit, controllable agent workflows. It allows connecting LLMs, agents, tools, APIs, and memory nodes in a directed graph to design complex workflows.
-
-```python
-from langgraph.graph import Graph, Node, Edge
-from setup_rag_base import llm, memory, retriever, rag_chain
-
-# Define Nodes - State is a shared data object passed between nodes 
-# and a node is a python function that reads, updates, returns state.
-
-user_input = Node(
-    id="user_input",
-    function=lambda input_text: {"query": input_text},
-    description="Accepts user query"
-)
-
-retriever_node = Node(
-    id="retriever",
-    function=lambda inputs: {"context": retriever.get_relevant_documents(inputs["query"])},
-    description="Retrieves context from vector DB"
-)
-
-rag_node = Node(
-    id="rag_qa",
-    function=lambda inputs: {"answer": rag_chain.run(inputs["query"])},
-    description="Generates final grounded answer"
-)
-
-# Define Edges - defines execution order between nodes
-edges = [
-    Edge(source="user_input", target="retriever"),
-    Edge(source="retriever", target="rag_qa")
-]
-
-# Build Graph
-graph = Graph(nodes=[user_input, retriever_node, rag_node], edges=edges)
-
-# Execute
-query = "What is LangGraph and how is it related to LangChain?"
-output = graph.invoke({"input_text": query})
-print(f"Graph Output: {output}")
-```
-
----
-
-<h1 align="center">Spring AI</h1>
-
-### Q1. What is Spring AI?
-
-Spring AI is a Spring ecosystem project that simplifies integrating AI models into Java applications. It provides consistent APIs for interacting with different LLM providers such as OpenAI, Azure OpenAI, Anthropic, Ollama, and Bedrock.
-
----
-
-### Q2. What is ChatModel?
-
-`ChatModel` is Spring AI's abstraction over different chat providers. Instead of writing provider-specific code, developers interact with the `ChatModel` interface.
-
-```
-Application
-      │
-      ▼
- ChatModel
-      │
-      ▼
-OpenAI / Claude / Ollama / Bedrock
-```
-
-```java
-@Bean
-ChatModel chatModel(...) {
-    ...
-}
-```
-
----
-
-### Q3. What is ChatClient?
-
-ChatClient is a higher-level API built on top of ChatModel. It provides a fluent builder API for sending prompts.
-
-```
-User Prompt
-      │
-      ▼
-ChatClient
-      │
-      ▼
-ChatModel
-      │
-      ▼
-LLM Provider
-      │
-      ▼
-AI Response
-```
-
-```java
-@Bean
-ChatClient chatClient(ChatModel chatModel) {
-    return ChatClient.create(chatModel);
-}
-```
-
-#### Example 1 — Simple Prompt
-
-```java
-String response = chatClient
-        .prompt("Hello")
-        .call()
-        .content();
-```
-
----
-
-#### Example 2 — Prompt Template
-
-```java
-String response = chatClient
-        .prompt()
-        .user("Tell me about {topic}")
-        .param("topic", "Spring AI")
-        .call()
-        .content();
-```
-
----
-
-#### Example 3 — System Prompt
-
-```java
-String response = chatClient
-        .prompt()
-        .system("You are a Java expert.")
-        .user("Explain Dependency Injection.")
-        .call()
-        .content();
-```
-
----
-
-#### Example 4 — Streaming
-
-```java
-chatClient
-    .prompt("Explain Spring AI")
-    .stream();
-```
-
----
-
-### Q4. What is ChatResponse?
-
-`ChatResponse` represents the complete response returned by the LLM.
-
-It contains:
-- Generated content
-- Metadata
-- Token usage
-- Finish reason
-
-```java
-ChatResponse response = chatModel.call(prompt);
-
-String content = response.getResult()
-                         .getOutput()
-                         .getText();
 ```
 
 ---
@@ -2135,4 +2057,171 @@ public class SpringAIAdvisorsRAGService {
     }
 }
 ```
+
+---
+
+## Q28. What are Tools, Agents and MCP?
+
+- **Tools** — LangChain provides a framework to build tools (deterministic functions that perform a single, well-defined task) that extend LLMs' capabilities such as accessing live data, executing tasks, and interfacing with APIs
+- **Agents (LLMs)** — Can decide when and which tool to use based on user queries. Performs specific predefined tasks automatically
+- **MCP (Model Context Protocol)** - MCP refers to the design pattern or strategy for managing the inputs (prompts, data, memory, tools, instructions) and outputs (responses, parsed results) that flow into and out of an LLM within a larger system.
+- **MCP Purpose:** Safe bridge between LLM reasoning and real-world tools. It prevents N×M integration complexity and creates a standardized tool invocation boundary while protecting enterprise systems from uncontrolled LLM behavior.
+
+```python
+from langchain.agents import initialize_agent, load_tools, AgentType
+from langchain.chat_models import ChatOpenAI
+from langchain.agents.agent import AgentExecutor
+
+def get_llm():
+    return ChatOpenAI(
+        temperature=0, 
+        streaming=True  # Streaming gives a live output feel
+    )
+
+def get_tools(llm):
+    return load_tools(
+        tool_names=["ddg-search", "wolfram-alpha", "arxiv", "wikipedia"],
+        llm=llm
+    )
+
+def load_agent() -> AgentExecutor:
+    llm = get_llm()
+    tools = get_tools(llm)
+    return initialize_agent(
+        tools=tools,
+        llm=llm,
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+        verbose=True
+    )
+
+if __name__ == "__main__":
+    agent = load_agent()
+    query = "What is the solution to 2x + 5 = -3x + 7."
+    response = agent.run(query)
+    print("\nFinal Answer:\n", response)
+```
+
+---
+
+## Q29. What is Agentic AI?
+
+Agentic AI refers to artificial intelligence systems (state machines, not just chatbots) that act autonomously to achieve specific goals by perceiving their environment, reasoning, making decisions, and taking actions — often without continuous human oversight. Unlike general-purpose AI, Agentic AI is specialized, goal-driven, and capable of tool use and adaptation.
+
+**Agentic Loop** — Think, Act, Observe and Repeat
+
+| Agent Type | Main Strength | Limitations | Best For | Example |
+|---|---|---|---|---|
+| Simple Reflex Agent | Instant reaction based on fixed rules | No memory or learning; fails in dynamic environments | Fully observable, stable and simple environments | Traffic light timers |
+| Model-Based Reflex Agent | Handles partial observability with internal state | More computational demand; depends on model accuracy | Dynamic or partially observable environments | Robot vacuum cleaners |
+| Goal-Based Agent | Plans ahead to achieve specific objectives | Needs clear goals and planning algorithms | Strategic tasks with defined goals | Logistics route planning |
+| Utility-Based Agent | Balances multiple factors for best outcome | Requires complex utility functions | Multi-criteria decision-making | Financial portfolio management |
+| Learning Agent | Improves over time via experience | Needs data and training time | Dynamic environments with changing conditions | AI chatbots |
+| Multi-Agent System (MAS) | Distributed problem-solving with cooperation or competition | Complex interactions; unpredictable behaviors | Decentralized, multi-entity systems | Smart traffic control |
+| Hierarchical Agent | Breaks complex tasks into levels for efficiency | Requires well-defined interfaces between layers | Large-scale, multi-level operations | Drone delivery management |
+
+---
+
+## Q30. What is LangGraph?
+
+LangGraph is a graph-based stateful orchestration framework used to build explicit, controllable agent workflows. It allows connecting LLMs, agents, tools, APIs, and memory nodes in a directed graph to design complex workflows.
+
+```python
+from langgraph.graph import Graph, Node, Edge
+from setup_rag_base import llm, memory, retriever, rag_chain
+
+# Define Nodes - State is a shared data object passed between nodes 
+# and a node is a python function that reads, updates, returns state.
+
+user_input = Node(
+    id="user_input",
+    function=lambda input_text: {"query": input_text},
+    description="Accepts user query"
+)
+
+retriever_node = Node(
+    id="retriever",
+    function=lambda inputs: {"context": retriever.get_relevant_documents(inputs["query"])},
+    description="Retrieves context from vector DB"
+)
+
+rag_node = Node(
+    id="rag_qa",
+    function=lambda inputs: {"answer": rag_chain.run(inputs["query"])},
+    description="Generates final grounded answer"
+)
+
+# Define Edges - defines execution order between nodes
+edges = [
+    Edge(source="user_input", target="retriever"),
+    Edge(source="retriever", target="rag_qa")
+]
+
+# Build Graph
+graph = Graph(nodes=[user_input, retriever_node, rag_node], edges=edges)
+
+# Execute
+query = "What is LangGraph and how is it related to LangChain?"
+output = graph.invoke({"input_text": query})
+print(f"Graph Output: {output}")
+```
+
+---
+
+## Q23. Why is Cost Optimization Important in LLM Apps?
+
+- **LLM inference cost** = #tokens input + #tokens output × $per token rate
+- Large context windows + long answers → exponential cost
+- Without optimization, costs can scale uncontrollably for production apps
+
+---
+
+## Q24. What are Strategies for LLM Cost Optimization?
+
+### Prompt Optimization
+
+- Keep prompts concise (reduce unnecessary tokens)
+- Use structured instructions (JSON schema) to avoid verbose outputs
+
+### Model Selection
+
+- Use smaller/cheaper models (GPT-3.5, LLaMA 3-8B) for simple tasks
+- Reserve larger models (GPT-4, Claude Opus) for complex reasoning
+
+### Hybrid Pipelines
+
+- Preprocess with rules / embeddings before calling the LLM
+- Use RAG (RAGAS) → narrows context → fewer tokens
+
+### Token Control
+
+- Limit max output tokens
+- Use summarization to compress documents before feeding
+
+### Open-Source Models (Self-Hosting)
+
+- For high-volume workloads, host LLaMA / Mistral on GPUs
+
+---
+
+## Q25. How Do You Monitor LLM Usage & Costs?
+
+### Custom Logging
+
+Log token usage per request.
+
+```python
+from langchain.callbacks import get_openai_callback
+
+with get_openai_callback() as cb:
+    response = chain.invoke(query)
+
+print(f" - Prompt Tokens: {cb.prompt_tokens}")
+print(f" - Completion Tokens: {cb.completion_tokens}")
+print(f" - Total Tokens: {cb.total_tokens}")
+print(f" - Total Cost (USD): ${cb.total_cost:.6f}")
+```
+
+### Dashboards
+
+LangSmith, or custom dashboards.
 
