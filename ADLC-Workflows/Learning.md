@@ -148,9 +148,10 @@
 - **[Large Language Models](https://youtu.be/r37RoPQBXNU?t=0&si=fqbYdpZYdlNhFvhP)**
   - [LLM](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#6-large-language-model-llm)
   - [Tokenization](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#7-tokenization)
-  - Hugging Face
-  - LangChain
-  - Spring AI
+  - [Hugging Face](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#8-hugging-face)
+  - [Frameworks & Tools](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#9-framework--tools)
+    - [LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#10-langchain)
+    - [Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#11-spring-ai)
 - **Retrieval-Augmented Generation**
   - RAG
   - RAG with LangChain
