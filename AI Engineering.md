@@ -20,12 +20,12 @@ AI is a field of computer science that builds systems capable of performing task
 
 ### Types of AI 
 
-- #### Based on Capabilities
+- **Based on Capabilities**
     - **Narrow AI (Weak AI)** — Designed for specific tasks. **Examples:** GPT-6 Astra (OpenAI) & Claude Fable 5.1 (Anthropic).
     - **Artificial General Intelligence (AGI)** — Hypothetical AI capable of broad human-level intelligence across domains.
     - **Artificial Superintelligence (ASI)** — Hypothetical AI exceeding human intelligence across domains.
 
-- ####  Based on Functionality
+- **Based on Functionality**
     - **Reactive Machines** — Respond only to current input; no persistent memory.
     - **Limited Memory** — Uses information from previous observations/interactions for a limited period.
     - **Theory of Mind** — Hypothetical systems capable of understanding beliefs, intentions, and emotions.
@@ -728,11 +728,9 @@ public record Product(
 
 <h1 align="center">RAG Systems</h1>
 
-## 1. RAG Introduction
+## 1. Retrieval-Augmented Generation (RAG)
 
-### A. Retrieval-Augmented Generation (RAG)
-
-**Retrieval-Augmented Generation (RAG)** is an AI architecture that retrieves relevant information from an external knowledge source and provides current, private, or domain-specific information to an LLM as context before generating an answer. An LLM's internal knowledge has limitations:
+RAG is an AI architecture that retrieves relevant information from an external knowledge source and provides current, private, or domain-specific information to an LLM as context before generating an answer. An LLM's internal knowledge has limitations:
 
 * Knowledge can become outdated.
 * The model may not know private/company-specific information.
@@ -740,37 +738,7 @@ public record Product(
 * The model can hallucinate when information is unavailable.
 * Updating model knowledge through retraining/fine-tuning is expensive and slow.
 
-### Example
-
-Suppose we build an employee-support chatbot. The LLM may know general HR concepts, but it doesn't inherently know:
-
-```text
-Company Leave Policy
-Employee Handbook
-Insurance Policy
-Travel Policy
-Internal IT Documentation
-```
-
-With RAG:
-
-```
-User or Employee Question
-       ↓
-Search Company Documents
-       ↓
-Retrieve Relevant Information
-       ↓
-Prompt + Retrieved Context
-       ↓
-Large-Language Model
-       ↓
-Generated Response
-```
-
----
-
-### B. RAG vs Fine-Tuning
+### RAG vs Fine-Tuning
 
 | RAG                                       | Fine-Tuning                                             |
 | ----------------------------------------- | ------------------------------------------------------- |
@@ -781,11 +749,9 @@ Generated Response
 | Retrieval required at runtime             | No retrieval required for the learned behavior          |
 | Can provide source context                | Does not inherently provide source grounding            |
 
----
+### RAG Architecture
 
-### C. RAG Architecture
-
-A RAG system has two pipelines: an indexing pipeline that processes documents into searchable vector representations, and a query pipeline that converts the user's question into a vector, retrieves relevant chunks, augments the prompt with that context, and sends it to the LLM to generate the answer.
+A RAG system has an indexing pipeline that processes documents into searchable vector representations, and a query pipeline that converts the user's question into a vector, retrieves relevant chunks, augments the prompt with that context, and sends it to the LLM to generate the answer.
 
 ```text
                 RAG SYSTEM
@@ -810,7 +776,9 @@ A RAG system has two pipelines: an indexing pipeline that processes documents in
 
 ---
 
-## Q28. What are Tools, Agents and MCP?
+<h1 align="center">Agentic Systems</h1>
+
+## What are Tools, Agents and MCP?
 
 - **Tools** — LangChain provides a framework to build tools (deterministic functions that perform a single, well-defined task) that extend LLMs' capabilities such as accessing live data, executing tasks, and interfacing with APIs
 - **Agents (LLMs)** — Can decide when and which tool to use based on user queries. Performs specific predefined tasks automatically
@@ -853,7 +821,7 @@ if __name__ == "__main__":
 
 ---
 
-## Q29. What is Agentic AI?
+## What is Agentic AI?
 
 Agentic AI refers to artificial intelligence systems (state machines, not just chatbots) that act autonomously to achieve specific goals by perceiving their environment, reasoning, making decisions, and taking actions — often without continuous human oversight. Unlike general-purpose AI, Agentic AI is specialized, goal-driven, and capable of tool use and adaptation.
 
@@ -871,7 +839,7 @@ Agentic AI refers to artificial intelligence systems (state machines, not just c
 
 ---
 
-## Q30. What is LangGraph?
+## What is LangGraph?
 
 LangGraph is a graph-based stateful orchestration framework used to build explicit, controllable agent workflows. It allows connecting LLMs, agents, tools, APIs, and memory nodes in a directed graph to design complex workflows.
 
@@ -917,7 +885,7 @@ print(f"Graph Output: {output}")
 
 ---
 
-## Q23. Why is Cost Optimization Important in LLM Apps?
+## Why is Cost Optimization Important in LLM Apps?
 
 - **LLM inference cost** = #tokens input + #tokens output × $per token rate
 - Large context windows + long answers → exponential cost
@@ -925,7 +893,7 @@ print(f"Graph Output: {output}")
 
 ---
 
-## Q24. What are Strategies for LLM Cost Optimization?
+## What are Strategies for LLM Cost Optimization?
 
 ### Prompt Optimization
 
@@ -953,7 +921,7 @@ print(f"Graph Output: {output}")
 
 ---
 
-## Q25. How Do You Monitor LLM Usage & Costs?
+## How Do You Monitor LLM Usage & Costs?
 
 ### Custom Logging
 
