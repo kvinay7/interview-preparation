@@ -21,8 +21,7 @@ AI is a field of computer science that builds systems capable of performing task
 ### Types of AI 
 
 - #### Based on Capabilities
-    - **Narrow AI (Weak AI)** — Designed for specific tasks. Today's practical AI systems are primarily narrow AI.
-        - **Examples:** GPT-6 Astra (OpenAI), Claude Fable 5.1 (Anthropic), and Gemini 3.8 Flash (Google).
+    - **Narrow AI (Weak AI)** — Designed for specific tasks. **Examples:** GPT-6 Astra (OpenAI) & Claude Fable 5.1 (Anthropic).
     - **Artificial General Intelligence (AGI)** — Hypothetical AI capable of broad human-level intelligence across domains.
     - **Artificial Superintelligence (ASI)** — Hypothetical AI exceeding human intelligence across domains.
 
@@ -669,9 +668,7 @@ print(result)
 
 Spring AI is a Spring framework for building **AI-powered applications in Java**, providing abstractions and integrations for LLMs, embeddings, vector stores, RAG, tool calling, MCP, memory, and AI application workflows. 
 
-### Core Abstractions
-
-#### i. ChatModel
+### i. ChatModel
 
 Represents the underlying chat-capable AI model.
 
@@ -687,7 +684,7 @@ Model
 Response
 ```
 
-#### ii. ChatClient
+### ii. ChatClient
 
 Higher-level fluent API for interacting with chat models.
 
@@ -703,7 +700,7 @@ String response = chatClient
 System.out.println(response);
 ```
 
-#### iii. Prompting
+### iii. Prompting
 
 Spring AI allows prompts to be constructed dynamically.
 
@@ -716,7 +713,7 @@ String response = chatClient
         .content();
 ```
 
-#### iv. Structured Output
+### iv. Structured Output
 
 Instead of receiving arbitrary text, you can request a structured Java object.
 
@@ -726,6 +723,586 @@ public record Product(
         String category
 ) {}
 ```
+
+---
+
+<h1 align="center">RAG Systems</h1>
+
+## 1. RAG Introduction
+
+### A. Retrieval-Augmented Generation (RAG)
+
+**Retrieval-Augmented Generation (RAG)** is an AI architecture that retrieves relevant information from an external knowledge source and provides current, private, or domain-specific information to an LLM as context before generating an answer. An LLM's internal knowledge has limitations:
+
+* Knowledge can become outdated.
+* The model may not know private/company-specific information.
+* Relevant information may not have been included in training.
+* The model can hallucinate when information is unavailable.
+* Updating model knowledge through retraining/fine-tuning is expensive and slow.
+
+### Example
+
+Suppose we build an employee-support chatbot. The LLM may know general HR concepts, but it doesn't inherently know:
+
+```text
+Company Leave Policy
+Employee Handbook
+Insurance Policy
+Travel Policy
+Internal IT Documentation
+```
+
+With RAG:
+
+```
+User or Employee Question
+       ↓
+Search Company Documents
+       ↓
+Retrieve Relevant Information
+       ↓
+Prompt + Retrieved Context
+       ↓
+Large-Language Model
+       ↓
+Generated Response
+```
+
+---
+
+### B. RAG vs Fine-Tuning
+
+| RAG                                       | Fine-Tuning                                             |
+| ----------------------------------------- | ------------------------------------------------------- |
+| Adds external knowledge at inference time | Changes model parameters                                |
+| Knowledge remains outside model           | Knowledge/patterns are incorporated into model behavior |
+| Easier to update documents                | Updating requires another training/fine-tuning process  |
+| Good for private/current knowledge        | Good for changing model behavior/style/task performance |
+| Retrieval required at runtime             | No retrieval required for the learned behavior          |
+| Can provide source context                | Does not inherently provide source grounding            |
+
+---
+
+### C. RAG Architecture
+
+At the highest level, RAG has **two major pipelines**:
+
+```text
+                RAG SYSTEM
+                    │
+          ┌─────────┴─────────┐
+          ↓                   ↓
+   INDEXING PIPELINE     QUERY PIPELINE
+          │                   │
+          ↓                   ↓
+     Documents             Question
+          ↓                   ↓
+       Chunking          Query Embedding
+          ↓                   ↓
+      Embeddings         Similarity Search
+          ↓                   ↓
+     Vector Store        Retrieved Chunks
+                              ↓
+                       Prompt Augmentation
+                              ↓
+                     LLM Response Generation
+```
+---
+
+### D. Indexing Pipeline
+
+The indexing pipeline prepares knowledge for retrieval.
+
+```text
+Documents
+    ↓
+Document Loading
+    ↓
+Text Extraction
+    ↓
+Chunking
+    ↓
+Embedding Generation
+    ↓
+Vector Storage
+```
+
+### i. Documents
+
+Knowledge sources can be:
+
+* PDF
+* Word documents
+* Text files
+* HTML
+* Web pages
+* Databases
+* APIs
+* Internal company documents
+
+### ii. Document Loading
+
+Read the source and convert it into an application-readable document representation.
+
+```text
+PDF
+ ↓
+Document Loader
+ ↓
+Document
+```
+
+The document will generally contain:
+
+```text
+Content
++
+Metadata
+```
+
+Example metadata:
+
+```text
+fileName = employee_handbook.pdf
+page = 15
+department = HR
+```
+
+### iii. Chunking
+
+Large documents are divided into smaller pieces because sending an entire large document to the LLM for every question is inefficient. Chunking improves:
+
+* Retrieval precision
+* Context usage
+* Cost
+* Latency
+* Manageability
+
+```text
+Large Document
+       ↓
+ ┌─────┼─────┐
+ ↓     ↓     ↓
+Chunk1 Chunk2 Chunk3
+```
+
+### iv. Embeddings
+
+Each chunk is converted into a numerical vector representing its semantic meaning.
+
+```text
+"Employees receive 20 days of annual leave."
+                 ↓
+            Embedding Model
+                 ↓
+        [0.12, -0.43, 0.81, ...]
+```
+
+### v. Vector Store
+
+The vectors are stored in a vector database/store along with the associated information. The vector store allows the application to find chunks that are **semantically similar** to a user's question.
+
+```text
+Chunk
+ +
+Embedding
+ +
+Metadata
+      ↓
+Vector Store
+```
+
+Example:
+
+```text
+Vector
+Chunk Text
+Document ID
+Page
+Metadata
+```
+
+---
+
+### E. Query Pipeline
+
+When the user asks a question:
+
+```text
+User Question
+      ↓
+Query Embedding
+      ↓
+Similarity Search
+      ↓
+Relevant Chunks
+      ↓
+Prompt Augmentation
+      ↓
+LLM
+      ↓
+Answer
+```
+
+### i. User Question
+
+Example:
+
+> "How many annual leave days do employees receive?"
+
+---
+
+## 7.2 Query Embedding
+
+The question is converted into a vector using an embedding model.
+
+```text
+Question
+   ↓
+Embedding Model
+   ↓
+Query Vector
+```
+
+Now the question and document chunks exist in the **same vector space**.
+
+---
+
+# 8. Similarity Search
+
+The query vector is compared with vectors stored in the vector database.
+
+Conceptually:
+
+```text
+Query Vector
+     ↓
+Compare against stored vectors
+     ↓
+Find most similar vectors
+     ↓
+Top-K results
+```
+
+For example:
+
+```text
+Question
+   ↓
+Vector
+   ↓
+Vector DB
+   ↓
+Top 5 similar chunks
+```
+
+The exact similarity mechanism can vary, such as cosine similarity or other distance metrics.
+
+You'll study this in detail later.
+
+---
+
+# 9. Retrieval
+
+Retrieval is the process of selecting useful information from the knowledge base for the current question.
+
+```text
+Question
+   ↓
+Search
+   ↓
+Candidate Chunks
+   ↓
+Relevant Chunks
+```
+
+The retrieved chunks become the **context** supplied to the LLM.
+
+---
+
+# 10. Prompt Augmentation
+
+Now combine:
+
+```text
+User Question
++
+Retrieved Context
+```
+
+into a prompt.
+
+Conceptually:
+
+```text
+System Instructions
+
+Relevant Context:
+-----------------
+Chunk 1
+Chunk 2
+Chunk 3
+-----------------
+
+Question:
+How many annual leave days do employees receive?
+```
+
+Then:
+
+```text
+Prompt
+  ↓
+LLM
+```
+
+This is the **Augmented** part of Retrieval-Augmented Generation.
+
+---
+
+# 11. Generation
+
+The LLM receives:
+
+```text
+Instructions
++
+Retrieved Context
++
+User Question
+```
+
+and generates the answer.
+
+```text
+Context + Question
+        ↓
+       LLM
+        ↓
+      Answer
+```
+
+The LLM is therefore not necessarily expected to know the answer from its internal training alone.
+
+It uses the retrieved context supplied by the application.
+
+---
+
+# 12. Complete RAG Flow
+
+Now put everything together.
+
+### Indexing — happens before the user asks questions
+
+```text
+Documents
+    ↓
+Document Loading
+    ↓
+Chunking
+    ↓
+Embeddings
+    ↓
+Vector Store
+```
+
+### Query — happens when the user asks
+
+```text
+User Question
+      ↓
+Query Embedding
+      ↓
+Similarity Search
+      ↓
+Retrieve Relevant Chunks
+      ↓
+Prompt Augmentation
+      ↓
+LLM
+      ↓
+Generated Answer
+```
+
+### Combined
+
+```text
+                         RAG SYSTEM
+                            │
+          ┌─────────────────┴─────────────────┐
+          │                                   │
+          │        INDEXING PIPELINE          │
+          │                                   │
+      Documents                               │
+          ↓                                   │
+      Load / Parse                            │
+          ↓                                   │
+       Chunk                                  │
+          ↓                                   │
+      Embedding                                │
+          ↓                                   │
+     Vector Store                             │
+          │                                   │
+          │                                   │
+          └───────────────┐                   │
+                          ↓                   │
+                     Query Pipeline           │
+                          ↑                   │
+                    User Question             │
+                          ↓                   │
+                   Query Embedding            │
+                          ↓                   │
+                  Similarity Search           │
+                          ↓                   │
+                  Retrieved Chunks            │
+                          ↓                   │
+                  Prompt Augmentation         │
+                          ↓                   │
+                         LLM                  │
+                          ↓                   │
+                       Answer                 │
+```
+
+---
+
+# 13. The Three Core RAG Operations
+
+You can remember RAG through three words:
+
+### Retrieve
+
+Find relevant information.
+
+```text
+Knowledge Base → Relevant Context
+```
+
+### Augment
+
+Add that context to the prompt.
+
+```text
+Question + Context → Augmented Prompt
+```
+
+### Generate
+
+Ask the LLM to generate the answer.
+
+```text
+Augmented Prompt → Answer
+```
+
+Therefore:
+
+> **RAG = Retrieval + Augmentation + Generation**
+
+---
+
+# 14. What You Will Build Incrementally in Java
+
+This is where your earlier idea becomes important.
+
+**Don't build the entire pipeline now.**
+
+As you learn each section, add that component to the same Java project.
+
+```text
+Phase 1
+Understand complete architecture
+        ↓
+Document Loading
+        ↓
+Add Java Document Loader
+        ↓
+Chunking
+        ↓
+Add Java Chunker
+        ↓
+Embeddings
+        ↓
+Add Embedding Service
+        ↓
+Vector Store
+        ↓
+Add Vector Store
+        ↓
+Similarity Search
+        ↓
+Add Search
+        ↓
+Retrieval
+        ↓
+Add Retriever
+        ↓
+Prompt Augmentation
+        ↓
+Add Prompt Builder
+        ↓
+LLM
+        ↓
+Complete Java RAG
+```
+
+Then:
+
+```text
+Complete Java RAG
+       ↓
+LangChain RAG
+       ↓
+Spring AI RAG
+```
+
+So **Phase 1 is conceptual only**. No implementation yet.
+
+---
+
+# 15. RAG Production Trade-offs — Initial View
+
+At this stage, just understand the categories:
+
+| Area          | RAG concern                                    |
+| ------------- | ---------------------------------------------- |
+| Accuracy      | Are the retrieved chunks actually relevant?    |
+| Retrieval     | Did we find the right information?             |
+| Context       | Did we give the LLM useful context?            |
+| Hallucination | Does the answer stay grounded?                 |
+| Latency       | Retrieval + embedding + LLM add latency        |
+| Cost          | Embeddings + vector search + LLM tokens        |
+| Scalability   | Number of documents/users/queries              |
+| Freshness     | How quickly new documents become searchable    |
+| Security      | Who can retrieve which documents?              |
+| Observability | Can we understand why an answer was generated? |
+
+We'll go much deeper into these later.
+
+---
+
+# Phase 1 — What you should be able to explain
+
+Before moving to **Documents & Document Loading**, you should be able to answer:
+
+1. What is RAG?
+2. Why do we need RAG?
+3. How is RAG different from a normal LLM application?
+4. RAG vs fine-tuning?
+5. What are the two major RAG pipelines?
+6. What happens during indexing?
+7. What happens when a user asks a question?
+8. What is chunking?
+9. What are embeddings?
+10. What is a vector store?
+11. What is similarity search?
+12. What is retrieval?
+13. What is prompt augmentation?
+14. What is generation?
+15. Explain **Retrieve → Augment → Generate** end-to-end.
+
+Once you can explain that flow **without looking at the notes**, Phase 1 is complete.
+
+**Next: Phase 2 — Documents & Document Loading**, where we'll take the first component and add its **Java implementation to the same evolving RAG pipeline**.
+
 
 ---
 
