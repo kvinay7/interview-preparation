@@ -18,19 +18,6 @@ AI is a field of computer science that builds systems capable of performing task
 - **Fraud Detection** — Detect suspicious transactions
 - **Autonomous Systems** — Driving/robotics
 
-### Types of AI 
-
-- **Based on Capabilities**
-    - **Narrow AI (Weak AI)** — Designed for specific tasks. **Examples:** GPT-6 Astra (OpenAI) & Claude Fable 5.1 (Anthropic).
-    - **Artificial General Intelligence (AGI)** — Hypothetical AI capable of broad human-level intelligence across domains.
-    - **Artificial Superintelligence (ASI)** — Hypothetical AI exceeding human intelligence across domains.
-
-- **Based on Functionality**
-    - **Reactive Machines** — Respond only to current input; no persistent memory.
-    - **Limited Memory** — Uses information from previous observations/interactions for a limited period.
-    - **Theory of Mind** — Hypothetical systems capable of understanding beliefs, intentions, and emotions.
-    - **Self-Aware AI** — Hypothetical systems with consciousness/self-awareness.
-
 ### Advantages of AI
 - Automates repetitive and complex tasks
 - Personalization (e.g., Spotify, YouTube)
@@ -47,6 +34,45 @@ AI is a field of computer science that builds systems capable of performing task
 - **Energy Use** — Large models require heavy computation
 - **Regulation** — Compliance with laws like GDPR, AI Act
 
+### Types of AI 
+
+- **Based on Functionality**
+    - **Reactive Machines** — Respond only to current input; no persistent memory.
+    - **Limited Memory** — Uses information from previous observations/interactions for a limited period.
+    - **Theory of Mind** — Hypothetical systems capable of understanding beliefs, intentions, and emotions.
+    - **Self-Aware AI** — Hypothetical systems with consciousness/self-awareness.
+      
+- **Based on Capabilities**
+    - **Narrow AI (Weak AI)** — Designed for specific tasks. **Examples:** GPT-6 Astra (OpenAI) & Claude Fable 5.1 (Anthropic).
+    - **Artificial General Intelligence (AGI)** — Hypothetical AI capable of broad human-level intelligence across domains.
+    - **Artificial Superintelligence (ASI)** — Hypothetical AI exceeding human intelligence across domains.
+
+###  State of AI — Evolution & Progression
+
+- **Perception AI (The "Eyes & Ears")**
+   
+    - **What it does**: Recognises patterns, classifies data, and predicts numbers. It answers: "What is this?"
+    - **Core capability**: Computer vision, speech-to-text, fraud detection, and recommendation algorithms (like Netflix or Spotify).
+    - **The Limit**: It is completely passive. It can classify a photo of a cup, but it cannot write a poem about it, order a new one, or pick it up.
+
+- **Generative AI (The "Voice & Imagination")**
+
+    - **What it does**: Creates brand-new content based on patterns it learned from human data. It answers: "How do I express this?"
+    - **Core capability**: Large Language Models (LLMs) and diffusion models (e.g., ChatGPT, Midjourney). It writes code, generates realistic images, and synthesizes human-like text.
+    - **The Limit**: It requires constant human prompting. It operates in a chat box and cannot take independent actions outside its window.
+
+- **Agentic AI (The "Digital Worker")**
+
+    - **What it does**: Uses reasoning loop frameworks to achieve a complex, multi-step goal with minimal human intervention. It answers: "How do I accomplish this goal?"
+    - **Core capability**: Autonomous software agents. If you say, "Find the cheapest flight, book the hotel, and email the client the itinerary," the agent uses tools, calls APIs, browses websites, corrects its own errors, and completes the task overnight.
+    - **The Limit**: It is trapped in the digital world. It can manage your digital calendar, but it cannot physically wash your clothes or build a car.
+
+- **Physical AI (The "Embodied Mind")**
+
+    - **What it does**: Integrates agentic brainpower into physical machinery, allowing AI to interact with, navigate, and alter the real world. It answers: "How do I manipulate this physical environment?"
+    - **Core capability**: Humanoid robotics, autonomous vehicles, smart factories, and advanced prosthetic devices. These systems use real-time perception to reason about physics, gravity, and spatial geometry to perform physical labor.
+    - **The Current State**: This is the current frontier. AI models (like DeepSeek-R1, OpenAI's o-series, and Google's Gemini) are being wired directly into robotic bodies, moving robotics away from rigid, pre-programmed code and toward adaptable, common-sense behavior.
+
 ### Major work areas & roles
 
 | Work Area                                         | Example Products / Platforms                                                                       | Typical Roles                                                   |
@@ -57,7 +83,32 @@ AI is a field of computer science that builds systems capable of performing task
 | **Tools, Integrations & Developer Platforms**  | LangChain, Spring AI, Hugging Face, MCP-based tools, model APIs                                    | AI Engineers, Software/Platform Engineers                       |
 | **Infrastructure, Data, Evaluation & Safety** | GPU/cloud infrastructure, ML pipelines, observability/evaluation platforms, AI security/guardrails | MLOps, Data, AI Evaluation, Security Engineers                  |
 
-**AI Systems Engineer** — use existing AI models and tools with **business data, backend systems, business logic, and workflows** to build, test, deploy, and maintain reliable AI solutions.
+- **AI Systems Engineer (AI SDE-1)** — use existing AI models and tools with **business data, backend systems, business logic, and workflows** to build, test, deploy, and maintain reliable AI solutions.
+
+```
+AI SDE-1:
+├── Generative AI Integration
+│   ├── RAG systems (retrieval + LLM generation)
+│   ├── LLM API integration (OpenAI, Anthropic, AWS Bedrock)
+│   ├── Prompt engineering & optimization
+│   └── Evaluation (RAGAS, LLM-as-Judge)
+│
+└── Early Agentic Patterns
+    ├── Tool calling / Function calling
+    ├── Multi-step workflows
+    └── Error handling & resilience
+
+AI SDE-2:
+├── Full Agentic Systems
+│   ├── Multi-agent orchestration
+│   ├── Complex reasoning (ReAct, Chain-of-Thought)
+│   └── LangGraph stateful workflows
+│
+└── System Design & Architecture
+    ├── Scaling (latency, throughput, cost)
+    ├── Production patterns (caching, monitoring, reliability)
+    └── Trade-off analysis (quality vs latency vs cost)
+```
 
 ---
 
