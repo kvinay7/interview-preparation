@@ -95,9 +95,9 @@ Again, these are **relative and task-level assessments**, not permanent predicti
 
 ---
 
-## 5. My Selected Areas — CSE Graduate
+## 5. Selected Areas in CSE
 
-Based on a CSE background, AI direction, and long-term engineering goal, five areas form **one integrated engineering stack**, not five separate careers.
+Based on AI direction, and long-term engineering goal, five areas form **one integrated engineering stack**, not five separate careers.
 
 > The goal is: Software Engineering + AI + Systems + Security — not narrow dependence on one framework, model, programming language, or AI tool.
 
@@ -129,35 +129,83 @@ The five areas form a progression from **building software → integrating AI �
 | **Tools, Integrations & Developer Platforms**               | LangChain, Spring AI, Hugging Face, MCP-based tools, model APIs                                     | AI Engineers, Software/Platform Engineers                |
 | **Infrastructure, Data, Evaluation, Security & Governance** | GPU/cloud infrastructure, ML pipelines, evaluation platforms, observability, AI security/guardrails | MLOps, Platform, Data, AI Evaluation, Security Engineers |
 
+### AI Systems Engineer
 
 ```text
-
-AI SDE-1: use existing AI models and tools with business data, backend systems, business logic, and workflows to build, test, deploy, secure and maintain reliable AI solutions.
+AI SDE-1 (C1): use existing AI models and tools with business data, backend systems, business logic, and workflows to build, test, deploy, secure and maintain reliable AI solutions.
+│
+├── Backend Engineering
+│   ├── Java
+│   ├── Spring Boot
+│   ├── Python
+│   ├── REST APIs
+│   ├── SQL / Databases
+│   └── Basic Microservices
+│
+├── AI Fundamentals
+│   ├── ML basics
+│   ├── DL basics
+│   └── NLP basics
 │
 ├── Generative AI Integration
-│   ├── RAG systems
-│   │   ├── Retrieval
-│   │   └── LLM generation
-│   ├── LLM API integration
+│   ├── LLMs
 │   │   ├── OpenAI
 │   │   ├── Anthropic
 │   │   └── AWS Bedrock
 │   ├── Prompt & context engineering
+│   ├── RAG systems
+│   │   ├── Retrieval
+│   │   ├── Embeddings
+│   │   ├── Vector databases
+│   │   └── LLM generation
 │   └── Evaluation
-│       ├── RAGAS
+│       ├── RAG evaluation / RAGAS
 │       └── LLM-as-Judge
 │
-└── Early Agentic Patterns
-    ├── Tool / function calling
-    ├── Multi-step workflows
-    ├── Basic memory/state
-    └── Error handling & resilience
-
+├── Early Agentic AI
+│   ├── Tool / function calling
+│   ├── Basic MCP
+│   ├── Multi-step workflows
+│   ├── Basic memory / state
+│   └── Basic orchestration
+│
+├── Cloud & Production
+│   ├── Azure / AWS / GCP fundamentals
+│   ├── Deployment
+│   ├── Git
+│   ├── CI/CD
+│   ├── Docker
+│   ├── Basic Kubernetes
+│   └── Logging / monitoring
+│
+└── Security & Reliability
+    ├── IAM basics
+    ├── Secrets / data protection
+    ├── AI guardrails
+    ├── Tool / agent permissions
+    ├── Error handling
+    └── Resilience
 ```
 
-```text
+### AI Solutions Engineer
 
-AI SDE-2: the focus expands from implementing individual AI features to **owning end-to-end AI solutions**.
+```text
+AI SDE-2 (C2): the focus expands from implementing individual AI features to owning end-to-end AI solutions, architecture, production reliability, optimization and business outcomes.
+│
+├── Advanced Backend & Distributed Systems
+│   ├── Advanced microservices
+│   ├── Distributed systems
+│   ├── Scalability
+│   ├── Reliability
+│   └── Performance optimization
+│
+├── Production GenAI
+│   ├── Advanced RAG
+│   ├── RAG optimization
+│   ├── Model selection
+│   ├── Evaluation strategy
+│   ├── Quality optimization
+│   └── Cost / latency optimization
 │
 ├── Full Agentic Systems
 │   ├── Planning
@@ -166,48 +214,62 @@ AI SDE-2: the focus expands from implementing individual AI features to **owning
 │   ├── Tool orchestration
 │   ├── Multi-agent systems
 │   ├── State management
+│   ├── Memory architecture
 │   └── LangGraph / stateful workflows
 │
-└── System Design & Architecture
-    ├── Scalability
-    │   ├── Latency
-    │   ├── Throughput
-    │   └── Cost
-    ├── Production patterns
-    │   ├── Caching
-    │   ├── Monitoring
-    │   ├── Reliability
-    │   └── Fault tolerance
-    └── Trade-off analysis
-        ├── Quality vs latency
-        ├── Quality vs cost
-        └── Complexity vs maintainability
+├── System Design & Architecture
+│   ├── Scalability
+│   │   ├── Latency
+│   │   ├── Throughput
+│   │   └── Cost
+│   ├── Production patterns
+│   │   ├── Caching
+│   │   ├── Monitoring
+│   │   ├── Reliability
+│   │   └── Fault tolerance
+│   └── Trade-off analysis
+│       ├── Quality vs latency
+│       ├── Quality vs cost
+│       ├── Complexity vs maintainability
+│       └── Build vs buy / model selection
+│
+├── Cloud / MLOps / AgentOps
+│   ├── Cloud architecture
+│   ├── Container orchestration
+│   ├── MLOps
+│   ├── LLMOps
+│   ├── AgentOps
+│   ├── Observability
+│   └── Capacity / cost optimization
+│
+└── Security & Governance
+    ├── AI security
+    ├── Application security
+    ├── Data security
+    ├── Agent permissions
+    ├── Guardrails
+    └── Responsible AI / governance
 ```
----
 
 ## 7. Career Progression & Focus
 
-
-| Experience    | Role                                  | Main Evolution                                            | SDLC Emphasis                     |
-| ------------- | ------------------------------------- | --------------------------------------------------------- | --------------------------------- |
-| **2–4 YOE**   | AI Systems Engineer / SDE-1           | Build production GenAI + early agentic systems            | Build + Test + Deploy             |
-| **4–6 YOE**   | AI Solutions Engineer / SDE-2         | End-to-end solution ownership                             | Plan → Improve                    |
-| **6–10 YOE**  | Senior AI Engineer / FDE              | Production + business outcome ownership                   | Operate + Improve + outcomes      |
-| **10–15 YOE** | AI Solutions Architect                | Architecture + technical direction + governance           | Plan + Design + governance        |
-| **15+ YOE**   | Principal AI Engineer                 | Enterprise strategy + architecture + technical leadership | Organizational-scale AI direction |
-
----
+| Experience    | Role                              | Main Evolution                                            | SDLC Emphasis                                                     |
+| ------------- | --------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------- |
+| **2–4 YOE**   | **AI Systems Engineer / SDE-1**   | Build production GenAI + early agentic systems            | **Understand → Design → Build → Test → Deploy**                   |
+| **4–6 YOE**   | **AI Solutions Engineer / SDE-2** | End-to-end AI solution ownership + architecture           | **Plan → Design → Build → Validate → Deploy → Operate → Improve** |
+| **6–10 YOE**  | **Senior AI Engineer / FDE**      | Production + business outcome ownership                   | **Operate → Improve → Outcomes**                                  |
+| **10–15 YOE** | **AI Solutions Architect**        | Architecture + technical direction + governance           | **Plan → Design → Governance**                                    |
+| **15+ YOE**   | **Principal AI Engineer**         | Enterprise strategy + architecture + technical leadership | **Organizational-scale AI direction**                             |
 
 ## 8. SDLC × Selected Areas
 
-
-| SDLC Phase          | Software Development         | GenAI Development             | Agentic AI                   | AI Systems / Infrastructure           | AI Security & Cybersecurity         |
-| ------------------- | ---------------------------- | ----------------------------- | ---------------------------- | ------------------------------------- | ----------------------------------- |
-| **Plan**            | Requirements, architecture   | AI use case, model selection  | Agent workflow/design        | Platform architecture                 | Threat model, security requirements |
-| **Setup**           | Repo, DB, CI/CD, cloud       | Models, vector DB, AI SDKs    | Tools, MCP, agent framework  | Cloud, GPU, Kubernetes, observability | IAM, secrets, security tooling      |
-| **Build**           | Backend/APIs/services        | LLM/RAG applications          | Agents/tools/workflows       | Serving, pipelines, platforms         | Secure applications/AI systems      |
-| **Test / Validate** | Unit/integration/performance | LLM/RAG evaluation            | Agent evaluation/reliability | Load/performance/reliability          | Security testing/red teaming        |
-| **Deploy**          | CI/CD, cloud                 | LLMOps                        | AgentOps                     | MLOps/platform engineering            | Secure deployment                   |
-| **Operate**         | Monitoring/SRE               | Quality/cost/latency          | Agent observability          | Reliability/capacity/cost             | Detection/response                  |
-| **Improve**         | Performance/features         | Model/prompt/RAG optimization | Workflow/agent optimization  | Infrastructure optimization           | Threat/defense improvement          |
+| SDLC Phase          | Software Development         | GenAI Development             | Agentic AI                   | AI Systems / Infrastructure                  | AI Security & Cybersecurity         |
+| ------------------- | ---------------------------- | ----------------------------- | ---------------------------- | -------------------------------------------- | ----------------------------------- |
+| **Plan**            | Requirements, architecture   | AI use case, model selection  | Agent workflow/design        | Platform architecture                        | Threat model, security requirements |
+| **Setup**           | Repo, DB, CI/CD, cloud       | Models, AI SDKs, vector DB    | Tools, MCP, agent framework  | Cloud, containers, Kubernetes, observability | IAM, secrets, security tooling      |
+| **Build**           | Backend/APIs/services        | LLM/RAG applications          | Agents/tools/workflows       | Serving, pipelines, platforms                | Secure applications/AI systems      |
+| **Test / Validate** | Unit/integration/performance | LLM/RAG evaluation            | Agent evaluation/reliability | Load/performance/reliability                 | Security testing/red teaming        |
+| **Deploy**          | CI/CD, cloud                 | LLMOps                        | AgentOps                     | MLOps/platform engineering                   | Secure deployment                   |
+| **Operate**         | Monitoring/SRE               | Quality/cost/latency          | Agent observability          | Reliability/capacity/cost                    | Detection/response                  |
+| **Improve**         | Performance/features         | Model/prompt/RAG optimization | Workflow/agent optimization  | Infrastructure optimization                  | Threat/defense improvement          |
 
