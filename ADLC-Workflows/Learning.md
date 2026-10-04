@@ -152,10 +152,10 @@
   - [Frameworks & Tools](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#9-framework--tools)
     - [LangChain](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#10-langchain)
     - [Spring AI](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#11-spring-ai)
-- **Retrieval-Augmented Generation**
-  - RAG
-  - RAG with LangChain
+- **[Retrieval-Augmented Generation](https://youtu.be/r37RoPQBXNU?t=420&si=octOBmtcLhFY1WQ_)**
+  - [RAG](https://github.com/kvinay7/interview-preparation/blob/main/AI%20Engineering.md#1-retrieval-augmented-generation-rag)
   - RAG with Java & Spring AI
+  - RAG with LangChain
   - Evaluation
   - Optimization
   - Monitoring
