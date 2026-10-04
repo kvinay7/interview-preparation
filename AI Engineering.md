@@ -446,6 +446,7 @@ Generated Response
 | Accuracy    | RAG, tools, verification, evaluation                   |
 | Reliability | Guardrails, retries, fallbacks                         |
 | Scalability | Distributed serving, batching, model optimization      |
+| Deployment  |	API, cloud, self-hosted, edge                          |
 
 ---
 
