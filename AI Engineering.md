@@ -789,6 +789,17 @@ A RAG system has an indexing pipeline that processes documents into searchable v
                      LLM Response Generation
 ```
 
+### Type of RAG
+
+| Type | Core Idea |
+|---|---|
+| **Naive / Basic RAG** | Basic retrieve → augment → generate pipeline |
+| **Advanced RAG** | Improves retrieval and generation quality using techniques such as reranking and query transformation |
+| **Modular RAG** | Builds RAG from replaceable, independently configurable components |
+| **Graph RAG** | Uses knowledge graphs and relationships between entities for retrieval |
+| **Agentic RAG** | Uses agents to dynamically decide when, what, and how to retrieve information |
+| **Hybrid RAG** | Combines multiple retrieval methods, commonly semantic/vector search + keyword search |
+
 ---
 
 <h1 align="center">Agentic Systems</h1>
