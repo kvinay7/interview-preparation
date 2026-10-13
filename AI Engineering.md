@@ -47,31 +47,58 @@ AI is a field of computer science that builds systems capable of performing task
     - **Artificial General Intelligence (AGI)** — Hypothetical AI capable of broad human-level intelligence across domains.
     - **Artificial Superintelligence (ASI)** — Hypothetical AI exceeding human intelligence across domains.
 
-###  State of AI — Evolution & Progression
+### State of AI — Evolution & Progression
 
-- **Perception AI (The "Eyes & Ears")**
-   
-    - **What it does**: Recognises patterns, classifies data, and predicts numbers. It answers: "What is this?"
-    - **Core capability**: Computer vision, speech-to-text, fraud detection, and recommendation algorithms (like Netflix or Spotify).
-    - **The Limit**: It is completely passive. It can classify a photo of a cup, but it cannot write a poem about it, order a new one, or pick it up.
-
-- **Generative AI (The "Voice & Imagination")**
-
-    - **What it does**: Creates brand-new content based on patterns it learned from human data. It answers: "How do I express this?"
-    - **Core capability**: Large Language Models (LLMs) and diffusion models (e.g., ChatGPT, Midjourney). It writes code, generates realistic images, and synthesizes human-like text.
-    - **The Limit**: It requires constant human prompting. It operates in a chat box and cannot take independent actions outside its window.
-
-- **Agentic AI (The "Digital Worker")**
-
-    - **What it does**: Uses reasoning loop frameworks to achieve a complex, multi-step goal with minimal human intervention. It answers: "How do I accomplish this goal?"
-    - **Core capability**: Autonomous software agents. If you say, "Find the cheapest flight, book the hotel, and email the client the itinerary," the agent uses tools, calls APIs, browses websites, corrects its own errors, and completes the task overnight.
-    - **The Limit**: It is trapped in the digital world. It can manage your digital calendar, but it cannot physically wash your clothes or build a car.
-
-- **Physical AI (The "Embodied Mind")**
-
-    - **What it does**: Integrates agentic brainpower into physical machinery, allowing AI to interact with, navigate, and alter the real world. It answers: "How do I manipulate this physical environment?"
-    - **Core capability**: Humanoid robotics, autonomous vehicles, smart factories, and advanced prosthetic devices. These systems use real-time perception to reason about physics, gravity, and spatial geometry to perform physical labor.
-    - **The Current State**: This is the current frontier. AI models (like DeepSeek-R1, OpenAI's o-series, and Google's Gemini) are being wired directly into robotic bodies, moving robotics away from rigid, pre-programmed code and toward adaptable, common-sense behavior.
+```text
+                 ARTIFICIAL INTELLIGENCE (AI)
+                            │
+          ┌─────────────────┴─────────────────┐
+          ▼                                   ▼
+     CLASSICAL AI                       MACHINE LEARNING
+ (Search, Logic, Planning)             (Learning from Data)
+          │                                    │
+          ├── Knowledge-Based AI               ├── Supervised Learning
+          ├── Probabilistic AI                 ├── Unsupervised Learning
+          └── Evolutionary AI                  ├── Self-Supervised Learning
+                                               └── Reinforcement Learning
+                                                      │
+                                                      ▼
+                                              DEEP LEARNING
+                                          (Neural Networks)
+                                                      │
+                    ┌─────────────────┬───────────────┼────────────────┐
+                    ▼                 ▼               ▼                ▼
+                   NLP           COMPUTER VISION   AUDIO AI      SCIENTIFIC AI
+                    │                 │               │                │
+                    └─────────────────┴───────────────┴────────────────┘
+                                                      │
+                                       ┌──────────────┴──────────────┐
+                                       ▼                             ▼
+                                PREDICTIVE AI                 GENERATIVE AI
+                            (Classification, Forecasting)  (Text, Code, Images,
+                                                            Audio, Video)
+                                                                      │
+                                                                      ▼
+                                                          FOUNDATION MODELS
+                                                      (LLMs, VLMs, Multimodal)
+                                                                      │
+                                                                      ▼
+                                                          AI APPLICATION ENGINEERING
+                                                       ┌──────────────┼──────────────┐
+                                                       ▼              ▼              ▼
+                                                      RAG        TOOL CALLING   FINE-TUNING
+                                                       │              │
+                                                       └──────┬───────┘
+                                                              ▼
+                                                        AGENTIC AI
+                                                   (Goals, Planning, Actions,
+                                                    Memory, Feedback, Tools)
+                                                              │
+                                            ┌─────────────────┼─────────────────┐
+                                            ▼                 ▼                 ▼
+                                      DIGITAL AGENTS     PHYSICAL AI         EDGE AI
+                                      (Software, APIs)  (Robots, Vehicles) (On-Device AI)
+```
 
 ---
 
