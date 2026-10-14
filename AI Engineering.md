@@ -829,6 +829,719 @@ A RAG system has an indexing pipeline that processes documents into searchable v
 
 ---
 
+## 2. RAG Implementation in Java
+
+### I. Document Loading
+
+| Requirement    | Implementation                                                 |
+| -------------- | -------------------------------------------------------------- |
+| Input          | A directory containing `.txt` files                            |
+| Loading        | Read each file's text                                          |
+| Document model | `Document` record                                              |
+| Metadata       | Source filename, document ID, document type                    |
+| Output         | `List<Document>`                                               |
+| Error handling | Report unreadable files clearly                                |
+| Validation     | Test empty directories, multiple files and file-reading errors |
+
+#### Project structure
+
+```text
+rag-java/
+└── src/
+    ├── main/
+    │   └── java/
+    │       └── rag/
+    │           └── indexing/
+    │               ├── Document.java
+    │               ├── DocumentLoader.java
+    │               └── TextDocumentLoader.java
+    └── test/
+        └── resources/
+            └── documents/
+                ├── java.txt
+                └── rag.txt
+```
+
+#### `Document.java`
+
+Represents one loaded source document. It stores the original content and metadata that later stages can preserve.
+
+```java
+package rag.indexing;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+public class Document {
+
+    private final String content;
+    private final Map<String, String> metadata;
+
+    public Document(String content, Map<String, String> metadata) {
+        this.content = Objects.requireNonNull(
+                content, "Content cannot be null"
+        );
+
+        Objects.requireNonNull(metadata, "Metadata cannot be null");
+
+        this.metadata = Collections.unmodifiableMap(
+                new HashMap<String, String>(metadata)
+        );
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Map<String, String> getMetadata() {
+        return metadata;
+    }
+}
+```
+
+
+#### `DocumentLoader.java`
+
+Defines the contract for loading documents. Later, we can add PDF, DOCX, or other loaders without changing the downstream pipeline.
+
+```java
+package rag.indexing;
+
+import java.io.IOException;
+import java.util.List;
+
+public interface DocumentLoader {
+
+    List<Document> load() throws IOException;
+}
+```
+
+#### `TextDocumentLoader.java`
+
+This implementation recursively reads `.txt` files, extracts their content, and attaches metadata.
+
+```java
+package rag.indexing;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.FileTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
+
+public class TextDocumentLoader implements DocumentLoader {
+
+    private final Path directory;
+
+    public TextDocumentLoader(Path directory) {
+        this.directory = directory.toAbsolutePath().normalize();
+    }
+
+    @Override
+    public List<Document> load() throws IOException {
+
+        if (!Files.isDirectory(directory)) {
+            throw new IOException(
+                    "Document directory does not exist: " + directory
+            );
+        }
+
+        List<Document> documents = new ArrayList<Document>();
+
+        try (Stream<Path> paths = Files.walk(directory)) {
+
+            List<Path> files = new ArrayList<Path>();
+
+            paths.filter(Files::isRegularFile)
+                 .filter(path -> path.getFileName()
+                         .toString()
+                         .toLowerCase(java.util.Locale.ROOT)
+                         .endsWith(".txt"))
+                 .forEach(files::add);
+
+            Collections.sort(files, Comparator.naturalOrder());
+
+            for (Path file : files) {
+
+                String content = new String(
+                        Files.readAllBytes(file),
+                        StandardCharsets.UTF_8
+                );
+
+                if (content.trim().isEmpty()) {
+                    continue;
+                }
+
+                Map<String, String> metadata =
+                        new HashMap<String, String>();
+
+                String documentId = directory.relativize(file)
+                        .toString()
+                        .replace('\\', '/');
+
+                FileTime lastModified =
+                        Files.getLastModifiedTime(file);
+
+                metadata.put("documentId", documentId);
+                metadata.put("source", file.getFileName().toString());
+                metadata.put("documentType", "txt");
+                metadata.put(
+                        "lastModified",
+                        lastModified.toInstant().toString()
+                );
+
+                documents.add(new Document(content, metadata));
+            }
+        }
+
+        return Collections.unmodifiableList(documents);
+    }
+}
+```
+
+Production concepts incorporated: UTF-8 reading, deterministic file ordering, source metadata, a relative document identifier, modification timestamps, and explicit error handling. 
+
+#### Sample documents
+
+`documents/java.txt`:
+
+```
+Java is a programming language.
+
+Spring Boot simplifies the development of Java
+applications by providing auto-configuration
+and embedded server support.
+```
+
+`documents/rag.txt`:
+
+```
+Retrieval-Augmented Generation (RAG) combines
+information retrieval with language model generation.
+
+A typical RAG pipeline loads documents, splits them
+into chunks, generates embeddings, retrieves relevant
+content, and provides that content to a language model.
+```
+
+#### `DocumentLoadingDemo.java`
+
+```java
+package rag.indexing;
+
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class DocumentLoadingDemo {
+
+    public static void main(String[] args) throws IOException {
+
+        DocumentLoader loader = new TextDocumentLoader(
+                Paths.get("documents")
+        );
+
+        List<Document> documents = loader.load();
+
+        System.out.println(
+                "Documents loaded: " + documents.size()
+        );
+
+        for (Document document : documents) {
+            System.out.println("\nMetadata: " + document.getMetadata());
+            System.out.println("Content:\n" + document.getContent());
+        }
+    }
+}
+```
+
+Expected output, in principle:
+
+```
+Documents loaded: 2
+
+Metadata: {documentId=java.txt, ...}
+Content:
+Java is a programming language.
+...
+
+Metadata: {documentId=rag.txt, ...}
+Content:
+Retrieval-Augmented Generation (RAG) combines...
+...
+```
+
+---
+
+### II. Document Chunking
+
+Sending a very large document to retrieval as one unit can reduce precision. Splitting it into arbitrary fragments can break sentences or separate related explanations.
+
+Our goal is to produce chunks that are:
+
+- Small enough for relevant retrieval.
+- Large enough to preserve useful meaning.
+- Linked to their original source.
+- Traceable to their position within the source document.
+
+```
+rag-java/src/main/java/rag/indexing/
+├── Chunk.java                  
+├── DocumentChunker.java        
+└── RecursiveCharacterChunker.java 
+```
+
+#### `Chunk.java`
+
+A chunk represents a portion of a source document, retaining the information needed to trace it back to its origin.
+
+```java
+package rag.indexing;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+public class Chunk {
+
+    private final String id;
+    private final String content;
+    private final Map<String, String> metadata;
+    private final int chunkIndex;
+    private final int startOffset;
+    private final int endOffset;
+
+    public Chunk(
+            String id,
+            String content,
+            Map<String, String> metadata,
+            int chunkIndex,
+            int startOffset,
+            int endOffset) {
+
+        this.id = Objects.requireNonNull(id, "ID cannot be null");
+        this.content = Objects.requireNonNull(
+                content, "Content cannot be null");
+
+        Objects.requireNonNull(metadata, "Metadata cannot be null");
+
+        if (chunkIndex < 0 || startOffset < 0
+                || endOffset < startOffset
+                || content.length() != endOffset - startOffset) {
+            throw new IllegalArgumentException(
+                    "Invalid chunk index, offsets, or content length");
+        }
+
+        this.metadata = Collections.unmodifiableMap(
+                new HashMap<String, String>(metadata));
+
+        this.chunkIndex = chunkIndex;
+        this.startOffset = startOffset;
+        this.endOffset = endOffset;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Map<String, String> getMetadata() {
+        return metadata;
+    }
+
+    public int getChunkIndex() {
+        return chunkIndex;
+    }
+
+    public int getStartOffset() {
+        return startOffset;
+    }
+
+    public int getEndOffset() {
+        return endOffset;
+    }
+}
+```
+
+#### `DocumentChunker.java`
+
+This interface separates the chunking contract from the algorithm. Later, we can replace the implementation without changing the rest of the pipeline.
+
+```java
+package rag.indexing;
+
+import java.util.List;
+
+public interface DocumentChunker {
+
+    List<Chunk> chunk(Document document);
+}
+```
+
+#### `RecursiveCharacterChunker.java`
+
+This implementation uses natural text boundaries where possible and applies overlap between adjacent chunks.
+
+```java
+package rag.indexing;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class RecursiveCharacterChunker implements DocumentChunker {
+
+    private final int maxChunkChars;
+    private final int overlapChars;
+
+    private static final String[] SEPARATORS = {
+        "\n\n",
+        "\n",
+        ". ",
+        "? ",
+        "! ",
+        " "
+    };
+
+    public RecursiveCharacterChunker(
+            int maxChunkChars,
+            int overlapChars) {
+
+        if (maxChunkChars <= 0) {
+            throw new IllegalArgumentException(
+                    "maxChunkChars must be positive");
+        }
+
+        if (overlapChars < 0 || overlapChars >= maxChunkChars) {
+            throw new IllegalArgumentException(
+                    "overlapChars must be between 0 and maxChunkChars");
+        }
+
+        this.maxChunkChars = maxChunkChars;
+        this.overlapChars = overlapChars;
+    }
+
+    @Override
+    public List<Chunk> chunk(Document document) {
+
+        if (document == null) {
+            throw new IllegalArgumentException(
+                    "Document cannot be null");
+        }
+
+        String text = document.getContent();
+
+        if (text.trim().isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        // Step 1: Recursively split the source into smaller pieces.
+        List<Span> pieces = new ArrayList<Span>();
+
+        splitRecursively(
+                text,
+                0,
+                text.length(),
+                0,
+                pieces);
+
+        // Step 2: Merge pieces into chunks and apply overlap.
+        List<Chunk> chunks = mergeIntoChunks(text, document, pieces);
+
+        return Collections.unmodifiableList(chunks);
+    }
+
+    private void splitRecursively(
+            String text,
+            int start,
+            int end,
+            int separatorIndex,
+            List<Span> output) {
+
+        if (start >= end) {
+            return;
+        }
+
+        // This piece already satisfies the size limit.
+        if (end - start <= maxChunkChars) {
+            output.add(new Span(start, end));
+            return;
+        }
+
+        // Try progressively smaller structural boundaries.
+        if (separatorIndex < SEPARATORS.length) {
+
+            String separator = SEPARATORS[separatorIndex];
+
+            List<Integer> boundaries = new ArrayList<Integer>();
+
+            int cursor = start;
+
+            while (cursor < end) {
+
+                int position = text.indexOf(separator, cursor);
+
+                if (position < 0
+                        || position + separator.length() > end) {
+                    break;
+                }
+
+                int boundary = position + separator.length();
+
+                // A boundary at the end does not split the range.
+                if (boundary < end) {
+                    boundaries.add(boundary);
+                }
+
+                cursor = boundary;
+            }
+
+            if (!boundaries.isEmpty()) {
+
+                int pieceStart = start;
+
+                for (Integer boundary : boundaries) {
+
+                    splitRecursively(
+                            text,
+                            pieceStart,
+                            boundary,
+                            separatorIndex + 1,
+                            output);
+
+                    pieceStart = boundary;
+                }
+
+                splitRecursively(
+                        text,
+                        pieceStart,
+                        end,
+                        separatorIndex + 1,
+                        output);
+
+                return;
+            }
+
+            // No usable boundary at this level: try the next separator.
+            splitRecursively(
+                    text,
+                    start,
+                    end,
+                    separatorIndex + 1,
+                    output);
+
+            return;
+        }
+
+        // Final fallback: hard-split by character count.
+        int cursor = start;
+
+        while (cursor < end) {
+
+            int pieceEnd = Math.min(
+                    cursor + maxChunkChars,
+                    end);
+
+            output.add(new Span(cursor, pieceEnd));
+
+            cursor = pieceEnd;
+        }
+    }
+
+    private List<Chunk> mergeIntoChunks(
+            String text,
+            Document document,
+            List<Span> pieces) {
+
+        List<Chunk> chunks = new ArrayList<Chunk>();
+
+        String documentId = document.getMetadata().get("documentId");
+
+        if (documentId == null || documentId.trim().isEmpty()) {
+            documentId = document.getMetadata().get("source");
+        }
+
+        if (documentId == null || documentId.trim().isEmpty()) {
+            documentId = "document-"
+                    + Integer.toHexString(text.hashCode());
+        }
+
+        int pieceIndex = 0;
+        int chunkIndex = 0;
+
+        while (pieceIndex < pieces.size()) {
+
+            int start = pieces.get(pieceIndex).start;
+            int end = pieces.get(pieceIndex).end;
+
+            int nextPieceIndex = pieceIndex + 1;
+
+            // Merge adjacent pieces until the size limit is reached.
+            while (nextPieceIndex < pieces.size()) {
+
+                int candidateEnd =
+                        pieces.get(nextPieceIndex).end;
+
+                if (candidateEnd - start > maxChunkChars) {
+                    break;
+                }
+
+                end = candidateEnd;
+                nextPieceIndex++;
+            }
+
+            // Keep exact source text. Do not trim it, because offsets
+            // must correspond to the original document.
+            String content = text.substring(start, end);
+
+            if (!content.trim().isEmpty()) {
+
+                String chunkId =
+                        documentId + "#chunk-" + chunkIndex;
+
+                Map<String, String> metadata =
+                        new HashMap<String, String>(
+                                document.getMetadata());
+
+                metadata.put("chunkId", chunkId);
+                metadata.put(
+                        "chunkIndex",
+                        String.valueOf(chunkIndex));
+                metadata.put("startOffset", String.valueOf(start));
+                metadata.put("endOffset", String.valueOf(end));
+
+                chunks.add(new Chunk(
+                        chunkId,
+                        content,
+                        metadata,
+                        chunkIndex,
+                        start,
+                        end));
+
+                chunkIndex++;
+            }
+
+            if (end >= text.length()) {
+                break;
+            }
+
+            // Choose the next piece near the requested overlap point.
+            int targetStart = end - overlapChars;
+
+            int nextStartIndex = nextPieceIndex;
+
+            while (nextStartIndex < pieces.size()
+                    && pieces.get(nextStartIndex).start < targetStart) {
+                nextStartIndex++;
+            }
+
+            // Always advance, even if a piece is too large to overlap.
+            if (nextStartIndex <= pieceIndex) {
+                nextStartIndex = pieceIndex + 1;
+            }
+
+            if (nextStartIndex >= pieces.size()) {
+                break;
+            }
+
+            pieceIndex = nextStartIndex;
+        }
+
+        return chunks;
+    }
+
+    private static class Span {
+
+        private final int start;
+        private final int end;
+
+        private Span(int start, int end) {
+            this.start = start;
+            this.end = end;
+        }
+    }
+}
+```
+
+#### `ChunkingDemo.java`:
+
+```java
+package rag.indexing;
+
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class ChunkingDemo {
+
+    public static void main(String[] args) throws IOException {
+
+        DocumentLoader loader =
+                new TextDocumentLoader(Paths.get("documents"));
+
+        // Demonstration settings: characters, not tokens.
+        DocumentChunker chunker =
+                new RecursiveCharacterChunker(100, 20);
+
+        List<Document> documents = loader.load();
+
+        System.out.println("Documents loaded: " + documents.size());
+
+        for (Document document : documents) {
+
+            List<Chunk> chunks = chunker.chunk(document);
+
+            System.out.println(
+                    "\nSource: "
+                    + document.getMetadata().get("source"));
+
+            System.out.println("Chunks created: " + chunks.size());
+
+            for (Chunk chunk : chunks) {
+
+                System.out.println("\nChunk ID: " + chunk.getId());
+
+                System.out.println(
+                        "Index: " + chunk.getChunkIndex());
+
+                System.out.println(
+                        "Offsets: "
+                        + chunk.getStartOffset()
+                        + "-" + chunk.getEndOffset());
+
+                System.out.println(
+                        "Length: " + chunk.getContent().length());
+
+                System.out.println(
+                        "Content: [" + chunk.getContent() + "]");
+            }
+        }
+    }
+}
+```
+
+---
+
+### III. 
+
+---
+
 <h1 align="center">Agentic Systems</h1>
 
 ## What are Tools, Agents and MCP?
