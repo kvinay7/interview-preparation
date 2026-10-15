@@ -831,714 +831,267 @@ A RAG system has an indexing pipeline that processes documents into searchable v
 
 ## 2. RAG Implementation in Java
 
-### I. Document Loading
+### Stage 1 — Document Loading
 
-| Requirement    | Implementation                                                 |
-| -------------- | -------------------------------------------------------------- |
-| Input          | A directory containing `.txt` files                            |
-| Loading        | Read each file's text                                          |
-| Document model | `Document` record                                              |
-| Metadata       | Source filename, document ID, document type                    |
-| Output         | `List<Document>`                                               |
-| Error handling | Report unreadable files clearly                                |
-| Validation     | Test empty directories, multiple files and file-reading errors |
+#### Q1. Why is document loading necessary in RAG?
 
-#### Project structure
+Document loading ingests external knowledge and converts it into a processable representation before chunking, embedding, indexing, and retrieval.
 
-```text
-rag-java/
-└── src/
-    ├── main/
-    │   └── java/
-    │       └── rag/
-    │           └── indexing/
-    │               ├── Document.java
-    │               ├── DocumentLoader.java
-    │               └── TextDocumentLoader.java
-    └── test/
-        └── resources/
-            └── documents/
-                ├── java.txt
-                └── rag.txt
+Design decisions and trade-offs
+
+- Local files are simple to implement but offer limited integration with enterprise data sources.
+- Object storage supports larger collections but requires additional integration and access management.
+- Database and API connectors enable enterprise ingestion but introduce authentication and synchronization complexity.
+
+Failure modes and solutions
+
+- Unsupported formats → route documents to format-specific loaders.
+- Corrupted files → validate parsing and isolate failures.
+- Missing or outdated content → implement validation and incremental ingestion.
+
+Production and scalability
+
+- Use asynchronous or bounded parallel ingestion for large collections.
+- Monitor ingestion success, failure, throughput, and processing time.
+- Support document updates and deletions.
+
+Business impact: Reliable ingestion reduces missing or stale knowledge, which improves the reliability of downstream RAG answers.
+
+#### Q2. What is a `Document` in a RAG system?
+
+A `Document` is a representation of a source item containing extracted text and metadata.
+
+```
+Document document = new Document(content, metadata);
 ```
 
-#### `Document.java`
+For example, a PDF may be converted into extracted text with metadata identifying its filename, page information, and document ID.
 
-Represents one loaded source document. It stores the original content and metadata that later stages can preserve.
+Design decision: Use a common document representation so downstream components do not depend on the original source format.
 
-```java
-package rag.indexing;
+Production consideration: Preserve source identity, version information, and trusted access-control metadata through subsequent stages.
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+Trade-off: A common representation simplifies the pipeline, but format-specific information—such as PDF page numbers or document headings—must be retained explicitly if it is needed later.
 
-public class Document {
+#### Q3. Why preserve metadata?
 
-    private final String content;
-    private final Map<String, String> metadata;
+Metadata enables source attribution, filtering, traceability, and document lifecycle management.
 
-    public Document(String content, Map<String, String> metadata) {
-        this.content = Objects.requireNonNull(
-                content, "Content cannot be null"
-        );
+For example, a retrieved chunk from a hospital policy should retain enough information to identify the original policy.
 
-        Objects.requireNonNull(metadata, "Metadata cannot be null");
+| Metadata field    | Purpose                                    |
+| ----------------- | ------------------------------------------ |
+| `documentId`      | Identifies the source document             |
+| `source`          | Identifies the filename or source location |
+| `documentType`    | Identifies the format                      |
+| `lastModified`    | Helps detect changes                       |
+| `contentHash`     | Helps detect content changes               |
+| `tenantId`        | Supports tenant-specific filtering         |
+| `documentVersion` | Identifies a particular version            |
 
-        this.metadata = Collections.unmodifiableMap(
-                new HashMap<String, String>(metadata)
-        );
-    }
+Design decision: Preserve source metadata when chunking and indexing; add chunk-specific fields without losing document-level information.
 
-    public String getContent() {
-        return content;
-    }
+Failure mode: If metadata is lost, source citations, filtering, and document updates become difficult.
 
-    public Map<String, String> getMetadata() {
-        return metadata;
-    }
-}
+Production consideration: Metadata alone does not enforce security. Authorization must be enforced during retrieval, and tenant filters must not be bypassable by user-supplied values.
+
+Business impact: Traceability supports auditing, while correct filtering reduces the risk of exposing information to unauthorized users.
+
+#### Q4. What metadata should we store, and how do we choose it?
+
+Store metadata based on the capabilities the application requires: source attribution, filtering, updates, security, and auditing.
+
+Design trade-offs
+
+- Minimal metadata reduces storage and ingestion complexity.
+- Rich metadata supports more sophisticated filtering and lifecycle management but increases maintenance requirements.
+
+Recommended approach: Start with `documentId`, `source`, `documentType`, and `lastModified`. Add content hashes, versions, tenant IDs, and access-control fields when justified by the requirements.
+
+Production consideration: Validate required fields, use stable identifiers, and avoid placing sensitive information in logs or unrestricted metadata fields.
+
+#### Q5. How do you handle errors during document loading?
+
+A robust loader distinguishes between configuration errors, unreadable files, empty content, unsupported formats, and malformed documents.
+
+Design decision: Choose the failure policy based on the ingestion workflow.
+
+- For a small prototype, failing fast may be appropriate.
+- For a production batch, isolate failures so one bad document does not block all valid documents.
+
+Failure handling
+
+- Transient errors → retry with bounded backoff.
+- Permanent parsing errors → record the failure and route for investigation.
+- Empty documents → skip or reject according to an explicit policy.
+- Missing source directory → report a clear configuration error.
+
+Production consideration: Track failed documents and retries. Ensure retries do not create duplicate index entries.
+
+Trade-off: Continuing after individual failures improves ingestion throughput, but it requires failure tracking and recovery procedures to prevent silent data gaps.
+
+#### Q6. Why use UTF-8 when reading text files?
+
+UTF-8 provides consistent character encoding and avoids relying on the machine's default encoding.
+
+```
+String content = new String(
+    Files.readAllBytes(file),
+    StandardCharsets.UTF_8
+);
 ```
 
+Design decision: Specify the expected encoding and use format-specific parsers for PDF and DOCX sources.
 
-#### `DocumentLoader.java`
+Failure mode: Incorrect encoding or poor text extraction can introduce corrupted characters and reduce retrieval quality.
 
-Defines the contract for loading documents. Later, we can add PDF, DOCX, or other loaders without changing the downstream pipeline.
+Production consideration: Reading an entire file into memory is reasonable for small text files. For large documents or large ingestion workloads, use bounded-memory or streaming approaches where supported.
 
-```java
-package rag.indexing;
+Business impact: Consistent extraction prevents avoidable loss of important information before embedding and retrieval.
 
-import java.io.IOException;
-import java.util.List;
+#### Q7. Why should a document loader be an interface?
 
+An interface separates the loading contract from the source-specific implementation.
+
+```
 public interface DocumentLoader {
-
     List<Document> load() throws IOException;
 }
 ```
 
-#### `TextDocumentLoader.java`
+We can implement `TextDocumentLoader`, `PdfDocumentLoader`, or `DatabaseDocumentLoader` while preserving the same downstream document representation.
 
-This implementation recursively reads `.txt` files, extracts their content, and attaches metadata.
+Design decision: Use a shared interface when multiple source types must feed the same pipeline.
 
-```java
-package rag.indexing;
+Trade-off: The abstraction makes new loaders easier to add, but an overly generic contract can hide source-specific capabilities such as pagination, streaming, or change notifications.
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+Production consideration: Larger systems may need additional contracts for incremental synchronization, batch processing, and structured error reporting.
 
-public class TextDocumentLoader implements DocumentLoader {
+Interview follow-up: This is an example of abstraction and loose coupling applied to RAG ingestion.
 
-    private final Path directory;
+#### Q8. What is the difference between document loading and chunking?
 
-    public TextDocumentLoader(Path directory) {
-        this.directory = directory.toAbsolutePath().normalize();
-    }
+| Document loading                 | Document chunking                           |
+| -------------------------------- | ------------------------------------------- |
+| Reads or extracts source content | Splits extracted content into smaller units |
+| Produces document objects        | Produces chunk objects                      |
+| Preserves source-level metadata  | Adds chunk-level metadata                   |
+| Prepares data for processing     | Prepares data for embedding and retrieval   |
 
-    @Override
-    public List<Document> load() throws IOException {
+A 20-page PDF might become one document after extraction and hundreds of chunks after chunking.
 
-        if (!Files.isDirectory(directory)) {
-            throw new IOException(
-                    "Document directory does not exist: " + directory
-            );
-        }
+Design decision: Keep the two stages separate so document parsers and chunking strategies can evolve independently.
 
-        List<Document> documents = new ArrayList<Document>();
+Failure mode: If extraction loses headings, tables, or page information, chunking may produce semantically incomplete pieces.
 
-        try (Stream<Path> paths = Files.walk(directory)) {
+Production consideration: Preserve useful structural metadata for citations, debugging, and retrieval quality.
 
-            List<Path> files = new ArrayList<Path>();
+#### Q9. Should document loading happen at query time?
 
-            paths.filter(Files::isRegularFile)
-                 .filter(path -> path.getFileName()
-                         .toString()
-                         .toLowerCase(java.util.Locale.ROOT)
-                         .endsWith(".txt"))
-                 .forEach(files::add);
+Usually, no. RAG separates the indexing pipeline from the query pipeline.
 
-            Collections.sort(files, Comparator.naturalOrder());
+- Indexing: Load documents, chunk them, generate embeddings, and store them.
+- Query: Embed the user's question, retrieve relevant chunks, and generate the response.
 
-            for (Path file : files) {
+Design decision: Perform routine ingestion asynchronously or ahead of time to keep query processing responsive.
 
-                String content = new String(
-                        Files.readAllBytes(file),
-                        StandardCharsets.UTF_8
-                );
+Trade-off: Pre-indexing improves query latency but introduces index freshness and synchronization requirements.
 
-                if (content.trim().isEmpty()) {
-                    continue;
-                }
+Production consideration: Support updates and deletions. Stale or deleted content must not remain retrievable indefinitely. On-demand ingestion can still be appropriate for particular use cases.
 
-                Map<String, String> metadata =
-                        new HashMap<String, String>();
+Business impact: Separating the pipelines improves responsiveness and allows ingestion workloads to scale independently.
 
-                String documentId = directory.relativize(file)
-                        .toString()
-                        .replace('\\', '/');
+#### Q10. How do you prevent duplicate documents?
 
-                FileTime lastModified =
-                        Files.getLastModifiedTime(file);
+Use stable document IDs and content hashes to identify new, unchanged, and modified documents.
 
-                metadata.put("documentId", documentId);
-                metadata.put("source", file.getFileName().toString());
-                metadata.put("documentType", "txt");
-                metadata.put(
-                        "lastModified",
-                        lastModified.toInstant().toString()
-                );
+Design decision
 
-                documents.add(new Document(content, metadata));
-            }
-        }
+- Stable ID: identifies the logical source document.
+- Content hash: detects whether the document's content changed.
+- Version: tracks a particular revision when version history is required.
 
-        return Collections.unmodifiableList(documents);
-    }
-}
-```
+Failure mode: Re-ingesting the same document without deduplication can create duplicate chunks and distort retrieval results.
 
-Production concepts incorporated: UTF-8 reading, deterministic file ordering, source metadata, a relative document identifier, modification timestamps, and explicit error handling. 
+Production solution: Make ingestion idempotent. When content changes, replace or remove outdated chunks as the new version is indexed. Handle interrupted updates so the index does not remain partially updated.
 
-#### Sample documents
+Trade-off: Hashing and version tracking introduce processing and metadata overhead but reduce duplicate storage and stale retrieval.
 
-`documents/java.txt`:
+#### Q11. How would you design incremental ingestion?
 
-```
-Java is a programming language.
+Incremental ingestion processes only documents that are new, modified, or deleted.
 
-Spring Boot simplifies the development of Java
-applications by providing auto-configuration
-and embedded server support.
-```
+Workflow
 
-`documents/rag.txt`:
+1. Discover source changes.
+2. Compare IDs, timestamps, versions, or content hashes.
+3. Parse and chunk changed documents.
+4. Generate embeddings for their chunks.
+5. Update or remove outdated indexed entries.
+6. Record the outcome.
 
-```
-Retrieval-Augmented Generation (RAG) combines
-information retrieval with language model generation.
+Design decision: Use timestamps as an inexpensive change signal when reliable; use content hashes when content-level verification is important.
 
-A typical RAG pipeline loads documents, splits them
-into chunks, generates embeddings, retrieves relevant
-content, and provides that content to a language model.
-```
+Failure modes and solutions
 
-#### `DocumentLoadingDemo.java`
+- Missed changes → use reliable source synchronization and verification.
+- Partial updates → track ingestion state and implement recovery.
+- Concurrent updates → use version checks or suitable synchronization.
+- Deletion events missed → synchronize deletions as well as additions.
 
-```java
-package rag.indexing;
+Production consideration: Re-index only affected documents, and ensure old content is not exposed after a required deletion or access revocation.
 
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.List;
+Business impact: Incremental ingestion reduces redundant parsing and embedding work, lowering operating cost and improving freshness.
 
-public class DocumentLoadingDemo {
+#### Q12. How would you scale document ingestion?
 
-    public static void main(String[] args) throws IOException {
+For small collections, sequential processing from a local directory is often sufficient. Larger systems may ingest from object storage, enterprise repositories, databases, or event streams.
 
-        DocumentLoader loader = new TextDocumentLoader(
-                Paths.get("documents")
-        );
+Design decision
 
-        List<Document> documents = loader.load();
+- Sequential processing → simplest operational model.
+- Bounded parallel processing → higher throughput with controlled resource usage.
+- Streaming or pagination → avoids loading an entire collection into memory.
+- Event-driven ingestion → reacts to source changes without repeatedly scanning everything.
 
-        System.out.println(
-                "Documents loaded: " + documents.size()
-        );
+What breaks at scale?
 
-        for (Document document : documents) {
-            System.out.println("\nMetadata: " + document.getMetadata());
-            System.out.println("Content:\n" + document.getContent());
-        }
-    }
-}
-```
+- Memory exhaustion from loading too much content.
+- Embedding API rate limits.
+- Excessive parser concurrency.
+- Growing ingestion backlogs.
+- Repeated processing of unchanged documents.
 
-Expected output, in principle:
+Production solutions: Apply bounded concurrency, batching, backpressure, retry limits, and incremental change detection. Monitor throughput, failures, queue depth, and processing latency.
 
-```
-Documents loaded: 2
+Business impact: The objective is not maximum throughput at any cost; it is meeting freshness and reliability requirements within budget.
 
-Metadata: {documentId=java.txt, ...}
-Content:
-Java is a programming language.
-...
+#### Q13. How do you secure document ingestion?
 
-Metadata: {documentId=rag.txt, ...}
-Content:
-Retrieval-Augmented Generation (RAG) combines...
-...
-```
+Enterprise documents may contain confidential company information, customer data, or other sensitive content.
 
----
+Design decision: Define trusted source boundaries and preserve ownership, tenant identity, and access-control information through indexing.
 
-### II. Document Chunking
+Failure modes and solutions
 
-Sending a very large document to retrieval as one unit can reduce precision. Splitting it into arbitrary fragments can break sentences or separate related explanations.
+- Untrusted metadata → validate it against authoritative sources.
+- Cross-tenant retrieval → enforce tenant-scoped filters and authorization.
+- Sensitive content in logs → redact or avoid logging document contents.
+- Revoked access → propagate permission changes to retrieval controls.
 
-Our goal is to produce chunks that are:
+Production consideration: Restrict access to source documents, vectors, credentials, and ingestion logs. Enforce authorization at retrieval time; simply storing an access-control field is not sufficient.
 
-- Small enough for relevant retrieval.
-- Large enough to preserve useful meaning.
-- Linked to their original source.
-- Traceable to their position within the source document.
+Business impact: Proper controls reduce data leakage, compliance risk, and the potential impact of unauthorized access.
 
-```
-rag-java/src/main/java/rag/indexing/
-├── Chunk.java                  
-├── DocumentChunker.java        
-└── RecursiveCharacterChunker.java 
-```
 
-#### `Chunk.java`
+#### RAG system ingests 100,000 documents, and users report that answers sometimes cite outdated policies. How to investigate and fix the issue?
 
-A chunk represents a portion of a source document, retaining the information needed to trace it back to its origin.
-
-```java
-package rag.indexing;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
-public class Chunk {
-
-    private final String id;
-    private final String content;
-    private final Map<String, String> metadata;
-    private final int chunkIndex;
-    private final int startOffset;
-    private final int endOffset;
-
-    public Chunk(
-            String id,
-            String content,
-            Map<String, String> metadata,
-            int chunkIndex,
-            int startOffset,
-            int endOffset) {
-
-        this.id = Objects.requireNonNull(id, "ID cannot be null");
-        this.content = Objects.requireNonNull(
-                content, "Content cannot be null");
-
-        Objects.requireNonNull(metadata, "Metadata cannot be null");
-
-        if (chunkIndex < 0 || startOffset < 0
-                || endOffset < startOffset
-                || content.length() != endOffset - startOffset) {
-            throw new IllegalArgumentException(
-                    "Invalid chunk index, offsets, or content length");
-        }
-
-        this.metadata = Collections.unmodifiableMap(
-                new HashMap<String, String>(metadata));
-
-        this.chunkIndex = chunkIndex;
-        this.startOffset = startOffset;
-        this.endOffset = endOffset;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public Map<String, String> getMetadata() {
-        return metadata;
-    }
-
-    public int getChunkIndex() {
-        return chunkIndex;
-    }
-
-    public int getStartOffset() {
-        return startOffset;
-    }
-
-    public int getEndOffset() {
-        return endOffset;
-    }
-}
-```
-
-#### `DocumentChunker.java`
-
-This interface separates the chunking contract from the algorithm. Later, we can replace the implementation without changing the rest of the pipeline.
-
-```java
-package rag.indexing;
-
-import java.util.List;
-
-public interface DocumentChunker {
-
-    List<Chunk> chunk(Document document);
-}
-```
-
-#### `RecursiveCharacterChunker.java`
-
-This implementation uses natural text boundaries where possible and applies overlap between adjacent chunks.
-
-```java
-package rag.indexing;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class RecursiveCharacterChunker implements DocumentChunker {
-
-    private final int maxChunkChars;
-    private final int overlapChars;
-
-    private static final String[] SEPARATORS = {
-        "\n\n",
-        "\n",
-        ". ",
-        "? ",
-        "! ",
-        " "
-    };
-
-    public RecursiveCharacterChunker(
-            int maxChunkChars,
-            int overlapChars) {
-
-        if (maxChunkChars <= 0) {
-            throw new IllegalArgumentException(
-                    "maxChunkChars must be positive");
-        }
-
-        if (overlapChars < 0 || overlapChars >= maxChunkChars) {
-            throw new IllegalArgumentException(
-                    "overlapChars must be between 0 and maxChunkChars");
-        }
-
-        this.maxChunkChars = maxChunkChars;
-        this.overlapChars = overlapChars;
-    }
-
-    @Override
-    public List<Chunk> chunk(Document document) {
-
-        if (document == null) {
-            throw new IllegalArgumentException(
-                    "Document cannot be null");
-        }
-
-        String text = document.getContent();
-
-        if (text.trim().isEmpty()) {
-            return Collections.emptyList();
-        }
-
-        // Step 1: Recursively split the source into smaller pieces.
-        List<Span> pieces = new ArrayList<Span>();
-
-        splitRecursively(
-                text,
-                0,
-                text.length(),
-                0,
-                pieces);
-
-        // Step 2: Merge pieces into chunks and apply overlap.
-        List<Chunk> chunks = mergeIntoChunks(text, document, pieces);
-
-        return Collections.unmodifiableList(chunks);
-    }
-
-    private void splitRecursively(
-            String text,
-            int start,
-            int end,
-            int separatorIndex,
-            List<Span> output) {
-
-        if (start >= end) {
-            return;
-        }
-
-        // This piece already satisfies the size limit.
-        if (end - start <= maxChunkChars) {
-            output.add(new Span(start, end));
-            return;
-        }
-
-        // Try progressively smaller structural boundaries.
-        if (separatorIndex < SEPARATORS.length) {
-
-            String separator = SEPARATORS[separatorIndex];
-
-            List<Integer> boundaries = new ArrayList<Integer>();
-
-            int cursor = start;
-
-            while (cursor < end) {
-
-                int position = text.indexOf(separator, cursor);
-
-                if (position < 0
-                        || position + separator.length() > end) {
-                    break;
-                }
-
-                int boundary = position + separator.length();
-
-                // A boundary at the end does not split the range.
-                if (boundary < end) {
-                    boundaries.add(boundary);
-                }
-
-                cursor = boundary;
-            }
-
-            if (!boundaries.isEmpty()) {
-
-                int pieceStart = start;
-
-                for (Integer boundary : boundaries) {
-
-                    splitRecursively(
-                            text,
-                            pieceStart,
-                            boundary,
-                            separatorIndex + 1,
-                            output);
-
-                    pieceStart = boundary;
-                }
-
-                splitRecursively(
-                        text,
-                        pieceStart,
-                        end,
-                        separatorIndex + 1,
-                        output);
-
-                return;
-            }
-
-            // No usable boundary at this level: try the next separator.
-            splitRecursively(
-                    text,
-                    start,
-                    end,
-                    separatorIndex + 1,
-                    output);
-
-            return;
-        }
-
-        // Final fallback: hard-split by character count.
-        int cursor = start;
-
-        while (cursor < end) {
-
-            int pieceEnd = Math.min(
-                    cursor + maxChunkChars,
-                    end);
-
-            output.add(new Span(cursor, pieceEnd));
-
-            cursor = pieceEnd;
-        }
-    }
-
-    private List<Chunk> mergeIntoChunks(
-            String text,
-            Document document,
-            List<Span> pieces) {
-
-        List<Chunk> chunks = new ArrayList<Chunk>();
-
-        String documentId = document.getMetadata().get("documentId");
-
-        if (documentId == null || documentId.trim().isEmpty()) {
-            documentId = document.getMetadata().get("source");
-        }
-
-        if (documentId == null || documentId.trim().isEmpty()) {
-            documentId = "document-"
-                    + Integer.toHexString(text.hashCode());
-        }
-
-        int pieceIndex = 0;
-        int chunkIndex = 0;
-
-        while (pieceIndex < pieces.size()) {
-
-            int start = pieces.get(pieceIndex).start;
-            int end = pieces.get(pieceIndex).end;
-
-            int nextPieceIndex = pieceIndex + 1;
-
-            // Merge adjacent pieces until the size limit is reached.
-            while (nextPieceIndex < pieces.size()) {
-
-                int candidateEnd =
-                        pieces.get(nextPieceIndex).end;
-
-                if (candidateEnd - start > maxChunkChars) {
-                    break;
-                }
-
-                end = candidateEnd;
-                nextPieceIndex++;
-            }
-
-            // Keep exact source text. Do not trim it, because offsets
-            // must correspond to the original document.
-            String content = text.substring(start, end);
-
-            if (!content.trim().isEmpty()) {
-
-                String chunkId =
-                        documentId + "#chunk-" + chunkIndex;
-
-                Map<String, String> metadata =
-                        new HashMap<String, String>(
-                                document.getMetadata());
-
-                metadata.put("chunkId", chunkId);
-                metadata.put(
-                        "chunkIndex",
-                        String.valueOf(chunkIndex));
-                metadata.put("startOffset", String.valueOf(start));
-                metadata.put("endOffset", String.valueOf(end));
-
-                chunks.add(new Chunk(
-                        chunkId,
-                        content,
-                        metadata,
-                        chunkIndex,
-                        start,
-                        end));
-
-                chunkIndex++;
-            }
-
-            if (end >= text.length()) {
-                break;
-            }
-
-            // Choose the next piece near the requested overlap point.
-            int targetStart = end - overlapChars;
-
-            int nextStartIndex = nextPieceIndex;
-
-            while (nextStartIndex < pieces.size()
-                    && pieces.get(nextStartIndex).start < targetStart) {
-                nextStartIndex++;
-            }
-
-            // Always advance, even if a piece is too large to overlap.
-            if (nextStartIndex <= pieceIndex) {
-                nextStartIndex = pieceIndex + 1;
-            }
-
-            if (nextStartIndex >= pieces.size()) {
-                break;
-            }
-
-            pieceIndex = nextStartIndex;
-        }
-
-        return chunks;
-    }
-
-    private static class Span {
-
-        private final int start;
-        private final int end;
-
-        private Span(int start, int end) {
-            this.start = start;
-            this.end = end;
-        }
-    }
-}
-```
-
-#### `ChunkingDemo.java`:
-
-```java
-package rag.indexing;
-
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.List;
-
-public class ChunkingDemo {
-
-    public static void main(String[] args) throws IOException {
-
-        DocumentLoader loader =
-                new TextDocumentLoader(Paths.get("documents"));
-
-        // Demonstration settings: characters, not tokens.
-        DocumentChunker chunker =
-                new RecursiveCharacterChunker(100, 20);
-
-        List<Document> documents = loader.load();
-
-        System.out.println("Documents loaded: " + documents.size());
-
-        for (Document document : documents) {
-
-            List<Chunk> chunks = chunker.chunk(document);
-
-            System.out.println(
-                    "\nSource: "
-                    + document.getMetadata().get("source"));
-
-            System.out.println("Chunks created: " + chunks.size());
-
-            for (Chunk chunk : chunks) {
-
-                System.out.println("\nChunk ID: " + chunk.getId());
-
-                System.out.println(
-                        "Index: " + chunk.getChunkIndex());
-
-                System.out.println(
-                        "Offsets: "
-                        + chunk.getStartOffset()
-                        + "-" + chunk.getEndOffset());
-
-                System.out.println(
-                        "Length: " + chunk.getContent().length());
-
-                System.out.println(
-                        "Content: [" + chunk.getContent() + "]");
-            }
-        }
-    }
-}
-```
-
----
-
-### III. 
+1. Diagnose: Check source modification events, ingestion logs, document versions, and index freshness.
+2. Identify the root cause: Determine whether changes were not detected, ingestion failed, or stale chunks were not removed.
+3. Design the fix: Introduce reliable change detection, idempotent updates, version tracking, and deletion handling.
+4. Protect correctness: Avoid exposing stale content during updates where freshness or security requirements prohibit it.
+5. Measure success: Track ingestion lag, failed updates, stale retrieval incidents, and indexing cost.
+6. Business trade-off: Balance update freshness against re-indexing cost and operational complexity.
 
 ---
 
