@@ -829,7 +829,7 @@ A RAG system has an indexing pipeline that processes documents into searchable v
 
 ---
 
-## 2. RAG Implementation in Java
+## 2. RAG Implementation
 
 ### Stage 1 — Document Loading
 
@@ -837,47 +837,41 @@ A RAG system has an indexing pipeline that processes documents into searchable v
 
 Document loading ingests external knowledge and converts it into a processable representation before chunking, embedding, indexing, and retrieval.
 
-Design decisions and trade-offs
+- **Design decisions and Trade-offs**
 
-- Local files are simple to implement but offer limited integration with enterprise data sources.
-- Object storage supports larger collections but requires additional integration and access management.
-- Database and API connectors enable enterprise ingestion but introduce authentication and synchronization complexity.
+    - Local files are simple to implement but offer limited integration with enterprise data sources.
+    - Object storage supports larger collections but requires additional integration and access management.
+    - Database and API connectors enable enterprise ingestion but introduce authentication and synchronization complexity.
 
-Failure modes and solutions
+- **Failure modes and Solutions**
 
-- Unsupported formats → route documents to format-specific loaders.
-- Corrupted files → validate parsing and isolate failures.
-- Missing or outdated content → implement validation and incremental ingestion.
+    - Unsupported formats → route documents to format-specific loaders.
+    - Corrupted files → validate parsing and isolate failures.
+    - Missing or outdated content → implement validation and incremental ingestion.
 
-Production and scalability
+- **Production and Scalability**
 
-- Use asynchronous or bounded parallel ingestion for large collections.
-- Monitor ingestion success, failure, throughput, and processing time.
-- Support document updates and deletions.
+    - Use asynchronous or bounded parallel ingestion for large collections.
+    - Monitor ingestion success, failure, throughput, and processing time.
+    - Support document updates and deletions.
 
-Business impact: Reliable ingestion reduces missing or stale knowledge, which improves the reliability of downstream RAG answers.
+- **Business Impact**: Reliable ingestion reduces missing or stale knowledge, which improves the reliability of downstream RAG answers.
 
 #### Q2. What is a `Document` in a RAG system?
 
 A `Document` is a representation of a source item containing extracted text and metadata.
 
-```
+```java
 Document document = new Document(content, metadata);
 ```
 
-For example, a PDF may be converted into extracted text with metadata identifying its filename, page information, and document ID.
-
-Design decision: Use a common document representation so downstream components do not depend on the original source format.
-
-Production consideration: Preserve source identity, version information, and trusted access-control metadata through subsequent stages.
-
-Trade-off: A common representation simplifies the pipeline, but format-specific information—such as PDF page numbers or document headings—must be retained explicitly if it is needed later.
+- **Design decision**: Use a common document representation so downstream components do not depend on the original source format.
+- **Production consideration**: Preserve source identity, version information, and trusted access-control metadata through subsequent stages.
+- **Trade-off**: A common representation simplifies the pipeline, but format-specific information—such as PDF page numbers or document headings—must be retained explicitly if it is needed later.
 
 #### Q3. Why preserve metadata?
 
 Metadata enables source attribution, filtering, traceability, and document lifecycle management.
-
-For example, a retrieved chunk from a hospital policy should retain enough information to identify the original policy.
 
 | Metadata field    | Purpose                                    |
 | ----------------- | ------------------------------------------ |
@@ -889,85 +883,67 @@ For example, a retrieved chunk from a hospital policy should retain enough infor
 | `tenantId`        | Supports tenant-specific filtering         |
 | `documentVersion` | Identifies a particular version            |
 
-Design decision: Preserve source metadata when chunking and indexing; add chunk-specific fields without losing document-level information.
-
-Failure mode: If metadata is lost, source citations, filtering, and document updates become difficult.
-
-Production consideration: Metadata alone does not enforce security. Authorization must be enforced during retrieval, and tenant filters must not be bypassable by user-supplied values.
-
-Business impact: Traceability supports auditing, while correct filtering reduces the risk of exposing information to unauthorized users.
+- **Design decision**: Preserve source metadata when chunking and indexing; add chunk-specific fields without losing document-level information.
+- **Failure mode**: If metadata is lost, source citations, filtering, and document updates become difficult.
+- **Production consideration**: Metadata alone does not enforce security. Authorization must be enforced during retrieval, and tenant filters must not be bypassable by user-supplied values.
+- **Business impact**: Traceability supports auditing, while correct filtering reduces the risk of exposing information to unauthorized users.
 
 #### Q4. What metadata should we store, and how do we choose it?
 
 Store metadata based on the capabilities the application requires: source attribution, filtering, updates, security, and auditing.
 
-Design trade-offs
-
-- Minimal metadata reduces storage and ingestion complexity.
-- Rich metadata supports more sophisticated filtering and lifecycle management but increases maintenance requirements.
-
-Recommended approach: Start with `documentId`, `source`, `documentType`, and `lastModified`. Add content hashes, versions, tenant IDs, and access-control fields when justified by the requirements.
-
-Production consideration: Validate required fields, use stable identifiers, and avoid placing sensitive information in logs or unrestricted metadata fields.
+- **Design trade-offs**: Minimal metadata reduces storage and ingestion complexity. Rich metadata supports more sophisticated filtering and lifecycle management but increases maintenance requirements.
+- **Production consideration**: Validate required fields, use stable identifiers, and avoid placing sensitive information in logs or unrestricted metadata fields.
 
 #### Q5. How do you handle errors during document loading?
 
 A robust loader distinguishes between configuration errors, unreadable files, empty content, unsupported formats, and malformed documents.
 
-Design decision: Choose the failure policy based on the ingestion workflow.
+- **Design decision**: Choose the failure policy based on the ingestion workflow.
 
-- For a small prototype, failing fast may be appropriate.
-- For a production batch, isolate failures so one bad document does not block all valid documents.
+    - For a small prototype, failing fast may be appropriate.
+    - For a production batch, isolate failures so one bad document does not block all valid documents.
 
-Failure handling
+- **Failure handling**
 
-- Transient errors → retry with bounded backoff.
-- Permanent parsing errors → record the failure and route for investigation.
-- Empty documents → skip or reject according to an explicit policy.
-- Missing source directory → report a clear configuration error.
+    - Transient errors → retry with bounded backoff.
+    - Permanent parsing errors → record the failure and route for investigation.
+    - Empty documents → skip or reject according to an explicit policy.
+    - Missing source directory → report a clear configuration error.
 
-Production consideration: Track failed documents and retries. Ensure retries do not create duplicate index entries.
+- **Production consideration**: Track failed documents and retries. Ensure retries do not create duplicate index entries.
 
-Trade-off: Continuing after individual failures improves ingestion throughput, but it requires failure tracking and recovery procedures to prevent silent data gaps.
+- **Trade-off**: Continuing after individual failures improves ingestion throughput, but it requires failure tracking and recovery procedures to prevent silent data gaps.
 
 #### Q6. Why use UTF-8 when reading text files?
 
 UTF-8 provides consistent character encoding and avoids relying on the machine's default encoding.
 
-```
+```java
 String content = new String(
     Files.readAllBytes(file),
     StandardCharsets.UTF_8
 );
 ```
 
-Design decision: Specify the expected encoding and use format-specific parsers for PDF and DOCX sources.
-
-Failure mode: Incorrect encoding or poor text extraction can introduce corrupted characters and reduce retrieval quality.
-
-Production consideration: Reading an entire file into memory is reasonable for small text files. For large documents or large ingestion workloads, use bounded-memory or streaming approaches where supported.
-
-Business impact: Consistent extraction prevents avoidable loss of important information before embedding and retrieval.
+- **Design decision**: Specify the expected encoding and use format-specific parsers for PDF and DOCX sources.
+- **Failure mode**: Incorrect encoding or poor text extraction can introduce corrupted characters and reduce retrieval quality.
+- **Production consideration**: Reading an entire file into memory is reasonable for small text files. For large documents or large ingestion workloads, use bounded-memory or streaming approaches where supported.
+- **Business impact**: Consistent extraction prevents avoidable loss of important information before embedding and retrieval.
 
 #### Q7. Why should a document loader be an interface?
 
-An interface separates the loading contract from the source-specific implementation.
+An interface separates the loading contract from the source-specific implementation. We can implement `TextDocumentLoader`, `PdfDocumentLoader`, or `DatabaseDocumentLoader` while preserving the same downstream document representation.
 
-```
+```java
 public interface DocumentLoader {
     List<Document> load() throws IOException;
 }
 ```
 
-We can implement `TextDocumentLoader`, `PdfDocumentLoader`, or `DatabaseDocumentLoader` while preserving the same downstream document representation.
-
-Design decision: Use a shared interface when multiple source types must feed the same pipeline.
-
-Trade-off: The abstraction makes new loaders easier to add, but an overly generic contract can hide source-specific capabilities such as pagination, streaming, or change notifications.
-
-Production consideration: Larger systems may need additional contracts for incremental synchronization, batch processing, and structured error reporting.
-
-Interview follow-up: This is an example of abstraction and loose coupling applied to RAG ingestion.
+- **Design decision**: Use a shared interface when multiple source types must feed the same pipeline.
+- **Trade-off**: The abstraction makes new loaders easier to add, but an overly generic contract can hide source-specific capabilities such as pagination, streaming, or change notifications.
+- **Production consideration**: Larger systems may need additional contracts for incremental synchronization, batch processing, and structured error reporting.
 
 #### Q8. What is the difference between document loading and chunking?
 
@@ -978,120 +954,110 @@ Interview follow-up: This is an example of abstraction and loose coupling applie
 | Preserves source-level metadata  | Adds chunk-level metadata                   |
 | Prepares data for processing     | Prepares data for embedding and retrieval   |
 
-A 20-page PDF might become one document after extraction and hundreds of chunks after chunking.
-
-Design decision: Keep the two stages separate so document parsers and chunking strategies can evolve independently.
-
-Failure mode: If extraction loses headings, tables, or page information, chunking may produce semantically incomplete pieces.
-
-Production consideration: Preserve useful structural metadata for citations, debugging, and retrieval quality.
+- **Design decision**: Keep the two stages separate so document parsers and chunking strategies can evolve independently.
+- **Failure mode**: If extraction loses headings, tables, or page information, chunking may produce semantically incomplete pieces.
+- **Production consideration**: Preserve useful structural metadata for citations, debugging, and retrieval quality.
 
 #### Q9. Should document loading happen at query time?
 
 Usually, no. RAG separates the indexing pipeline from the query pipeline.
 
-- Indexing: Load documents, chunk them, generate embeddings, and store them.
-- Query: Embed the user's question, retrieve relevant chunks, and generate the response.
-
-Design decision: Perform routine ingestion asynchronously or ahead of time to keep query processing responsive.
-
-Trade-off: Pre-indexing improves query latency but introduces index freshness and synchronization requirements.
-
-Production consideration: Support updates and deletions. Stale or deleted content must not remain retrievable indefinitely. On-demand ingestion can still be appropriate for particular use cases.
-
-Business impact: Separating the pipelines improves responsiveness and allows ingestion workloads to scale independently.
+- **Design decision**: Perform routine ingestion asynchronously or ahead of time to keep query processing responsive.
+- **Trade-off**: Pre-indexing improves query latency but introduces index freshness and synchronization requirements.
+- **Production consideration**: Support updates and deletions. Stale or deleted content must not remain retrievable indefinitely. On-demand ingestion can still be appropriate for particular use cases.
+- **Business impact**: Separating the pipelines improves responsiveness and allows ingestion workloads to scale independently.
 
 #### Q10. How do you prevent duplicate documents?
 
 Use stable document IDs and content hashes to identify new, unchanged, and modified documents.
 
-Design decision
+- **Design decision**
 
-- Stable ID: identifies the logical source document.
-- Content hash: detects whether the document's content changed.
-- Version: tracks a particular revision when version history is required.
+    - Stable ID: identifies the logical source document.
+    - Content hash: detects whether the document's content changed.
+    - Version: tracks a particular revision when version history is required.
 
-Failure mode: Re-ingesting the same document without deduplication can create duplicate chunks and distort retrieval results.
+- **Failure mode**: Re-ingesting the same document without deduplication can create duplicate chunks and distort retrieval results.
 
-Production solution: Make ingestion idempotent. When content changes, replace or remove outdated chunks as the new version is indexed. Handle interrupted updates so the index does not remain partially updated.
+- **Production solution**: Make ingestion idempotent. When content changes, replace or remove outdated chunks as the new version is indexed. Handle interrupted updates so the index does not remain partially updated.
 
-Trade-off: Hashing and version tracking introduce processing and metadata overhead but reduce duplicate storage and stale retrieval.
+- **Trade-off**: Hashing and version tracking introduce processing and metadata overhead but reduce duplicate storage and stale retrieval.
 
 #### Q11. How would you design incremental ingestion?
 
 Incremental ingestion processes only documents that are new, modified, or deleted.
 
-Workflow
+- **Workflow**
+    
+    - Discover source changes.
+    - Compare IDs, timestamps, versions, or content hashes.
+    - Parse and chunk changed documents.
+    - Generate embeddings for their chunks.
+    - Update or remove outdated indexed entries.
+    - Record the outcome.
 
-1. Discover source changes.
-2. Compare IDs, timestamps, versions, or content hashes.
-3. Parse and chunk changed documents.
-4. Generate embeddings for their chunks.
-5. Update or remove outdated indexed entries.
-6. Record the outcome.
+- **Design decision**: Use timestamps as an inexpensive change signal when reliable; use content hashes when content-level verification is important.
 
-Design decision: Use timestamps as an inexpensive change signal when reliable; use content hashes when content-level verification is important.
+- **Failure modes and solutions**
 
-Failure modes and solutions
+    - Missed changes → use reliable source synchronization and verification.
+    - Partial updates → track ingestion state and implement recovery.
+    - Concurrent updates → use version checks or suitable synchronization.
+    - Deletion events missed → synchronize deletions as well as additions.
 
-- Missed changes → use reliable source synchronization and verification.
-- Partial updates → track ingestion state and implement recovery.
-- Concurrent updates → use version checks or suitable synchronization.
-- Deletion events missed → synchronize deletions as well as additions.
+- **Production consideration**: Re-index only affected documents, and ensure old content is not exposed after a required deletion or access revocation.
 
-Production consideration: Re-index only affected documents, and ensure old content is not exposed after a required deletion or access revocation.
-
-Business impact: Incremental ingestion reduces redundant parsing and embedding work, lowering operating cost and improving freshness.
+- **Business impact**: Incremental ingestion reduces redundant parsing and embedding work, lowering operating cost and improving freshness.
 
 #### Q12. How would you scale document ingestion?
 
 For small collections, sequential processing from a local directory is often sufficient. Larger systems may ingest from object storage, enterprise repositories, databases, or event streams.
 
-Design decision
+- **Design decision**
 
-- Sequential processing → simplest operational model.
-- Bounded parallel processing → higher throughput with controlled resource usage.
-- Streaming or pagination → avoids loading an entire collection into memory.
-- Event-driven ingestion → reacts to source changes without repeatedly scanning everything.
+    - Sequential processing → simplest operational model.
+    - Bounded parallel processing → higher throughput with controlled resource usage.
+    - Streaming or pagination → avoids loading an entire collection into memory.
+    - Event-driven ingestion → reacts to source changes without repeatedly scanning everything.
 
-What breaks at scale?
+- **What breaks at scale?**
 
-- Memory exhaustion from loading too much content.
-- Embedding API rate limits.
-- Excessive parser concurrency.
-- Growing ingestion backlogs.
-- Repeated processing of unchanged documents.
+    - Memory exhaustion from loading too much content.
+    - Embedding API rate limits.
+    - Excessive parser concurrency.
+    - Growing ingestion backlogs.
+    - Repeated processing of unchanged documents.
 
-Production solutions: Apply bounded concurrency, batching, backpressure, retry limits, and incremental change detection. Monitor throughput, failures, queue depth, and processing latency.
+- **Production solutions**: Apply bounded concurrency, batching, backpressure, retry limits, and incremental change detection. Monitor throughput, failures, queue depth, and processing latency.
 
-Business impact: The objective is not maximum throughput at any cost; it is meeting freshness and reliability requirements within budget.
+- **Business impact**: The objective is not maximum throughput at any cost; it is meeting freshness and reliability requirements within budget.
 
 #### Q13. How do you secure document ingestion?
 
 Enterprise documents may contain confidential company information, customer data, or other sensitive content.
 
-Design decision: Define trusted source boundaries and preserve ownership, tenant identity, and access-control information through indexing.
+- **Design decision**: Define trusted source boundaries and preserve ownership, tenant identity, and access-control information through indexing.
 
-Failure modes and solutions
+- **Failure modes and solutions**
 
-- Untrusted metadata → validate it against authoritative sources.
-- Cross-tenant retrieval → enforce tenant-scoped filters and authorization.
-- Sensitive content in logs → redact or avoid logging document contents.
-- Revoked access → propagate permission changes to retrieval controls.
+    - Untrusted metadata → validate it against authoritative sources.
+    - Cross-tenant retrieval → enforce tenant-scoped filters and authorization.
+    - Sensitive content in logs → redact or avoid logging document contents.
+    - Revoked access → propagate permission changes to retrieval controls.
 
-Production consideration: Restrict access to source documents, vectors, credentials, and ingestion logs. Enforce authorization at retrieval time; simply storing an access-control field is not sufficient.
+- **Production consideration**: Restrict access to source documents, vectors, credentials, and ingestion logs. Enforce authorization at retrieval time; simply storing an access-control field is not sufficient.
 
-Business impact: Proper controls reduce data leakage, compliance risk, and the potential impact of unauthorized access.
+- **Business impact**: Proper controls reduce data leakage, compliance risk, and the potential impact of unauthorized access.
 
 
-#### RAG system ingests 100,000 documents, and users report that answers sometimes cite outdated policies. How to investigate and fix the issue?
+#### Q14. RAG system ingests 100,000 documents, and users report that answers sometimes cite outdated policies. How to investigate and fix the issue?
 
-1. Diagnose: Check source modification events, ingestion logs, document versions, and index freshness.
-2. Identify the root cause: Determine whether changes were not detected, ingestion failed, or stale chunks were not removed.
-3. Design the fix: Introduce reliable change detection, idempotent updates, version tracking, and deletion handling.
-4. Protect correctness: Avoid exposing stale content during updates where freshness or security requirements prohibit it.
-5. Measure success: Track ingestion lag, failed updates, stale retrieval incidents, and indexing cost.
-6. Business trade-off: Balance update freshness against re-indexing cost and operational complexity.
+- **Diagnose**: Check source modification events, ingestion logs, document versions, and index freshness.
+- **Identify the root cause**: Determine whether changes were not detected, ingestion failed, or stale chunks were not removed.
+- **Design the fix**: Introduce reliable change detection, idempotent updates, version tracking, and deletion handling.
+- **Protect correctness**: Avoid exposing stale content during updates where freshness or security requirements prohibit it.
+- **Measure success**: Track ingestion lag, failed updates, stale retrieval incidents, and indexing cost.
+- **Business trade-off**: Balance update freshness against re-indexing cost and operational complexity.
 
 ---
 
