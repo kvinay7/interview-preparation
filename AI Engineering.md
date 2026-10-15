@@ -833,7 +833,7 @@ A RAG system has an indexing pipeline that processes documents into searchable v
 
 ### Stage 1 — Document Loading
 
-#### Q1. Why is document loading necessary in RAG?
+**Q1. Why is document loading necessary in RAG?**
 
 Document loading ingests external knowledge and converts it into a processable representation before chunking, embedding, indexing, and retrieval.
 
@@ -857,7 +857,7 @@ Document loading ingests external knowledge and converts it into a processable r
 
 - **Business Impact**: Reliable ingestion reduces missing or stale knowledge, which improves the reliability of downstream RAG answers.
 
-#### Q2. What is a `Document` in a RAG system?
+**Q2. What is a `Document` in a RAG system?**
 
 A `Document` is a representation of a source item containing extracted text and metadata.
 
@@ -869,7 +869,7 @@ Document document = new Document(content, metadata);
 - **Production consideration**: Preserve source identity, version information, and trusted access-control metadata through subsequent stages.
 - **Trade-off**: A common representation simplifies the pipeline, but format-specific information—such as PDF page numbers or document headings—must be retained explicitly if it is needed later.
 
-#### Q3. Why preserve metadata?
+**Q3. Why preserve metadata?**
 
 Metadata enables source attribution, filtering, traceability, and document lifecycle management.
 
@@ -888,14 +888,14 @@ Metadata enables source attribution, filtering, traceability, and document lifec
 - **Production consideration**: Metadata alone does not enforce security. Authorization must be enforced during retrieval, and tenant filters must not be bypassable by user-supplied values.
 - **Business impact**: Traceability supports auditing, while correct filtering reduces the risk of exposing information to unauthorized users.
 
-#### Q4. What metadata should we store, and how do we choose it?
+**Q4. What metadata should we store, and how do we choose it?**
 
 Store metadata based on the capabilities the application requires: source attribution, filtering, updates, security, and auditing.
 
 - **Design trade-offs**: Minimal metadata reduces storage and ingestion complexity. Rich metadata supports more sophisticated filtering and lifecycle management but increases maintenance requirements.
 - **Production consideration**: Validate required fields, use stable identifiers, and avoid placing sensitive information in logs or unrestricted metadata fields.
 
-#### Q5. How do you handle errors during document loading?
+**Q5. How do you handle errors during document loading?**
 
 A robust loader distinguishes between configuration errors, unreadable files, empty content, unsupported formats, and malformed documents.
 
@@ -915,7 +915,7 @@ A robust loader distinguishes between configuration errors, unreadable files, em
 
 - **Trade-off**: Continuing after individual failures improves ingestion throughput, but it requires failure tracking and recovery procedures to prevent silent data gaps.
 
-#### Q6. Why use UTF-8 when reading text files?
+**Q6. Why use UTF-8 when reading text files?**
 
 UTF-8 provides consistent character encoding and avoids relying on the machine's default encoding.
 
@@ -931,7 +931,7 @@ String content = new String(
 - **Production consideration**: Reading an entire file into memory is reasonable for small text files. For large documents or large ingestion workloads, use bounded-memory or streaming approaches where supported.
 - **Business impact**: Consistent extraction prevents avoidable loss of important information before embedding and retrieval.
 
-#### Q7. Why should a document loader be an interface?
+**Q7. Why should a document loader be an interface?**
 
 An interface separates the loading contract from the source-specific implementation. We can implement `TextDocumentLoader`, `PdfDocumentLoader`, or `DatabaseDocumentLoader` while preserving the same downstream document representation.
 
@@ -945,7 +945,7 @@ public interface DocumentLoader {
 - **Trade-off**: The abstraction makes new loaders easier to add, but an overly generic contract can hide source-specific capabilities such as pagination, streaming, or change notifications.
 - **Production consideration**: Larger systems may need additional contracts for incremental synchronization, batch processing, and structured error reporting.
 
-#### Q8. What is the difference between document loading and chunking?
+**Q8. What is the difference between document loading and chunking?**
 
 | Document loading                 | Document chunking                           |
 | -------------------------------- | ------------------------------------------- |
@@ -958,7 +958,7 @@ public interface DocumentLoader {
 - **Failure mode**: If extraction loses headings, tables, or page information, chunking may produce semantically incomplete pieces.
 - **Production consideration**: Preserve useful structural metadata for citations, debugging, and retrieval quality.
 
-#### Q9. Should document loading happen at query time?
+**Q9. Should document loading happen at query time?**
 
 Usually, no. RAG separates the indexing pipeline from the query pipeline.
 
@@ -967,7 +967,7 @@ Usually, no. RAG separates the indexing pipeline from the query pipeline.
 - **Production consideration**: Support updates and deletions. Stale or deleted content must not remain retrievable indefinitely. On-demand ingestion can still be appropriate for particular use cases.
 - **Business impact**: Separating the pipelines improves responsiveness and allows ingestion workloads to scale independently.
 
-#### Q10. How do you prevent duplicate documents?
+**Q10. How do you prevent duplicate documents?**
 
 Use stable document IDs and content hashes to identify new, unchanged, and modified documents.
 
@@ -983,7 +983,7 @@ Use stable document IDs and content hashes to identify new, unchanged, and modif
 
 - **Trade-off**: Hashing and version tracking introduce processing and metadata overhead but reduce duplicate storage and stale retrieval.
 
-#### Q11. How would you design incremental ingestion?
+**Q11. How would you design incremental ingestion?**
 
 Incremental ingestion processes only documents that are new, modified, or deleted.
 
@@ -1009,7 +1009,7 @@ Incremental ingestion processes only documents that are new, modified, or delete
 
 - **Business impact**: Incremental ingestion reduces redundant parsing and embedding work, lowering operating cost and improving freshness.
 
-#### Q12. How would you scale document ingestion?
+**Q12. How would you scale document ingestion?**
 
 For small collections, sequential processing from a local directory is often sufficient. Larger systems may ingest from object storage, enterprise repositories, databases, or event streams.
 
@@ -1032,7 +1032,7 @@ For small collections, sequential processing from a local directory is often suf
 
 - **Business impact**: The objective is not maximum throughput at any cost; it is meeting freshness and reliability requirements within budget.
 
-#### Q13. How do you secure document ingestion?
+**Q13. How do you secure document ingestion?**
 
 Enterprise documents may contain confidential company information, customer data, or other sensitive content.
 
@@ -1050,7 +1050,7 @@ Enterprise documents may contain confidential company information, customer data
 - **Business impact**: Proper controls reduce data leakage, compliance risk, and the potential impact of unauthorized access.
 
 
-#### Q14. RAG system ingests 100,000 documents, and users report that answers sometimes cite outdated policies. How to investigate and fix the issue?
+**Q14. RAG system ingests 100,000 documents, and users report that answers sometimes cite outdated policies. How to investigate and fix the issue?**
 
 - **Diagnose**: Check source modification events, ingestion logs, document versions, and index freshness.
 - **Identify the root cause**: Determine whether changes were not detected, ingestion failed, or stale chunks were not removed.
