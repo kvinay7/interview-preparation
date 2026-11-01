@@ -2,31 +2,11 @@
 
 ## 1. Business Logic Layer
 
-### A. [Java](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#introduction) 
-- [Variables](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#basics)
-- [Data Types](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#variables-and-data-types)
-- [Operators](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#operators)
-- [Control Flow](https://www.baeldung.com/java-control-structures)
-- [Input/Output](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#standard-io)
-- [Questions](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#conceptual-questions)
+### A. [Java](https://github.com/kvinay7/interview-preparation/blob/main/Java.md) & [Python](https://github.com/kvinay7/Programming-in-Python/blob/main/python_complete.docx)
 
----
-
-### B. [Data Structures](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#collections-framework) 
-- [Array](https://github.com/kvinay7/DSA/blob/main/Java.md#section-3-arrays--array-methods)
-- [String](https://github.com/kvinay7/DSA/blob/main/Java.md#section-4-string--stringbuilder)
-- [List](https://github.com/kvinay7/DSA/blob/main/Java.md#arraylist-dynamic-array)
-- [Set](https://github.com/kvinay7/DSA/blob/main/Java.md#hashset-unordered-no-duplicates)
-- [Map](https://github.com/kvinay7/DSA/blob/main/Java.md#hashmap-key-value-pairs)
-- [Stack](https://github.com/kvinay7/DSA/blob/main/Java.md#stack-lifo--last-in-first-out)
-- [Queue](https://github.com/kvinay7/DSA/blob/main/Java.md#queue-fifo--first-in-first-out)
-- [Heap](https://github.com/kvinay7/DSA/blob/main/Java.md#priorityqueue-min-heap-by-default)
-- [Sorting](https://github.com/kvinay7/DSA/blob/main/Java.md#section-6-comparator--sorting)
-- [Numerical](https://github.com/kvinay7/DSA/blob/main/Java.md#section-1-numerical--character-methods)
-- [Faster I/O](https://github.com/kvinay7/DSA/blob/main/Java.md#fast-io-mandatory-for-interviews)
-- [Stream API](https://github.com/kvinay7/interview-preparation/blob/main/Java.md#imperative-vs-declarative)
-- [Python](https://github.com/kvinay7/DSA/blob/main/Python.md)
-- [Blind 75](https://algomaster.io/practice/dsa-patterns?tab=am-75)
+### B. [Data Structures](https://github.com/kvinay7/interview-preparation/blob/main/DSA.md) 
+- [Java for DSA](https://github.com/kvinay7/DSA/blob/main/Java.md)
+- [Python for DSA](https://github.com/kvinay7/DSA/blob/main/Python.md)
 
 ---
 
