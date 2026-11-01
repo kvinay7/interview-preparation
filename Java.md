@@ -205,6 +205,10 @@ It is a programming paradigm that organizes software design around objects, whic
 | **Garbage Collection**     | Not applicable.                                          | Objects in the heap are subject to garbage collection.    |
 | **Data Persistence**       | Data is lost when the method call ends.                  | Data persists as long as the reference is alive.          |
 
+- **String Pool**: a special reserved memory region inside the Java Heap that stores unique string literal values to optimize memory allocation and prevent duplicate string instances (Literals go straight into the String Pool, while new objects go into the general heap and reference their respective literal values inside the pool).
+  
+- **String Immutability**: a string's value cannot change once created, which allows the String Pool to safely share identical literals across multiple variables without side effects. It prevents unauthorized configuration tampering; for example, if a security manager checks a connection URL string and flags it as a safe database destination, a separate piece of code cannot covertly alter that same string object afterward to redirect data to a malicious server.
+
 ### Packages:
 A package in Java is a way to group related classes and interfaces together. It provides a namespace to avoid name conflicts and allows for better organization, modularity, and reusability of code.
 ```java
